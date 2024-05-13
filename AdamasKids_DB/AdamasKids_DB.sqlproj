@@ -68,6 +68,7 @@
     <Folder Include="Database Triggers\" />
     <Folder Include="User Defined Types\" />
     <Folder Include="Schema" />
+    <Folder Include="Data_Scripts" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\T_Courier_Master.sql" />
@@ -3869,5 +3870,6 @@
     <Build Include="Schema\SelfService.sql" />
     <Build Include="Schema\SMManagement.sql" />
     <Build Include="Schema\STUDENTFEATURES.sql" />
+    <Build Include="Data_Scripts\D_script.sql" />
   </ItemGroup>
 </Project>
