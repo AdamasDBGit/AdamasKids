@@ -3148,7 +3148,6 @@
     <Build Include="Stored Procedures\Procs3\uspInsertApprovedScannedStudentsDetails.sql" />
     <Build Include="Stored Procedures\Procs3\uspInsertAttendanceDataForEntireDay.sql" />
     <Build Include="Stored Procedures\Procs3\uspInsertBatchDetailsForInterface.sql" />
-    <Build Include="Stored Procedures\Procs3\uspInsertBatchDetailsForInterface_BeforeClassicRemoval2022_11_30.sql" />
     <Build Include="Stored Procedures\Procs3\uspInsertBatchDetailsForInterface_RestoreClassic2024.sql" />
     <Build Include="Stored Procedures\Procs3\uspInsertBatchInstallment.sql" />
     <Build Include="Stored Procedures\Procs3\uspInsertBatchTimeSlotDetails.sql" />
