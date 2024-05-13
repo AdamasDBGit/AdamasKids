@@ -1138,7 +1138,6 @@
     <Build Include="Functions\fnGetTotalSessionCountSubjectWise.sql" />
     <Build Include="Functions\fnGetTotalSessionCountTeacherWise.sql" />
     <Build Include="Functions\fnGetTotalStudentCount.sql" />
-    <Build Include="Functions\fnGetAcademicDropOutStatus.sql" />
     <Build Include="Functions\fnGetReceiptTaxAmtfromXML.sql" />
     <Build Include="Functions\fnGetReceiptAmtfromXML.sql" />
     <Build Include="Functions\fnGetStudentInternalAttendanceDetails.sql" />
@@ -1375,7 +1374,6 @@
     <Build Include="Stored Procedures\Procs1\Routine_Test_TR.sql" />
     <Build Include="Stored Procedures\Procs1\Routine_Test_TR_Batch.sql" />
     <Build Include="Stored Procedures\Procs1\Routine_Test_TR_Branch.sql" />
-    <Build Include="Stored Procedures\Procs1\RoutineSlotGenerate.sql" />
     <Build Include="Stored Procedures\Procs1\SaveCenterVisitDetails.sql" />
     <Build Include="Stored Procedures\Procs1\SearchRoleWisePermission.sql" />
     <Build Include="Stored Procedures\Procs1\SettledChequeReport.sql" />
@@ -3368,7 +3366,6 @@
     <Build Include="Stored Procedures\Procs3\uspNotificationForNetwork.sql" />
     <Build Include="Stored Procedures\Procs3\uspNotifiyCTCompletionToDCCH.sql" />
     <Build Include="Stored Procedures\Procs3\uspNullifyExistingDues.sql" />
-    <Build Include="Stored Procedures\Procs3\uspOracleSMSRecon.sql" />
     <Build Include="Stored Procedures\Procs3\uspOwnCenterUpdate.sql" />
     <Build Include="Stored Procedures\Procs3\uspParentTokenValidate.sql" />
     <Build Include="Stored Procedures\Procs3\uspPerformanceReport.sql" />
@@ -3390,8 +3387,6 @@
     <Build Include="Stored Procedures\Procs3\uspPrepareStudentAgencyPaymentData.sql" />
     <Build Include="Stored Procedures\Procs3\uspPrepareStudentAgencyPaymentDataReversal.sql" />
     <Build Include="Stored Procedures\Procs3\uspPrepareStudentAgencyPaymentDataReversal_AIS.sql" />
-    <Build Include="Stored Procedures\Procs3\uspPrepareStudentAttendanceData.sql" />
-    <Build Include="Stored Procedures\Procs3\uspPrepareStudentAttendanceDataSealdah.sql" />
     <Build Include="Stored Procedures\Procs3\uspPrepareStudentCollectionCashData.sql" />
     <Build Include="Stored Procedures\Procs3\uspPrepareStudentCollectionCashReversalData.sql" />
     <Build Include="Stored Procedures\Procs3\uspPrepareStudentCollectionData.sql" />
@@ -3410,7 +3405,6 @@
     <Build Include="Stored Procedures\Procs3\uspPrepareStudentFeeAccrualDataWithoutDiscount.sql" />
     <Build Include="Stored Procedures\Procs3\uspPrepareStudentFeeCancellationData.sql" />
     <Build Include="Stored Procedures\Procs3\uspPrepareStudentFeeCancellationDataWithoutDiscount.sql" />
-    <Build Include="Stored Procedures\Procs3\uspPrepareStudentFinancialData.sql" />
     <Build Include="Stored Procedures\Procs3\uspPrepareStudentSecurityDepositRefundData.sql" />
     <Build Include="Stored Procedures\Procs3\uspPrepareTransportData.sql" />
     <Build Include="Stored Procedures\Procs3\uspPrepareTransportDataTemp.sql" />
