@@ -1,0 +1,2 @@
+﻿CREATE USER [CCUHOSMSRNDSRV1\Administrator];
+
