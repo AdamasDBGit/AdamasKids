@@ -1,9 +1,4 @@
-﻿-- =============================================
--- Author:		Tridip Chatterjee
--- Create date: 01-09-2023
--- Description:	Get Parameter List AIS & AWS Student Academic Details
--- =============================================
-CREATE PROCEDURE [dbo].[USpGetParameterListAISAWSStudentAcademicDetails] 
+﻿CREATE PROCEDURE [dbo].[USpGetParameterListAISAWSStudentAcademicDetails] 
 AS
 BEGIN
 	SET NOCOUNT ON;
@@ -25,7 +20,7 @@ isnull (TS.I_Stream_ID,'0') as Stream_ID,
 isnull (TS.S_Stream,'NA') as Stream, 
 isnull (TSS.I_Section_ID,'0') as Section_ID ,
 isnull(TSS.S_Section_Name,'NA') As Section
-
+Into #tmp
 
 from 
 T_Student_Class_Section TSCS
@@ -57,6 +52,7 @@ isnull (TS.I_Stream_ID,'0'),
 isnull (TS.S_Stream,'NA'), 
 isnull (TSS.I_Section_ID,'0')  ,
 isnull(TSS.S_Section_Name,'NA')
+select * from #tmp
 
 order by I_Class_ID,School_Group;
 
