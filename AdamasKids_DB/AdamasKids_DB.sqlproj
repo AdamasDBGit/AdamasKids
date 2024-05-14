@@ -3878,6 +3878,9 @@
     <Build Include="Stored Procedures\Procs3\USP_ERP_Dash_ClassList.sql" />
     <Build Include="Stored Procedures\Procs3\USP_ERP_Dash_Classtaken.sql" />
     <Build Include="Stored Procedures\Procs3\USP_ERP_Dash_Fee_Status.sql" />
+    <Build Include="Stored Procedures\Procs3\USP_ERP_Dash_FacultyUnavailability.sql" />
+    <Build Include="Stored Procedures\Procs3\USP_ERP_Dash_AdmissionStatus.sql" />
+    <Build Include="Stored Procedures\Procs3\USP_ERP_Dashboard_Loading.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Data_Scripts\D_Scripts.sql" />
