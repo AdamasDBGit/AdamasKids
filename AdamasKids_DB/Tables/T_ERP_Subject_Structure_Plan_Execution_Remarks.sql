@@ -4,10 +4,13 @@
     [I_Completion_Percentage]                       DECIMAL (4, 1) NULL,
     [Is_Completed]                                  BIT            NULL,
     [S_Remarks]                                     NVARCHAR (MAX) NULL,
+    [S_Learning_Outcome_Achieved]                   VARCHAR (MAX)  NULL,
     [I_CreatedBy]                                   INT            NULL,
     [Dt_CreatedAt]                                  DATETIME       NULL,
     [Dt_ExecutedAt]                                 DATETIME       NULL,
     [I_UpdatedBy]                                   INT            NULL,
     [Dt_UpdatedAt]                                  DATETIME       NULL
 );
+
+
 
