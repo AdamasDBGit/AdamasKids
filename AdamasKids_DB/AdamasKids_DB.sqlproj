@@ -3870,6 +3870,14 @@
     <Build Include="Schema\SelfService.sql" />
     <Build Include="Schema\SMManagement.sql" />
     <Build Include="Schema\STUDENTFEATURES.sql" />
+    <Build Include="Stored Procedures\Procs3\ERP_uspGetFollowUPSequence.sql" />
+    <Build Include="Stored Procedures\Procs3\USP_ERP_Update_Followup_Auto.sql" />
+    <Build Include="Stored Procedures\Procs3\USP_ERP_Dash_LogbookvsPeriods.sql" />
+    <Build Include="Stored Procedures\Procs3\USP_ERP_Dash_FacultyLoading.sql" />
+    <Build Include="Stored Procedures\Procs3\ERP_GetGlobalValidationForModules.sql" />
+    <Build Include="Stored Procedures\Procs3\USP_ERP_Dash_ClassList.sql" />
+    <Build Include="Stored Procedures\Procs3\USP_ERP_Dash_Classtaken.sql" />
+    <Build Include="Stored Procedures\Procs3\USP_ERP_Dash_Fee_Status.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Data_Scripts\D_Scripts.sql" />

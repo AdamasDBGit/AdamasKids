@@ -4,7 +4,3 @@ C:\Users\Admin\source\repos\AdamasKids\AdamasKids_DB\obj\Debug\AdamasKids_DB.pdb
 C:\Users\Admin\source\repos\AdamasKids\AdamasKids_DB\obj\Debug\AdamasKids_DB.sqlproj.AssemblyReference.cache
 C:\Users\Admin\source\repos\AdamasKids\AdamasKids_DB\bin\Debug\AdamasKids_DB.dll
 C:\Users\Admin\source\repos\AdamasKids\AdamasKids_DB\bin\Debug\AdamasKids_DB.pdb
-C:\Users\Admin\source\repos\AdamasKids\AdamasKids_DB\obj\Debug\Model.xml
-C:\Users\Admin\source\repos\AdamasKids\AdamasKids_DB\obj\Debug\refactor.xml
-C:\Users\Admin\source\repos\AdamasKids\AdamasKids_DB\obj\Debug\postdeploy.sql
-C:\Users\Admin\source\repos\AdamasKids\AdamasKids_DB\obj\Debug\predeploy.sql
