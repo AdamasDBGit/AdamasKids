@@ -139,6 +139,11 @@ BEGIN
 	and WDM.I_Day_ID=DATEPART(WEEKDAY, CONVERT(DATE,@iClassDate))
 	and SG.I_Brand_Id=ISNULL(@iBrandID,FM.I_Brand_ID)
 	and RSD.I_Is_Break=0
+	and
+	RSH.I_School_Session_ID=(select TOP 1 I_School_Session_ID from T_School_Academic_Session_Master where CONVERT(DATE,Dt_Session_Start_Date) <= CONVERT(DATE,@iClassDate) and CONVERT(DATE,Dt_Session_End_Date) >= CONVERT(DATE,@iClassDate) 
+	 and I_Brand_Id=SASM.I_Brand_ID and I_Status=1)  -- added by susmita : 2024-04-25
+	
+
 
 	
 

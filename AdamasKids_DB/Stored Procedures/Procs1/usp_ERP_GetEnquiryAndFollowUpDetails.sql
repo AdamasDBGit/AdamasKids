@@ -45,8 +45,8 @@ BEGIN
 	  left join T_Enquiry_Type AS TEET ON TEERD.I_Enquiry_Type_ID = TEET.I_Enquiry_Type_ID
 	  left join T_School_Academic_Session_Master as TSASM on TEERD.R_I_School_Session_ID = TSASM.I_School_Session_ID
 	  left join T_ERP_Enquiry_CRM_Details TEECD on TEECD.I_Enquiry_ID=TEERD.I_Enquiry_Regn_ID
-	  inner join T_ERP_CRMSource_Details TECD on TECD.I_Source_DetailsID = TEECD.I_Source_DetailsID
-	  inner join T_ERP_EnqType_Source_Mapping TEESM ON TEESM.I_EnqType_Source_Mapping_ID=TECD.I_EnqType_Source_Mapping_ID
+	  left join T_ERP_CRMSource_Details TECD on TECD.I_Source_DetailsID = TEECD.I_Source_DetailsID
+	  left join T_ERP_EnqType_Source_Mapping TEESM ON TEESM.I_EnqType_Source_Mapping_ID=TECD.I_EnqType_Source_Mapping_ID
 	  left join T_Information_Source_Master TEISM ON TEISM.I_Info_Source_ID = TEESM.I_Info_Source_ID
 	  
 
@@ -71,7 +71,7 @@ BEGIN
 
 		FROM
 		T_Enquiry_Regn_Followup AS TEERF 
-		left join [dbo].[T_ERP_Followup_StatusM] as TEFSM on TEFSM.[I_FollowupStatus_ID] = TEERF.S_Followup_Status
+		inner join [dbo].[T_ERP_Followup_StatusM] as TEFSM on TEFSM.[I_FollowupStatus_ID] = TEERF.S_Followup_Status
 		left join T_ERP_FollowupType_Master AS TEFM ON TEERF.ERP_R_I_FollowupType_ID = TEFM.I_FollowupType_ID
 
 		

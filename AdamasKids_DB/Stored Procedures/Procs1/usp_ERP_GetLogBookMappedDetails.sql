@@ -50,6 +50,7 @@ BEGIN
 	TeacherTimePlanID int,
 	CompletionPercentage decimal(4,1),
 	Remarks varchar(max),
+	LearningOutcomeAchieved varchar(max),
 	ClassExecutedDate datetime,
 	IsDayCompleted bit,
 	BrandID int,
@@ -91,8 +92,10 @@ BEGIN
 	TTP.I_Student_Class_Routine_ID as StudentClassRoutineID,RSH.I_Routine_Structure_Header_ID as RoutineHeaderID,
 	SSP.I_Day_No as LessionPlanDayNo,
 	SSP.I_Month_No as LessionPlanMonthno,TTP.I_Teacher_Time_Plan_ID as TeacherTimePlanID,
-	SSPER.I_Completion_Percentage as CompletionPercentage,SSPER.S_Remarks as Remarks
+	SSPER.I_Completion_Percentage as CompletionPercentage
+	,SSPER.S_Remarks as Remarks,SSPER.S_Learning_Outcome_Achieved as LearningOutcomeAchieved
 	,SSPER.Dt_ExecutedAt as ClassExecutedDate,ISNULL(SSPER.Is_Completed,'false')  as IsDayCompleted,SM.I_Brand_ID as BrandID
+
 	from T_ERP_Teacher_Time_Plan as TTP 
 	inner join
 	T_ERP_Subject_Structure_Plan as SSP on TTP.I_Subject_Structure_Plan_ID=SSP.I_Subject_Structure_Plan_ID
@@ -302,7 +305,10 @@ BEGIN
 		inner join
 		T_ERP_Subject_Template as EST on EST.I_Subject_Template_Header_ID=ESTH.I_Subject_Template_Header_ID
 		and EST.I_Subject_Template_ID=ESS.I_Subject_Template_ID
-		
+		and
+	   SSP.I_School_Session_ID=(select TOP 1 I_School_Session_ID from T_School_Academic_Session_Master where CONVERT(DATE,Dt_Session_Start_Date) <= CONVERT(DATE,@DtClassDate) and CONVERT(DATE,Dt_Session_End_Date) >= CONVERT(DATE,@DtClassDate) 
+	   and I_Brand_Id=ESTH.I_Brand_ID and I_Status=1)  -- added by susmita : 2024-04-25
+	
 		
 	) as SubjectStructurePlan on SubjectStructurePlan.I_Subject_ID=SM.I_Subject_ID 
 	and SubjectStructurePlan.LessionPlanMonthno=DATEPART(month, @DtClassDate) 

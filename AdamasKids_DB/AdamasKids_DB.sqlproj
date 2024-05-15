@@ -3881,6 +3881,7 @@
     <Build Include="Stored Procedures\Procs3\USP_ERP_Dash_FacultyUnavailability.sql" />
     <Build Include="Stored Procedures\Procs3\USP_ERP_Dash_AdmissionStatus.sql" />
     <Build Include="Stored Procedures\Procs3\USP_ERP_Dashboard_Loading.sql" />
+    <Build Include="User Defined Types\UT_LogBookTableForInsertUpdate.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Data_Scripts\D_Scripts.sql" />

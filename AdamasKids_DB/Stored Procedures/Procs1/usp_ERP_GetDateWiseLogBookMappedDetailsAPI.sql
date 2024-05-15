@@ -31,7 +31,7 @@ BEGIN
 	T_Faculty_Master as FM 
 	inner join
 	T_ERP_User as UM on UM.I_User_ID=FM.I_User_ID where 
-	UM.S_Token=@sToken
+	UM.S_Token=@sToken and FM.I_Status=1
 	)
 	BEGIN
 
@@ -61,7 +61,7 @@ BEGIN
 	T_Subject_Master as SM on SM.I_Subject_ID=SCR.I_Subject_ID and RSH.I_Class_ID=SM.I_Class_ID and SM.I_School_Group_ID=RSH.I_School_Group_ID
 	where 
 	UM.S_Token=@sToken and SCR.I_Subject_ID=@iSubjectID and SCR.I_Student_Class_Routine_ID=@iClassRoutineID
-	and RSD.I_Day_ID = DATEPART(WEEKDAY,@DtClassDate)
+	and RSD.I_Day_ID = DATEPART(WEEKDAY,@DtClassDate) and FM.I_Status=1
 	)
 	BEGIN
 
@@ -78,7 +78,7 @@ BEGIN
 	T_Faculty_Master as FM 
 	inner join
 	T_ERP_User as UM on UM.I_User_ID=FM.I_User_ID where 
-	UM.S_Token=@sToken 
+	UM.S_Token=@sToken and FM.I_Status=1
 
 
 
@@ -113,6 +113,7 @@ BEGIN
 	TeacherTimePlanID int,
 	CompletionPercentage decimal(4,1),
 	Remarks varchar(max),
+	LearningOutcomeAchieved varchar(max),
 	ClassExecutedDate datetime,
 	IsDayCompleted bit,
 	BrandID int,
@@ -141,7 +142,8 @@ BEGIN
 	TTP.I_Student_Class_Routine_ID as StudentClassRoutineID,RSH.I_Routine_Structure_Header_ID as RoutineHeaderID,
 	SSP.I_Day_No as LessionPlanDayNo,
 	SSP.I_Month_No as LessionPlanMonthno,TTP.I_Teacher_Time_Plan_ID as TeacherTimePlanID,
-	SSPER.I_Completion_Percentage as CompletionPercentage,SSPER.S_Remarks as Remarks
+	SSPER.I_Completion_Percentage as CompletionPercentage,
+	SSPER.S_Remarks as Remarks,SSPER.S_Learning_Outcome_Achieved as LearningOutcomeAchieved
 	,SSPER.Dt_ExecutedAt as ClassExecutedDate,ISNULL(SSPER.Is_Completed,'false')  as IsDayCompleted,SM.I_Brand_ID as BrandID
 	from T_ERP_Teacher_Time_Plan as TTP 
 	inner join

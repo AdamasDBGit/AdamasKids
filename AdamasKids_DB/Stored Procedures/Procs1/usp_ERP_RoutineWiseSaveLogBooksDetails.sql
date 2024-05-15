@@ -5,7 +5,7 @@
 -- =============================================
 CREATE PROCEDURE [dbo].[usp_ERP_RoutineWiseSaveLogBooksDetails] 
 	-- Add the parameters for the stored procedure here
-	@LogBookDetails UT_LogBookForInsertUpdate readonly,
+	@LogBookDetails UT_LogBookTableForInsertUpdate readonly,
 	@FacultyID INT = NULL,
 	@sToken varchar(max)=NULL,
 	@iSubjectID INT,
@@ -29,6 +29,7 @@ BEGIN TRY
 	DECLARE @CreatedBy int
 	DECLARE @iTeacherTimePlan INT
 	DECLARE @iRoutineHeaderID INT
+	DECLARE @sLearningOutcomeAchieved varchar(max)
 	--DECLARE @isubjectStructurePlanID INT
 
 
@@ -48,7 +49,7 @@ BEGIN TRY
 		T_Faculty_Master as FM 
 		inner join
 		T_ERP_User as UM on UM.I_User_ID=FM.I_User_ID where 
-		UM.S_Token=@sToken
+		UM.S_Token=@sToken and FM.I_Status=1 
 		)
 			 BEGIN
 
@@ -66,7 +67,7 @@ BEGIN TRY
 				T_Faculty_Master as FM 
 				inner join
 				T_ERP_User as UM on UM.I_User_ID=FM.I_User_ID where 
-				UM.S_Token=@sToken
+				UM.S_Token=@sToken and FM.I_Status=1
 
 				--print @FacultyID
 
@@ -94,6 +95,7 @@ BEGIN TRY
 				and SM.I_School_Group_ID=RSH.I_School_Group_ID and SM.I_Class_ID=RSH.I_Class_ID
 				where SCR.I_Subject_ID=@iSubjectID and SCR.I_Student_Class_Routine_ID=@iStudentClassRoutineID
 				and FM.I_Faculty_Master_ID=@FacultyID and RSD.I_Day_ID=DATEPART(WEEKDAY,@dtClassdate)
+				and FM.I_Status=1
 				) 
 				BEGIN
 
@@ -119,7 +121,7 @@ BEGIN TRY
 						T_Faculty_Master as FM 
 						inner join
 						T_ERP_User as UM on UM.I_User_ID=FM.I_User_ID where 
-						FM.I_Faculty_Master_ID=@FacultyID
+						FM.I_Faculty_Master_ID=@FacultyID and FM.I_Status=1
 
 
 
@@ -130,6 +132,7 @@ BEGIN TRY
 							CompletionPercentage, 
 							TotalCompletionPercentage,
 							Remarks,
+							LearningOutcomeAchieved,
 							IsCompleted
 						FROM 
 						@LogBookDetails;
@@ -142,6 +145,7 @@ BEGIN TRY
 							@CompletionPercentage, 
 							@TotalCompletionPercentage,
 							@Remarks,
+							@sLearningOutcomeAchieved,
 							@IsCompleted
 
 						WHILE @@FETCH_STATUS = 0
@@ -168,7 +172,7 @@ BEGIN TRY
 									BEGIN
 
 										insert into T_ERP_Subject_Structure_Plan_Execution_Remarks
-										select @iTeacherTimePlan,@CompletionPercentage,@IsCompleted,@Remarks,@CreatedBy,GETDATE(),@dtClassdate,null,null
+										select @iTeacherTimePlan,@CompletionPercentage,@IsCompleted,@Remarks,@sLearningOutcomeAchieved,@CreatedBy,GETDATE(),@dtClassdate,null,null
 
 									END
 
@@ -218,6 +222,7 @@ BEGIN TRY
 									update T_ERP_Subject_Structure_Plan_Execution_Remarks 
 									set I_Completion_Percentage=@CompletionPercentage,Is_Completed=@IsCompleted,
 									S_Remarks=@Remarks,I_UpdatedBy=@CreatedBy,Dt_UpdatedAt=GETDATE()
+									,S_Learning_Outcome_Achieved=@sLearningOutcomeAchieved
 									where I_Teacher_Time_Plan_ID=@TeacherTimePlanID
 
 									--print @iTeacherTimePlan
@@ -244,6 +249,7 @@ BEGIN TRY
 							@CompletionPercentage, 
 							@TotalCompletionPercentage,
 							@Remarks,
+							@sLearningOutcomeAchieved,
 							@IsCompleted
 								; 
             

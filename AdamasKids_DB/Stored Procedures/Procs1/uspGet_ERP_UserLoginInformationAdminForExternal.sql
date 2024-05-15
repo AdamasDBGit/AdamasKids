@@ -36,7 +36,8 @@ AS
       ,BM.I_Brand_ID as BrandID      
       ,BM.S_Brand_Name as BrandName,      
       ISNULL(UM.IsAllAllowedEligible,'false') as IsAllAllowedEligible,      
-      BM.S_Brand_Code as BrandCode      
+      BM.S_Brand_Code as BrandCode  
+	  ,isnull(UM.Is_Teaching_Staff,0) as D_User_Type
                 FROM    dbo.T_ERP_User as UM      
       inner join      
       dbo.T_ERP_User_Brand as UB on UB.I_User_ID=UM.I_User_ID      

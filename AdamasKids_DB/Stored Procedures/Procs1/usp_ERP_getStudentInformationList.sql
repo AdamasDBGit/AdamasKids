@@ -95,6 +95,7 @@ BEGIN
 
 	  select 
 	  SD.S_Student_ID as StudentID,
+	  ERD.S_Enquiry_No as EnquiryNo,
 	  SD.I_Student_Detail_ID as StudentDetailID,
 	  CONCAT(COALESCE(SD.S_First_Name+' ', ''), COALESCE(SD.S_Middle_Name+' ', ''), COALESCE(SD.S_Last_Name, '')) AS FullName,  
 	  TC.S_Class_Name as Class,
@@ -106,6 +107,7 @@ BEGIN
 	  @FilteredRecords AS FilteredRecords
 	  --SG.S_School_Group_Name
 	  from [SMS].[dbo].[T_Student_Detail] as SD
+	  
 	  join [SMS].[dbo].[T_Student_Class_Section] as SCS on SD.I_Student_Detail_ID = SCS.I_Student_Detail_ID 
 	  --and SD.S_Student_ID= SCS.S_Student_ID
 	  inner join [SMS].[dbo].[T_School_Group_Class]as SGC 
@@ -113,7 +115,7 @@ BEGIN
 	  inner join [SMS].[dbo].[T_School_Group] as SG on SGC.I_School_Group_ID = SG.I_School_Group_ID
 	  inner join [SMS].[dbo].[T_Class] as TC on TC.I_Class_ID = SGC.I_Class_ID 
 	  --inner join [SMS].[dbo].[T_ERP_Enquiry_Regn_Guardian_Master] as ERGM on ERGM.I_Enquiry_Regn_ID = SD.I_Enquiry_Regn_ID
-	  --inner join [SMS].[dbo].[T_Enquiry_Regn_Detail] as ERD on ERD.I_Enquiry_Regn_ID = SD.I_Enquiry_Regn_ID
+	  Left join [SMS].[dbo].[T_Enquiry_Regn_Detail] as ERD on ERD.I_Enquiry_Regn_ID = SD.I_Enquiry_Regn_ID
 	  where SCS.I_Brand_ID = @brandid and
 	  SGC.I_School_Group_ID= @SchoolGroup --OR @SchoolGroup IS NULL
 	  and

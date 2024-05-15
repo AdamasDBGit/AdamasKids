@@ -55,4 +55,32 @@ print @parentPermissionID
 		END
 
 
+		insert into T_ERP_Users_Role_Permission_Map
+		(
+		I_User_Id,
+		Role_Id,
+		Permission_ID,
+		User_Group_ID,
+		Brand_ID,
+		Is_Active,
+		I_Created_By,
+		dt_Created_Dt
+		)
+		select Distinct new.I_User_Id,new.RoleID,new.Permission_ID,new.User_GroupID,new.BrandID,1,@iCreatedBy,GETDATE()  from
+(select Distinct Users.I_User_Id,Users.Role_Id as RoleID,PRM.I_Permission_ID as Permission_ID,
+Users.User_Group_ID as User_GroupID,@iBrandID as BrandID from 
+(select I_User_Id,Role_Id,User_Group_ID from T_ERP_Users_Role_Permission_Map where Role_Id=@iRoleId and Is_Active=1 and Brand_ID=@iBrandID) as Users
+ inner join
+ (select I_Role_ID,I_User_Group_Master_ID from T_ERP_UserGroup_Role_Brand_Map where Is_Active=1) 
+ as UsergroupRole on Users.Role_Id=UsergroupRole.I_Role_ID and UsergroupRole.I_User_Group_Master_ID=Users.User_Group_ID
+ inner join
+ (select I_Role_ID,I_Permission_ID from T_ERP_Permission_Role_Map where I_Status=1) as PRM on PRM.I_Role_ID=Users.Role_Id
+ where Users.Role_Id=@iRoleId
+ ) as new
+ left join
+ T_ERP_Users_Role_Permission_Map as URP on URP.I_User_Id=new.I_User_Id and URP.Role_Id=new.RoleID 
+ and URP.Permission_ID=new.Permission_ID and URP.User_Group_ID=new.User_GroupID
+ where URP.I_User_Id IS NULL
+
+
 END
