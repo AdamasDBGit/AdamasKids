@@ -3882,6 +3882,11 @@
     <Build Include="Stored Procedures\Procs3\USP_ERP_Dash_AdmissionStatus.sql" />
     <Build Include="Stored Procedures\Procs3\USP_ERP_Dashboard_Loading.sql" />
     <Build Include="User Defined Types\UT_LogBookTableForInsertUpdate.sql" />
+    <Build Include="Stored Procedures\uspValidateTeacherOTP.sql" />
+    <Build Include="Stored Procedures\uspValidateTeacherLoginByMobile.sql" />
+    <Build Include="Stored Procedures\uspUpdateTeacheFirebaseToken.sql" />
+    <Build Include="Stored Procedures\uspTeacherTokenValidate.sql" />
+    <Build Include="Stored Procedures\USP_ERP_Parents_SYNC_Processes.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Data_Scripts\D_Scripts.sql" />
