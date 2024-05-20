@@ -18,7 +18,11 @@ BEGIN
 
    SELECT 
     EU.I_User_ID AS UserID,
-    FM.I_Faculty_Master_ID AS FacultyMasterID,
+    CASE WHEN ISNULL(UB.Is_Teaching_Staff,'false') = 'true' 
+	THEN FM.I_Faculty_Master_ID
+	ELSE
+	NULL END
+	 AS FacultyMasterID,
     UP.S_EMP_Code AS EmployeeCode,
     CONCAT(EU.S_First_Name, ' ', EU.S_Middle_Name, ' ', EU.S_Last_Name) AS EmployeeName,
     UP.S_PAN AS PAN,
@@ -39,12 +43,15 @@ BEGIN
     EU.I_Created_By AS CreatedBy,
     EU.S_Username AS Username,
     EU.S_Password AS UserPassword,
-    EU.Is_Teaching_Staff AS IsTeachingfaculty,
+    --EU.Is_Teaching_Staff AS IsTeachingfaculty,
+	ISNULL(UB.Is_Teaching_Staff,'false') AS IsTeachingfaculty,
     UP.I_Brand_ID AS BrandID,
 	UserGroupMap.User_Group_ID as UserGroupID,
 	UserGroupMap.S_User_GroupName as UserGroupName
 FROM 
     T_ERP_User EU
+	inner join
+	T_ERP_User_Brand as UB on EU.I_User_ID=UB.I_User_ID and UB.I_Brand_ID=@iBrand and UB.Is_Active=1 -- added by susmita : 2024-May-19
 LEFT JOIN
     T_User_Profile UP ON EU.I_User_ID = UP.I_User_ID
 LEFT JOIN
@@ -65,6 +72,7 @@ LEFT JOIN
             WHERE URPM2.I_User_Id = URPM.I_User_Id
               AND URPM2.Is_Active = 1 
               AND URPM2.Brand_ID = ISNULL(@iBrand, URPM2.Brand_ID)
+			  AND EGM2.I_Brand_ID= ISNULL(@iBrand, URPM2.Brand_ID)
             FOR XML PATH('')), 1, 2, '') AS S_User_GroupName
 FROM T_ERP_Users_Role_Permission_Map AS URPM
 WHERE URPM.Is_Active = 1 
@@ -78,5 +86,6 @@ WHERE
     EU.I_User_ID = ISNULL(@iUserID, EU.I_User_ID)
     AND EU.S_Mobile = ISNULL(@sMobile, EU.S_Mobile)
     AND EU.S_Email = ISNULL(@sEmail, EU.S_Email)
+	and UB.I_Brand_ID=@iBrand
 
 END

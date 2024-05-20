@@ -84,6 +84,16 @@ DECLARE @LastUserID int
 		SELECT 0 StatusFlag, 'Duplicate Employee Code' Message
 		END
 
+	ELSE IF EXISTS(
+		select * from T_ERP_User as EU
+		inner join
+		T_User_Profile as UP on EU.I_User_ID=UP.I_User_ID 
+		where EU.S_Username=@UserName and EU.I_User_ID !=@UserID
+		)
+		BEGIN
+		SELECT 0 StatusFlag, 'Duplicate User Name' Message
+		END
+
 
 
 ELSE 
@@ -162,7 +172,7 @@ ELSE
 						UPDATE T_ERP_User 
 						SET 
 						--S_Username = ISNULL(@UserName,S_Username),
-						--S_Password = ISNULL(@Password,S_Password), 
+						S_Password = ISNULL(@Password,S_Password), 
 						S_Email=@sEMail,
 						S_First_Name=@FirstName,
 						S_Middle_Name=@MiddleName,
@@ -170,9 +180,14 @@ ELSE
 						S_Mobile=@sMobileNo, 
 						I_Created_By=@iCreatedBy,
 						I_Status=@iStatus,
-						Is_Teaching_Staff=@IsTeachingfaculty,
+						--Is_Teaching_Staff=@IsTeachingfaculty, -- susmita : 2024-May-2024
 						I_User_Type=@iuserType
 						where S_Mobile=@sMobileNo  
+
+						update T_ERP_User_Brand
+						set Is_Teaching_Staff=@IsTeachingfaculty 
+						where I_Brand_ID=@iBrandID and Is_Active=1 and I_User_ID=@UserID
+
 
 						Update T_User_Profile 
 						SET 
@@ -190,14 +205,18 @@ ELSE
 						[S_Present_Address] = @sPresentAddress,
 						[S_Permanent_Address]= @sPermanentAddress,
 						[I_Status]=@iStatus,
-						[I_Brand_ID]=@iBrandID
+						[I_Brand_ID]=NULL
 						where I_User_ID=@UserID
 
 						IF @IsTeachingfaculty = 'false'
 						BEGIN
-							update T_Faculty_Master  set I_Status=0 where I_User_ID=@UserID
+
+							update T_ERP_User_Brand
+						set Is_Teaching_Staff=@IsTeachingfaculty 
+						where I_Brand_ID=@iBrandID and Is_Active=1 and I_User_ID=@UserID
 						END
-						ELSE IF EXISTS(select * from T_Faculty_Master where I_User_ID=@UserID)
+						ELSE 
+						IF EXISTS(select * from T_Faculty_Master where I_User_ID=@UserID)
 						BEGIN
 
 							UPDATE T_Faculty_Master
@@ -235,7 +254,8 @@ ELSE
 								I_Brand_ID,
 								Is_Active,
 								Dt_CreatedAt,
-								I_CreatedBy
+								I_CreatedBy,
+								Is_Teaching_Staff
 								)
 								values
 								(
@@ -243,7 +263,8 @@ ELSE
 								@iBrandID,
 								1,
 								GETDATE(),
-								@iCreatedBy
+								@iCreatedBy,
+								@IsTeachingfaculty
 								)
 
 							END
@@ -369,7 +390,8 @@ ELSE
 								I_Brand_ID,
 								Is_Active,
 								Dt_CreatedAt,
-								I_CreatedBy
+								I_CreatedBy,
+								Is_Teaching_Staff
 								)
 								values
 								(
@@ -377,10 +399,18 @@ ELSE
 								@iBrandID,
 								1,
 								GETDATE(),
-								@iCreatedBy
+								@iCreatedBy,
+								@IsTeachingfaculty
 								)
 
 							END
+							ELSE
+							BEGIN
+								update T_ERP_User_Brand
+								set Is_Teaching_Staff=@IsTeachingfaculty 
+								where I_Brand_ID=@iBrandID and Is_Active=1 and I_User_ID=@LastUserID
+							END
+
 
 							INSERT INTO T_User_Profile
 							(
@@ -427,8 +457,40 @@ ELSE
 
 
 
-				IF (@IsTeachingfaculty = 'true')		
+				IF (@IsTeachingfaculty = 'true')	
+				
 					BEGIN
+
+					IF EXISTS(select * from T_Faculty_Master where I_User_ID=@LastUserID)
+						BEGIN
+
+							UPDATE T_Faculty_Master
+							SET
+							 [S_Faculty_Code]				=@sEmployeeCode
+							,[S_Faculty_Name]				=@sEmployeeName
+							,[S_Faculty_Type]				=@sEmployeeType
+							,[Dt_DOJ]						=@dtDOJ
+							,[I_CreatedBy]					=@iCreatedBy
+							,[Dt_DOB]						=@dtDOB
+							,[S_Gender]						=@sGender
+							,[I_Religion_ID]				=@iReligionID
+							,[I_Maritial_ID]				=@iMaritialID
+							,[S_Mobile_No]					=@sMobileNo
+							,[S_Photo]						=@sPhoto				
+							,[S_Signature]					=@sSignature			
+							,[S_PAN]						=@sPAN				
+							,[S_Aadhaar]					=@sAadhar			
+							,[S_Email]						=@sEMail				
+							,[S_Present_Address]			=@sPresentAddress	
+							,[S_Permanent_Address]			=@sPermanentAddress	
+							,[Dt_CreatedAt]					=GETDATE()--
+							,[I_Status]						=@iStatus			
+							,[I_Brand_ID]					=@iBrandID	
+			
+							where I_User_ID = @UserID
+						END
+					ELSE
+						BEGIN
 							INSERT INTO [T_Faculty_Master]
 							(
 							 [S_Faculty_Code]
@@ -478,6 +540,7 @@ ELSE
 							,@LastUserID--
 							)
 							set @FacultyID = SCOPE_IDENTITY()
+						END
 					END
 					
 

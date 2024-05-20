@@ -63,6 +63,7 @@ Inner Join T_ERP_Permission_Role_Map PRM on PRM.I_Role_ID=UGR.I_Role_ID
 --and URPM.Role_Id =PRM.I_Role_ID and URPM.User_Group_ID=UT.I_User_Group_Master_ID  
 --and URPM.I_User_Id=UT.I_User_ID  
 where PRM.I_Status=1 and UGR.Is_Active=1  
+and UGR.I_Brand_ID=@BrandID 
 order by UT.I_User_ID  
               
      BEGIN TRY                
@@ -111,7 +112,7 @@ MERGE INTO T_ERP_Users_Role_Permission_Map AS target
      ,Getdate()  
      ,Null  
             )             
-        WHEN NOT MATCHED BY SOURCE and target.I_User_Id  =@User_ID  
+        WHEN NOT MATCHED BY SOURCE and target.I_User_Id  =@User_ID and target.Brand_ID=@BrandID
               
   THEN                
             Update SET Is_Active = 0   

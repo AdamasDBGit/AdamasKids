@@ -3,7 +3,7 @@
 -- Create date: <2023 Nov 14>
 -- Description:	<Get The Faculty Details for ERP Based on User LogIN>
 -- =============================================
-CREATE PROCEDURE uspGetERP_AllFacultyDetailsBasedOnLogIn 
+CREATE PROCEDURE [dbo].[uspGetERP_AllFacultyDetailsBasedOnLogIn] 
 	-- Add the parameters for the stored procedure here
 	@iBrandID INT
 AS
@@ -20,8 +20,10 @@ BEGIN
 	T_Faculty_Master as FM 
 	inner join
 	T_ERP_User as EU on FM.I_User_ID=EU.I_User_ID
-	where FM.I_Brand_ID=@iBrandID
-
+	inner join
+	T_ERP_User_Brand as UB on FM.I_User_ID=UB.I_User_ID 
+	where UB.I_Brand_ID=@iBrandID 
+	and UB.Is_Active=1 and UB.Is_Teaching_Staff=1 and EU.I_Status=1 and FM.I_Status=1
 
 
 END

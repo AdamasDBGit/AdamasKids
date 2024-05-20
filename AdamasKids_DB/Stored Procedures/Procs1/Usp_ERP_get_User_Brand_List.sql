@@ -15,6 +15,7 @@ Select UM.I_User_ID,UB.I_Brand_ID ,BM.S_Brand_Name,ASM.I_School_Session_ID ,
 SPCH.N_Value as BrandLogo   ,  
 ASM.I_School_Session_ID  
 ,Bm.S_location as Location
+,ISNULL(UB.Is_Teaching_Staff,'false') as IsTeachingStaff
 from T_ERP_User_Brand UB          
 Inner Join T_ERP_User UM on UM.I_User_ID=UB.I_User_ID          
 Inner Join T_Brand_Master BM on BM.I_Brand_ID=UB.I_Brand_ID          

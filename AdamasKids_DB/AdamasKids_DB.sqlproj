@@ -3887,6 +3887,14 @@
     <Build Include="Stored Procedures\uspUpdateTeacheFirebaseToken.sql" />
     <Build Include="Stored Procedures\uspTeacherTokenValidate.sql" />
     <Build Include="Stored Procedures\USP_ERP_Parents_SYNC_Processes.sql" />
+    <Build Include="Tables\T_ERP_Permission_bak14052024.sql" />
+    <Build Include="Stored Procedures\uspInsertUpdateDeleteUser_BKP_May_2024.sql" />
+    <Build Include="Stored Procedures\Usp_ERP_Users_UserGroupMap_Insert_Update_BKP_May2024.sql" />
+    <Build Include="Stored Procedures\usp_ERP_GetUserMasterDetails_BKP_May2024.sql" />
+    <Build Include="Stored Procedures\usp_ERP_GetFacultySubjectMapping_BKP_May_2024.sql" />
+    <Build Include="Stored Procedures\Usp_ERP_get_User_Brand_List_BKP_May_2024.sql" />
+    <Build Include="Stored Procedures\usp_ERP_CheckFormID_BKP_May_2024.sql" />
+    <Build Include="Stored Procedures\USP_ERP_AuthorizationBinding_UserWise_BKP_MAy_2024.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Data_Scripts\D_Scripts.sql" />

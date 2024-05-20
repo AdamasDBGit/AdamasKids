@@ -3,7 +3,8 @@
 CREATE Proc [dbo].[USP_ERP_AuthorizationBinding_UserWise](  
 @UserID int,  
 @PermissionType Varchar(max)=Null,  
-@pageurl varchar(max) = null  
+@pageurl varchar(max) = null,
+@ibrandID INT=NULL
 )  
 As Begin  
   
@@ -31,7 +32,11 @@ SET @pageurl='/SMS2'+@pageurl
 print @pageurl  
 END  
   
-IF EXISTS (SELECT * FROM T_ERP_User WHERE I_User_ID = @UserID AND ISNULL(IsAllAllowedEligible, 'false') = 'true')  
+IF EXISTS
+(SELECT * FROM T_ERP_User as EU 
+inner join
+T_ERP_User_Brand as EUB on EU.I_User_ID=EUB.I_User_ID and EUB.Is_Active=1 and EUB.I_Brand_ID=ISNULL(@ibrandID,EUB.I_Brand_ID)
+WHERE EU.I_User_ID = @UserID and EU.I_Status=1 AND ISNULL(IsAllAllowedEligible, 'false') = 'true')  
 BEGIN  
     -- If user has all permissions allowed  
     INSERT INTO #USerPermission  
@@ -76,7 +81,8 @@ BEGIN
     INNER JOIN T_erp_Permission c ON c.I_Permission_ID = a.Permission_ID  
     INNER JOIN T_ERP_User_Group_Master d ON d.I_User_Group_Master_ID = a.User_Group_ID  
     WHERE a.Is_Active = 1 AND b.I_Status = 1 AND c.I_Status = 1 AND d.Is_Active = 1  
-    AND a.I_User_Id = @UserID AND c.Permission_Type = @PermissionType AND c.S_PageUrl=ISNULL(@pageurl,c.S_PageUrl);  
+    AND a.I_User_Id = @UserID AND c.Permission_Type = @PermissionType AND c.S_PageUrl=ISNULL(@pageurl,c.S_PageUrl) 
+	and b.I_Brand_ID=ISNULL(@ibrandID,b.I_Brand_ID) and d.I_Brand_ID=ISNULL(@ibrandID,d.I_Brand_ID) and a.Brand_ID=ISNULL(@ibrandID,a.Brand_ID)
  --select * from #USerPermission  
  --print @PermissionType  
 END  

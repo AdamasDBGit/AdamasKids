@@ -40,11 +40,24 @@ BEGIN
 		   EU.I_Created_By AS CrtdBy,
 		   EU.Dt_CreatedAt as CrtdOn,
 		   EU.Dt_Last_Login as Last_Login,
-		   ISNULL(EU.Is_Teaching_Staff,'false') as IsTeachingfaculty,
-		   FM.I_Faculty_Master_ID as FacultyMasterID,
+		  -- ISNULL(EU.Is_Teaching_Staff,'false') as IsTeachingfaculty,
+		  ISNULL(EUB.Is_Teaching_Staff,'false') AS IsTeachingfaculty,
+		   --FM.I_Faculty_Master_ID as FacultyMasterID,
+		   CASE WHEN ISNULL(EUB.Is_Teaching_Staff,'false') = 'true' 
+	THEN FM.I_Faculty_Master_ID
+	ELSE
+	NULL END as FacultyMasterID,
 		   ISNULL(UP.S_EMP_Code,'NA') as EmployeeCode,
-		   ISNULL(FM.S_Faculty_Code,'NA') as FacultyCode,
-		   ISNULL(FM.S_Faculty_Name,'NA') as FacultyName,
+		   --ISNULL(FM.S_Faculty_Code,'NA') as FacultyCode,
+		   --ISNULL(FM.S_Faculty_Name,'NA') as FacultyName,
+		   CASE WHEN ISNULL(EUB.Is_Teaching_Staff,'false') = 'true' 
+	THEN ISNULL(FM.S_Faculty_Code,'NA')
+	ELSE
+	NULL END as FacultyCode,
+			   CASE WHEN ISNULL(EUB.Is_Teaching_Staff,'false') = 'true' 
+	THEN ISNULL(FM.S_Faculty_Name,'NA')
+	ELSE
+	NULL END as FacultyName,
 		   UserGroupMap.User_Group_ID as UserGroupID,
 	ISNULL(UserGroupMap.S_User_GroupName,'NA') as UserGroupName
 	
@@ -52,9 +65,9 @@ BEGIN
 	
 	T_ERP_User  as EU
 	inner join
-	T_ERP_User_Brand as EUB on EU.I_User_ID=EUB.I_User_ID
+	T_ERP_User_Brand as EUB on EU.I_User_ID=EUB.I_User_ID and EUB.I_Brand_ID=@iBrandID and EUB.Is_Active=1 -- added by susmita : 2024-May-19
 	left join
-	T_User_Profile as UP on EU.I_User_ID=UP.I_User_ID and UP.I_Status=1
+	T_User_Profile as UP on EU.I_User_ID=UP.I_User_ID and UP.I_Status=1 
 	left join
 	T_Faculty_Master as FM on FM.I_User_ID=UP.I_User_ID and FM.I_Status=1
 		LEFT JOIN
@@ -67,6 +80,7 @@ BEGIN
             WHERE URPM2.I_User_Id = URPM.I_User_Id
               AND URPM2.Is_Active = 1 
               AND URPM2.Brand_ID = ISNULL(@iBrandID, URPM2.Brand_ID)
+			  AND UGM.I_Brand_ID = ISNULL(@iBrandID, UGM.I_Brand_ID)
             FOR XML PATH('')), 1, 2, '') AS User_Group_ID,
        STUFF((
             SELECT DISTINCT ', ' + EGM2.S_User_GroupName
@@ -75,6 +89,7 @@ BEGIN
             WHERE URPM2.I_User_Id = URPM.I_User_Id
               AND URPM2.Is_Active = 1 
               AND URPM2.Brand_ID = ISNULL(@iBrandID, URPM2.Brand_ID)
+			  AND EGM2.I_Brand_ID = ISNULL(@iBrandID, EGM2.I_Brand_ID)
             FOR XML PATH('')), 1, 2, '') AS S_User_GroupName
 FROM T_ERP_Users_Role_Permission_Map AS URPM
 WHERE URPM.Is_Active = 1 
@@ -101,8 +116,12 @@ GROUP BY URPM.I_User_Id
     and 
 	(EU.I_Status=ISNULL(@Status,EU.I_Status))
 	and 
-	(ISNULL(EU.Is_Teaching_Staff,'false')=ISNULL(@isTeacher,ISNULL(EU.Is_Teaching_Staff,'false')))
-	and (EUB.I_Brand_ID=ISNULL(@iBrandID,EUB.I_Brand_ID))
+	--(ISNULL(EU.Is_Teaching_Staff,'false')=ISNULL(@isTeacher,ISNULL(EU.Is_Teaching_Staff,'false')))
+	(ISNULL(EUB.Is_Teaching_Staff,'false')=ISNULL(@isTeacher,ISNULL(EUB.Is_Teaching_Staff,'false')))
+
+	--and (EUB.I_Brand_ID=ISNULL(@iBrandID,EUB.I_Brand_ID))
+	and EUB.I_Brand_ID=ISNULL(@iBrandID,EUB.I_Brand_ID)
+	and EU.I_Status=1
 	order by S_Username
 
 END  

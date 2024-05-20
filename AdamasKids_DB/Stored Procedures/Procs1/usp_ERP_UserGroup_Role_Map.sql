@@ -84,8 +84,23 @@ BEGIN
 	T_ERP_Users_Role_Permission_Map as EYRPM 
 	left join
 	#SplitRoles as r on EYRPM.Role_Id=r.RoleID
-	where EYRPM.User_Group_ID=@iUserGroupID and r.RoleID IS NULL and EYRPM.Brand_ID=@iBrandID
+	where EYRPM.User_Group_ID=@iUserGroupID and r.RoleID IS NULL and EYRPM.Brand_ID=@iBrandID 
 
+
+	update EYRPM set EYRPM.Is_Active=1 from
+	T_ERP_Users_Role_Permission_Map as EYRPM 
+	inner join
+	#SplitRoles as r on EYRPM.Role_Id=r.RoleID
+	inner join
+	T_ERP_User as EU on EU.I_User_ID= EYRPM.I_User_Id and EU.I_Status=1
+	inner join 
+	T_ERP_Permission_Role_Map as PRM on PRM.I_Status=1 and PRM.I_Role_ID=EYRPM.Role_Id
+	inner join
+	T_ERP_Permission as EP on EP.I_Permission_ID=EYRPM.Permission_ID and EP.I_Status=1
+	inner join
+	T_ERP_UserGroup_Role_Brand_Map as URBM 
+	on URBM.I_Role_ID=EYRPM.Role_Id and URBM.I_User_Group_Master_ID=EYRPM.User_Group_ID and URBM.Is_Active=1
+	where EYRPM.User_Group_ID=@iUserGroupID and r.RoleID IS NOT NULL and EYRPM.Brand_ID=@iBrandID
 
 
 	insert into T_ERP_Users_Role_Permission_Map
