@@ -3895,6 +3895,7 @@
     <Build Include="Stored Procedures\Usp_ERP_get_User_Brand_List_BKP_May_2024.sql" />
     <Build Include="Stored Procedures\usp_ERP_CheckFormID_BKP_May_2024.sql" />
     <Build Include="Stored Procedures\USP_ERP_AuthorizationBinding_UserWise_BKP_MAy_2024.sql" />
+    <Build Include="Tables\T_ERP_Brand_Info_Details.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Data_Scripts\D_Scripts.sql" />
