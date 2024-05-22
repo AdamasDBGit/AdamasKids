@@ -1,0 +1,6 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/AdamasKids_DB/AdamasKids_DB.dbmdl
+/AdamasKids_DB/AdamasKids_DB.jfm
