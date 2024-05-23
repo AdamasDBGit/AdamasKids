@@ -9,9 +9,16 @@
     [N_Amount]           NUMERIC (18, 2) NULL,
     [FormShell_Status]   INT             NULL,
     [I_ConFig_ID]        INT             NULL,
+    [Is_active]          BIT             NULL,
     CONSTRAINT [PK_T_Status_Master] PRIMARY KEY CLUSTERED ([I_Status_Id] ASC),
     CONSTRAINT [FK_T_Status_Master_T_Brand_Master] FOREIGN KEY ([I_Brand_ID]) REFERENCES [dbo].[T_Brand_Master] ([I_Brand_ID])
 );
+
+
+GO
+ALTER TABLE [dbo].[T_Status_Master] NOCHECK CONSTRAINT [FK_T_Status_Master_T_Brand_Master];
+
+
 
 
 GO
