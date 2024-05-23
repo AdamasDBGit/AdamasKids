@@ -57,9 +57,9 @@ AS
                         IP.Dt_Invoice_Date,        
                         IP.I_Student_Detail_ID,        
                         SD.S_Student_ID,        
-                        SD.S_First_Name,        
-                        SD.S_Middle_Name,        
-                        SD.S_Last_Name,        
+                        TRIM(SD.S_First_Name),        
+                        TRIM(SD.S_Middle_Name),        
+                        TRIM(SD.S_Last_Name),        
                         CASE WHEN IP.I_Status = 0 THEN 1 ELSE IP.I_Status END,        
                         IP.I_Centre_Id,        
                         COU.I_Currency_ID,        
@@ -80,7 +80,7 @@ AS
 						AND DATEDIFF(dd, @dtDateFrom,CONVERT(DATE,IP.Dt_Invoice_Date)) >= 0         
                         AND (DATEDIFF(dd, @dtDateTo, IP.Dt_Invoice_Date) <= 0 OR @dtDateTo IS NULL)       
                         AND 
-						CONCAT(Sd.S_First_Name, ' ', ISNULL(Sd.S_Middle_Name + ' ', ''), Sd.S_Last_Name) LIKE ISNULL(@FullName, CONCAT(Sd.S_First_Name, ' ', ISNULL(Sd.S_Middle_Name + ' ', ''), Sd.S_Last_Name))+'%'
+						CONCAT(TRIM(Sd.S_First_Name), ' ', ISNULL(TRIM(Sd.S_Middle_Name) + ' ', ''), TRIM(Sd.S_Last_Name)) LIKE ISNULL(@FullName, CONCAT(TRIM(Sd.S_First_Name), ' ', ISNULL(TRIM(Sd.S_Middle_Name) + ' ', ''), TRIM(Sd.S_Last_Name)))+'%'
                                 
                        AND 
 						SD.S_Student_ID LIKE ISNULL(@sStudentCode,SD.S_Student_ID )               
@@ -95,9 +95,9 @@ AS
                         IP.Dt_Invoice_Date,        
                         IP.I_Student_Detail_ID,        
                         SD.S_Student_ID,        
-                        SD.S_First_Name,        
-                        SD.S_Middle_Name,        
-                        SD.S_Last_Name,        
+                        TRIM(SD.S_First_Name),        
+                        TRIM(SD.S_Middle_Name),        
+                        TRIM(SD.S_Last_Name),        
                         0,        
                         IP.I_Centre_Id,        
                         COU.I_Currency_ID,        
@@ -117,7 +117,7 @@ AS
   AND DATEDIFF(dd,  CONVERT(DATE,@dtDateFrom), CONVERT(DATE,IP.Dt_Invoice_Date)) <= 0           
   AND DATEDIFF(dd,  CONVERT(DATE,@dtDateFrom),  CONVERT(DATE,IP.Dt_Invoice_Date)) >= 0           
                         AND 
-	  CONCAT(Sd.S_First_Name, ' ', ISNULL(Sd.S_Middle_Name + ' ', ''), Sd.S_Last_Name) LIKE ISNULL(@FullName, CONCAT(Sd.S_First_Name, ' ', ISNULL(Sd.S_Middle_Name + ' ', ''), Sd.S_Last_Name))+'%'        
+	  CONCAT(TRIM(Sd.S_First_Name), ' ', ISNULL(TRIM(Sd.S_Middle_Name) + ' ', ''), TRIM(Sd.S_Last_Name)) LIKE ISNULL(@FullName, CONCAT(TRIM(Sd.S_First_Name), ' ', ISNULL(TRIM(Sd.S_Middle_Name) + ' ', ''), TRIM(Sd.S_Last_Name)))+'%'        
                         AND 
 						SD.S_Student_ID LIKE ISNULL(@sStudentCode,SD.S_Student_ID )               
       AND IP.S_Invoice_No LIKE ISNULL(@sInvoiceNo,IP.S_Invoice_No)+'%'               

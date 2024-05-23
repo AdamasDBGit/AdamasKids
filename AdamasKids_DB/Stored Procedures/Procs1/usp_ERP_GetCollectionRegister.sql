@@ -254,7 +254,7 @@ where Is_Default=1
   
   
                 
-        SELECT  T.N_Receipt_Amount ReceiptAmount,    
+        SELECT distinct T.N_Receipt_Amount ReceiptAmount,    
                 RH.N_Tax_Amount TaxAmount,    
                 T.I_Receipt_Header_ID ReceiptHeaderID,    
                 T.S_First_Name FirstName,    
