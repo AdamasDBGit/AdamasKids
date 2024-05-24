@@ -21,8 +21,14 @@
     [IsAdmissionInvoice]    BIT             NULL,
     [Is_NewGSTEnvironment]  BIT             NULL,
     [I_Currency_Id]         INT             NULL,
+    [dt_FineModify_Date]    DATETIME        NULL,
+    [I_FineTagID]           INT             NULL,
+    [is_Fine_Applicable]    BIT             NULL,
+    [Is_Fine_waiveroff]     BIT             DEFAULT ((0)) NULL,
     CONSTRAINT [PK__T_Invoice_Parent__6BAFC5BE] PRIMARY KEY CLUSTERED ([I_Invoice_Header_ID] ASC)
 );
+
+
 
 
 GO

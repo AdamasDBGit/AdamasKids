@@ -9,7 +9,7 @@ CREATE PROCEDURE [dbo].[ERP_uspGetBrandConfiguredDocuments]
 AS
 BEGIN
 
-	DECLARE @BrandID INT 
+	DECLARE @BrandID INT = NULL
 
 	CREATE TABLE #Documents (
     DocumentPath VARCHAR(100),
@@ -25,11 +25,19 @@ BEGIN
 
 
 	IF EXISTS (select * from T_Parent_Master where S_Mobile_No = @sMobileNo )
+	OR EXISTS (select * from T_ERP_User where S_Mobile=@sMobileNo)
 	BEGIN
 	SELECT @BrandID=I_Brand_ID
 	from T_Parent_Master where S_Mobile_No= @sMobileNo
 
-	
+	IF @BrandID IS NULL
+		BEGIN
+			SELECT @BrandID=UB.I_Brand_ID
+			from T_ERP_User as EU
+			inner join
+			T_ERP_User_Brand as UB on EU.I_User_ID=UB.I_User_ID and UB.Is_Active=1 
+			where EU.S_Mobile= @sMobileNo and EU.I_Status=1
+		END
 
 -- Insert split values into the temporary table
 INSERT INTO #Documents (DocumentPath, DocumentTypeID,PatternHeaderID,SaasPatternChildHeaderID,DocumentID)
