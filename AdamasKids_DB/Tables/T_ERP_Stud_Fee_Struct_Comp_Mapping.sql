@@ -17,6 +17,10 @@
     [Dt_Moved_DT]                  DATETIME        NULL,
     [Is_LumpSum]                   BIT             NULL,
     [I_Currency_ID]                INT             NULL,
+    [Is_Fine_Applicable]           BIT             DEFAULT ((0)) NULL,
+    [I_FineTagID]                  INT             DEFAULT ((0)) NULL,
     CONSTRAINT [PK__T_ERP_St__09AACFC58992BE6A] PRIMARY KEY CLUSTERED ([I_Stud_Fee_Struct_CompMap_ID] ASC)
 );
+
+
 

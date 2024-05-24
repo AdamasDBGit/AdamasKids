@@ -3864,6 +3864,8 @@
     <Build Include="Stored Procedures\usp_ERP_GetFineRangeTagID.sql" />
     <Build Include="Tables\T_FollowUPStageSequence.sql" />
     <Build Include="Tables\Mig_Kids_FeeStructure.sql" />
+    <Build Include="Stored Procedures\usp_ERP_Verify_Access_Token_For_Payment.sql" />
+    <Build Include="Stored Procedures\usp_ERP_Fine_CalculateBased_On_Frequency.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Data_Scripts\D_Scripts.sql" />

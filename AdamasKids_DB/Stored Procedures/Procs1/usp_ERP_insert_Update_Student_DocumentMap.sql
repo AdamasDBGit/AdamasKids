@@ -53,7 +53,15 @@ Source.[I_Enquiry_Regn_ID],
     
 WHEN NOT MATCHED BY SOURCE AND R_I_Enquiry_Regn_ID = @EnquiryID THEN                   Update SET Is_Active = 0,                              Dtt_UpdatedAt = GETDATE();    
         
-  Update T_Enquiry_Regn_Detail SET R_I_AdmStgTypeID = 4 WHERE I_Enquiry_Regn_ID = @EnquiryID  
+ DECLARE @uploadedMandatoryDocCount int,@mandatoryDocCount int
+ set @mandatoryDocCount= (select count(*) from T_ERP_Document_Type_Master where Is_Mandatory=1)
+ set @uploadedMandatoryDocCount= (select count(*) from T_ERP_Document_Student_Map t1 inner join T_ERP_Document_Type_Master t2
+ on t1.R_I_Document_Type_ID=t2.I_Document_Type_ID where t1.R_I_Enquiry_Regn_ID=@EnquiryID and t2.Is_Mandatory=1 and t1.Is_Active=1)
+ IF(@uploadedMandatoryDocCount=@mandatoryDocCount)
+ BEGIN
+ Update T_Enquiry_Regn_Detail SET R_I_AdmStgTypeID = 4 WHERE I_Enquiry_Regn_ID = @EnquiryID  
+ END
+ 
         
   select 1 StatusFlag,'Document(s) uploaded successfully.' Message          
         

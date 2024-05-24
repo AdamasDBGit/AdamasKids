@@ -44,7 +44,7 @@ BEGIN
             UPDATE T_ERP_Fee_Fine_Header    
             SET S_Name = @Fine_Name   
               , Dt_Create_DT = Getdate()   
-     ,FreqType = @FreqType  
+               ,FreqType = @FreqType  
               , I_Brand_ID = @brandID    
               , Is_Active = @Is_Active    
             Where I_Fee_Fine_H_ID = @I_Fee_Fine_H_ID    
@@ -75,7 +75,7 @@ BEGIN
            , Source.I_Frm_Range    
            , Source.I_To_Range    
            , Source.N_Fine_Amount    
-           , Source.Is_Active    
+           , 1    
           
             )    
         WHEN NOT MATCHED BY SOURCE     
