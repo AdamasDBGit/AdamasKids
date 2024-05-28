@@ -3866,6 +3866,15 @@
     <Build Include="Tables\Mig_Kids_FeeStructure.sql" />
     <Build Include="Stored Procedures\usp_ERP_Verify_Access_Token_For_Payment.sql" />
     <Build Include="Stored Procedures\usp_ERP_Fine_CalculateBased_On_Frequency.sql" />
+    <Build Include="Tables\T_ERP_Transaction_Master.sql" />
+    <Build Include="Tables\T_ERP_Transaction_Invoice_Details.sql" />
+    <Build Include="Tables\T_ERP_Role_Master_bkp.sql" />
+    <Build Include="Tables\T_ERP_Request_Log.sql" />
+    <Build Include="Tables\T_ERP_PaymentGateway_Info.sql" />
+    <Build Include="Tables\T_ERP_Brand_PaymentGateway_Map.sql" />
+    <Build Include="Stored Procedures\usp_ERP_GetStudentInstallmentPayableDetails_Bak_27052024.sql" />
+    <Build Include="Stored Procedures\usp_ERP_GetPermissionRoleMaster_bkp.sql" />
+    <Build Include="Stored Procedures\usp_ERP_Get_PaymentGateWay_Info.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Data_Scripts\D_Scripts.sql" />

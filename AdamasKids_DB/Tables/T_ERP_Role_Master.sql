@@ -8,6 +8,9 @@
     [Dt_Crtd_On]  DATETIME      NULL,
     [Dt_Upd_On]   DATETIME      NULL,
     [I_Brand_ID]  INT           NULL,
+    [Role_Group]  VARCHAR (255) NULL,
     CONSTRAINT [PK__T_ERP_Role_Master__1920BF5C] PRIMARY KEY CLUSTERED ([I_Role_ID] ASC)
 );
+
+
 
