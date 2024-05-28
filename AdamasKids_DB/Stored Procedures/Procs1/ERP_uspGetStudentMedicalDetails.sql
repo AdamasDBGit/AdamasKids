@@ -3,7 +3,7 @@ CREATE PROCEDURE [dbo].[ERP_uspGetStudentMedicalDetails]
     (  
       --@Centre INT , 
 
-	   @EnquiryRegnID int 
+	   @iEnquiryRegnID int 
 	 
     )  
 AS   
@@ -13,7 +13,7 @@ AS
 
 		SELECT @StudentID = I_Student_Detail_ID
 		FROM dbo.T_Student_Detail
-		WHERE I_Enquiry_Regn_ID = @EnquiryRegnID;    
+		WHERE I_Enquiry_Regn_ID = @iEnquiryRegnID;    
         BEGIN TRANSACTION     
 		select 
 		I_Student_Detail_ID as StudentDetailID
