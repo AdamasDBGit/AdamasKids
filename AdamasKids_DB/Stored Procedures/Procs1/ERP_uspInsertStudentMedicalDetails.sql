@@ -1,6 +1,7 @@
 ﻿CREATE PROCEDURE [dbo].[ERP_uspInsertStudentMedicalDetails]      
     (  
-       @EnquiryRegnID int = NULL
+       @EnquiryRegnID int = NULL,
+	   @StudentID int =NULL
 	  ,@IsAllergies int=null
 	  ,@SAllergies nvarchar(MAX)=null
 	  ,@IsChronic int = null
@@ -11,12 +12,14 @@
     )  
 AS   
  SET NOCOUNT ON        
-    BEGIN TRY                    
-		DECLARE @StudentID INT;
+    BEGIN TRY   
+	IF @StudentID IS NULL
+	BEGIN
 
 		SELECT @StudentID = I_Student_Detail_ID
 		FROM dbo.T_Student_Detail
-		WHERE I_Enquiry_Regn_ID = @EnquiryRegnID;   
+		WHERE I_Enquiry_Regn_ID = @EnquiryRegnID; 
+	END
         BEGIN TRANSACTION     
 		IF NOT EXISTS(select * from T_ERP_Student_Medical_Details 
 		where I_Student_Detail_ID=@StudentID 

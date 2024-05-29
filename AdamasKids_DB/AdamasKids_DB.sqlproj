@@ -3875,6 +3875,10 @@
     <Build Include="Stored Procedures\usp_ERP_GetStudentInstallmentPayableDetails_Bak_27052024.sql" />
     <Build Include="Stored Procedures\usp_ERP_GetPermissionRoleMaster_bkp.sql" />
     <Build Include="Stored Procedures\usp_ERP_Get_PaymentGateWay_Info.sql" />
+    <Build Include="Tables\T_ERP_Valid_Transaction_Source_Master.sql" />
+    <Build Include="Stored Procedures\usp_ERP_GetStudentInstallmentPayableDetails_Bak_29052024.sql" />
+    <Build Include="Stored Procedures\usp_ERP_GetPaymentInstallmentFrequencyType_Fine.sql" />
+    <Build Include="Stored Procedures\usp_ERP_Check_Validate_TransactionNo_Source.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Data_Scripts\D_Scripts.sql" />

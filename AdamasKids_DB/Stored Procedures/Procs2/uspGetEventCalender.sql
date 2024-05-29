@@ -32,7 +32,7 @@ BEGIN
 	select
 	I_School_Group_ID  SchoolGroupID,
 	I_Class_ID ClassID
-	from T_Event_Class where I_Event_ID = @iEventID
+	from T_Event_Class where I_Event_ID = @iEventID and Is_Active=1
 	
 
 END

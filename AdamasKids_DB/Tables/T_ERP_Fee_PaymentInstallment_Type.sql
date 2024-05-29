@@ -9,6 +9,9 @@
     [I_Modified_By]            INT          NULL,
     [Is_Active]                BIT          CONSTRAINT [DF__T_ERP_Fee__Is_Ac__15BC0B44] DEFAULT ((1)) NULL,
     [I_Interval]               INT          NULL,
+    [RequiredforFine]          BIT          NULL,
     CONSTRAINT [PK__T_ERP_Fe__5B0A0340A5415E20] PRIMARY KEY CLUSTERED ([I_Fee_Pay_Installment_ID] ASC)
 );
+
+
 

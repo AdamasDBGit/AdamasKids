@@ -1,8 +1,7 @@
-﻿
-                
+﻿                
 -- EXEC usp_ERP_GetStudentInstallmentPayableDetails 1,'24-0044'               
              
-CREATE  PROCEDURE [dbo].[usp_ERP_GetStudentInstallmentPayableDetails]      
+CREATE  PROCEDURE [dbo].[usp_ERP_GetStudentInstallmentPayableDetails_Bak_29052024]      
 (@iBrandID INT,@sStudentID varchar(max))                
 AS                
 BEGIN                
@@ -537,12 +536,9 @@ Insert Into #StudentFine(
 StudentID,InvoiceID,T_Invoice_Child_Header,Dt_Installment_Date,InstallmentNo,FineAmount  
 )  
    EXEC usp_ERP_Fine_CalculateBased_On_Frequency @iBrandID,@sStudentID,@F_paymentdate  
-   Declare @finecomponentID int,@AdhocCompName Varchar(100)  
+   Declare @finecomponentID int  
    SEt @finecomponentID= (select top 1 I_Status_Value from T_Status_Master   
-   where I_Brand_ID=1 and Status_Type=2)  -----If Status_Type=2 Then Fine ,If Status_Type=1 Then  Prospectus
-   Set @AdhocCompName=(select Top 1 S_Status_Desc from T_Status_Master 
-   where I_Status_Value=@finecomponentID)
-  
+   where I_Brand_ID=1 and S_Status_Desc='Late Fine')  
   ------Start Merging Fine with this Block 1st--------    
   Print 'Resultset 3'    
 SELECT S_Student_ID StudentID,DueType,S_Invoice_No InvoiceNo,Dt_Installment_Date InstallmentDate,FeeScheduleNo,I_Invoice_Header_ID as FeeScheduleID                
@@ -564,7 +560,8 @@ ORDER BY S_Student_ID,DueType,S_Invoice_No
                 
                 
 --Select 'Details'              
-select  DISTINCT S_Student_ID StudentID,I_Course_ID,S_Course_Name,DueType,I_Invoice_Header_ID as FeeScheduleID,I_Invoice_Detail_ID,S_Invoice_No InvoiceNo,FeeScheduleNo,I_Installment_No as InstallmentNo,Dt_Installment_Date,I_Sequence SequenceNo,I_FeeComponent_ID,                
+select  DISTINCT S_Student_ID StudentID,I_Course_ID,S_Course_Name,DueType,I_Invoice_Header_ID as FeeScheduleID,I_Invoice_Detail_ID,S_Invoice_No InvoiceNo,FeeScheduleNo,I_Installment_No as InstallmentNo,Dt_Installment_Date,I_Sequence SequenceNo,I_FeeCompo
+nent_ID,                
 S_Component_Name ComponentName,N_Amount_Due,TotalTax,ISNULL(ReceiptCompAmount,0) as BaseAmountPaid,ISNULL(ReceiptCompTax,0) as TaxPaid,                
 ISNULL(CreditNoteAmt,0) as CreditNoteAmt,ISNULL(CreditNoteTax,0) as CreditNoteTax,BaseAmtDiff,TaxDiff,                
 N_Amount_Due-ISNULL(CreditNoteAmt,0) as PayableBaseAmount,TotalTax-ISNULL(CreditNoteTax,0) as PayableTax,                
@@ -723,8 +720,7 @@ SGST,
 IGST,  
 CGST_Per,  
 SGST_Per,  
-IGST_Per,
-0 as IsAdhoc
+IGST_Per  
 Into #finalDetails  
 from #LoopGSTCal   
 Union   
@@ -742,7 +738,7 @@ sf.InstallmentNo,
 sf.Dt_Installment_Date,  
 SequenceNo,  
 @finecomponentID as I_FeeComponent_ID,  
-@AdhocCompName as ComponentName,  
+'Late Fine' as ComponentName,  
 sf.FineAmount as N_Amount_Due,  
 TotalTax,  
 BaseAmountPaid,  
@@ -756,15 +752,14 @@ PayableTax,
 sf.FineAmount as TotalPayableAmount,  
 TotalPaidAmount,  
 sf.FineAmount as DueAmount,  
-@finecomponentID as FeeComponentID,  
+FeeComponentID,  
 0 as I_GST_FeeComponent_Catagory_ID,  
 0 as CGST,  
 0 as SGST,  
 0 as IGST,  
 0 as CGST_Per,  
 0 as SGST_Per,  
-0 as IGST_Per,
-1 as IsAdhoc
+0 as IGST_Per  
 from #FineCalculate f  
 Inner Join #StudentFine sf   
 on f.InstallmentNo=sf.InstallmentNo and convert(date,f.Dt_Installment_Date)=sf.Dt_Installment_Date  
@@ -778,7 +773,7 @@ Select * from #PayableHeader1--------Showing 1
 update t2 set t2.FineAmountL1=isnull(ft2.TotalFineHeader2,0) from #PayableHeader2  t2  
 Left Join (  
 select isnull(Sum(n_amount_due),0) as TotalFineHeader2 ,duetype from #finalDetails   
-where ComponentName=@AdhocCompName  
+where ComponentName='Late Fine'  
 Group By  duetype  
 ) as Ft2 on t2.DueType=ft2.DueType  
 Select * from #PayableHeader2------showing 2  
@@ -787,7 +782,7 @@ Update t3 set t3.FineAmountL2 =isnull(ft3.TotalFineHeader3,0)  from #PayableHead
 Left Join  
 (  
 select isnull(Sum(n_amount_due),0) as TotalFineHeader3 ,duetype,InvoiceNo from #finalDetails   
-where ComponentName=@AdhocCompName  
+where ComponentName='Late Fine'  
 Group By  duetype,InvoiceNo  
 ) ft3 on ft3.InvoiceNo=t3.InvoiceNo  
   
@@ -798,15 +793,25 @@ and p3.InvoiceNo=ICCD.S_Invoice_Number
 Left Join T_Invoice_Child_Header ICCH on ICCH.I_Invoice_Child_Header_ID=ICCD.I_Invoice_Child_Header_ID  
 and ICCH.I_Invoice_Header_ID=p3.FeeScheduleID  
   
-------Freezed Column Added for Payment Gateway Implement 
----If IsAdhoc =0 Then from Structure If 1 Then Adhoc 
+------Freezed Column Added for Payment Gateway Implement  
 select p4.*,ICCD.is_Freezed as Freezed from #finalDetails p4---showing 4  
 Left Join T_Invoice_Child_Detail ICCD   
 on convert(date,ICCD.Dt_Installment_Date)=convert(date,p4.Dt_Installment_Date)  
 and p4.InvoiceNo=ICCD.S_Invoice_Number   
 Left Join T_Invoice_Child_Header ICCH on ICCH.I_Invoice_Child_Header_ID=ICCD.I_Invoice_Child_Header_ID  
 and ICCH.I_Invoice_Header_ID=p4.FeeScheduleID  
-     
+  
+  
+  
+              
+              
+              
+              
+              
+              
+              
+              
+              
 ---------              
               
                 
@@ -815,4 +820,4 @@ and ICCH.I_Invoice_Header_ID=p4.FeeScheduleID
                 
 --exec [SelfService].uspGetStudentOnAccDue @iBrandID,@MobileNo                
                 
-END 
+END
