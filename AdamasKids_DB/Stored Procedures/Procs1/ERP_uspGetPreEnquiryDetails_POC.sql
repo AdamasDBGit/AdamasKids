@@ -165,8 +165,9 @@ End
         
         
   BEGIN                
-      SELECT              
-   A.I_Enquiry_Regn_ID EnquiryRegnID,              
+      SELECT  
+	  ISNULL(A.I_Tab_No,0) TabNo,
+	 A.I_Enquiry_Regn_ID EnquiryRegnID,              
      A.S_Enquiry_No EnquiryNo,                
      A.I_Enquiry_Type_ID EnquiryTypeID,              
      --EnquiryDesc              

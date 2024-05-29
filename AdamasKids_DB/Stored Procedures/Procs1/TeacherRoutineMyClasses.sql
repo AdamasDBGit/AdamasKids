@@ -3,7 +3,7 @@
      -- Author: Tridip Chatterjee  
 -- Create date: 18-09-2023  
 -- Description: Teacher Day Wise My Class Routine_Details  
--- exec [TeacherRoutineMyClasses] 4,'2024-01-16'  
+-- exec [TeacherRoutineMyClasses] 4,'2024-05-29'  
 -- =============================================  
 -- Add the parameters for the stored procedure here  
 @TeacherID int,  
@@ -41,6 +41,9 @@ BEGIN
  CASE WHEN   
     ( SELECT COUNT(*) FROM T_ERP_Attendance_Entry_Header AS TEAEH WHERE TEAEH.I_Student_Class_Routine_ID = TESCR.I_Student_Class_Routine_ID AND TEAEH.I_Faculty_Master_ID=TFM.I_Faculty_Master_ID AND CAST(TEAEH.Dt_Date as date) = CAST(getdate() as date)  
     ) > 0 THEN 1 ELSE 0 END AS IsAttendance,  
+	CASE WHEN   
+    ( SELECT COUNT(*) FROM T_ERP_Teacher_Time_Plan AS TETTP WHERE TETTP.I_Student_Class_Routine_ID = TESCR.I_Student_Class_Routine_ID   
+    ) > 0 THEN 1 ELSE 0 END AS IsLogbook, 
  TFM.S_Faculty_Name TeacherName,  
  TESCRW.S_ClassWork ClassWork  
  ,ttc.TotalStud as Total_Student

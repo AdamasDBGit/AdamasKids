@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[T_ERP_Transaction_Master] (
     [I_ERP_Transaction_Master_ID]       INT            IDENTITY (1, 1) NOT NULL,
-    [I_ERP_TransactionNo]               INT            NULL,
+    [I_ERP_TransactionNo]               VARCHAR (MAX)  NULL,
     [I_BrandID]                         INT            NULL,
     [I_CentreID]                        INT            NULL,
     [I_StudentDetailID]                 INT            NOT NULL,
@@ -21,4 +21,6 @@
     [I_StatusID]                        INT            NULL,
     [PaymentDetailsXML]                 NVARCHAR (255) NOT NULL
 );
+
+
 
