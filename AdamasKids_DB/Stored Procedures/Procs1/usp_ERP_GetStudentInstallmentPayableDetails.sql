@@ -535,7 +535,7 @@ FineAmount numeric(18,2)
 Insert Into #StudentFine(
 StudentID,InvoiceID,T_Invoice_Child_Header,Dt_Installment_Date,InstallmentNo,FineAmount
 )
-EXEC usp_ERP_Fine_CalculateBased_On_Frequency @iBrandID,@sStudentID,@F_paymentdate
+   EXEC usp_ERP_Fine_CalculateBased_On_Frequency @iBrandID,@sStudentID,@F_paymentdate
    Declare @finecomponentID int
    SEt @finecomponentID= (select top 1 I_Status_Value from T_Status_Master 
    where I_Brand_ID=1 and S_Status_Desc='Late Fine')
@@ -785,9 +785,20 @@ where ComponentName='Late Fine'
 Group By  duetype,InvoiceNo
 ) ft3 on ft3.InvoiceNo=t3.InvoiceNo
 
-Select * from #PayableHeader3----Showing 3
+Select p3.*,ICCD.is_Freezed as Freezed from #PayableHeader3 p3----Showing 3
+Left Join T_Invoice_Child_Detail ICCD 
+on convert(date,ICCD.Dt_Installment_Date)=convert(date,p3.InstallmentDate)
+and p3.InvoiceNo=ICCD.S_Invoice_Number 
+Left Join T_Invoice_Child_Header ICCH on ICCH.I_Invoice_Child_Header_ID=ICCD.I_Invoice_Child_Header_ID
+and ICCH.I_Invoice_Header_ID=p3.FeeScheduleID
 
-select * from #finalDetails ---showing 4
+------Freezed Column Added for Payment Gateway Implement
+select p4.*,ICCD.is_Freezed as Freezed from #finalDetails p4---showing 4
+Left Join T_Invoice_Child_Detail ICCD 
+on convert(date,ICCD.Dt_Installment_Date)=convert(date,p4.Dt_Installment_Date)
+and p4.InvoiceNo=ICCD.S_Invoice_Number 
+Left Join T_Invoice_Child_Header ICCH on ICCH.I_Invoice_Child_Header_ID=ICCD.I_Invoice_Child_Header_ID
+and ICCH.I_Invoice_Header_ID=p4.FeeScheduleID
 
 
 

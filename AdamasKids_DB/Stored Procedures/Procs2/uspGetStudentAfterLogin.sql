@@ -1,11 +1,12 @@
-﻿CREATE PROCEDURE [dbo].[uspGetStudentAfterLogin]
+﻿--exec [dbo].[uspGetStudentAfterLogin] '1F1E2B9E69114A51B8DD3C4A296E8E2C'
+CREATE PROCEDURE [dbo].[uspGetStudentAfterLogin]
 (
  @sToken nvarchar(MAX) =null
 )
 AS
 BEGIN
 
-select TPM.S_Mobile_No MobileNo
+select distinct TPM.S_Mobile_No MobileNo
 ,TSD.S_Student_ID as student_erp_id
 ,TSD.I_Student_Detail_ID StudentID
 ,TCM.I_Brand_ID brandid

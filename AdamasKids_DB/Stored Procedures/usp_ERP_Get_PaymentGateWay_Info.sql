@@ -11,13 +11,20 @@ AS
 BEGIN TRY 
 IF (@iBrandID >0)
 BEGIN
-SELECT TPI.I_PaymentGateway_Id as PaymentGatewayBrandID,
-TPI.S_PaymentGateway_Name as PaymentGatewayName,
-1 BrandId,
-TPI.S_TransactionUrl TransactionUrl
-,TPI.S_MerchantId MerchantName
-,TPI.S_Salt Salt,
-12 as SMSPaymentMode from T_PaymentGateway_Info as TPI where I_Brand_ID = @iBrandID and I_Status = 1 and I_IsLive = @Mode
+SELECT 
+EBPM.I_ERP_Brand_PaymentGateway_Map_id as PaymentGatewayBrandID,
+ETPI.S_PaymentGateway_Name as PaymentGatewayName,
+EBPM.I_Brand_ID BrandId,
+ETPI.S_TransactionUrl TransactionUrl
+,ETPI.S_MerchantId MerchantName
+,ETPI.S_Salt Salt
+,EBPM.I_Payment_Mode as SMSPaymentMode from 
+T_ERP_PaymentGateway_Info as ETPI 
+inner join
+T_ERP_Brand_PaymentGateway_Map as EBPM on ETPI.I_PaymentGateway_Id=EBPM.I_PaymentGateway_Id
+where ETPI.I_Status = 1 and ETPI.I_IsLive = @Mode
+and EBPM.I_Brand_ID=@iBrandID and EBPM.Is_Active=1 and ETPI.I_Status=1
+
 END
 
 END TRY

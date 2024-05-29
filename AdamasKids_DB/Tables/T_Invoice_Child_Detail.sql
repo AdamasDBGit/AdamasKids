@@ -19,10 +19,17 @@
     [N_SGST]                         NUMERIC (18, 2) NULL,
     [N_IGST]                         NUMERIC (18, 2) NULL,
     [I_GST_FeeComponent_Catagory_ID] INT             NULL,
+    [is_Freezed]                     BIT             NULL,
     CONSTRAINT [PK__T_Invoice_Child___67DF34DA] PRIMARY KEY CLUSTERED ([I_Invoice_Detail_ID] ASC),
     CONSTRAINT [FK__T_Invoice__I_Fee__24E8431A] FOREIGN KEY ([I_Fee_Component_ID]) REFERENCES [dbo].[T_Fee_Component_Master] ([I_Fee_Component_ID]),
     CONSTRAINT [FK__T_Invoice__I_Inv__23F41EE1] FOREIGN KEY ([I_Invoice_Child_Header_ID]) REFERENCES [dbo].[T_Invoice_Child_Header] ([I_Invoice_Child_Header_ID])
 );
+
+
+GO
+ALTER TABLE [dbo].[T_Invoice_Child_Detail] NOCHECK CONSTRAINT [FK__T_Invoice__I_Fee__24E8431A];
+
+
 
 
 GO
