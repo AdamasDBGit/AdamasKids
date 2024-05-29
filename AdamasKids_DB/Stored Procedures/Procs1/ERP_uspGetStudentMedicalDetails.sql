@@ -3,20 +3,16 @@ CREATE PROCEDURE [dbo].[ERP_uspGetStudentMedicalDetails]
     (  
       --@Centre INT , 
 
-	   @iEnquiryRegnID int 
+	   @StudentID int 
 	 
     )  
 AS   
  SET NOCOUNT ON        
     BEGIN TRY                    
-        DECLARE @StudentID INT;
-
-		SELECT @StudentID = I_Student_Detail_ID
-		FROM dbo.T_Student_Detail
-		WHERE I_Enquiry_Regn_ID = @iEnquiryRegnID;    
+                       
         BEGIN TRANSACTION     
 		select 
-		I_Student_Detail_ID as StudentDetailID
+		I_Student_Detail_ID  
 		,I_Is_Allergies IsAllergies 
 		,S_Allergies SAllergies
 		,I_Is_Chronic IsChronic

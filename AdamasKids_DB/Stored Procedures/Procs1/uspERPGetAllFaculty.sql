@@ -1,4 +1,4 @@
-﻿--exec [uspERPGetAllFaculty]  
+﻿--exec [uspERPGetAllFaculty]  1
 CREATE PROCEDURE [dbo].[uspERPGetAllFaculty]  
 (  
 @iBrandID int = null  
@@ -30,5 +30,6 @@ SELECT
 FROM [dbo].[T_Faculty_Master] FM 
 inner join
 T_ERP_User as EU on EU.I_User_ID=FM.I_User_ID
-where I_Faculty_Master_ID = ISNULL(@iFacultyID, I_Faculty_Master_ID) and I_Brand_ID = ISNULL(@iBrandID,I_Brand_ID)   
+where I_Faculty_Master_ID = ISNULL(@iFacultyID, I_Faculty_Master_ID) and I_Brand_ID = ISNULL(@iBrandID,I_Brand_ID)  
+and Is_Teaching_Staff = 1
 END
