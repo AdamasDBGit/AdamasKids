@@ -1217,7 +1217,6 @@
     <Build Include="Stored Procedures\Procs1\ERP_uspGetFeePlan.sql" />
     <Build Include="Stored Procedures\Procs1\ERP_uspGetFollowUpList.sql" />
     <Build Include="Stored Procedures\Procs1\ERP_uspGetGST_Item_Category.sql" />
-    <Build Include="Stored Procedures\Procs1\ERP_uspGetInvoiceRegister.sql" />
     <Build Include="Stored Procedures\Procs1\ERP_uspGetPreEnquiryDetails.sql" />
     <Build Include="Stored Procedures\Procs1\ERP_uspGetPreEnquiryDetails_POC.sql" />
     <Build Include="Stored Procedures\Procs1\ERP_uspGetRegistrationReceipts.sql" />
