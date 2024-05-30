@@ -24,16 +24,16 @@ BEGIN
 
 			SELECT @ErrMessage='Invalid Transaction No ! Transaction already exists'
 
-			RAISERROR(@ErrMessage,11,1)
+			select 0 StatusFlag,@ErrMessage Message
 
 	END
 
 	IF NOT EXISTS(select * from T_ERP_Valid_Transaction_Source_Master where Transaction_Source_Name=@sTransactionSource and Is_Active=1)
 	BEGIN
 
-			SELECT @ErrMessage='Invalid Transaction Source ! Transaction already exists'
+			SELECT @ErrMessage='Invalid Transaction Source!'
 
-			RAISERROR(@ErrMessage,11,1)
+			select 0 StatusFlag,@ErrMessage Message
 
 	END
 
