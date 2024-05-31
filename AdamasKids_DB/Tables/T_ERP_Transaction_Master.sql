@@ -9,8 +9,7 @@
     [I_ERP_Brand_PaymentGateway_Map_id] INT            NOT NULL,
     [S_TransactionMode]                 VARCHAR (MAX)  NOT NULL,
     [S_TransactionStatus]               VARCHAR (255)  NOT NULL,
-    [I_TransactionAmount]               DECIMAL (8, 2) NOT NULL,
-    [I_TransactionTax]                  DECIMAL (8, 2) NOT NULL,
+    [I_TransactionTotalAmount]          DECIMAL (8, 2) NOT NULL,
     [CanBeProcessed]                    BIT            NULL,
     [IsCompleted]                       BIT            NULL,
     [Dt_CreatedOn]                      DATETIME       NOT NULL,
@@ -19,8 +18,12 @@
     [I_UpdatedBy]                       INT            NULL,
     [Dt_CompletedOn]                    DATETIME       NULL,
     [I_StatusID]                        INT            NULL,
-    [PaymentDetailsXML]                 NVARCHAR (255) NOT NULL
+    [PaymentDetailsXML]                 VARCHAR (MAX)  NULL,
+    [PaymentJson]                       VARCHAR (MAX)  NULL,
+    [SMSPaymentMode]                    INT            NULL
 );
+
+
 
 
 
