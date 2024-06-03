@@ -109,8 +109,12 @@ GROUP BY URPM.I_User_Id
 	(EU.S_Username = ISNULL(@Username,EU.S_Username)) 
 	and 
 	(EU.S_Email = ISNULL(@Email,EU.S_Email))
-	and 
-	(ISNULL(EU.S_First_Name,'')+''+ISNULL(EU.S_Middle_Name,' ')+''+ISNULL(EU.S_Last_Name,'') = ISNULL(@Name,ISNULL(EU.S_First_Name,'')+''+ISNULL(EU.S_Middle_Name,' ')+''+ISNULL(EU.S_Last_Name,'')))
+	--and 
+	 AND (              
+      CONCAT(COALESCE(EU.S_First_Name+' ', ''), COALESCE(EU.S_Middle_Name+' ', ''), COALESCE(EU.S_Last_Name, '')) LIKE '%' + @Name + '%'             
+      OR @Name IS NULL              
+      )    
+	--(ISNULL(EU.S_First_Name,'')+''+ISNULL(EU.S_Middle_Name,' ')+''+ISNULL(EU.S_Last_Name,'') = ISNULL(@Name,ISNULL(EU.S_First_Name,'')+''+ISNULL(EU.S_Middle_Name,' ')+''+ISNULL(EU.S_Last_Name,'')))
 	and 
 	(EU.S_Mobile= ISNULL(@Mobile,EU.S_Mobile))
     and 

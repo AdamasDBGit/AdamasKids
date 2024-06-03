@@ -1,0 +1,23 @@
+﻿
+CREATE procedure [dbo].[usp_ERP_Save_Request_Log]
+(
+	@InvokedRoute VARCHAR(MAX)=NULL,
+	@sToken varchar(max),
+	@Source varchar(Max),
+	@InvokedMethod VARCHAR(MAX),
+	@UniqueAttributeName VARCHAR(MAX)=NULL,
+	@UniqueAttributeValue VARCHAR(MAX)=NULL,
+	@RequestParameters VARCHAR(MAX)=NULL,
+	@RequestResult VARCHAR(MAX)=NULL,
+	@ErrorMessage VARCHAR(MAX)=NULL
+)
+AS
+BEGIN
+
+
+	insert into T_ERP_Request_Log
+	select @sToken,@Source,@InvokedRoute,@InvokedMethod,@UniqueAttributeName,@UniqueAttributeValue,@RequestParameters,@RequestResult,@ErrorMessage,GETDATE()
+
+	select SCOPE_IDENTITY() as NewRow
+
+END

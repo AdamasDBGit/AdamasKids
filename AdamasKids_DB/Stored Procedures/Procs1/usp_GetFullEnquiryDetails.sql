@@ -1,11 +1,4 @@
-﻿-- =============================================
--- Author:		<Author,,Name>
--- Create date: <Create Date,,>
--- Description:	<Description,,>
--- exec [usp_GetFullEnquiryDetails] 234997
--- 
--- =============================================
-CREATE PROCEDURE [dbo].[usp_GetFullEnquiryDetails]
+﻿CREATE PROCEDURE [dbo].[usp_GetFullEnquiryDetails]
 (
 	@iEnquiryRegnID int  
 )
@@ -63,7 +56,8 @@ BEGIN
 	 SELECT   
 	 TEERD.I_Enquiry_Regn_ID,  
 	 TEERD.I_Enquiry_Status_Code,  
-	 TEERD.I_Info_Source_ID,  
+	 --TEECD.I_EnqType_Source_Mapping_ID I_Info_Source_ID,
+	 --TEERD.I_Info_Source_ID,  
 	 TEERD.I_Enquiry_Type_ID,  
 	 TEERD.S_Enquiry_No,  
 	 TEERD.S_First_Name,  
@@ -162,7 +156,7 @@ BEGIN
 	 TEERD.I_School_Group_ID,  
 	 TEERD.I_Class_ID AS I_Course_Applied_For, 
 	 TEERD.I_Stream_ID AS I_Stream_ID,
-	 TEESM.I_EnqType_Source_Mapping_ID AS I_Info_Source_ID,
+	 TEECD.I_EnqType_Source_Mapping_ID AS I_Info_Source_ID,
 	 TEERD.R_I_School_Session_ID AS R_I_School_Session_ID,
 	 TEERD.Is_Prev_Academy,  
 	 TEERD.Is_Sibling,  

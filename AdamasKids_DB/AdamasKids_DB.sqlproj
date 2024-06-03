@@ -3879,6 +3879,10 @@
     <Build Include="Stored Procedures\usp_ERP_GetPaymentInstallmentFrequencyType_Fine.sql" />
     <Build Include="Stored Procedures\usp_ERP_Check_Validate_TransactionNo_Source.sql" />
     <Build Include="Stored Procedures\Procs3\ERP_uspGetInvoiceRegister.sql" />
+    <Build Include="Stored Procedures\usp_ERP_Save_Request_Log.sql" />
+    <Build Include="Stored Procedures\usp_ERP_InitiateTransaction.sql" />
+    <Build Include="Stored Procedures\usp_ERP_Get_ExternalTransactionDetails.sql" />
+    <Build Include="Stored Procedures\Usp_ERP_Course_batch_Map.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Data_Scripts\D_Scripts.sql" />
