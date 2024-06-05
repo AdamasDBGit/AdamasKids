@@ -3,6 +3,7 @@
     [I_ERP_Transaction_Master_ID]          INT            NULL,
     [I_Invoice_Header_ID]                  INT            NULL,
     [I_FeePlan_ID]                         INT            NULL,
+    [StatusValue]                          INT            NULL,
     [S_Installment_invoice_NO]             VARCHAR (255)  NULL,
     [Dt_Installment_Date]                  DATETIME       NULL,
     [TotalAmoutPaid]                       DECIMAL (8, 2) NULL,
@@ -11,6 +12,11 @@
     [IsCompleted]                          BIT            NULL,
     [Dt_CompletedOn]                       DATETIME       NULL,
     [StudentID]                            VARCHAR (MAX)  NULL,
-    [ReceiptHeaderID]                      INT            NULL
+    [ReceiptHeaderID]                      INT            NULL,
+    [SuccessXML]                           XML            NULL
 );
+
+
+
+
 

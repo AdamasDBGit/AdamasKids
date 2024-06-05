@@ -97,7 +97,8 @@ BEGIN
   SGST_Per Numeric(10,2),              
   IGST_Amt Numeric(18,2),              
   IGST_Per Numeric(10,2)       
-  ,Batch_ID int      
+  ,Batch_ID int  
+  ,EnquiryID int
             )                
                 
         INSERT  INTO #INVDET                
@@ -127,7 +128,8 @@ BEGIN
                   S_Component_Name ,                
                   N_Amount_Due,                
       DueType      
-   ,Batch_ID      
+   ,Batch_ID 
+   ,EnquiryID
                 )                
                 SELECT distinct TCHND.I_Center_ID,TCHND.S_Center_Name ,                
                         CASE WHEN TCM2.S_Center_Code LIKE 'IAS T%' THEN 'IAS'                
@@ -168,7 +170,8 @@ BEGIN
    AND TICD.Dt_Installment_Date >CAST( GETDATE() AS Date )                
       THEN 'Upcoming'                 
       ELSE 'Previous' END as DueType       
-   ,TSBM.I_Batch_ID      
+   ,TSBM.I_Batch_ID 
+   ,ERD.I_Enquiry_Regn_ID
  FROM    dbo.T_Invoice_Parent TIP                
                         INNER JOIN dbo.T_Invoice_Child_Header TICH ON TIP.I_Invoice_Header_ID = TICH.I_Invoice_Header_ID                
                         INNER JOIN dbo.T_Invoice_Child_Detail TICD ON TICH.I_Invoice_Child_Header_ID = TICD.I_Invoice_Child_Header_ID                
@@ -404,7 +407,7 @@ INSERT  INTO #INVDET
            N_Amount_Due,                
       DueType,                
       TotalDiff                
-                )                
+               ,EnquiryID )                
 select max(I_Centre_ID),                
       max(S_Center_Name),                
                   max(TypeOfCentre),                
@@ -439,9 +442,10 @@ select max(I_Centre_ID),
                   'Fine' S_Component_Name ,                
                   dbo.fnGetFineAmountForAPI(@iBrandID,Dt_Installment_Date) AS N_Amount_Due,                
       DueType,                
-       dbo.fnGetFineAmountForAPI(@iBrandID,Dt_Installment_Date) AS TotalDiff                
+       dbo.fnGetFineAmountForAPI(@iBrandID,Dt_Installment_Date) AS TotalDiff  
+	   ,EnquiryID
       from #INVDET                
-      GROUP BY S_Student_ID, DueType,S_Invoice_No,Dt_Installment_Date,FeeScheduleNo,I_Invoice_Header_ID                
+      GROUP BY S_Student_ID, DueType,S_Invoice_No,Dt_Installment_Date,FeeScheduleNo,I_Invoice_Header_ID,EnquiryID                
 HAVING SUM(ISNULL(TotalDiff,0)) >0                
                 
 -- select * from #INVDET                
@@ -451,8 +455,9 @@ Into #PayableHeader1
 from                 
 (                
 select t1.S_Mobile_No MobileNo,t1.S_Student_Photo ProfileImage,t1.S_Student_ID StudentID,t1.StudentName,t1.ContactNo,t1.I_Centre_ID CentreID,t1.S_Center_Name CentreName,t1.S_Course_Name_Current StudentClass,t1.S_Batch_Name_Current                
+,t1.EnquiryID
 from #INVDET as t1                
-group by t1.S_Mobile_No,t1.S_Student_Photo,t1.S_Student_ID,t1.StudentName,t1.ContactNo,t1.I_Centre_ID,t1.S_Center_Name,t1.S_Course_Name_Current,t1.S_Batch_Name_Current                
+group by t1.S_Mobile_No,t1.S_Student_Photo,t1.S_Student_ID,t1.StudentName,t1.ContactNo,t1.I_Centre_ID,t1.S_Center_Name,t1.S_Course_Name_Current,t1.S_Batch_Name_Current,t1.EnquiryID                
 ) as t1                 
 left join                 
 (                

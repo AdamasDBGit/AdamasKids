@@ -18,10 +18,15 @@
     [I_UpdatedBy]                       INT            NULL,
     [Dt_CompletedOn]                    DATETIME       NULL,
     [I_StatusID]                        INT            NULL,
-    [PaymentDetailsXML]                 VARCHAR (MAX)  NULL,
+    [PaymentDetailsXML]                 XML            NULL,
     [PaymentJson]                       VARCHAR (MAX)  NULL,
-    [SMSPaymentMode]                    INT            NULL
+    [SMSPaymentMode]                    INT            NULL,
+    [SuccessXML]                        XML            NULL
 );
+
+
+
+
 
 
 

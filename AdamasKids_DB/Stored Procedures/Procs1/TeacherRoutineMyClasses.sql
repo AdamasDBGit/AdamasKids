@@ -1,4 +1,5 @@
-﻿CREATE PROCEDURE [dbo].[TeacherRoutineMyClasses]    
+﻿
+CREATE PROCEDURE [dbo].[TeacherRoutineMyClasses]    
 -- =============================================  
      -- Author: Tridip Chatterjee  
 -- Create date: 18-09-2023  
@@ -70,7 +71,11 @@ select A.I_Brand_ID,A.I_School_Session_ID,tc.I_Class_ID,count(I_Student_Class_Se
 from T_Student_Class_Section a
 Inner Join T_School_Group_Class b on a.I_School_Group_Class_ID=b.I_School_Group_Class_ID
 Inner Join T_Class TC ON TC.I_Class_ID=B.I_Class_ID
-Group by A.I_Brand_ID,A.I_School_Session_ID,tc.I_Class_ID
+LEFT JOIN T_Section TS ON A.I_Section_ID = TS.I_Section_ID  -- Join T_Section if exists
+LEFT JOIN T_Stream TST ON A.I_Stream_ID = TST.I_Stream_ID 
+Group by A.I_Brand_ID,A.I_School_Session_ID,tc.I_Class_ID,
+COALESCE(TS.I_Section_ID, 0),    
+COALESCE(TST.I_Stream_ID, 0) 
 ) as ttc on ttc.I_School_Session_ID= TERSH.I_School_Session_ID
 and ttc.I_Class_ID=tc.I_Class_ID
  WHERE   
