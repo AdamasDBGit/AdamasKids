@@ -6,7 +6,8 @@
 CREATE PROCEDURE [dbo].[usp_ERP_Get_ExternalTransactionDetails] 
 	-- Add the parameters for the stored procedure here
 	@iTransactionNo varchar(max)=NULL,
-	@iBrandID INT = NULL
+	@iBrandID INT = NULL,
+	@StudentID varchar(max)=NULL
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -52,11 +53,13 @@ BEGIN
     PaymentGatewayBrandID,
     SmsPaymentMode,
     StudentID,
-    XmlData,
+    --XmlData,
     PaymentJson,
     StatusID
 	)
-	select TM.I_ERP_Transaction_Master_ID as TransactionID,
+	select 
+	DISTINCT
+	TM.I_ERP_Transaction_Master_ID as TransactionID,
 	TM.I_BrandID BrandID,
 	TM.I_CentreID CenterID,
 	TM.I_ERP_TransactionNo TransactionNo,
@@ -70,7 +73,7 @@ BEGIN
 	TM.I_ERP_Brand_PaymentGateway_Map_id PaymentGatewayBrandID,
 	TM.SMSPaymentMode SmsPaymentMode,
 	TID.StudentID StudentID,
-	TM.PaymentDetailsXML XmlData,
+	--TM.PaymentDetailsXML XmlData,
 	TM.PaymentJson PaymentJson,
 	TM.I_StatusID StatusID
 	from T_ERP_Transaction_Master as TM 
@@ -78,13 +81,40 @@ BEGIN
 	T_ERP_Transaction_Invoice_Details as TID on TM.I_ERP_Transaction_Master_ID=TID.I_ERP_Transaction_Master_ID
 	where TM.I_ERP_TransactionNo = ISNULL(@iTransactionNo,TM.I_ERP_TransactionNo) 
 	and TM.I_BrandID=ISNULL(@iBrandID,TM.I_BrandID)
+
+
+	update T set T.XmlData=TM.PaymentDetailsXML from #Transaction as T 
+	inner join
+	T_ERP_Transaction_Master as TM on T.TransactionID=TM.I_ERP_Transaction_Master_ID
 	
 	select * from #Transaction
 
 
-
-
-
+	select 
+	T.TransactionID,
+	TID.I_Invoice_Header_ID as InvoiceHeaderID,
+	TID.S_Installment_invoice_NO as InstallmentInvoiceNo,
+	CASE WHEN TID.StatusValue IS NULL THEN 'false' 
+	ELSE
+	'true' END IsAdhoc,
+	TID.StatusValue,
+	SM.S_Lebel as OnAcccountComponent,
+	TID.Dt_Installment_Date as InstallmentDate,
+	ISNULL(TID.TotalAmoutPaid,0) as InstallmentBaseAmountPaid,
+	ISNULL(TID.TotalTaxPaid,0) as InstallmentTaxAmountPaid,
+	ISNULL(TID.CanBeProcessed,'false') as CanBeProcessed,
+	ISNULL(TID.IsCompleted,'false') as IsCompleted,
+	TID.ReceiptHeaderID as ReceiptHeaderID,
+	RH.S_Receipt_No as ReceiptNo,
+	RH.Dt_Receipt_Date as ReceiptDate
+	from
+	#Transaction as T
+	inner join
+	T_ERP_Transaction_Invoice_Details as TID on T.TransactionID=TID.I_ERP_Transaction_Master_ID
+	left join
+	T_Status_Master as SM on SM.I_Status_Value=TID.StatusValue and SM.I_Brand_ID=T.BrandID
+	left join
+	T_Receipt_Header as RH on RH.I_Receipt_Header_ID=TID.ReceiptHeaderID
 
    
 END

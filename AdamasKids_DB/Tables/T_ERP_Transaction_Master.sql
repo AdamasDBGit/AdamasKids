@@ -20,8 +20,11 @@
     [I_StatusID]                        INT            NULL,
     [PaymentDetailsXML]                 XML            NULL,
     [PaymentJson]                       VARCHAR (MAX)  NULL,
-    [SMSPaymentMode]                    INT            NULL
+    [SMSPaymentMode]                    INT            NULL,
+    [SuccessXML]                        XML            NULL
 );
+
+
 
 
 

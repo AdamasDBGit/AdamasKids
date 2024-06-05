@@ -1,10 +1,11 @@
-﻿-- =============================================
+﻿
+-- =============================================
 -- Author:		<Author,,Name>
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 --exec [dbo].[usp_ERP_InitiateTransaction] 1,1,'string545','2024-05-31','Initiated','Online App_Arivoo','UPI',10475,1,32,'24-0044'
 -- =============================================
-CREATE PROCEDURE [dbo].[usp_ERP_InitiateTransaction]
+CREATE PROCEDURE [dbo].[usp_ERP_InitiatePaymentTransaction]
 	-- Add the parameters for the stored procedure here
 	@iBrandID INT,
 	@iCenterID INT = NULL,
@@ -138,15 +139,14 @@ BEGIN
     FROM @XmlData.nodes('/Root/RowFeeSheduleDtl/TblRctCompDtl/RowRctCompDtl') AS FeeSchedules(FeeSchedule)
     CROSS APPLY FeeSchedule.nodes('.') AS InvoiceDetails(InvoiceDetail);
 
-    -- Insert into adhoc details table
+     --Insert into adhoc details table
     INSERT INTO #AdhocDetailsTable (FeeScheduleID,StatusValue, Amount, InvoiceNo, InstallmentDate)
     SELECT 
         FeeSchedule.value('../../@FeeScheduleID', 'int') AS FeeScheduleID,
 		AdhocDetail.value('@StatusValue', 'int') AS StatusValue,
         AdhocDetail.value('@Amount', 'decimal(18, 2)') AS Amount,
         AdhocDetail.value('@InvoiceNo', 'nvarchar(50)') AS InvoiceNo,
-        --AdhocDetail.value('@InstallmentDate', 'datetime') AS InstallmentDate
-		CONVERT(datetime, AdhocDetail.value('@InstallmentDate', 'nvarchar(50)'), 103) as InstallmentDate
+        AdhocDetail.value('@InstallmentDate', 'datetime') AS InstallmentDate
     FROM @XmlData.nodes('/Root/RowFeeSheduleDtl/TblDueOnAccountDtl/RowDueOnAccountDtl') AS FeeSchedules(FeeSchedule)
     CROSS APPLY FeeSchedule.nodes('.') AS AdhocDetails(AdhocDetail);
 
@@ -170,73 +170,77 @@ FROM @XmlData.nodes('/Root/RowFeeSheduleDtl/TblDueOnAccountDtl/RowDueOnAccountDt
 CROSS APPLY AdhocDetail.nodes('ReceiptTax/TaxDetails') AS TaxDetails(TaxDetails);
 
       -- Drop temporary tables
-    --select * from  #FeeScheduleTable, #InvoiceTable, #AdhocDetailsTable, #InvoiceTaxTable, #OnAccountTaxTable;
+    select * from  #FeeScheduleTable
+	 select * from #InvoiceTable
+	  select * from #AdhocDetailsTable
+	   select * from #InvoiceTaxTable 
+	    select * from #OnAccountTaxTable
 
 
-	insert into T_ERP_Transaction_Master 
-	(
-	I_ERP_TransactionNo,
-	I_BrandID,
-	I_CentreID,
-	I_StudentDetailID,
-	Dt_TransactionDate,
-	S_TransactionSource,
-	S_TransactionStatus,
-	I_ERP_Brand_PaymentGateway_Map_id,
-	S_TransactionMode,
-	I_TransactionTotalAmount,
-	Dt_CreatedOn,
-	I_CreatedBy,
-	PaymentDetailsXML,
-	SMSPaymentMode,
-	PaymentJson,
-	CanBeProcessed,
-	I_StatusID
-	)
-	select top 1 @sTransactionNo,@iBrandID,@iCenterID,@StudentDetailID,@dtTransactionDate,@sTransactionSource,@sTransactionStatus
-	,@iPaymentGatewayBrandID,@sTransactionMode,@TotalTransactionAmount,GETDATE(),1,@XmlData,@iSmsPaymentMode,@PaymentJson
-	,1,1
+	--insert into T_ERP_Transaction_Master 
+	--(
+	--I_ERP_TransactionNo,
+	--I_BrandID,
+	--I_CentreID,
+	--I_StudentDetailID,
+	--Dt_TransactionDate,
+	--S_TransactionSource,
+	--S_TransactionStatus,
+	--I_ERP_Brand_PaymentGateway_Map_id,
+	--S_TransactionMode,
+	--I_TransactionTotalAmount,
+	--Dt_CreatedOn,
+	--I_CreatedBy,
+	--PaymentDetailsXML,
+	--SMSPaymentMode,
+	--PaymentJson,
+	--CanBeProcessed,
+	--I_StatusID
+	--)
+	--select top 1 @sTransactionNo,@iBrandID,@iCenterID,@StudentDetailID,@dtTransactionDate,@sTransactionSource,@sTransactionStatus
+	--,@iPaymentGatewayBrandID,@sTransactionMode,@TotalTransactionAmount,GETDATE(),1,@XmlData,@iSmsPaymentMode,@PaymentJson
+	--,1,1
 
-	Declare @iTransactionMasterID INT
+	--Declare @iTransactionMasterID INT
 
-	set @iTransactionMasterID=SCOPE_IDENTITY()
+	--set @iTransactionMasterID=SCOPE_IDENTITY()
 
-	insert into T_ERP_Transaction_Invoice_Details
-	(
-	I_ERP_Transaction_Master_ID,
-	I_Invoice_Header_ID,
-	S_Installment_invoice_NO,
-	Dt_Installment_Date,
-	TotalAmoutPaid,
-	CanBeProcessed,
-	StudentID
-	)
-	select @iTransactionMasterID,IT.FeeScheduleID,CD.S_Invoice_Number,CD.Dt_Installment_Date,sum(IT.AmountPaid),1,@sStudentID  from #InvoiceTable as IT
-	inner join
-	T_Invoice_Child_Detail as CD on CD.I_Invoice_Detail_ID=IT.InvoiceDetailID
-	group by CD.S_Invoice_Number,IT.FeeScheduleID,CD.Dt_Installment_Date
+	--insert into T_ERP_Transaction_Invoice_Details
+	--(
+	--I_ERP_Transaction_Master_ID,
+	--I_Invoice_Header_ID,
+	--S_Installment_invoice_NO,
+	--Dt_Installment_Date,
+	--TotalAmoutPaid,
+	--CanBeProcessed,
+	--StudentID
+	--)
+	--select @iTransactionMasterID,IT.FeeScheduleID,CD.S_Invoice_Number,CD.Dt_Installment_Date,sum(IT.AmountPaid),1,@sStudentID  from #InvoiceTable as IT
+	--inner join
+	--T_Invoice_Child_Detail as CD on CD.I_Invoice_Detail_ID=IT.InvoiceDetailID
+	--group by CD.S_Invoice_Number,IT.FeeScheduleID,CD.Dt_Installment_Date
 
-	insert into T_ERP_Transaction_Invoice_Details
-	(
-	I_ERP_Transaction_Master_ID,
-	I_Invoice_Header_ID,
-	StatusValue,
-	S_Installment_invoice_NO,
-	Dt_Installment_Date,
-	TotalAmoutPaid,
-	CanBeProcessed,
-	StudentID
-	)
-	select @iTransactionMasterID,IT.FeeScheduleID,IT.StatusValue,IT.InvoiceNo,IT.InstallmentDate,sum(IT.Amount),1,@sStudentID 
-	from #AdhocDetailsTable as IT
-	group by IT.FeeScheduleID,IT.InstallmentDate,IT.InvoiceNo,IT.StatusValue
+	--insert into T_ERP_Transaction_Invoice_Details
+	--(
+	--I_ERP_Transaction_Master_ID,
+	--I_Invoice_Header_ID,
+	--StatusValue,
+	--S_Installment_invoice_NO,
+	--Dt_Installment_Date,
+	--TotalAmoutPaid,
+	--CanBeProcessed,
+	--StudentID
+	--)
+	--select @iTransactionMasterID,IT.FeeScheduleID,IT.StatusValue,IT.InvoiceNo,IT.InstallmentDate,sum(IT.Amount),1,@sStudentID 
+	--from #AdhocDetailsTable as IT
+	--group by IT.FeeScheduleID,IT.InstallmentDate,IT.InvoiceNo,IT.StatusValue
 
 
 
 	 
-	update ICD set ICD.is_Freezed='true' from
-	T_Invoice_Child_Detail as ICD 
-	inner join #InvoiceTable IT on ICD.I_Invoice_Detail_ID=IT.InvoiceDetailID
+	--update ICD set ICD.is_Freezed='true' from
+	--T_Invoice_Child_Detail as ICD 
+	--inner join #InvoiceTable IT on ICD.I_Invoice_Detail_ID=IT.InvoiceDetailID
 
 
 

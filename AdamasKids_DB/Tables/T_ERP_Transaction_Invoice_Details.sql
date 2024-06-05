@@ -12,8 +12,11 @@
     [IsCompleted]                          BIT            NULL,
     [Dt_CompletedOn]                       DATETIME       NULL,
     [StudentID]                            VARCHAR (MAX)  NULL,
-    [ReceiptHeaderID]                      INT            NULL
+    [ReceiptHeaderID]                      INT            NULL,
+    [SuccessXML]                           XML            NULL
 );
+
+
 
 
 
