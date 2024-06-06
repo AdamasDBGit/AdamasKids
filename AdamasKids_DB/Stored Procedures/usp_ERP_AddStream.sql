@@ -3,11 +3,12 @@
 -- Create date: <14th Sept 2023>      
 -- Description: <to add or update the stream>      
 -- =============================================      
-create PROCEDURE [dbo].[usp_ERP_AddStream]       
+CREATE PROCEDURE [dbo].[usp_ERP_AddStream]       
  -- Add the parameters for the stored procedure here      
  @iStreamID int = null,    
  @iStreamStatus int,      
- @sStreamName varchar(255)  
+ @sStreamName varchar(255),  
+ @iBrandID int  
 AS      
 begin transaction      
 BEGIN TRY       
@@ -25,12 +26,12 @@ BEGIN
  END        
  ELSE      
  BEGIN      
- update [dbo].T_Stream        
+ update [SMS].[dbo].T_Stream        
  set       
  [S_Stream]     = @sStreamName,        
  [I_Status]      = @iStreamStatus  
        
- where I_Stream_ID = @iStreamID      
+ where I_Stream_ID = @iStreamID  
        
  SELECT 1 StatusFlag,'Stream updated' Message      
  END      
@@ -44,15 +45,17 @@ BEGIN
  END         
  ELSE      
  BEGIN      
- INSERT INTO [dbo].T_Stream      
+ INSERT INTO [SMS].[dbo].T_Stream      
 (      
 [S_Stream],      
-[I_Status]    
+[I_Status],  
+[I_brand_id]  
 )      
 VALUES      
 (      
  @sStreamName,      
- @iStreamStatus   
+ @iStreamStatus ,  
+ @iBrandID  
 )   
  SELECT 1 StatusFlag,'Stream added' Message      
  END      

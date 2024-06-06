@@ -3890,6 +3890,8 @@
     <Build Include="Stored Procedures\usp_ERP_GetSessionID_FeeStructure.sql" />
     <Build Include="Stored Procedures\usp_ERP_AddSubjectComponent.sql" />
     <Build Include="Stored Procedures\usp_ERP_AddStream.sql" />
+    <Build Include="Functions\usp_ERP_GetTransactionStatus.sql" />
+    <Build Include="Stored Procedures\usp_ERP_Get_Transaction_History.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Data_Scripts\D_Scripts.sql" />
