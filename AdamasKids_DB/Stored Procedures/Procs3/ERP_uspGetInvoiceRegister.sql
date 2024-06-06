@@ -1,5 +1,5 @@
 ﻿--exec [ERP_uspGetInvoiceRegister] 107,'01-03-2023 00:00:00','06-03-2024 00:00:00',null,'24-0293',null  
-ALter PROCEDURE [dbo].[ERP_uspGetInvoiceRegister] --ERP_uspGetInvoiceRegister 53,107,NULL,NULL,'2013-04-03','','','','04-0002',''         
+Create PROCEDURE [dbo].[ERP_uspGetInvoiceRegister] --ERP_uspGetInvoiceRegister 53,107,NULL,NULL,'2013-04-03','','','','04-0002',''         
     (          
       --@iSelectedHierarchyId int null,          
       @iSelectedBrandId int,          
