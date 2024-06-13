@@ -3919,4 +3919,7 @@
   <ItemGroup>
     <RefactorLog Include="AdamasKids_DB.refactorlog" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Data_Scripts\Role_Permission.sql" />
+  </ItemGroup>
 </Project>
