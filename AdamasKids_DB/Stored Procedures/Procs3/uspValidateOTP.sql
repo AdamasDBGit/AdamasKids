@@ -1,14 +1,4 @@
-﻿
-/**************************************************************************************************************
-Created by  : Swagata De
-Date		: 13.05.2007
-Description : This SP will validate the login for access to offline examination system
-Parameters  : Login ID,Password
-Returns     : Dataset
-exec [dbo].[uspValidateOTP] '9609492010',6575
-**************************************************************************************************************/
-
-CREATE PROCEDURE [dbo].[uspValidateOTP]
+﻿CREATE PROCEDURE [dbo].[uspValidateOTP]
 	(
 		@sMobile NVARCHAR(200)	,
 		@iOtp int
@@ -17,6 +7,8 @@ AS
 BEGIN
 	DECLARE @LastOTP int;
 	DECLARE @token nvarchar(50)
+	DECLARE @otpExpirationTime int
+	set @otpExpirationTime = 2
 	SET @LastOTP = (select top 1 I_OTP from T_Transaction_OTP where S_Mobile_Number = @sMobile order by Dt_CreatedAt desc)
 	if(@LastOTP=@iOtp)
 	BEGIN
@@ -29,7 +21,7 @@ BEGIN
 				inner join
 				T_Transaction_OTP as TOTP on TOTP.I_Transaction_Device_Log_ID=TDL.I_Transaction_Device_Log_ID
 				where TDL.S_Mobile_Number=@sMobile and TOTP.S_Mobile_Number=@sMobile and TOTP.I_OTP=@LastOTP
-				and DATEDIFF(MINUTE,TOTP.Dt_CreatedAt,GETDATE()) < 1 
+				and DATEDIFF(MINUTE,TOTP.Dt_CreatedAt,GETDATE()) < @otpExpirationTime
 				)
 				BEGIN
 
@@ -84,7 +76,7 @@ BEGIN
 				inner join
 				T_Transaction_OTP as TOTP on TOTP.I_Transaction_Device_Log_ID=TDL.I_Transaction_Device_Log_ID
 				where TDL.S_Mobile_Number=@sMobile and TOTP.S_Mobile_Number=@sMobile and TOTP.I_OTP=@LastOTP
-				and DATEDIFF(MINUTE,TOTP.Dt_CreatedAt,GETDATE()) < 5 
+				and DATEDIFF(MINUTE,TOTP.Dt_CreatedAt,GETDATE()) < @otpExpirationTime
 				)
 				BEGIN
 					update UM set UM.S_Token=@token from

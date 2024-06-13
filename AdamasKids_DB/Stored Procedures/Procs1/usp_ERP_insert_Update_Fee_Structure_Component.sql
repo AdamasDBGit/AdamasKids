@@ -164,7 +164,7 @@ BEGIN
    )   
    where I_Fee_Structure_ID=@h_I_Fee_Structure_ID  
    -----Data Inserting into Old Fee Structure Model-----
-   EXEC USP_ERP_OLD_Fee_Plan_Insert @NewFeeStructureID=@h_I_Fee_Structure_ID  
+   --EXEC USP_ERP_OLD_Fee_Plan_Insert @NewFeeStructureID=@h_I_Fee_Structure_ID  
   
  IF @@ROWCOUNT  > 0  
   

@@ -12,13 +12,14 @@ CREATE PROCEDURE [dbo].[usp_ERP_InitiateTransaction]
 	@dtTransactionDate datetime,
 	@sTransactionStatus varchar(max),
 	@sTransactionSource varchar(max),
-	@sTransactionMode varchar(max),
+	@sTransactionMode varchar(max)=NULL,
 	@TotalTransactionAmount decimal(8,2),
 	@iPaymentGatewayBrandID INT,
 	@iSmsPaymentMode INT,
 	@sStudentID varchar(max),
 	@XmlData XML='<Root></Root/>',
-	@PaymentJson varchar(max)=NULL
+	@PaymentJson varchar(max)=NULL,
+	@SMobileNo varchar(20)=NULL
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -191,11 +192,12 @@ CROSS APPLY AdhocDetail.nodes('ReceiptTax/TaxDetails') AS TaxDetails(TaxDetails)
 	SMSPaymentMode,
 	PaymentJson,
 	CanBeProcessed,
-	I_StatusID
+	I_StatusID,
+	S_Mobile_No
 	)
 	select top 1 @sTransactionNo,@iBrandID,@iCenterID,@StudentDetailID,@dtTransactionDate,@sTransactionSource,@sTransactionStatus
 	,@iPaymentGatewayBrandID,@sTransactionMode,@TotalTransactionAmount,GETDATE(),1,@XmlData,@iSmsPaymentMode,@PaymentJson
-	,1,1
+	,1,1,@SMobileNo
 
 	Declare @iTransactionMasterID INT
 
@@ -209,11 +211,16 @@ CROSS APPLY AdhocDetail.nodes('ReceiptTax/TaxDetails') AS TaxDetails(TaxDetails)
 	Dt_Installment_Date,
 	TotalAmoutPaid,
 	CanBeProcessed,
-	StudentID
+	StudentID,
+	TotalTaxPaid
 	)
-	select @iTransactionMasterID,IT.FeeScheduleID,CD.S_Invoice_Number,CD.Dt_Installment_Date,sum(IT.AmountPaid),1,@sStudentID  from #InvoiceTable as IT
+	select @iTransactionMasterID,IT.FeeScheduleID,CD.S_Invoice_Number,CD.Dt_Installment_Date,sum(IT.AmountPaid),1,@sStudentID,
+	sum(ISNULL(ITT.TaxPaid,0))
+	from #InvoiceTable as IT
 	inner join
 	T_Invoice_Child_Detail as CD on CD.I_Invoice_Detail_ID=IT.InvoiceDetailID
+	left join
+	#InvoiceTaxTable as ITT on ITT.InvoiceDetailID=CD.I_Invoice_Detail_ID
 	group by CD.S_Invoice_Number,IT.FeeScheduleID,CD.Dt_Installment_Date
 
 	insert into T_ERP_Transaction_Invoice_Details
@@ -225,11 +232,16 @@ CROSS APPLY AdhocDetail.nodes('ReceiptTax/TaxDetails') AS TaxDetails(TaxDetails)
 	Dt_Installment_Date,
 	TotalAmoutPaid,
 	CanBeProcessed,
-	StudentID
+	StudentID,
+	TotalTaxPaid
 	)
-	select @iTransactionMasterID,IT.FeeScheduleID,IT.StatusValue,IT.InvoiceNo,IT.InstallmentDate,sum(IT.Amount),1,@sStudentID 
+	select @iTransactionMasterID,IT.FeeScheduleID,IT.StatusValue,IT.InvoiceNo,IT.InstallmentDate,sum(IT.Amount),1,@sStudentID ,
+	sum(ISNULL(ATT.TaxPaid,0))
 	from #AdhocDetailsTable as IT
+	left join
+	#OnAccountTaxTable as ATT on IT.InvoiceNo=ATT.InvoiceNo
 	group by IT.FeeScheduleID,IT.InstallmentDate,IT.InvoiceNo,IT.StatusValue
+
 
 
 

@@ -3,7 +3,7 @@
 -- Create date: <14th September 2023>        
 -- Description: <to check the feature for status master>        
 -- =============================================      
---exec [usp_ERP_GetCongifMasterForStatus] 139      
+--exec [usp_ERP_GetCongifMasterForStatus] 139,2    
 CREATE PROCEDURE [dbo].[usp_ERP_GetCongifMasterForStatus]        
  @StatusValue int = null 
  ,@brandID int=null

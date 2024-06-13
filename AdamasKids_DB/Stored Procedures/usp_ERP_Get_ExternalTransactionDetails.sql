@@ -32,7 +32,8 @@ BEGIN
     StudentID VARCHAR(255),
     XmlData xml,
     PaymentJson TEXT,
-    StatusID INT
+    StatusID INT,
+	MobileNo varchar(max)
 	)
 
 
@@ -55,7 +56,8 @@ BEGIN
     StudentID,
     --XmlData,
     PaymentJson,
-    StatusID
+    StatusID,
+	MobileNo
 	)
 	select 
 	DISTINCT
@@ -75,7 +77,8 @@ BEGIN
 	TID.StudentID StudentID,
 	--TM.PaymentDetailsXML XmlData,
 	TM.PaymentJson PaymentJson,
-	TM.I_StatusID StatusID
+	TM.I_StatusID StatusID,
+	TM.S_Mobile_No MobileNo
 	from T_ERP_Transaction_Master as TM 
 	inner join
 	T_ERP_Transaction_Invoice_Details as TID on TM.I_ERP_Transaction_Master_ID=TID.I_ERP_Transaction_Master_ID

@@ -25,6 +25,7 @@ CREATE PROCEDURE [dbo].[usp_ERP_Make_Transaction_Success]
 	@PaymentJson varchar(max)=NULL,
 	@ReceiptHeader INT=NULL,
 	@OnAccountReceiptHeader INT=NULL
+	
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -218,6 +219,7 @@ and ISNULL(TID.CanBeProcessed,'false')='true' and ISNULL(TID.IsCompleted,'false'
 
 			update T_ERP_Transaction_Master set IsCompleted='true',Dt_CompletedOn=GETDATE(),
 			SuccessXML=@SuccessXML,PaymentJson=@PaymentJson,S_TransactionStatus=@sTransactionStatus,I_StudentDetailID=@StudentDetailID
+			,S_TransactionMode=@sTransactionMode
 			where I_ERP_TransactionNo=@sTransactionNo and ISNULL(CanBeProcessed,'false')='true' and ISNULL(IsCompleted,'false')='false'
 	END
 

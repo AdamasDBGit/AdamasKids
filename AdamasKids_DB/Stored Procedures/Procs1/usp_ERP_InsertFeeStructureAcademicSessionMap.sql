@@ -52,6 +52,7 @@ BEGIN TRY
    Update T_ERP_Fee_Structure_AcademicSession_Map set Is_Active=0 
    where I_Fee_Structure_ID=@FeeStructureID and I_School_Session_ID<>@SchoolSessionID
   end  
+  EXEC USP_ERP_OLD_Fee_Plan_Insert @NewFeeStructureID=@FeeStructureID 
   SELECT 1 StatusFlag,'Academic Session and Fee Structure Mapped successfully' Message       
   commit transaction;  
 END TRY  

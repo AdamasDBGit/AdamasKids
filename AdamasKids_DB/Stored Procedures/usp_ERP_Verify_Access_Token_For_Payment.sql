@@ -13,7 +13,7 @@ BEGIN
 	IF EXISTS (select * from T_Parent_Master PM where PM.S_Token=@stokenID and I_Status=1)
 	BEGIN
 
-		select SD.S_Student_ID as StudentID,SPM.I_Brand_ID BrandID from T_Parent_Master as PM 
+		select SD.S_Student_ID as StudentID,SPM.I_Brand_ID BrandID,PM.S_Mobile_No as MobileNo from T_Parent_Master as PM 
 		inner join
 		T_Student_Parent_Maps as SPM on PM.I_Parent_Master_ID=SPM.I_Parent_Master_ID and SPM.I_Status=1
 		inner join
