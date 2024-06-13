@@ -45,7 +45,8 @@ BEGIN
 	SattlementDate datetime,
 	SattlementBankAccount varchar(max),
 	PaymnentGatewayID INT,
-	BrandID INT
+	BrandID INT,
+	ExternalPurchasedMobileNo varchar(max)
 	)
 
 
@@ -78,7 +79,8 @@ INSERT INTO #Transaction_History
     SattlementDate,
     SattlementBankAccount,
 	PaymnentGatewayID,
-	BrandID
+	BrandID,
+	ExternalPurchasedMobileNo
 )
 SELECT 
     DISTINCT
@@ -123,7 +125,8 @@ SELECT
     RH.Dt_Deposit_Date,
     RH.Bank_Account_Name,
 	TM.I_ERP_Brand_PaymentGateway_Map_id,
-	BCD.I_Brand_ID
+	BCD.I_Brand_ID,
+	TM.S_Mobile_No as ExternalPurchasedMobileNo
 FROM 
     T_Receipt_Header AS RH
 INNER JOIN 
@@ -191,7 +194,8 @@ SELECT
     NULL AS SattlementDate,
     NULL AS SattlementBankAccount,
 	TM.I_ERP_Brand_PaymentGateway_Map_id,
-	TM.I_BrandID
+	TM.I_BrandID,
+	TM.S_Mobile_No ExternalPurchasedMobileNo
 FROM 
     T_ERP_Transaction_Invoice_Details AS TID 
 INNER JOIN

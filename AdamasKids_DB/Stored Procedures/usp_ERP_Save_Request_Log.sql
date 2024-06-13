@@ -9,14 +9,15 @@ CREATE procedure [dbo].[usp_ERP_Save_Request_Log]
 	@UniqueAttributeValue VARCHAR(MAX)=NULL,
 	@RequestParameters VARCHAR(MAX)=NULL,
 	@RequestResult VARCHAR(MAX)=NULL,
-	@ErrorMessage VARCHAR(MAX)=NULL
+	@ErrorMessage VARCHAR(MAX)=NULL,
+	@MobileNo varchar(20)=NULL
 )
 AS
 BEGIN
 
 
 	insert into T_ERP_Request_Log
-	select @sToken,@Source,@InvokedRoute,@InvokedMethod,@UniqueAttributeName,@UniqueAttributeValue,@RequestParameters,@RequestResult,@ErrorMessage,GETDATE()
+	select @MobileNo,@sToken,@Source,@InvokedRoute,@InvokedMethod,@UniqueAttributeName,@UniqueAttributeValue,@RequestParameters,@RequestResult,@ErrorMessage,GETDATE()
 
 	select SCOPE_IDENTITY() as NewRow
 

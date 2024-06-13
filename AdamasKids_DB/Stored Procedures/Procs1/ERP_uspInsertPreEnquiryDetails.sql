@@ -274,7 +274,7 @@ AS
                 --                        )    
   -- Update the Courses for the Enquiry      
     DECLARE @Course_ID INT    
-    SET @Course_ID = (Select I_Course_ID from T_Course_Group_Class_Mapping Where I_Brand_ID = @iBrandID and I_Class_ID = @sClassID and I_School_Session_ID = @SessionID and (I_Stream_ID = @Stream_ID OR I_Stream_ID IS NULL))    
+    SET @Course_ID = (Select top 1 I_Course_ID from T_Course_Group_Class_Mapping Where I_Brand_ID = @iBrandID and I_Class_ID = @sClassID and I_School_Session_ID = @SessionID and (I_Stream_ID = @Stream_ID OR I_Stream_ID IS NULL))    
     
                 INSERT  INTO dbo.T_Enquiry_Course      
                         ( I_Course_ID ,      

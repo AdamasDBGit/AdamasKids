@@ -2,7 +2,7 @@
 -- Author:  <Author,,Name>    
 -- Create date: <Create Date,,>    
 -- Description: <Description,,>    
--- exec usp_ERP_GetAllPeriodsOfATeacherByFacultyMasterID 21, 4,'03-04-2024 00:00:00',107    
+-- exec [usp_ERP_GetAllPeriodsOfATeacherByFacultyMasterID] 5   
 -- =============================================    
 CREATE PROCEDURE [dbo].[usp_ERP_GetAllPeriodsOfATeacherByFacultyMasterID]     
 (    
@@ -135,6 +135,7 @@ ORDER BY
  TERSD.I_Routine_Structure_Detail_ID,    
  TSM.S_Subject_Code,    
  TFM.S_Faculty_Code    
+ order by TERSD.I_Day_ID asc
  END TRY    
  BEGIN CATCH    
   DECLARE @ErrMsg NVARCHAR(4000), @ErrSeverity int    

@@ -69,6 +69,7 @@
     <Folder Include="User Defined Types\" />
     <Folder Include="Schema" />
     <Folder Include="Data_Scripts" />
+    <Folder Include="Security\" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\T_Courier_Master.sql" />
@@ -3892,6 +3893,27 @@
     <Build Include="Stored Procedures\usp_ERP_AddStream.sql" />
     <Build Include="Functions\usp_ERP_GetTransactionStatus.sql" />
     <Build Include="Stored Procedures\usp_ERP_Get_Transaction_History.sql" />
+    <Build Include="Tables\Temp_Mig_Admission.sql" />
+    <Build Include="Tables\SQL Server Destination.sql" />
+    <Build Include="Tables\Mig_Admission_Uttarpara_BKP.sql" />
+    <Build Include="Tables\Mig_Admission_BKP_Bangur.sql" />
+    <Build Include="Tables\Mig_Admission.sql" />
+    <Build Include="Security\temp_smitha.sql" />
+    <Build Include="Security\RoleMemberships_1.sql" />
+    <Build Include="Stored Procedures\uspInsertReceiptHeader_Bulkupload.sql" />
+    <Build Include="Stored Procedures\uspInsertReceiptDetails_Bulkupload.sql" />
+    <Build Include="Stored Procedures\uspGetReceipt_Bulkupload.sql" />
+    <Build Include="Stored Procedures\uspGetInvoiceDetail_Bulkupload.sql" />
+    <Build Include="Stored Procedures\USP_Fetch_FormID_Bulkupload.sql" />
+    <Build Include="Stored Procedures\Usp_ERP_Update_Mig_Table.sql" />
+    <Build Include="Stored Procedures\usp_ERP_Get_TransactionCountAcademicSessionWise.sql" />
+    <Build Include="Stored Procedures\usp_ERP_get_MigrationStudentDataSet.sql" />
+    <Build Include="Stored Procedures\USP_ERP_get_InstallmentDetails_Bulkupload.sql" />
+    <Build Include="Stored Procedures\usp_ERP_CancleInitiatedFailedTransaction.sql" />
+    <Build Include="Stored Procedures\ERP_uspInsertStudentDetailsFromEnquiry_Bulkupload.sql" />
+    <Build Include="Stored Procedures\ERP_uspInsertStudentBatchDetails_Bulkupload.sql" />
+    <Build Include="Stored Procedures\ERP_uspInsertInvoice_Bulkupload.sql" />
+    <Build Include="Stored Procedures\ERP_Usp_batchCreation_N_Bulkupload.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Data_Scripts\D_Scripts.sql" />

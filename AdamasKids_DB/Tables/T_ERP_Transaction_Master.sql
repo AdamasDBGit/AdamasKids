@@ -1,5 +1,6 @@
 ﻿CREATE TABLE [dbo].[T_ERP_Transaction_Master] (
     [I_ERP_Transaction_Master_ID]       INT            IDENTITY (1, 1) NOT NULL,
+    [S_Mobile_No]                       VARCHAR (20)   NULL,
     [I_ERP_TransactionNo]               VARCHAR (MAX)  NULL,
     [I_BrandID]                         INT            NULL,
     [I_CentreID]                        INT            NULL,
@@ -7,7 +8,7 @@
     [Dt_TransactionDate]                DATETIME       NOT NULL,
     [S_TransactionSource]               VARCHAR (MAX)  NOT NULL,
     [I_ERP_Brand_PaymentGateway_Map_id] INT            NOT NULL,
-    [S_TransactionMode]                 VARCHAR (MAX)  NOT NULL,
+    [S_TransactionMode]                 VARCHAR (MAX)  NULL,
     [S_TransactionStatus]               VARCHAR (255)  NOT NULL,
     [I_TransactionTotalAmount]          DECIMAL (8, 2) NOT NULL,
     [CanBeProcessed]                    BIT            NULL,
@@ -23,6 +24,8 @@
     [SMSPaymentMode]                    INT            NULL,
     [SuccessXML]                        XML            NULL
 );
+
+
 
 
 

@@ -6,7 +6,7 @@
 CREATE PROCEDURE [dbo].[usp_ERP_Get_PaymentGateWay_Info] 
 	-- Add the parameters for the stored procedure here
 	@iBrandID INT,
-	@Mode INT
+	@Mode INT=NULL
 AS
 BEGIN TRY 
 IF (@iBrandID >0)
@@ -15,15 +15,22 @@ SELECT
 EBPM.I_ERP_Brand_PaymentGateway_Map_id as PaymentGatewayBrandID,
 ETPI.S_PaymentGateway_Name as PaymentGatewayName,
 EBPM.I_Brand_ID BrandId,
-ETPI.S_TransactionUrl TransactionUrl
-,ETPI.S_MerchantId MerchantName
-,ETPI.S_Salt Salt
-,EBPM.I_Payment_Mode as SMSPaymentMode from 
+EBPM.S_TransactionUrl TransactionUrl
+,EBPM.S_MerchantId MerchantId
+,CASE WHEN ISNULL(EBPM.I_IsLive,'false') ='true' THEN EBPM.S_Live_salt
+WHEN ISNULL(EBPM.I_IsLive,'false') ='false' THEN EBPM.S_Test_Salt
+ELSE 'NA' END Salt
+,EBPM.I_Payment_Mode as SMSPaymentMode
+,ISNULL(EBPM.I_IsLive,'false') IsLive
+,BM.S_Client_Name as ClientName
+from 
 T_ERP_PaymentGateway_Info as ETPI 
 inner join
 T_ERP_Brand_PaymentGateway_Map as EBPM on ETPI.I_PaymentGateway_Id=EBPM.I_PaymentGateway_Id
-where ETPI.I_Status = 1 and ETPI.I_IsLive = @Mode
-and EBPM.I_Brand_ID=@iBrandID and EBPM.Is_Active=1 and ETPI.I_Status=1
+inner join
+T_Brand_Master as BM on BM.I_Brand_ID=EBPM.I_Brand_ID
+where ETPI.I_Status = 1 
+and EBPM.I_Brand_ID=@iBrandID and EBPM.Is_Active=1 and ETPI.I_Status=1 and BM.I_Status=1
 
 END
 

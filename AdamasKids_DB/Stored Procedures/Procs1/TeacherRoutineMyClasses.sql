@@ -1,17 +1,15 @@
 ﻿
 CREATE PROCEDURE [dbo].[TeacherRoutineMyClasses]    
 -- =============================================  
-     -- Author: Tridip Chatterjee  
+-- Author: Tridip Chatterjee  
 -- Create date: 18-09-2023  
 -- Description: Teacher Day Wise My Class Routine_Details  
--- exec [TeacherRoutineMyClasses] 4,'2024-05-29'  
+-- exec [TeacherRoutineMyClasses] 8,'2024-06-07'  
 -- =============================================  
 -- Add the parameters for the stored procedure here  
 @TeacherID int,  
-@Day date  
-  
-  
-  
+@Day date 
+
 AS  
 BEGIN  
  -- SET NOCOUNT ON added to prevent extra result sets from  
@@ -43,7 +41,11 @@ BEGIN
     ( SELECT COUNT(*) FROM T_ERP_Attendance_Entry_Header AS TEAEH WHERE TEAEH.I_Student_Class_Routine_ID = TESCR.I_Student_Class_Routine_ID AND TEAEH.I_Faculty_Master_ID=TFM.I_Faculty_Master_ID AND CAST(TEAEH.Dt_Date as date) = CAST(getdate() as date)  
     ) > 0 THEN 1 ELSE 0 END AS IsAttendance,  
 	CASE WHEN   
-    ( SELECT COUNT(*) FROM T_ERP_Teacher_Time_Plan AS TETTP WHERE TETTP.I_Student_Class_Routine_ID = TESCR.I_Student_Class_Routine_ID   
+    ( SELECT COUNT(*) FROM T_ERP_Teacher_Time_Plan AS TETTP 
+	
+			inner join
+			T_ERP_Subject_Structure_Plan_Execution_Remarks as SSPER on SSPER.I_Teacher_Time_Plan_ID=TETTP.I_Teacher_Time_Plan_ID
+	WHERE TETTP.I_Student_Class_Routine_ID = TESCR.I_Student_Class_Routine_ID  AND CAST(TETTP.Dt_Class_Date as date) = CAST(@Day as date) --and SSP.I_Month_No=MONTH(@Day) and (@D IS NULL or SSP.I_Day_No =@D)  
     ) > 0 THEN 1 ELSE 0 END AS IsLogbook, 
  TFM.S_Faculty_Name TeacherName,  
  TESCRW.S_ClassWork ClassWork  
