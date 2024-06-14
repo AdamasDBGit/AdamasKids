@@ -3912,6 +3912,8 @@
     <Build Include="Stored Procedures\ERP_uspInsertStudentBatchDetails_Bulkupload.sql" />
     <Build Include="Stored Procedures\ERP_uspInsertInvoice_Bulkupload.sql" />
     <Build Include="Stored Procedures\ERP_Usp_batchCreation_N_Bulkupload.sql" />
+    <Build Include="Views\vw_StudentFullInfo.sql" />
+    <Build Include="Security\RoleMemberships_1.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Data_Scripts\D_Scripts.sql" />
