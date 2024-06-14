@@ -3898,8 +3898,6 @@
     <Build Include="Tables\Mig_Admission_Uttarpara_BKP.sql" />
     <Build Include="Tables\Mig_Admission_BKP_Bangur.sql" />
     <Build Include="Tables\Mig_Admission.sql" />
-    <Build Include="Security\temp_smitha.sql" />
-    <Build Include="Security\RoleMemberships_1.sql" />
     <Build Include="Stored Procedures\uspInsertReceiptHeader_Bulkupload.sql" />
     <Build Include="Stored Procedures\uspInsertReceiptDetails_Bulkupload.sql" />
     <Build Include="Stored Procedures\uspGetReceipt_Bulkupload.sql" />
@@ -3914,11 +3912,16 @@
     <Build Include="Stored Procedures\ERP_uspInsertStudentBatchDetails_Bulkupload.sql" />
     <Build Include="Stored Procedures\ERP_uspInsertInvoice_Bulkupload.sql" />
     <Build Include="Stored Procedures\ERP_Usp_batchCreation_N_Bulkupload.sql" />
+    <Build Include="Views\vw_StudentFullInfo.sql" />
+    <Build Include="Security\RoleMemberships_1.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Data_Scripts\D_Scripts.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="AdamasKids_DB.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Data_Scripts\Role_Permission.sql" />
   </ItemGroup>
 </Project>

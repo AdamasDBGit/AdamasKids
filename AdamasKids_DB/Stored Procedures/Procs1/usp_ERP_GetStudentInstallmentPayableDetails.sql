@@ -1,6 +1,6 @@
 ﻿    
                     
--- EXEC usp_ERP_GetStudentInstallmentPayableDetails 1,'24-0049'                   
+-- EXEC usp_ERP_GetStudentInstallmentPayableDetails 3,'24-0115'                   
                  
 CREATE  PROCEDURE [dbo].[usp_ERP_GetStudentInstallmentPayableDetails]          
 (@iBrandID INT,@sStudentID varchar(max))                    
@@ -540,7 +540,7 @@ StudentID,InvoiceID,T_Invoice_Child_Header,Dt_Installment_Date,InstallmentNo,Fin
    EXEC usp_ERP_Fine_CalculateBased_On_Frequency @iBrandID,@sStudentID,@F_paymentdate      
    Declare @finecomponentID int,@AdhocCompName Varchar(100)      
    SEt @finecomponentID= (select top 1 I_Status_Value from T_Status_Master       
-   where I_Brand_ID=1 and Status_Type=2)  -----If Status_Type=2 Then Fine ,If Status_Type=1 Then  Prospectus    
+   where I_Brand_ID=@iBrandID and Status_Type=2)  -----If Status_Type=2 Then Fine ,If Status_Type=1 Then  Prospectus    
    Set @AdhocCompName=(select Top 1 S_Status_Desc from T_Status_Master     
    where I_Status_Value=@finecomponentID)    
       
@@ -679,11 +679,15 @@ Update #LoopGSTCal set
 SET @ID=@ID+1                  
 End         
 ---------CalculateFine Due amount      
-Declare @FineDue numeric(18,2),@TotalFinePaid Numeric(18,2)      
+Declare @FineDue numeric(18,2),@TotalFinePaid Numeric(18,2) 
+-------Implement Registration AMount-------------
+Declare @RegAmount Numeric(18,2),@RegCompID int
+ SEt @RegCompID= (select top 1 I_Status_Value from T_Status_Master       
+   where I_Brand_ID=@iBrandID and Status_Type=1) 
       
 select @TotalFinePaid=Sum(isnull(N_Receipt_Amount,0)) from T_Receipt_Header       
 where I_Centre_Id=@CentreID and I_Enquiry_Regn_ID=@EnquiryID      
-and I_Receipt_Type=@finecomponentID      
+and I_Receipt_Type in(@finecomponentID  ,@RegCompID)    
 Group by I_Centre_Id, I_Enquiry_Regn_ID,I_Receipt_Type      
       
 Select * Into #FineCalculate from #LoopGSTCal          
@@ -771,7 +775,8 @@ on f.InstallmentNo=sf.InstallmentNo and convert(date,f.Dt_Installment_Date)=sf.D
 where sf.FineAmount >0      
 order by InstallmentNo,I_Invoice_Detail_ID      
 Declare @TotalFineHeader1 Numeric(18,2),@TotalFineHeader2 numeric(18,2)      
-set @TotalFineHeader1=(select  isnull(Sum(n_amount_due),0) as TotalFineHeader1 from #finalDetails where ComponentName='Late Fine')      
+set @TotalFineHeader1=(select  isnull(Sum(n_amount_due),0) as TotalFineHeader1 
+from #finalDetails where ComponentName='Late Fine')      
 Update #PayableHeader1 set Adhoc_TotalAmount=@TotalFineHeader1,AdhocTotalPaidAmount=isnull(@TotalFinePaid,0)      
 Select * from #PayableHeader1--------Showing 1      
       
