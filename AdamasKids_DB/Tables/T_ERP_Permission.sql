@@ -13,6 +13,9 @@
     [S_PageUrl]                       VARCHAR (MAX)  NULL,
     [S_Display_Component_Permissions] VARCHAR (MAX)  NULL,
     [S_Enable_Component_Permissions]  VARCHAR (MAX)  NULL,
-    [Description]                     VARCHAR (100)  NULL
+    [Description]                     VARCHAR (100)  NULL,
+    [Is_Active]                       BIT            NULL
 );
+
+
 

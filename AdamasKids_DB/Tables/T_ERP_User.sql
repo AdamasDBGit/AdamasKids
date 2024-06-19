@@ -1,23 +1,26 @@
 ﻿CREATE TABLE [dbo].[T_ERP_User] (
-    [I_User_ID]             INT            IDENTITY (1, 1) NOT NULL,
-    [S_Username]            NVARCHAR (50)  NOT NULL,
-    [S_Password]            NVARCHAR (50)  NOT NULL,
-    [S_Email]               NVARCHAR (50)  NOT NULL,
-    [S_First_Name]          NVARCHAR (30)  NOT NULL,
-    [S_Middle_Name]         NVARCHAR (30)  NULL,
-    [S_Last_Name]           NVARCHAR (30)  NULL,
-    [S_Mobile]              NVARCHAR (20)  NOT NULL,
-    [I_Created_By]          INT            NULL,
-    [Dt_CreatedAt]          DATETIME       NULL,
-    [Dt_Last_Login]         DATETIME       NULL,
-    [I_Status]              INT            NOT NULL,
-    [I_User_Type]           INT            NULL,
-    [S_Token]               NVARCHAR (MAX) NULL,
-    [IsAllAllowedEligible]  BIT            NULL,
-    [Is_Teaching_Staff]     BIT            NULL,
-    [Is_Non_Teaching_Staff] BIT            NULL,
-    [S_FireBase_Token]      NVARCHAR (500) NULL
+    [I_User_ID]                INT            IDENTITY (1, 1) NOT NULL,
+    [S_Username]               NVARCHAR (50)  NOT NULL,
+    [S_Password]               NVARCHAR (50)  NOT NULL,
+    [S_Email]                  NVARCHAR (50)  NOT NULL,
+    [S_First_Name]             NVARCHAR (30)  NOT NULL,
+    [S_Middle_Name]            NVARCHAR (30)  NULL,
+    [S_Last_Name]              NVARCHAR (30)  NULL,
+    [S_Mobile]                 NVARCHAR (20)  NOT NULL,
+    [I_Created_By]             INT            NULL,
+    [Dt_CreatedAt]             DATETIME       NULL,
+    [Dt_Last_Login]            DATETIME       NULL,
+    [I_Status]                 INT            NOT NULL,
+    [I_User_Type]              INT            NULL,
+    [S_Token]                  NVARCHAR (MAX) NULL,
+    [IsAllAllowedEligible]     BIT            NULL,
+    [Is_Teaching_Staff]        BIT            NULL,
+    [Is_Non_Teaching_Staff]    BIT            NULL,
+    [S_FireBase_Token]         NVARCHAR (500) NULL,
+    [Is_Active_Ignore_Allowed] BIT            NULL
 );
+
+
 
 
 

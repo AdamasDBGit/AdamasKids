@@ -3924,6 +3924,9 @@
     <Build Include="Stored Procedures\usp_ERP_Make_Transaction_Success_BKP.sql" />
     <Build Include="Stored Procedures\usp_ERP_InitiateTransaction_BKP.sql" />
     <Build Include="Stored Procedures\usp_ERP_Get_Transaction_History_Details.sql" />
+    <Build Include="Stored Procedures\uspInsertUpdateDeleteUser_Bak_19062024.sql" />
+    <Build Include="Stored Procedures\usp_ERP_GetStudentInstallmentPayableDetails_BKP_June.sql" />
+    <Build Include="Stored Procedures\USP_ERP_AuthorizationBinding_UserWise_BKP_June_2024.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Data_Scripts\D_Scripts.sql" />
