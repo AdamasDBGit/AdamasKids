@@ -6,64 +6,69 @@
 CREATE FUNCTION [dbo].[usp_ERP_GetTransactionStatus] 
 (	
 	-- Add the parameters for the function here
-	@iPaymentStatusID INT,
+	@iPaymentStatusID INT=NULL,
 	@iBrandID INT=NULL
 )
 RETURNS @PaymentStatusTable TABLE 
 (
+	PaymentStatusID int,
     StatusDescription VARCHAR(255),
 	StatusColour varchar(255)
 )
 BEGIN
-    IF @iBrandID IN (1, 2, 3, 107, 110) 
-    BEGIN
-        IF @iPaymentStatusID = 1
-		BEGIN
-            INSERT INTO @PaymentStatusTable (StatusDescription,StatusColour)
-            VALUES ('Initiated','#FFFF00');
-        END
-        IF @iPaymentStatusID = 2
-        BEGIN
-            INSERT INTO @PaymentStatusTable (StatusDescription,StatusColour)
-            VALUES ('Pending','#ffbf00');
-        END
-		IF @iPaymentStatusID = 3
-         BEGIN
-            INSERT INTO @PaymentStatusTable (StatusDescription,StatusColour)
-            VALUES ('Success','#008000');
-        END
-		IF @iPaymentStatusID = 4
-        BEGIN
-            INSERT INTO @PaymentStatusTable (StatusDescription,StatusColour)
-            VALUES ('Failure','#FF0000');
-        END
 
 
-    END
-    ELSE
-		BEGIN
-				 IF @iPaymentStatusID = 1
-		BEGIN
-            INSERT INTO @PaymentStatusTable (StatusDescription,StatusColour)
-            VALUES ('Initiated','#FFFF00');
-        END
-        IF @iPaymentStatusID = 2
-        BEGIN
-            INSERT INTO @PaymentStatusTable (StatusDescription,StatusColour)
-            VALUES ('Pending','#ffbf00');
-        END
-		IF @iPaymentStatusID = 3
-         BEGIN
-            INSERT INTO @PaymentStatusTable (StatusDescription,StatusColour)
-            VALUES ('Success','#008000');
-        END
-		IF @iPaymentStatusID = 4
-        BEGIN
-            INSERT INTO @PaymentStatusTable (StatusDescription,StatusColour)
-            VALUES ('Failure','#FF0000');
-        END
+INSERT INTO @PaymentStatusTable (PaymentStatusID,StatusDescription,StatusColour)
+VALUES (1,'Initiated','#FFFF00'),(2,'Pending','#ffbf00'),(3,'Success','#008000'),(4,'Failure','#FF0000');
+  --  IF @iBrandID IN (1, 2, 3, 107, 110) 
+  --  BEGIN
+  --      IF @iPaymentStatusID = 1
+		--BEGIN
+  --          INSERT INTO @PaymentStatusTable (StatusDescription,StatusColour)
+  --          VALUES ('Initiated','#FFFF00');
+  --      END
+  --      IF @iPaymentStatusID = 2
+  --      BEGIN
+  --          INSERT INTO @PaymentStatusTable (StatusDescription,StatusColour)
+  --          VALUES ('Pending','#ffbf00');
+  --      END
+		--IF @iPaymentStatusID = 3
+  --       BEGIN
+  --          INSERT INTO @PaymentStatusTable (StatusDescription,StatusColour)
+  --          VALUES ('Success','#008000');
+  --      END
+		--IF @iPaymentStatusID = 4
+  --      BEGIN
+  --          INSERT INTO @PaymentStatusTable (StatusDescription,StatusColour)
+  --          VALUES ('Failure','#FF0000');
+  --      END
 
-		END
+
+  --  END
+  --  ELSE
+		--BEGIN
+		--		 IF @iPaymentStatusID = 1
+		--BEGIN
+  --          INSERT INTO @PaymentStatusTable (StatusDescription,StatusColour)
+  --          VALUES ('Initiated','#FFFF00');
+  --      END
+  --      IF @iPaymentStatusID = 2
+  --      BEGIN
+  --          INSERT INTO @PaymentStatusTable (StatusDescription,StatusColour)
+  --          VALUES ('Pending','#ffbf00');
+  --      END
+		--IF @iPaymentStatusID = 3
+  --       BEGIN
+  --          INSERT INTO @PaymentStatusTable (StatusDescription,StatusColour)
+  --          VALUES ('Success','#008000');
+  --      END
+		--IF @iPaymentStatusID = 4
+  --      BEGIN
+  --          INSERT INTO @PaymentStatusTable (StatusDescription,StatusColour)
+  --          VALUES ('Failure','#FF0000');
+  --      END
+
+		--END
 
     RETURN;
 END

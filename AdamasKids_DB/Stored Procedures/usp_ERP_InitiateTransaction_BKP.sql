@@ -1,10 +1,11 @@
-﻿-- =============================================
+﻿
+-- =============================================
 -- Author:		<Author,,Name>
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 --exec [dbo].[usp_ERP_InitiateTransaction] 1,1,'string545','2024-05-31','Initiated','Online App_Arivoo','UPI',10475,1,32,'24-0044'
 -- =============================================
-CREATE PROCEDURE [dbo].[usp_ERP_InitiateTransaction]
+CREATE PROCEDURE [dbo].[usp_ERP_InitiateTransaction_BKP]
 	-- Add the parameters for the stored procedure here
 	@iBrandID INT,
 	@iCenterID INT = NULL,
@@ -19,18 +20,7 @@ CREATE PROCEDURE [dbo].[usp_ERP_InitiateTransaction]
 	@sStudentID varchar(max),
 	@XmlData XML='<Root></Root/>',
 	@PaymentJson varchar(max)=NULL,
-	@SMobileNo varchar(20)=NULL,
-	@SourceOfRequestType varchar(max)=NULL,
-	@RequestUserId varchar(max)=NULL,
-	@CancelledBy varchar(max)=NULL,
-	@CancelledDate datetime=NULL,
-	@ExternalReceiptNo varchar(max)=NULL,
-	@PaymentStatus varchar(max)=NULL,
-	@PgResponse varchar(max)=NULL,
-    @PgMessage varchar(max)=NULL,
-	@RequestType varchar(max)=NULL,
-	@ExecutionDate datetime=NULL,
-	@Order_Id varchar(max)=NULL
+	@SMobileNo varchar(20)=NULL
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -204,12 +194,11 @@ CROSS APPLY AdhocDetail.nodes('ReceiptTax/TaxDetails') AS TaxDetails(TaxDetails)
 	PaymentJson,
 	CanBeProcessed,
 	I_StatusID,
-	S_Mobile_No,
-	Order_ID
+	S_Mobile_No
 	)
 	select top 1 @sTransactionNo,@iBrandID,@iCenterID,@StudentDetailID,@dtTransactionDate,@sTransactionSource,@sTransactionStatus
 	,@iPaymentGatewayBrandID,@sTransactionMode,@TotalTransactionAmount,GETDATE(),1,@XmlData,@iSmsPaymentMode,@PaymentJson
-	,1,1,@SMobileNo,@Order_Id
+	,1,1,@SMobileNo
 
 	Declare @iTransactionMasterID INT
 
@@ -264,42 +253,6 @@ CROSS APPLY AdhocDetail.nodes('ReceiptTax/TaxDetails') AS TaxDetails(TaxDetails)
 
 
 
-	insert into T_ERP_PG_History
-	(
-	I_Transaction_Master_ID,
-	S_Transaction_No,
-	SourceofRequestType,
-	RequestUserId,
-	PGCancelledBy,
-	PGCancelledDate,
-	ExternalReceiptNo,
-	PaymentStatus,
-	PGMessage,
-	PGResponseType,
-	PGExecutionDate,
-	PGResponseJson
-	)
-	values
-	(
-	@iTransactionMasterID,
-	@sTransactionNo,
-	@SourceOfRequestType,
-	@RequestUserId,
-	@CancelledBy,
-	@CancelledDate,
-	@ExternalReceiptNo,
-	@PaymentStatus,
-	@PgMessage,
-	@RequestType,
-	@ExecutionDate,
-	@PgResponse
-	)
-
-
-	Declare @PGHistoryID INT=NULL
-	set @PGHistoryID=SCOPE_IDENTITY()
-
-	update T_ERP_Transaction_Master set PG_History_ID=@PGHistoryID where I_ERP_Transaction_Master_ID=@iTransactionMasterID
 
     -- Drop temporary tables
     DROP TABLE #FeeScheduleTable, #InvoiceTable, #AdhocDetailsTable, #InvoiceTaxTable, #OnAccountTaxTable;

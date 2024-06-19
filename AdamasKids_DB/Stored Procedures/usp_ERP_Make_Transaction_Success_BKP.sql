@@ -1,11 +1,12 @@
 ﻿
+
 -- =============================================
 -- Author:		<Author,,Name>
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 --exec [dbo].[usp_ERP_InitiateTransaction] 1,1,'string545','2024-05-31','Initiated','Online App_Arivoo','UPI',10475,1,32,'24-0044'
 -- =============================================
-CREATE PROCEDURE [dbo].[usp_ERP_Make_Transaction_Success]
+CREATE PROCEDURE [dbo].[usp_ERP_Make_Transaction_Success_BKP]
 	-- Add the parameters for the stored procedure here
 	@iFeeSchedule INT=NULL,
 	@iBrandID INT,
@@ -24,18 +25,7 @@ CREATE PROCEDURE [dbo].[usp_ERP_Make_Transaction_Success]
 	@SuccessXML xml=NULL,
 	@PaymentJson varchar(max)=NULL,
 	@ReceiptHeader INT=NULL,
-	@OnAccountReceiptHeader INT=NULL,
-	@SourceOfRequestType varchar(max)=NULL,
-	@RequestUserId varchar(max)=NULL,
-	@CancelledBy varchar(max)=NULL,
-	@CancelledDate datetime=NULL,
-	@ExternalReceiptNo varchar(max)=NULL,
-	@PaymentStatus varchar(max)=NULL,
-	@PgResponse varchar(max)=NULL,
-    @PgMessage varchar(max)=NULL,
-	@RequestType varchar(max)=NULL,
-	@ExecutionDate datetime=NULL,
-	@Order_Id varchar(max)=NULL
+	@OnAccountReceiptHeader INT=NULL
 	
 AS
 BEGIN
@@ -232,54 +222,6 @@ and ISNULL(TID.CanBeProcessed,'false')='true' and ISNULL(TID.IsCompleted,'false'
 			SuccessXML=@SuccessXML,PaymentJson=@PaymentJson,S_TransactionStatus=@sTransactionStatus,I_StudentDetailID=@StudentDetailID
 			,S_TransactionMode=@sTransactionMode
 			where I_ERP_TransactionNo=@sTransactionNo and ISNULL(CanBeProcessed,'false')='true' and ISNULL(IsCompleted,'false')='false'
-	
-	
-	 DECLARE @iTransactionMasterID INT=NULL
-
- select @iTransactionMasterID=I_ERP_Transaction_Master_ID from T_ERP_Transaction_Master where I_ERP_TransactionNo=@sTransactionNo
-
-
- insert into T_ERP_PG_History
-	(
-	I_Transaction_Master_ID,
-	S_Transaction_No,
-	SourceofRequestType,
-	RequestUserId,
-	PGCancelledBy,
-	PGCancelledDate,
-	ExternalReceiptNo,
-	PaymentStatus,
-	PGMessage,
-	PGResponseType,
-	PGExecutionDate,
-	PGResponseJson
-	)
-	values
-	(
-	@iTransactionMasterID,
-	@sTransactionNo,
-	@SourceOfRequestType,
-	@RequestUserId,
-	@CancelledBy,
-	@CancelledDate,
-	@ExternalReceiptNo,
-	@PaymentStatus,
-	@PgMessage,
-	@RequestType,
-	@ExecutionDate,
-	@PgResponse
-	)
-
-
-	Declare @PGHistoryID INT=NULL
-	set @PGHistoryID=SCOPE_IDENTITY()
-
-	update T_ERP_Transaction_Master set PG_History_ID=@PGHistoryID where I_ERP_Transaction_Master_ID=@iTransactionMasterID and I_ERP_TransactionNo=@sTransactionNo
-
-	
-	
-	
-	
 	END
 
 
@@ -289,9 +231,6 @@ and ISNULL(TID.CanBeProcessed,'false')='true' and ISNULL(TID.IsCompleted,'false'
  DROP TABLE #AdhocDetailsTable
  DROP TABLE #InvoiceTaxTable
  DROP TABLE #OnAccountTaxTable
-
-
-
 
 
 	select 1 StatusFlag,'Payment has been Succeed' Message
