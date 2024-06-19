@@ -41,7 +41,7 @@ BEGIN TRY
 DECLARE @FacultyID int
 DECLARE @LastUserID int
 
-	IF EXISTS(select * from T_ERP_User where S_Mobile = @sMobileNo and I_User_ID !=@UserID)
+	IF EXISTS(select * from T_ERP_User where S_Mobile = @sMobileNo and I_User_ID !=@UserID and I_Status=1)
 		BEGIN
 		SELECT 0 StatusFlag,'Duplicate mobile no ' Message
 		END
@@ -49,7 +49,7 @@ DECLARE @LastUserID int
 	ELSE IF EXISTS(select * from T_ERP_User as EU
 		inner join
 		T_User_Profile as UP on EU.I_User_ID=UP.I_User_ID
-		where UP.S_PAN=@sPAN and EU.I_User_ID !=@UserID)
+		where UP.S_PAN=@sPAN and EU.I_User_ID !=@UserID and EU.I_Status=1)
 		BEGIN
 		SELECT 0 StatusFlag,'Duplicate PAN' Message
 		END
@@ -58,7 +58,7 @@ DECLARE @LastUserID int
 		select * from T_ERP_User as EU
 		inner join
 		T_User_Profile as UP on EU.I_User_ID=UP.I_User_ID
-		where UP.S_Aadhaar=@sAadhar and UP.I_User_ID !=@UserID
+		where UP.S_Aadhaar=@sAadhar and UP.I_User_ID !=@UserID and EU.I_Status=1
 		)
 		BEGIN
 		SELECT 0 StatusFlag,'Duplicate Aadhar' Message
@@ -68,7 +68,7 @@ DECLARE @LastUserID int
 		select * from T_ERP_User as EU
 		inner join
 		T_User_Profile as UP on EU.I_User_ID=UP.I_User_ID
-		where EU.[S_Email]=@sEMail and EU.I_User_ID !=@UserID
+		where EU.[S_Email]=@sEMail and EU.I_User_ID !=@UserID and EU.I_Status=1
 		)
 		BEGIN
 		SELECT 0 StatusFlag,'Duplicate Email' Message
@@ -78,7 +78,7 @@ DECLARE @LastUserID int
 		select * from T_ERP_User as EU
 		inner join
 		T_User_Profile as UP on EU.I_User_ID=UP.I_User_ID 
-		where UP.S_EMP_Code=@sEmployeeCode and EU.I_User_ID !=@UserID
+		where UP.S_EMP_Code=@sEmployeeCode and EU.I_User_ID !=@UserID and EU.I_Status=1
 		)
 		BEGIN
 		SELECT 0 StatusFlag, 'Duplicate Employee Code' Message
@@ -88,7 +88,7 @@ DECLARE @LastUserID int
 		select * from T_ERP_User as EU
 		inner join
 		T_User_Profile as UP on EU.I_User_ID=UP.I_User_ID 
-		where EU.S_Username=@UserName and EU.I_User_ID !=@UserID
+		where EU.S_Username=@UserName and EU.I_User_ID !=@UserID and EU.I_Status=1
 		)
 		BEGIN
 		SELECT 0 StatusFlag, 'Duplicate User Name' Message

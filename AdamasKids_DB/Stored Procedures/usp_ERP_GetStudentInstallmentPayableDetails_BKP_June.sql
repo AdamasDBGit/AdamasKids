@@ -1,8 +1,9 @@
-﻿    
+﻿
+    
                     
 -- EXEC usp_ERP_GetStudentInstallmentPayableDetails 3,'24-0115'                   
                  
-CREATE  PROCEDURE [dbo].[usp_ERP_GetStudentInstallmentPayableDetails]          
+CREATE  PROCEDURE [dbo].[usp_ERP_GetStudentInstallmentPayableDetails_BKP_June]          
 (@iBrandID INT,@sStudentID varchar(max))                    
 AS                    
 BEGIN                    
@@ -451,7 +452,7 @@ select t1.*,t2.SummaryTotalPayableAmount,t2.SummaryTotalPaidAmount,t2.SummaryDue
 Into #PayableHeader1      
 from                     
 (                    
-select t1.S_Mobile_No MobileNo,ISNULL(t1.S_Student_Photo,'') ProfileImage,t1.S_Student_ID StudentID,t1.StudentName,t1.ContactNo,t1.I_Centre_ID CentreID,t1.S_Center_Name CentreName,t1.S_Course_Name_Current StudentClass,t1.S_Batch_Name_Current                    
+select t1.S_Mobile_No MobileNo,t1.S_Student_Photo ProfileImage,t1.S_Student_ID StudentID,t1.StudentName,t1.ContactNo,t1.I_Centre_ID CentreID,t1.S_Center_Name CentreName,t1.S_Course_Name_Current StudentClass,t1.S_Batch_Name_Current                    
 from #INVDET as t1                    
 group by t1.S_Mobile_No,t1.S_Student_Photo,t1.S_Student_ID,t1.StudentName,t1.ContactNo,t1.I_Centre_ID,t1.S_Center_Name,t1.S_Course_Name_Current,t1.S_Batch_Name_Current                    
 ) as t1                     
@@ -820,4 +821,4 @@ and ICCH.I_Invoice_Header_ID=p4.FeeScheduleID
                     
 --exec [SelfService].uspGetStudentOnAccDue @iBrandID,@MobileNo                    
                     
-END 
+END

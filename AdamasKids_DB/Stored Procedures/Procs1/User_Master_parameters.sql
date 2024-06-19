@@ -125,7 +125,7 @@ GROUP BY URPM.I_User_Id
 
 	--and (EUB.I_Brand_ID=ISNULL(@iBrandID,EUB.I_Brand_ID))
 	and EUB.I_Brand_ID=ISNULL(@iBrandID,EUB.I_Brand_ID)
-	and EU.I_Status=1
+	and EU.I_Status=1 and ISNULL(EU.Is_Active_Ignore_Allowed,'false') = 'false'
 	order by S_Username
 
 END  
