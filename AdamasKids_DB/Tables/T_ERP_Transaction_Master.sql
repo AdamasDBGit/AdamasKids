@@ -22,8 +22,12 @@
     [PaymentDetailsXML]                 XML            NULL,
     [PaymentJson]                       VARCHAR (MAX)  NULL,
     [SMSPaymentMode]                    INT            NULL,
-    [SuccessXML]                        XML            NULL
+    [SuccessXML]                        XML            NULL,
+    [PG_History_ID]                     INT            NULL,
+    [Order_ID]                          VARCHAR (MAX)  NULL
 );
+
+
 
 
 

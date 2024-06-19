@@ -1,4 +1,11 @@
-﻿CREATE PROCEDURE [dbo].[usp_GetFullEnquiryDetails]
+﻿-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- exec [usp_GetFullEnquiryDetails] 235019
+-- 
+-- =============================================
+CREATE PROCEDURE [dbo].[usp_GetFullEnquiryDetails]
 (
 	@iEnquiryRegnID int  
 )
@@ -77,11 +84,13 @@ BEGIN
 	 TEERD.PreEnquiryDate,  
 	 TEERD.S_Enquiry_No,
 	 TESFSCM.R_I_Fee_Structure_ID FeeStructureID,
-	 ISNULL(TEERD.I_Tab_No,0) I_Tab_No
+	 ISNULL(TEERD.I_Tab_No,0) I_Tab_No,
+	 SD.S_Student_ID as StudentInfoID
 	 FROM T_Enquiry_Regn_Detail TEERD 
+	 LEFT JOIN T_Student_Detail SD ON SD.I_Enquiry_Regn_ID = TEERD.I_Enquiry_Regn_ID
 	 LEFT JOIN 
 	 T_ERP_Stud_Fee_Struct_Comp_Mapping TESFSCM ON TESFSCM.R_I_Enquiry_Regn_ID = TEERD.I_Enquiry_Regn_ID
-	 WHERE I_Enquiry_Regn_ID = @iEnquiryRegnID;
+	 WHERE TEERD.I_Enquiry_Regn_ID = @iEnquiryRegnID;
 
 
 	  SELECT   

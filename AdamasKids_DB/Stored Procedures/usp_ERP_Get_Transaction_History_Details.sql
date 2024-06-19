@@ -1,16 +1,14 @@
-﻿-- =============================================
+﻿
+-- =============================================
 -- Author:		<Susmita Paul>
 -- Create date: <2024-June-05>
 -- Description:	<Get Transaction History>
 -- =============================================
-CREATE PROCEDURE [dbo].[usp_ERP_Get_Transaction_History]
+CREATE PROCEDURE [dbo].[usp_ERP_Get_Transaction_History_Details]
 	-- Add the parameters for the stored procedure here
-	@sStudentID varchar(max)=NULL,
-	@dtValidFrom datetime =NULL,
-	@dtValidTo datetime= NULL,
-	@BrandID INT=NULL,
-	@receiptNo int=NULL,
-	@iPaymentStatusID int=NULL
+	
+	@receiptHeaderID int=NULL,
+	@transactionNo varchar(max)=NULL
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -69,6 +67,10 @@ FROM dbo.usp_ERP_GetTransactionStatus(NULL, NULL)
 
 ------------- OffLine + Online --------------
 
+
+
+IF @receiptHeaderID IS NOT NULL
+BEGIN
 INSERT INTO #Transaction_History
 (
     StudentID,
@@ -155,7 +157,7 @@ INNER JOIN
 INNER JOIN 
     dbo.T_Brand_Center_Details AS BCD WITH (NOLOCK) ON CEM.I_Centre_Id = BCD.I_Centre_Id
 INNER JOIN 
-    dbo.T_Brand_Master AS BM WITH (NOLOCK) ON BCD.I_Brand_ID = BM.I_Brand_ID AND BM.I_Brand_ID = ISNULL(@BrandID, BM.I_Brand_ID)
+    dbo.T_Brand_Master AS BM WITH (NOLOCK) ON BCD.I_Brand_ID = BM.I_Brand_ID --AND BM.I_Brand_ID = ISNULL(@BrandID, BM.I_Brand_ID)
 INNER JOIN 
     dbo.T_Student_Detail AS SD WITH (NOLOCK) ON RH.I_Student_Detail_ID = SD.I_Student_Detail_ID OR RH.I_Enquiry_Regn_ID=SD.I_Enquiry_Regn_ID
 LEFT JOIN 
@@ -165,13 +167,10 @@ LEFT JOIN
 LEFT JOIN 
     T_ERP_Transaction_Master AS TM ON TM.I_ERP_Transaction_Master_ID = TID.I_ERP_Transaction_Master_ID
 WHERE 
-    SD.S_Student_ID = ISNULL(@sStudentID, SD.S_Student_ID)
-    AND (
-        CONVERT(DATE, RH.Dt_Receipt_Date) BETWEEN CONVERT(DATE, @dtValidFrom) AND CONVERT(DATE, @dtValidTo)
-        OR CONVERT(DATE, TM.Dt_TransactionDate) BETWEEN CONVERT(DATE, @dtValidFrom) AND CONVERT(DATE, @dtValidTo)
-    )
-UNION
--- Failed Transactions ---
+   RH.I_Receipt_Header_ID=@receiptHeaderID
+   END
+ELSE IF @receiptHeaderID IS NULL AND @transactionNo IS NOT NULL
+   BEGIN
 SELECT 
     DISTINCT
     SD.S_Student_ID,
@@ -223,39 +222,9 @@ INNER JOIN
     T_Student_Detail AS SD ON SD.I_Student_Detail_ID = TIP.I_Student_Detail_ID
 WHERE 
     TID.ReceiptHeaderID IS NULL 
-    AND SD.S_Student_ID = ISNULL(@sStudentID, SD.S_Student_ID)
-    AND (
-        CONVERT(DATE, TM.Dt_TransactionDate) BETWEEN CONVERT(DATE, @dtValidFrom) AND CONVERT(DATE, @dtValidTo)
-    );
+   AND TM.I_ERP_TransactionNo=@transactionNo
 	
-
-	
---	DECLARE @PaymentStatusTable TABLE 
---(
---	PaymentStatusID INT,
---    StatusDescription VARCHAR(255),
---    StatusColour VARCHAR(255)
---);
-
----- Step 2: Insert the function result into the table variable
---INSERT INTO @PaymentStatusTable
---SELECT 1,* 
---FROM dbo.usp_ERP_GetTransactionStatus(1, NULL)
---union
---SELECT 2,* 
---FROM dbo.usp_ERP_GetTransactionStatus(2, NULL)
---union
---SELECT 3,* 
---FROM dbo.usp_ERP_GetTransactionStatus(3, NULL)
---union 
---SELECT 4,* 
---FROM dbo.usp_ERP_GetTransactionStatus(4, NULL);
-
-	
-	--select * from @PaymentStatusTable
-
-	--select * from #Transaction_History
-
+END
 	select 
 	TH.*,
 	ExternalStatus.StatusDescription,
@@ -264,7 +233,6 @@ WHERE
 	#Transaction_History as TH
 	LEFT join
 	@PaymentStatusTable as ExternalStatus on TH.PaymentStatus=ExternalStatus.PaymentStatusID
-	where TH.PaymentStatus=ISNULL(@iPaymentStatusID,TH.PaymentStatus) and  TH.ReceiptNo=ISNULL(@receiptNo,TH.ReceiptNo)
 
 
 
