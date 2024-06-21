@@ -1,4 +1,5 @@
-﻿--EXEC USP_ERP_Dash_Fee_Status 107,35  
+﻿
+--EXEC USP_ERP_Dash_Fee_Status 1,1  
 CREATE Proc [dbo].[USP_ERP_Dash_Fee_Status](    
 @brandID int,  
 @SessionID int  
@@ -17,7 +18,8 @@ DECLARE @SessionInv TABLE
 Declare @FYStartdt date,@FYEndDt date  
 select @FYStartdt=Convert(date,Dt_Session_Start_Date)  
 ,@FYEndDt=Convert(date,Dt_Session_End_Date)  
-from T_School_Academic_Session_Master where I_School_Session_ID=@SessionID  
+from T_School_Academic_Session_Master 
+where I_School_Session_ID=@SessionID  
   
 Insert Into @SessionInv(Inv_HeaderID,N_Amount,Inv_Dt)  
 select INVP.I_Invoice_Header_ID,INVP.N_Invoice_Amount,convert(date,INVP.Dt_Invoice_Date )     
@@ -39,7 +41,7 @@ Declare @ReceiptAMt Numeric(18,2)  ,@TodaysReceiptamt Numeric(18,2)
 Select @ReceiptAMt=SUM(N_Receipt_Amount)  from T_Receipt_Header RH    
 Inner Join T_Brand_Center_Details BCD on BCD.I_Centre_Id=RH.I_Centre_Id    
 Inner Join @SessionInv DT on DT.Inv_HeaderID=RH.I_Invoice_Header_ID  
-where BCD.I_Brand_ID=@brandID   
+where BCD.I_Brand_ID=@brandID and RH.I_Receipt_Type=2  
 --and convert(date,Dt_Receipt_Date)=CONVERT(date,Getdate())   
   
 Select @TodaysReceiptamt=ISNULL(SUM(N_Receipt_Amount),0)    
