@@ -5,6 +5,9 @@
     [I_Status]            INT            NOT NULL,
     [S_CreatedBy]         NVARCHAR (50)  NULL,
     [Dt_CreatedOn]        DATETIME       NULL,
-    [Dt_UpdatedOn]        DATETIME       NULL
+    [Dt_UpdatedOn]        DATETIME       NULL,
+    [S_Image_Icon]        VARCHAR (100)  NULL
 );
+
+
 
