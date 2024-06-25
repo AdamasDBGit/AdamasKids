@@ -19,6 +19,15 @@ BEGIN
 	insert into T_ERP_Request_Log
 	select @MobileNo,@sToken,@Source,@InvokedRoute,@InvokedMethod,@UniqueAttributeName,@UniqueAttributeValue,@RequestParameters,@RequestResult,@ErrorMessage,GETDATE()
 
-	select SCOPE_IDENTITY() as NewRow
+	DECLARE @NewRow INT
+
+	set @NewRow = SCOPE_IDENTITY() 
+
+	IF @UniqueAttributeName like '%transaction%'
+	BEGIN
+	update T_ERP_Transaction_Master set RequestLogID=@NewRow where I_ERP_TransactionNo=@UniqueAttributeValue
+	END
+
+	select @NewRow as NewRow
 
 END
