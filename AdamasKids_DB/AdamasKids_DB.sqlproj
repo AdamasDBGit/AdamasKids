@@ -3927,12 +3927,6 @@
     <Build Include="Stored Procedures\USP_ERP_AuthorizationBinding_UserWise_BKP_June_2024.sql" />
   </ItemGroup>
   <ItemGroup>
-    <PostDeploy Include="Data_Scripts\D_Scripts.sql" />
-  </ItemGroup>
-  <ItemGroup>
     <RefactorLog Include="AdamasKids_DB.refactorlog" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Data_Scripts\Role_Permission.sql" />
   </ItemGroup>
 </Project>
