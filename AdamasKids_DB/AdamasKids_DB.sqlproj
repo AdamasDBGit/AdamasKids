@@ -1411,7 +1411,6 @@
     <Build Include="Stored Procedures\Procs1\usp_ERP_AddPreEnquiry.sql" />
     <Build Include="Stored Procedures\Procs1\usp_ERP_AddRoutineDetails.sql" />
     <Build Include="Stored Procedures\Procs1\usp_ERP_AddSession.sql" />
-    <Build Include="Stored Procedures\Procs1\usp_ERP_AddStatusMaster.sql" />
     <Build Include="Stored Procedures\Procs1\usp_ERP_AddSubjectTemplate.sql" />
     <Build Include="Stored Procedures\Procs1\usp_ERP_AddSubjectTemplateDetails.sql" />
     <Build Include="Stored Procedures\Procs1\usp_ERP_AdminLoginInformation.sql" />
