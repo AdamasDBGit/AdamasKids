@@ -3924,6 +3924,7 @@
     <Build Include="Stored Procedures\usp_ERP_GetStudentInstallmentPayableDetails_BKP_June.sql" />
     <Build Include="Stored Procedures\USP_ERP_AuthorizationBinding_UserWise_BKP_June_2024.sql" />
     <Build Include="Stored Procedures\Procs3\usp_ERP_AddStatusMaster.sql" />
+    <Build Include="Stored Procedures\usp_ERP_Save_Request_Log_BKP.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="AdamasKids_DB.refactorlog" />

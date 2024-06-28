@@ -20,14 +20,13 @@ BEGIN
 
 	if(@StatusID>0)
 	BEGIN
-	if exists (select * from T_Status_Master where S_Status_Desc = @StatusDesc and I_Status_Id != @StatusID 
-	and S_Status_Desc_SMS = @StatusDesc)
+	if exists (select * from T_Status_Master where S_Status_Desc = @StatusDesc and I_Status_Id != @StatusID and S_Status_Desc_SMS = @StatusDesc)
 	BEGIN
 	SELECT 0 StatusFlag,'Duplicate Status Master' Message
 	END
 	ELSE
 	BEGIN
-	update [T_Status_Master] 
+	update [SMS].[dbo].[T_Status_Master] 
 	set 
 	[S_Status_Desc]					= @StatusDesc,
 	[S_Status_Type]					= 'ReceiptType',
