@@ -26,7 +26,7 @@ BEGIN
 	END
 	ELSE
 	BEGIN
-	update [SMS].[dbo].[T_Status_Master] 
+	update [T_Status_Master] 
 	set 
 	[S_Status_Desc]					= @StatusDesc,
 	[S_Status_Type]					= 'ReceiptType',

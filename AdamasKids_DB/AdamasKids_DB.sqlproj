@@ -68,7 +68,6 @@
     <Folder Include="Database Triggers\" />
     <Folder Include="User Defined Types\" />
     <Folder Include="Schema" />
-    <Folder Include="Data_Scripts" />
     <Folder Include="Security\" />
   </ItemGroup>
   <ItemGroup>
@@ -1412,7 +1411,6 @@
     <Build Include="Stored Procedures\Procs1\usp_ERP_AddPreEnquiry.sql" />
     <Build Include="Stored Procedures\Procs1\usp_ERP_AddRoutineDetails.sql" />
     <Build Include="Stored Procedures\Procs1\usp_ERP_AddSession.sql" />
-    <Build Include="Stored Procedures\Procs1\usp_ERP_AddStatusMaster.sql" />
     <Build Include="Stored Procedures\Procs1\usp_ERP_AddSubjectTemplate.sql" />
     <Build Include="Stored Procedures\Procs1\usp_ERP_AddSubjectTemplateDetails.sql" />
     <Build Include="Stored Procedures\Procs1\usp_ERP_AdminLoginInformation.sql" />
@@ -3925,6 +3923,11 @@
     <Build Include="Stored Procedures\uspInsertUpdateDeleteUser_Bak_19062024.sql" />
     <Build Include="Stored Procedures\usp_ERP_GetStudentInstallmentPayableDetails_BKP_June.sql" />
     <Build Include="Stored Procedures\USP_ERP_AuthorizationBinding_UserWise_BKP_June_2024.sql" />
+<<<<<<< HEAD
+=======
+    <Build Include="Stored Procedures\Procs3\usp_ERP_AddStatusMaster.sql" />
+    <Build Include="Stored Procedures\usp_ERP_Save_Request_Log_BKP.sql" />
+>>>>>>> SMS_Adamas_Kids
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="AdamasKids_DB.refactorlog" />
