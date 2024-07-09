@@ -3,7 +3,7 @@
 -- Create date: <Create Date,,>  
 -- Description: <Description,,>  
 -- =============================================  
-CREATE PROCEDURE ERP_uspGetGST_Item_Category  
+create PROCEDURE [dbo].[ERP_uspGetGST_Item_Category_bak_0407]  
  -- Add the parameters for the stored procedure here  
  (  
   @I_Brand_Id int  
