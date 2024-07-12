@@ -6,7 +6,11 @@
     [Dt_Crtd_On]       DATETIME     NULL,
     [S_Updt_By]        VARCHAR (50) NULL,
     [Dt_Updt_On]       DATETIME     NULL,
+    [start_latitude]   VARCHAR (50) NULL,
+    [start_longitude]  VARCHAR (50) NULL,
     CONSTRAINT [FK_T_Route_Transport_Map_T_BusRoute_Master] FOREIGN KEY ([I_Route_ID]) REFERENCES [dbo].[T_BusRoute_Master] ([I_Route_ID]),
     CONSTRAINT [FK_T_Route_Transport_Map_T_Transport_Master] FOREIGN KEY ([I_PickupPoint_ID]) REFERENCES [dbo].[T_Transport_Master] ([I_PickupPoint_ID])
 );
+
+
 
