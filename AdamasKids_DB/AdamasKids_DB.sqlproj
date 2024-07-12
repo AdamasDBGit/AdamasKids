@@ -68,7 +68,6 @@
     <Folder Include="Database Triggers\" />
     <Folder Include="User Defined Types\" />
     <Folder Include="Schema" />
-    <Folder Include="Data_Scripts" />
     <Folder Include="Security\" />
   </ItemGroup>
   <ItemGroup>
@@ -1412,7 +1411,6 @@
     <Build Include="Stored Procedures\Procs1\usp_ERP_AddPreEnquiry.sql" />
     <Build Include="Stored Procedures\Procs1\usp_ERP_AddRoutineDetails.sql" />
     <Build Include="Stored Procedures\Procs1\usp_ERP_AddSession.sql" />
-    <Build Include="Stored Procedures\Procs1\usp_ERP_AddStatusMaster.sql" />
     <Build Include="Stored Procedures\Procs1\usp_ERP_AddSubjectTemplate.sql" />
     <Build Include="Stored Procedures\Procs1\usp_ERP_AddSubjectTemplateDetails.sql" />
     <Build Include="Stored Procedures\Procs1\usp_ERP_AdminLoginInformation.sql" />
@@ -3925,14 +3923,18 @@
     <Build Include="Stored Procedures\uspInsertUpdateDeleteUser_Bak_19062024.sql" />
     <Build Include="Stored Procedures\usp_ERP_GetStudentInstallmentPayableDetails_BKP_June.sql" />
     <Build Include="Stored Procedures\USP_ERP_AuthorizationBinding_UserWise_BKP_June_2024.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <PostDeploy Include="Data_Scripts\D_Scripts.sql" />
+    <Build Include="Stored Procedures\Procs3\usp_ERP_AddStatusMaster.sql" />
+    <Build Include="Stored Procedures\usp_ERP_Save_Request_Log_BKP.sql" />
+    <Build Include="Stored Procedures\ERP_uspPreviewTaxComponent_0407.sql" />
+    <Build Include="Stored Procedures\ERP_uspGetGST_Item_Category_bak_0407.sql" />
+    <Build Include="Stored Procedures\ERP_get_FEE_Structure_GST_Generation_bak_0407.sql" />
+    <Build Include="Stored Procedures\ERP_FEE_GST_Generation_bak_0407.sql" />
+    <Build Include="Stored Procedures\usp_ERP_SaveTransactionCronJob.sql" />
+    <Build Include="Stored Procedures\usp_ERP_GetInvoiceDetail.sql" />
+    <Build Include="Stored Procedures\Usp_ERP_DefaultGSTMAP_Comp.sql" />
+    <Build Include="Stored Procedures\GetERPTransactionRequeryCronJob.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="AdamasKids_DB.refactorlog" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Data_Scripts\Role_Permission.sql" />
   </ItemGroup>
 </Project>

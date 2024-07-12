@@ -25,8 +25,11 @@
     [I_FineTagID]           INT             NULL,
     [is_Fine_Applicable]    BIT             NULL,
     [Is_Fine_waiveroff]     BIT             DEFAULT ((0)) NULL,
+    [N_ERP_Discount_Amount] DECIMAL (18, 2) NULL,
     CONSTRAINT [PK__T_Invoice_Parent__6BAFC5BE] PRIMARY KEY CLUSTERED ([I_Invoice_Header_ID] ASC)
 );
+
+
 
 
 
