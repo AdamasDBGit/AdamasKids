@@ -4,7 +4,7 @@
 -- Create date: <2024-Jan-20>      
 -- Description: <to get Fee components Master from Old to new>      
     
--- exec [dbo].[usp_ERP_GetFeeComponent_Master] null, 107, null, null    
+-- exec [dbo].[usp_ERP_GetFeeComponent_Master] 1149, 107, null, null    
 -- =============================================      
       
 CREATE PROCEDURE [dbo].[usp_ERP_GetFeeComponent_Master]      
@@ -83,7 +83,7 @@ FROM
     LEFT JOIN     
         T_Tax_Country_Fee_Component AS TTCFC ON a.I_Fee_Component_ID = TTCFC.I_Fee_Component_ID    
     WHERE       
-        A.I_Status = 1     
+        A.I_Status <> 0     
         AND A.I_Brand_ID = @iBrand     
         AND a.I_Fee_Component_ID = ISNULL(@FeeHeadId, a.I_Fee_Component_ID)    
         AND A.I_Fee_Component_Type_ID = ISNULL(@sFeeComponentTypeID, A.I_Fee_Component_Type_ID)      
@@ -91,8 +91,7 @@ FROM
 WHERE    
     RowNum = 1    
 ORDER BY     
-    FeeComponentCode,      
-    FeeComponent;    
+    FeeHeadID desc   
     
       
   --SELECT a.I_Fee_Component_ID FeeHeadID ,      
