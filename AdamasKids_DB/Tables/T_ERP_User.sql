@@ -17,8 +17,11 @@
     [Is_Teaching_Staff]        BIT            NULL,
     [Is_Non_Teaching_Staff]    BIT            NULL,
     [S_FireBase_Token]         NVARCHAR (500) NULL,
-    [Is_Active_Ignore_Allowed] BIT            NULL
+    [Is_Active_Ignore_Allowed] BIT            NULL,
+    [isPasswordChanged]        BIT            DEFAULT ((0)) NULL
 );
+
+
 
 
 
