@@ -3935,6 +3935,10 @@
     <Build Include="Stored Procedures\GetERPTransactionRequeryCronJob.sql" />
     <Build Include="Stored Procedures\usp_ERP_UpdatePassword.sql" />
     <Build Include="Stored Procedures\USP_ERP_Replica_Role_Permission_Brandwise.sql" />
+    <Build Include="Tables\T_ERP_Transaction_Requery_Cron_Job.sql" />
+    <Build Include="Tables\T_ERP_GST_Category_Component.sql" />
+    <Build Include="Stored Procedures\uspGetAllTeacherEventList.sql" />
+    <Build Include="Stored Procedures\usp_ERP_GetProfileDetails.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="AdamasKids_DB.refactorlog" />
