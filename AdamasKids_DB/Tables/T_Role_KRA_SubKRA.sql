@@ -10,16 +10,16 @@
     [S_Upd_By]             VARCHAR (20) NULL,
     [Dt_Crtd_On]           DATETIME     NULL,
     [Dt_Upd_On]            DATETIME     NULL,
-    CONSTRAINT [PK__T_Role_KRA_SubKR__7FD78553] PRIMARY KEY CLUSTERED ([I_Role_KRA_SubKRA_ID] ASC),
-    CONSTRAINT [FK__T_Role_KR__I_Bra__086CCB54] FOREIGN KEY ([I_Brand_ID]) REFERENCES [dbo].[T_Brand_Master] ([I_Brand_ID]),
-    CONSTRAINT [FK__T_Role_KR__I_Rol__068482E2] FOREIGN KEY ([I_Role_ID]) REFERENCES [dbo].[T_Role_Master] ([I_Role_ID])
+    CONSTRAINT [PK__T_Role_KRA_SubKR__7FD78553] PRIMARY KEY CLUSTERED ([I_Role_KRA_SubKRA_ID] ASC)
 );
 
 
-GO
-ALTER TABLE [EOS].[T_Role_KRA_SubKRA] NOCHECK CONSTRAINT [FK__T_Role_KR__I_Bra__086CCB54];
 
 
 GO
-ALTER TABLE [EOS].[T_Role_KRA_SubKRA] NOCHECK CONSTRAINT [FK__T_Role_KR__I_Rol__068482E2];
+
+
+
+GO
+
 

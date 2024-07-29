@@ -1,4 +1,4 @@
-﻿Create Proc USP_ERP_Cancel_Fee_Installment(
+﻿CREATE Proc [dbo].[USP_ERP_Cancel_Fee_Installment](
 @Enquiry_Regn_ID Bigint,
 @School_Session_ID Int,
 @Brand_ID Int

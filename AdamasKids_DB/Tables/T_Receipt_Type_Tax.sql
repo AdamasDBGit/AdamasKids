@@ -11,8 +11,8 @@
     [S_Upd_By]                    VARCHAR (20)    NULL,
     [Dt_Crtd_On]                  DATETIME        NULL,
     [Dt_Upd_On]                   DATETIME        NULL,
-    CONSTRAINT [PK_T_Receipt_Type_Tax] PRIMARY KEY CLUSTERED ([I_Center_ReceiptType_Tax_ID] ASC),
-    CONSTRAINT [FK_T_Receipt_Type_Tax_T_Centre_Master] FOREIGN KEY ([I_Centre_Id]) REFERENCES [dbo].[T_Centre_Master] ([I_Centre_Id]),
-    CONSTRAINT [FK_T_Receipt_Type_Tax_T_Tax_Master] FOREIGN KEY ([I_Tax_ID]) REFERENCES [dbo].[T_Tax_Master] ([I_Tax_ID])
+    CONSTRAINT [PK_T_Receipt_Type_Tax] PRIMARY KEY CLUSTERED ([I_Center_ReceiptType_Tax_ID] ASC)
 );
+
+
 

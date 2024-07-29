@@ -1,4 +1,6 @@
-﻿-- =============================================
+﻿
+
+-- =============================================
 -- Author:		<Susmita Paul>
 -- Create date: <2024-June-07>
 -- Description:	<Cancle External Transactions and Unfreezing>
@@ -18,7 +20,18 @@ CREATE PROCEDURE [dbo].[usp_ERP_CancleInitiatedFailedTransaction]
 	@sStudentID varchar(max),
 	@XmlData XML='<Root></Root/>',
 	@PaymentJson varchar(max)=NULL,
-	@SMobileNo varchar(20)=NULL
+	@SMobileNo varchar(20)=NULL,
+	@SourceOfRequestType varchar(max)=NULL,
+	@RequestUserId varchar(max)=NULL,
+	@CancelledBy varchar(max)=NULL,
+	@CancelledDate datetime=NULL,
+	@ExternalReceiptNo varchar(max)=NULL,
+	@PaymentStatus varchar(max)=NULL,
+	@PgResponse varchar(max)=NULL,
+    @PgMessage varchar(max)=NULL,
+	@RequestType varchar(max)=NULL,
+	@ExecutionDate datetime=NULL,
+	@Order_Id varchar(max)=NULL
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -200,12 +213,93 @@ BEGIN
 					inner join #InvoiceTable IT on ICD.I_Invoice_Detail_ID=IT.InvoiceDetailID
 
 
+					 DECLARE @iTransactionMasterID INT=NULL
+
+ select @iTransactionMasterID=I_ERP_Transaction_Master_ID from T_ERP_Transaction_Master where I_ERP_TransactionNo=@sTransactionNo
+
+
+ insert into T_ERP_PG_History
+	(
+	I_Transaction_Master_ID,
+	S_Transaction_No,
+	SourceofRequestType,
+	RequestUserId,
+	PGCancelledBy,
+	PGCancelledDate,
+	ExternalReceiptNo,
+	PaymentStatus,
+	PGMessage,
+	PGResponseType,
+	PGExecutionDate,
+	PGResponseJson,
+	Dt_CreatedAt
+	)
+	values
+	(
+	@iTransactionMasterID,
+	@sTransactionNo,
+	@SourceOfRequestType,
+	@RequestUserId,
+	@CancelledBy,
+	@CancelledDate,
+	@ExternalReceiptNo,
+	@PaymentStatus,
+	@PgMessage,
+	@RequestType,
+	@ExecutionDate,
+	@PgResponse,
+	GETDATE()
+	)
+
+
+	Declare @PGHistoryID INT=NULL
+	set @PGHistoryID=SCOPE_IDENTITY()
+
+	update T_ERP_Transaction_Master set PG_History_ID=@PGHistoryID where I_ERP_Transaction_Master_ID=@iTransactionMasterID and I_ERP_TransactionNo=@sTransactionNo
+
+	
+	
+
 
 					-- Drop temporary tables
 					DROP TABLE #FeeScheduleTable, #InvoiceTable, #AdhocDetailsTable, #InvoiceTaxTable, #OnAccountTaxTable;
 
+					DECLARE @IsFromCron bit='false'
 
-					select 1 StatusFlag,'Payment has been failed' Message
+					
+
+					IF @SourceOfRequestType != 'System_Processed'
+					
+					BEGIN
+
+
+						exec [dbo].[usp_ERP_SaveTransactionCronJob] 
+						@sTransactionNo,
+						@iTransactionMasterID,
+						@sTransactionStatus,
+						'true',--@CompleteStatus bit=NULL,
+						'false',--@CronCanBeProcess bit=NULL,
+						NULL,--@NoOfAttempt int=NULL,
+						NULL,--@StatusID bit = NULL,
+						NULL,--@Is_PG_Success bit=NULL,
+						NULL,--@Is_PG_Failure bit=NULL,
+						NULL,--@Is_Failed_User bit =NULL,
+						@PGHistoryID,--@Requery_PG_LogID int=NULL,
+						NULL,--@Requery_Request_LogID int=NULL,
+						NULL,--@PG_Response varchar(max)=NULL,
+						NULL,--@ERP_Response varchar(max)=NULL,
+						NULL,--@PG_Remarks varchar(max)=NULL,
+						NULL,--@ERP_Remarks varchar(max)=NULL,
+						NULL,--@PG_Error varchar(max)=NULL,
+						NULL,--@ERP_Error varchar(max)=NULL,
+						NULL,--@CanbeProcessForERPSattlement BIT=NULL,
+						'false'--@IsFromCron bit
+
+
+					END
+					
+
+					select 1 StatusFlag,'Payment has failed' Message
 
 					--exec [dbo].[usp_ERP_InitiateTransaction] 1,1,'string545','2024-05-31','Initiated','Online App_Arivoo','UPI',10475,1,32,'24-0044'
 
@@ -214,16 +308,16 @@ BEGIN
 	ELSE IF not exists(select * from T_ERP_Transaction_Master where I_ERP_TransactionNo=@sTransactionNo and I_StatusID=1)
 	BEGIN
 
-		RAISERROR('Transaction No Not Exsits',11,1)
+		RAISERROR('Transaction number does not exist',11,1)
 
 	END
 	ELSE IF exists(select * from T_ERP_Transaction_Master where I_ERP_TransactionNo=@sTransactionNo and S_TransactionStatus='Success'  and I_StatusID=1)
 	BEGIN
-		RAISERROR('Transaction already been Succeed',11,1)
+		RAISERROR('Transaction has already succeeded',11,1)
 	END
 	ELSE IF exists(select * from T_ERP_Transaction_Master where I_ERP_TransactionNo=@sTransactionNo and S_TransactionStatus='Failure'  and I_StatusID=1)
 	BEGIN
-		RAISERROR('Transaction already been Failed',11,1)
+		RAISERROR('Transaction has already failed',11,1)
 	END
 
 	COMMIT;

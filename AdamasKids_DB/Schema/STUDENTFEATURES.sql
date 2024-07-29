@@ -1,1 +1,8 @@
 ﻿CREATE SCHEMA [STUDENTFEATURES]
+    AUTHORIZATION [dbo];
+
+
+
+
+
+

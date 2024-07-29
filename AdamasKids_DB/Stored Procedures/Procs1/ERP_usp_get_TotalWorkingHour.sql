@@ -1,5 +1,5 @@
 ﻿--EXEC ERP_usp_get_TotalWorkingHour 107,2  
-CREATE Proc ERP_usp_get_TotalWorkingHour
+CREATE Proc [dbo].[ERP_usp_get_TotalWorkingHour]
 (
     @BrandID int,
     @SessionID int

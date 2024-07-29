@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE RoleMenuPermissionMapping 
+﻿CREATE PROCEDURE [dbo].[RoleMenuPermissionMapping] 
 -- =============================================
      -- Author:	Tridip Chatterjee
 -- Create date: 26-09-2023

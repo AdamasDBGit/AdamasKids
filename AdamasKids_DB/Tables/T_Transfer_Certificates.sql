@@ -10,13 +10,14 @@
     [S_Upd_By]               VARCHAR (20)  NULL,
     [Dt_Crtd_On]             DATETIME      NULL,
     [Dt_Upd_On]              DATETIME      NULL,
-    CONSTRAINT [PK_T_Transfer_Certificates] PRIMARY KEY CLUSTERED ([I_Transfer_Cert_Req_ID] ASC),
-    CONSTRAINT [FK_T_Transfer_Certificates_T_Student_Detail] FOREIGN KEY ([I_Student_Detail_ID]) REFERENCES [dbo].[T_Student_Detail] ([I_Student_Detail_ID])
+    CONSTRAINT [PK_T_Transfer_Certificates] PRIMARY KEY CLUSTERED ([I_Transfer_Cert_Req_ID] ASC)
 );
 
 
+
+
 GO
-ALTER TABLE [dbo].[T_Transfer_Certificates] NOCHECK CONSTRAINT [FK_T_Transfer_Certificates_T_Student_Detail];
+
 
 
 GO

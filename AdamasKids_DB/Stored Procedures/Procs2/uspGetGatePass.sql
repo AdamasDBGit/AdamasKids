@@ -30,7 +30,7 @@ SELECT TGPR.[I_Gate_Pass_Request_ID] GatePassRequestID
 	  ,'http://111.93.179.197/SMSAPI/app-images/'+TPM.S_Profile_Picture guardianProfileImage
 	  ,'http://111.93.179.197/SMS/Upload/'+TERD.S_Student_Photo studentProfileImage
 	  ,ISNULL(I_Is_Completed,0) IsCompleted
-FROM [SMS].[dbo].[T_Gate_Pass_Request] TGPR inner join T_Student_Detail SD ON TGPR.S_Student_ID = SD.S_Student_ID
+FROM [dbo].[T_Gate_Pass_Request] TGPR inner join T_Student_Detail SD ON TGPR.S_Student_ID = SD.S_Student_ID
 inner join T_Parent_Master TPM ON TPM.I_Parent_Master_ID = TGPR.I_Parent_Master_ID
 inner join T_Relation_Master TRM ON TPM.I_Relation_ID = TRM.I_Relation_Master_ID
 inner join T_Enquiry_Regn_Detail TERD ON SD.I_Enquiry_Regn_ID = TERD.I_Enquiry_Regn_ID

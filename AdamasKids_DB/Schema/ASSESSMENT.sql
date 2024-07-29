@@ -1,1 +1,8 @@
 ﻿CREATE SCHEMA [ASSESSMENT]
+    AUTHORIZATION [dbo];
+
+
+
+
+
+

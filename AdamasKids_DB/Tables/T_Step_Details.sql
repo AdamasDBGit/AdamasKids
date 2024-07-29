@@ -14,8 +14,8 @@
     [Dt_Crtd_On]              DATETIME        NULL,
     [S_Updt_By]               VARCHAR (20)    NULL,
     [Dt_Updt_On]              DATETIME        NULL,
-    CONSTRAINT [PK_T_Rule_Step_Details] PRIMARY KEY CLUSTERED ([I_Step_ID] ASC),
-    CONSTRAINT [FK_T_Step_Details_T_Evaluation_Master] FOREIGN KEY ([I_EvaluationCriteria_ID]) REFERENCES [ASSESSMENT].[T_Evaluation_Master] ([I_EvaluationID]),
-    CONSTRAINT [FK_T_Step_Details_T_Parameter_Master] FOREIGN KEY ([I_Parameter_ID]) REFERENCES [ASSESSMENT].[T_Parameter_Master] ([I_ParameterID])
+    CONSTRAINT [PK_T_Rule_Step_Details] PRIMARY KEY CLUSTERED ([I_Step_ID] ASC)
 );
+
+
 

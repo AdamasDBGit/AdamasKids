@@ -26,7 +26,7 @@ BEGIN
  END        
  ELSE      
  BEGIN      
- update [SMS].[dbo].T_Stream        
+ update [dbo].T_Stream        
  set       
  [S_Stream]     = @sStreamName,        
  [I_Status]      = @iStreamStatus  
@@ -45,7 +45,7 @@ BEGIN
  END         
  ELSE      
  BEGIN      
- INSERT INTO [SMS].[dbo].T_Stream      
+ INSERT INTO [dbo].T_Stream      
 (      
 [S_Stream],      
 [I_Status],  

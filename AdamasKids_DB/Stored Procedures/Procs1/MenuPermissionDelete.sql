@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE MenuPermissionDelete 
+﻿CREATE PROCEDURE [dbo].[MenuPermissionDelete] 
 -- =============================================
      -- Author:	Tridip Chatterjee
 -- Create date:  22-09-2023 

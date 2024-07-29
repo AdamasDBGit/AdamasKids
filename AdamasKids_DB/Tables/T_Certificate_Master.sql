@@ -10,16 +10,16 @@
     [S_Upd_By]                  VARCHAR (20)  NULL,
     [Dt_Crtd_On]                DATETIME      NULL,
     [Dt_Upd_On]                 DATETIME      NULL,
-    CONSTRAINT [PK__T_Certificate_Ma__1B93E30A] PRIMARY KEY CLUSTERED ([I_Certificate_ID] ASC),
-    CONSTRAINT [FK__T_Certifi__I_Bra__022916C2] FOREIGN KEY ([I_Brand_ID]) REFERENCES [dbo].[T_Brand_Master] ([I_Brand_ID]),
-    CONSTRAINT [FK_T_Certificate_Master_T_Template_Master] FOREIGN KEY ([I_Template_ID]) REFERENCES [dbo].[T_Template_Master] ([I_Template_ID])
+    CONSTRAINT [PK__T_Certificate_Ma__1B93E30A] PRIMARY KEY CLUSTERED ([I_Certificate_ID] ASC)
 );
 
 
-GO
-ALTER TABLE [dbo].[T_Certificate_Master] NOCHECK CONSTRAINT [FK__T_Certifi__I_Bra__022916C2];
 
 
 GO
-ALTER TABLE [dbo].[T_Certificate_Master] NOCHECK CONSTRAINT [FK_T_Certificate_Master_T_Template_Master];
+
+
+
+GO
+
 

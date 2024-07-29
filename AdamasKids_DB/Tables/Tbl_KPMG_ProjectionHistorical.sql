@@ -6,7 +6,8 @@
     [Fld_KPMG_Branch_Id]    INT NOT NULL,
     [Fld_KPMG_Course_Id]    INT NOT NULL,
     [Fld_KPMG_BufferStock]  INT NULL,
-    CONSTRAINT [pk_Tbl_KPMG_ProjectionHistorical_Fld_KPMG_Proj_Hist_Id] PRIMARY KEY CLUSTERED ([Fld_KPMG_Proj_Hist_Id] ASC),
-    CONSTRAINT [fk_Tbl_KPMG_ProjectionHistorical_Fld_KPMG_Branch_Id] FOREIGN KEY ([Fld_KPMG_Branch_Id]) REFERENCES [dbo].[T_Centre_Master] ([I_Centre_Id])
+    CONSTRAINT [pk_Tbl_KPMG_ProjectionHistorical_Fld_KPMG_Proj_Hist_Id] PRIMARY KEY CLUSTERED ([Fld_KPMG_Proj_Hist_Id] ASC)
 );
+
+
 

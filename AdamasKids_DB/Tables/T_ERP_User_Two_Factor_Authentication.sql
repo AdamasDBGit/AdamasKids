@@ -9,6 +9,8 @@
 );
 
 
+
+
 GO
-EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'How the second authentication step is carried out, e.g., SMS, Authenticator App.', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'T_ERP_User_Two_Factor_Authentication', @level2type = N'COLUMN', @level2name = N'S_Method_Type';
+
 

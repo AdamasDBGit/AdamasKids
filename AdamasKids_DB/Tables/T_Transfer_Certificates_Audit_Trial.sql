@@ -6,7 +6,8 @@
     [Is_Released]                BIT           NULL,
     [S_Crtd_By]                  VARCHAR (20)  NULL,
     [Dt_Crtd_On]                 DATETIME      NULL,
-    CONSTRAINT [PK_T_Transfer_Certificates_Audit_Trial] PRIMARY KEY CLUSTERED ([I_Transfer_Cert_History_Id] ASC),
-    CONSTRAINT [FK_T_Transfer_Certificates_Audit_Trial_T_Transfer_Certificates] FOREIGN KEY ([I_Transfer_Cert_Req_ID]) REFERENCES [dbo].[T_Transfer_Certificates] ([I_Transfer_Cert_Req_ID])
+    CONSTRAINT [PK_T_Transfer_Certificates_Audit_Trial] PRIMARY KEY CLUSTERED ([I_Transfer_Cert_History_Id] ASC)
 );
+
+
 

@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE AddSubjectAndStructure 
+﻿CREATE PROCEDURE [dbo].[AddSubjectAndStructure] 
 -- =============================================
      -- Author:	Tridip Chatterjee
 -- Create date: 03-10-2023

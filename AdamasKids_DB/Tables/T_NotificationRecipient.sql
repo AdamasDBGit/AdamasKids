@@ -12,6 +12,8 @@
 );
 
 
+
+
 GO
-EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'Student=1,Teacher=2', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'T_NotificationRecipient', @level2type = N'COLUMN', @level2name = N'I_Type';
+
 

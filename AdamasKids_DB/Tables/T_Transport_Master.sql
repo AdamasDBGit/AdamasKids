@@ -8,21 +8,18 @@
     [Dt_Crtd_On]         DATETIME        NULL,
     [S_Updt_By]          VARCHAR (50)    NULL,
     [Dt_Updt_On]         DATETIME        NULL,
-    [pickup_longitude]   VARCHAR (50)    NULL,
-    [pickup_latitude]    VARCHAR (50)    NULL,
-    [pickup_index]       INT             NULL,
-    [drop_index]         INT             NULL,
-    CONSTRAINT [PK_T_Transport_Master] PRIMARY KEY CLUSTERED ([I_PickupPoint_ID] ASC),
-    CONSTRAINT [FK_T_Transport_Master_T_Brand_Master] FOREIGN KEY ([I_Brand_ID]) REFERENCES [dbo].[T_Brand_Master] ([I_Brand_ID])
+    CONSTRAINT [PK_T_Transport_Master] PRIMARY KEY CLUSTERED ([I_PickupPoint_ID] ASC)
 );
 
 
-GO
-ALTER TABLE [dbo].[T_Transport_Master] NOCHECK CONSTRAINT [FK_T_Transport_Master_T_Brand_Master];
-
-
 
 
 GO
-ALTER TABLE [dbo].[T_Transport_Master] NOCHECK CONSTRAINT [FK_T_Transport_Master_T_Brand_Master];
+
+
+
+
+
+GO
+
 

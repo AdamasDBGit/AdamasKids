@@ -8,8 +8,8 @@
     [Dt_Crtd_On]            DATETIME     NULL,
     [Dt_Upd_On]             DATETIME     NULL,
     [C_Appeared_For_Exam]   CHAR (1)     NULL,
-    CONSTRAINT [PK__T_Eligibility_Li__1F2F69C4] PRIMARY KEY CLUSTERED ([I_Eligibility_List_ID] ASC),
-    CONSTRAINT [FK__T_Eligibi__I_Exa__53240F16] FOREIGN KEY ([I_Exam_ID]) REFERENCES [EXAMINATION].[T_Examination_Detail] ([I_Exam_ID]),
-    CONSTRAINT [FK__T_Eligibi__I_Stu__20389C96] FOREIGN KEY ([I_Student_Detail_ID]) REFERENCES [dbo].[T_Student_Detail] ([I_Student_Detail_ID])
+    CONSTRAINT [PK__T_Eligibility_Li__1F2F69C4] PRIMARY KEY CLUSTERED ([I_Eligibility_List_ID] ASC)
 );
+
+
 

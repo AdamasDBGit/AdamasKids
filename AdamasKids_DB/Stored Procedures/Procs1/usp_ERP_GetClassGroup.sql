@@ -22,7 +22,7 @@ BEGIN
  TSG.S_School_Group_Code as GroupCode,
  TSG.S_School_Group_Name as GroupName,
  TSG.I_Status as GroupStatus
- FROM [SMS].[dbo].[T_School_Group] as TSG where I_Brand_Id=@iBrandid
+ FROM [dbo].[T_School_Group] as TSG where I_Brand_Id=@iBrandid
  and TSG.I_Status=1
 	END
 	else
@@ -33,7 +33,7 @@ BEGIN
  TSG.S_School_Group_Code as GroupCode,
  TSG.S_School_Group_Name as GroupName,
  TSG.I_Status as GroupStatus
- FROM [SMS].[dbo].[T_School_Group] as TSG 
+ FROM [dbo].[T_School_Group] as TSG 
  where TSG.I_School_Group_ID=@iGroupID and TSG.I_Status=1
 
  select I_Class_ID ClassID from T_School_Group_Class where I_School_Group_ID = @iGroupID

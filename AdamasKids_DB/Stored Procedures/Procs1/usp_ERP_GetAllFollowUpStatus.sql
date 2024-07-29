@@ -3,7 +3,7 @@
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE usp_ERP_GetAllFollowUpStatus
+CREATE PROCEDURE [dbo].[usp_ERP_GetAllFollowUpStatus]
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from

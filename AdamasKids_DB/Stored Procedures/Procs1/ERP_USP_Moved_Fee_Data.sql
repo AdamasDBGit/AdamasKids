@@ -1,4 +1,4 @@
-﻿CREATE Proc ERP_USP_Moved_Fee_Data(
+﻿CREATE Proc [dbo].[ERP_USP_Moved_Fee_Data](
 @EnquiryID Int,@sessionID Int,@brandID Int
 )
 As 

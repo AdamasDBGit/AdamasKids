@@ -19,8 +19,11 @@ EBPM.S_TransactionUrl TransactionUrl
 ,EBPM.S_MerchantId MerchantId
 ,CASE WHEN ISNULL(EBPM.I_IsLive,'false') ='true' THEN EBPM.S_Live_salt
 WHEN ISNULL(EBPM.I_IsLive,'false') ='false' THEN EBPM.S_Test_Salt
-ELSE 'NA' END Salt
-,EBPM.I_Payment_Mode as SMSPaymentMode
+ELSE 'NA' END Salt,
+CASE WHEN ISNULL(EBPM.I_IsLive,'false') ='true' THEN EBPM.S_Live_keySecret
+WHEN ISNULL(EBPM.I_IsLive,'false') ='false' THEN EBPM.S_Test_KeySecret
+ELSE 'NA' END keySecret,
+EBPM.I_Payment_Mode as SMSPaymentMode
 ,ISNULL(EBPM.I_IsLive,'false') IsLive
 ,BM.S_Client_Name as ClientName
 from 

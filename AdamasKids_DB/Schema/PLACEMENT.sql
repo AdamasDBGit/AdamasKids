@@ -1,1 +1,8 @@
 ﻿CREATE SCHEMA [PLACEMENT]
+    AUTHORIZATION [dbo];
+
+
+
+
+
+

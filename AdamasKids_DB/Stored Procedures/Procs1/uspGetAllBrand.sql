@@ -18,6 +18,6 @@ BEGIN
       ,[S_Brand_Name] BrandName    
       ,[I_Status]
       ,[S_Short_Code]
-  FROM [SMS].[dbo].[T_Brand_Master]
+  FROM [dbo].[T_Brand_Master]
   WHERE [I_Status]=1
 END

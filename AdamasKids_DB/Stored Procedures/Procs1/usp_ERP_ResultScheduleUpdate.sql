@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE usp_ERP_ResultScheduleUpdate 
+﻿CREATE PROCEDURE [dbo].[usp_ERP_ResultScheduleUpdate] 
 	-- Add the parameters for the stored procedure here
 	@ID int ,
 	@Status int

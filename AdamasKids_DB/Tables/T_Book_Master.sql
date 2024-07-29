@@ -9,11 +9,12 @@
     [S_Upd_By]    VARCHAR (20)   NULL,
     [Dt_Crtd_On]  DATETIME       NULL,
     [Dt_Upd_On]   DATETIME       NULL,
-    CONSTRAINT [PK__T_Book_Master__1F6473EE] PRIMARY KEY CLUSTERED ([I_Book_ID] ASC),
-    CONSTRAINT [FK__T_Book_Ma__I_Bra__06EDCBDF] FOREIGN KEY ([I_Brand_ID]) REFERENCES [dbo].[T_Brand_Master] ([I_Brand_ID])
+    CONSTRAINT [PK__T_Book_Master__1F6473EE] PRIMARY KEY CLUSTERED ([I_Book_ID] ASC)
 );
 
 
+
+
 GO
-ALTER TABLE [dbo].[T_Book_Master] NOCHECK CONSTRAINT [FK__T_Book_Ma__I_Bra__06EDCBDF];
+
 

@@ -1,4 +1,4 @@
-﻿CREATE Proc USP_Find_SPByText(@SearchSyntax NVARCHAR(MAX))
+﻿CREATE Proc [dbo].[USP_Find_SPByText](@SearchSyntax NVARCHAR(MAX))
 as
 Begin
 

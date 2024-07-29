@@ -35,7 +35,8 @@
     [Dt_Upd_On]                      DATETIME       NULL,
     [S_Phone_Number]                 VARCHAR (50)   NULL,
     [S_Signatories_Phone_Number]     VARCHAR (50)   NULL,
-    CONSTRAINT [PK__T_Ownership_Tran__4A19C7C9] PRIMARY KEY CLUSTERED ([I_Ownership_Transfer_Audit_ID] ASC),
-    CONSTRAINT [FK__T_Ownersh__I_Cen__51C6A1E0] FOREIGN KEY ([I_Centre_Id]) REFERENCES [dbo].[T_Centre_Master] ([I_Centre_Id])
+    CONSTRAINT [PK__T_Ownership_Tran__4A19C7C9] PRIMARY KEY CLUSTERED ([I_Ownership_Transfer_Audit_ID] ASC)
 );
+
+
 

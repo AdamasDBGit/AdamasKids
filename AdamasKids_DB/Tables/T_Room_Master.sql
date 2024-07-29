@@ -15,11 +15,12 @@
     [Dt_Updt_On]      DATETIME        NULL,
     [I_Centre_Id]     INT             NULL,
     [I_Room_Capacity] INT             NULL,
-    CONSTRAINT [PK_T_Room_Master] PRIMARY KEY CLUSTERED ([I_Room_ID] ASC),
-    CONSTRAINT [FK_T_Room_Master_T_Brand_Master] FOREIGN KEY ([I_Brand_ID]) REFERENCES [dbo].[T_Brand_Master] ([I_Brand_ID])
+    CONSTRAINT [PK_T_Room_Master] PRIMARY KEY CLUSTERED ([I_Room_ID] ASC)
 );
 
 
+
+
 GO
-ALTER TABLE [dbo].[T_Room_Master] NOCHECK CONSTRAINT [FK_T_Room_Master_T_Brand_Master];
+
 

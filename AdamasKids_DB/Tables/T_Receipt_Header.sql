@@ -32,13 +32,10 @@
     [S_Narration]            VARCHAR (500)   NULL,
     [I_Currency_ID]          INT             NULL,
     [Is_NewGSTEnvironment]   BIT             NULL,
-    CONSTRAINT [PK__T_Receipt_Header__603E1312] PRIMARY KEY CLUSTERED ([I_Receipt_Header_ID] ASC),
-    CONSTRAINT [FK__T_Receipt__I_Cen__20238DFD] FOREIGN KEY ([I_Centre_Id]) REFERENCES [dbo].[T_Centre_Master] ([I_Centre_Id]),
-    CONSTRAINT [FK__T_Receipt__I_Enq__1E3B458B] FOREIGN KEY ([I_Enquiry_Regn_ID]) REFERENCES [dbo].[T_Enquiry_Regn_Detail] ([I_Enquiry_Regn_ID]),
-    CONSTRAINT [FK__T_Receipt__I_Inv__1D472152] FOREIGN KEY ([I_Invoice_Header_ID]) REFERENCES [dbo].[T_Invoice_Parent] ([I_Invoice_Header_ID]),
-    CONSTRAINT [FK__T_Receipt__I_Pay__1C52FD19] FOREIGN KEY ([I_PaymentMode_ID]) REFERENCES [dbo].[T_PaymentMode_Master] ([I_PaymentMode_ID]),
-    CONSTRAINT [FK__T_Receipt__I_Stu__1F2F69C4] FOREIGN KEY ([I_Student_Detail_ID]) REFERENCES [dbo].[T_Student_Detail] ([I_Student_Detail_ID])
+    CONSTRAINT [PK__T_Receipt_Header__603E1312] PRIMARY KEY CLUSTERED ([I_Receipt_Header_ID] ASC)
 );
+
+
 
 
 GO

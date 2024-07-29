@@ -22,8 +22,8 @@
     [S_SAP_Customer_Id]              VARCHAR (20)  NULL,
     [I_Is_Center_Serv_Tax_Reqd]      BIT           NULL,
     [S_Cost_Center]                  VARCHAR (10)  NULL,
-    CONSTRAINT [PK__T_Center_Master___5A460DF1] PRIMARY KEY CLUSTERED ([T_Center_Master_Audit_ID] ASC),
-    CONSTRAINT [FK__T_Center___I_Cen__006BB6D9] FOREIGN KEY ([I_Centre_Id]) REFERENCES [dbo].[T_Centre_Master] ([I_Centre_Id]),
-    CONSTRAINT [FK_T_Center_Master_Audit_T_Country_Master] FOREIGN KEY ([I_Country_ID]) REFERENCES [dbo].[T_Country_Master] ([I_Country_ID])
+    CONSTRAINT [PK__T_Center_Master___5A460DF1] PRIMARY KEY CLUSTERED ([T_Center_Master_Audit_ID] ASC)
 );
+
+
 

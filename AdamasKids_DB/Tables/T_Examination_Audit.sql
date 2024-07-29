@@ -22,8 +22,8 @@
     [Dt_Upd_On]                 DATETIME      NULL,
     [S_Crtd_By]                 VARCHAR (20)  NULL,
     [S_Upd_By]                  VARCHAR (20)  NULL,
-    CONSTRAINT [PK__T_Examination_Au__0F6E0347] PRIMARY KEY CLUSTERED ([I_Exam_Audit_ID] ASC),
-    CONSTRAINT [FK__T_Examina__I_Exa__550C5788] FOREIGN KEY ([I_Exam_ID]) REFERENCES [EXAMINATION].[T_Examination_Detail] ([I_Exam_ID]),
-    CONSTRAINT [FK_T_Examination_Audit_T_Exam_Component_Master] FOREIGN KEY ([I_Exam_Component_ID]) REFERENCES [dbo].[T_Exam_Component_Master] ([I_Exam_Component_ID])
+    CONSTRAINT [PK__T_Examination_Au__0F6E0347] PRIMARY KEY CLUSTERED ([I_Exam_Audit_ID] ASC)
 );
+
+
 

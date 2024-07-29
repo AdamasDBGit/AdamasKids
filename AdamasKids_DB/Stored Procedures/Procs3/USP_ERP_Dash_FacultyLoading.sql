@@ -1,4 +1,4 @@
-﻿CREATE Proc USP_ERP_Dash_FacultyLoading(      
+﻿CREATE Proc [dbo].[USP_ERP_Dash_FacultyLoading](      
 @BrandID int      
 ,@sessionID int=null      
 )      

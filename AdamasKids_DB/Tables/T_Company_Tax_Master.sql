@@ -9,12 +9,12 @@
     [Dt_Crtd_On]              DATETIME     NULL,
     [S_Upd_By]                VARCHAR (20) NULL,
     [Dt_Upd_On]               DATETIME     NULL,
-    CONSTRAINT [PK_T_Company_Tax_Master] PRIMARY KEY CLUSTERED ([I_Company_Tax_Master_ID] ASC),
-    CONSTRAINT [FK_T_Company_Tax_Master_T_Brand_Master] FOREIGN KEY ([I_Brand_ID]) REFERENCES [dbo].[T_Brand_Master] ([I_Brand_ID]),
-    CONSTRAINT [FK_T_Company_Tax_Master_T_Country_Master] FOREIGN KEY ([I_Country_ID]) REFERENCES [dbo].[T_Country_Master] ([I_Country_ID])
+    CONSTRAINT [PK_T_Company_Tax_Master] PRIMARY KEY CLUSTERED ([I_Company_Tax_Master_ID] ASC)
 );
 
 
+
+
 GO
-ALTER TABLE [dbo].[T_Company_Tax_Master] NOCHECK CONSTRAINT [FK_T_Company_Tax_Master_T_Brand_Master];
+
 

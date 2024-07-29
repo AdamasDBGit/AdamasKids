@@ -9,9 +9,8 @@
     [Dt_Upd_On]        DATETIME     NULL,
     [Dt_Valid_To]      DATETIME     NULL,
     [I_Status]         INT          NULL,
-    CONSTRAINT [PK__T_Module_Book_Ma__3A186A2A] PRIMARY KEY CLUSTERED ([I_Module_Book_ID] ASC),
-    CONSTRAINT [FK__T_Module___I_Boo__257252FF] FOREIGN KEY ([I_Book_ID]) REFERENCES [dbo].[T_Book_Master] ([I_Book_ID]),
-    CONSTRAINT [FK__T_Module___I_Boo__27ACA59A] FOREIGN KEY ([I_Book_ID]) REFERENCES [dbo].[T_Book_Master] ([I_Book_ID]),
-    CONSTRAINT [FK__T_Module___I_Mod__7E78816F] FOREIGN KEY ([I_Module_ID]) REFERENCES [dbo].[T_Module_Master] ([I_Module_ID])
+    CONSTRAINT [PK__T_Module_Book_Ma__3A186A2A] PRIMARY KEY CLUSTERED ([I_Module_Book_ID] ASC)
 );
+
+
 

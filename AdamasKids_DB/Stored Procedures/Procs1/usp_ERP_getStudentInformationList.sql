@@ -28,15 +28,15 @@ BEGIN
 	
 	-- start
 	SELECT @TotalRecords = COUNT(*)    
-	 from [SMS].[dbo].[T_Student_Detail] as SD
-	 join [SMS].[dbo].[T_Student_Class_Section] as SCS on SD.I_Student_Detail_ID = SCS.I_Student_Detail_ID 
+	 from [dbo].[T_Student_Detail] as SD
+	 join [dbo].[T_Student_Class_Section] as SCS on SD.I_Student_Detail_ID = SCS.I_Student_Detail_ID 
 	  --and SD.S_Student_ID= SCS.S_Student_ID
-	  inner join [SMS].[dbo].[T_School_Group_Class]as SGC 
+	  inner join [dbo].[T_School_Group_Class]as SGC 
 	  on SCS.I_School_Group_Class_ID = SGC.I_School_Group_Class_ID
-	  inner join [SMS].[dbo].[T_School_Group] as SG on SGC.I_School_Group_ID = SG.I_School_Group_ID
-	  inner join [SMS].[dbo].[T_Class] as TC on TC.I_Class_ID = SGC.I_Class_ID 
-	  --inner join [SMS].[dbo].[T_ERP_Enquiry_Regn_Guardian_Master] as ERGM on ERGM.I_Enquiry_Regn_ID = SD.I_Enquiry_Regn_ID
-	  --inner join [SMS].[dbo].[T_Enquiry_Regn_Detail] as ERD on ERD.I_Enquiry_Regn_ID = SD.I_Enquiry_Regn_ID
+	  inner join [dbo].[T_School_Group] as SG on SGC.I_School_Group_ID = SG.I_School_Group_ID
+	  inner join [dbo].[T_Class] as TC on TC.I_Class_ID = SGC.I_Class_ID 
+	  --inner join [dbo].[T_ERP_Enquiry_Regn_Guardian_Master] as ERGM on ERGM.I_Enquiry_Regn_ID = SD.I_Enquiry_Regn_ID
+	  --inner join [dbo].[T_Enquiry_Regn_Detail] as ERD on ERD.I_Enquiry_Regn_ID = SD.I_Enquiry_Regn_ID
 	  where SCS.I_Brand_ID = @brandid and
 	  SGC.I_School_Group_ID= @SchoolGroup --OR @SchoolGroup IS NULL
 	  and
@@ -56,15 +56,15 @@ BEGIN
   FROM(  
 	  select 	  
 	  SD.I_Student_Detail_ID  
-	  from [SMS].[dbo].[T_Student_Detail] as SD
-	  join [SMS].[dbo].[T_Student_Class_Section] as SCS on SD.I_Student_Detail_ID = SCS.I_Student_Detail_ID 
+	  from [dbo].[T_Student_Detail] as SD
+	  join [dbo].[T_Student_Class_Section] as SCS on SD.I_Student_Detail_ID = SCS.I_Student_Detail_ID 
 	  --and SD.S_Student_ID= SCS.S_Student_ID
-	  inner join [SMS].[dbo].[T_School_Group_Class]as SGC 
+	  inner join [dbo].[T_School_Group_Class]as SGC 
 	  on SCS.I_School_Group_Class_ID = SGC.I_School_Group_Class_ID
-	  inner join [SMS].[dbo].[T_School_Group] as SG on SGC.I_School_Group_ID = SG.I_School_Group_ID
-	  inner join [SMS].[dbo].[T_Class] as TC on TC.I_Class_ID = SGC.I_Class_ID 
-	  --inner join [SMS].[dbo].[T_ERP_Enquiry_Regn_Guardian_Master] as ERGM on ERGM.I_Enquiry_Regn_ID = SD.I_Enquiry_Regn_ID
-	  --inner join [SMS].[dbo].[T_Enquiry_Regn_Detail] as ERD on ERD.I_Enquiry_Regn_ID = SD.I_Enquiry_Regn_ID
+	  inner join [dbo].[T_School_Group] as SG on SGC.I_School_Group_ID = SG.I_School_Group_ID
+	  inner join [dbo].[T_Class] as TC on TC.I_Class_ID = SGC.I_Class_ID 
+	  --inner join [dbo].[T_ERP_Enquiry_Regn_Guardian_Master] as ERGM on ERGM.I_Enquiry_Regn_ID = SD.I_Enquiry_Regn_ID
+	  --inner join [dbo].[T_Enquiry_Regn_Detail] as ERD on ERD.I_Enquiry_Regn_ID = SD.I_Enquiry_Regn_ID
 	  where SCS.I_Brand_ID = @brandid and
 	  SGC.I_School_Group_ID= @SchoolGroup --OR @SchoolGroup IS NULL
 	  and
@@ -106,16 +106,16 @@ BEGIN
 	  @TotalRecords AS TotalRecords,  
 	  @FilteredRecords AS FilteredRecords
 	  --SG.S_School_Group_Name
-	  from [SMS].[dbo].[T_Student_Detail] as SD
+	  from [dbo].[T_Student_Detail] as SD
 	  
-	  join [SMS].[dbo].[T_Student_Class_Section] as SCS on SD.I_Student_Detail_ID = SCS.I_Student_Detail_ID 
+	  join [dbo].[T_Student_Class_Section] as SCS on SD.I_Student_Detail_ID = SCS.I_Student_Detail_ID 
 	  --and SD.S_Student_ID= SCS.S_Student_ID
-	  inner join [SMS].[dbo].[T_School_Group_Class]as SGC 
+	  inner join [dbo].[T_School_Group_Class]as SGC 
 	  on SCS.I_School_Group_Class_ID = SGC.I_School_Group_Class_ID
-	  inner join [SMS].[dbo].[T_School_Group] as SG on SGC.I_School_Group_ID = SG.I_School_Group_ID
-	  inner join [SMS].[dbo].[T_Class] as TC on TC.I_Class_ID = SGC.I_Class_ID 
-	  --inner join [SMS].[dbo].[T_ERP_Enquiry_Regn_Guardian_Master] as ERGM on ERGM.I_Enquiry_Regn_ID = SD.I_Enquiry_Regn_ID
-	  Left join [SMS].[dbo].[T_Enquiry_Regn_Detail] as ERD on ERD.I_Enquiry_Regn_ID = SD.I_Enquiry_Regn_ID
+	  inner join [dbo].[T_School_Group] as SG on SGC.I_School_Group_ID = SG.I_School_Group_ID
+	  inner join [dbo].[T_Class] as TC on TC.I_Class_ID = SGC.I_Class_ID 
+	  --inner join [dbo].[T_ERP_Enquiry_Regn_Guardian_Master] as ERGM on ERGM.I_Enquiry_Regn_ID = SD.I_Enquiry_Regn_ID
+	  Left join [dbo].[T_Enquiry_Regn_Detail] as ERD on ERD.I_Enquiry_Regn_ID = SD.I_Enquiry_Regn_ID
 	  where SCS.I_Brand_ID = @brandid and
 	  SGC.I_School_Group_ID= @SchoolGroup --OR @SchoolGroup IS NULL
 	  and

@@ -3,7 +3,7 @@
 -- Create date: <2023-Nov-23>
 -- Description:	<Get Log Book View Details>
 -- =============================================
-CREATE PROCEDURE  ups_ERP_GetLogBookMappedDetails
+CREATE PROCEDURE  [dbo].[ups_ERP_GetLogBookMappedDetails]
 	-- Add the parameters for the stored procedure here
 	@iClasRoutineID INT,
 	@DtClassDate datetime,

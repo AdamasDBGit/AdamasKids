@@ -11,13 +11,14 @@
     [I_Status]              INT           NULL,
     [I_Total_Session_Count] INT           NULL,
     [S_Display_Name]        VARCHAR (MAX) NULL,
-    CONSTRAINT [PK__T_Term_Master__5B2F4532] PRIMARY KEY CLUSTERED ([I_Term_ID] ASC),
-    CONSTRAINT [FK__T_Term_Ma__I_Bra__04315AC5] FOREIGN KEY ([I_Brand_ID]) REFERENCES [dbo].[T_Brand_Master] ([I_Brand_ID])
+    CONSTRAINT [PK__T_Term_Master__5B2F4532] PRIMARY KEY CLUSTERED ([I_Term_ID] ASC)
 );
 
 
+
+
 GO
-ALTER TABLE [dbo].[T_Term_Master] NOCHECK CONSTRAINT [FK__T_Term_Ma__I_Bra__04315AC5];
+
 
 
 GO

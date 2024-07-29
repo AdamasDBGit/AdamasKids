@@ -3,7 +3,7 @@
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE Batch_End_Date_Test
+CREATE PROCEDURE [dbo].[Batch_End_Date_Test]
 @BranchName varchar(50),
 @BatchName  varchar(50)=null
 

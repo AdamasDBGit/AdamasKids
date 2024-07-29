@@ -3,7 +3,7 @@
 -- Create date: <20th sept 2023>
 -- Description:	<to get section>
 -- =============================================
-CREATE PROCEDURE dbo.uspGetSection
+CREATE PROCEDURE [dbo].[uspGetSection]
 	-- Add the parameters for the stored procedure here
 	
 AS
@@ -12,5 +12,5 @@ BEGIN
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
 	    select TS.I_Section_ID as SectionID,
-  TS.S_Section_Name as SectionName from [SMS].[dbo].[T_Section] as TS
+  TS.S_Section_Name as SectionName from [dbo].[T_Section] as TS
 END

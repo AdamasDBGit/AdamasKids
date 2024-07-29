@@ -2,14 +2,14 @@
     [I_TimeTable_ID] INT NOT NULL,
     [I_Employee_ID]  INT NOT NULL,
     [B_Is_Actual]    BIT NOT NULL,
-    CONSTRAINT [PK_T_TimeTable_Faculty_Map] PRIMARY KEY CLUSTERED ([I_TimeTable_ID] ASC, [I_Employee_ID] ASC, [B_Is_Actual] ASC),
-    CONSTRAINT [FK_T_TimeTable_Faculty_Map_T_Employee_Dtls] FOREIGN KEY ([I_Employee_ID]) REFERENCES [dbo].[T_Employee_Dtls] ([I_Employee_ID]),
-    CONSTRAINT [FK_T_TimeTable_Faculty_Map_T_TimeTable_Master] FOREIGN KEY ([I_TimeTable_ID]) REFERENCES [dbo].[T_TimeTable_Master] ([I_TimeTable_ID])
+    CONSTRAINT [PK_T_TimeTable_Faculty_Map] PRIMARY KEY CLUSTERED ([I_TimeTable_ID] ASC, [I_Employee_ID] ASC, [B_Is_Actual] ASC)
 );
 
 
+
+
 GO
-ALTER TABLE [dbo].[T_TimeTable_Faculty_Map] NOCHECK CONSTRAINT [FK_T_TimeTable_Faculty_Map_T_Employee_Dtls];
+
 
 
 GO

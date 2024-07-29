@@ -11,7 +11,8 @@
     [Dt_Crtd_On]     DATETIME     NOT NULL,
     [Dt_Upd_On]      DATETIME     NULL,
     [I_Brand_ID]     INT          NULL,
-    CONSTRAINT [PK__T_Center_Configu__3BEBA403] PRIMARY KEY CLUSTERED ([I_Config_ID] ASC),
-    CONSTRAINT [FK__T_Center___I_Cen__3CDFC83C] FOREIGN KEY ([I_Center_Id]) REFERENCES [dbo].[T_Centre_Master] ([I_Centre_Id])
+    CONSTRAINT [PK__T_Center_Configu__3BEBA403] PRIMARY KEY CLUSTERED ([I_Config_ID] ASC)
 );
+
+
 

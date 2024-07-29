@@ -1,1 +1,8 @@
 ﻿CREATE SCHEMA [ACADEMICS]
+    AUTHORIZATION [dbo];
+
+
+
+
+
+

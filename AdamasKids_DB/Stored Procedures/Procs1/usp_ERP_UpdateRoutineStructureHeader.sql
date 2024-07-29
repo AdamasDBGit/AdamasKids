@@ -3,7 +3,7 @@
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE usp_ERP_UpdateRoutineStructureHeader
+CREATE PROCEDURE [dbo].[usp_ERP_UpdateRoutineStructureHeader]
 (
 	-- Add the parameters for the stored procedure here
 	@SchoolSessionID INT = NULL,

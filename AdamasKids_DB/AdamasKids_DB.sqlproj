@@ -3765,7 +3765,6 @@
     <Build Include="Stored Procedures\Procs3\zz_GetEmpdata.sql" />
     <Build Include="Stored Procedures\Procs3\zz_InsertEmpdata.sql" />
     <Build Include="Stored Procedures\Procs3\zz_UpdateEmpdata.sql" />
-    <Build Include="Database Triggers\safety.sql" />
     <Build Include="User Defined Types\UT_Recipient.sql" />
     <Build Include="User Defined Types\UT_GatePassMultipleStudents.sql" />
     <Build Include="User Defined Types\UT_GradeMasterDetails.sql" />
@@ -3924,17 +3923,21 @@
     <Build Include="Stored Procedures\usp_ERP_GetStudentInstallmentPayableDetails_BKP_June.sql" />
     <Build Include="Stored Procedures\USP_ERP_AuthorizationBinding_UserWise_BKP_June_2024.sql" />
     <Build Include="Stored Procedures\Procs3\usp_ERP_AddStatusMaster.sql" />
-    <Build Include="Stored Procedures\usp_ERP_Save_Request_Log_BKP.sql" />
-    <Build Include="Stored Procedures\ERP_uspPreviewTaxComponent_0407.sql" />
-    <Build Include="Stored Procedures\ERP_uspGetGST_Item_Category_bak_0407.sql" />
-    <Build Include="Stored Procedures\ERP_get_FEE_Structure_GST_Generation_bak_0407.sql" />
-    <Build Include="Stored Procedures\ERP_FEE_GST_Generation_bak_0407.sql" />
     <Build Include="Stored Procedures\usp_ERP_SaveTransactionCronJob.sql" />
     <Build Include="Stored Procedures\usp_ERP_GetInvoiceDetail.sql" />
     <Build Include="Stored Procedures\Usp_ERP_DefaultGSTMAP_Comp.sql" />
     <Build Include="Stored Procedures\GetERPTransactionRequeryCronJob.sql" />
     <Build Include="Stored Procedures\usp_ERP_UpdatePassword.sql" />
-    <Build Include="Stored Procedures\USP_ERP_Replica_Role_Permission_Brandwise.sql" />
+    <Build Include="Tables\T_ERP_Transaction_Requery_Cron_Job.sql" />
+    <Build Include="Tables\T_ERP_GST_Category_Component.sql" />
+    <Build Include="Stored Procedures\uspGetAllTeacherEventList.sql" />
+    <Build Include="Stored Procedures\usp_ERP_GetProfileDetails.sql" />
+    <Build Include="Stored Procedures\usp_Get_Token_StudentWise.sql" />
+    <Build Include="Stored Procedures\usp_ERP_GetTransactionDetails.sql" />
+    <Build Include="Stored Procedures\usp_ERP_GET_Valid_Pending_Transaction_For_PaymentGateway.sql" />
+    <Build Include="Stored Procedures\usp_ERP_GET_RequestLogData_TransactionNumberWise.sql" />
+    <Build Include="Stored Procedures\usp_ERP_GET_Payment_Gateway_Log.sql" />
+    <Build Include="Stored Procedures\USP_ERP_AuthorizationBinding_UserWise_BKP_July_25.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="AdamasKids_DB.refactorlog" />

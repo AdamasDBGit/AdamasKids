@@ -1,6 +1,6 @@
 ﻿  
 --EXEC USP_ERP_OLD_Fee_Plan_Insert @NewFeeStructureID  
-Create Proc USP_ERP_OLD_Fee_Plan_Insert(  
+CREATE Proc [dbo].[USP_ERP_OLD_Fee_Plan_Insert](  
 @NewFeeStructureID Int  
 )  
 As Begin  

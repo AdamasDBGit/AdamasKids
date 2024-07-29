@@ -9,11 +9,12 @@
     [S_Upd_By]                   VARCHAR (20) NULL,
     [Dt_Crtd_On]                 DATETIME     NULL,
     [Dt_Upd_On]                  DATETIME     NULL,
-    CONSTRAINT [PK__T_Role_Assessor__493B7D80] PRIMARY KEY CLUSTERED ([I_Role_Assessor_Mapping_ID] ASC),
-    CONSTRAINT [FK__T_Role_As__I_Rol__5FE9D8AE] FOREIGN KEY ([I_Role_ID]) REFERENCES [dbo].[T_Role_Master] ([I_Role_ID])
+    CONSTRAINT [PK__T_Role_Assessor__493B7D80] PRIMARY KEY CLUSTERED ([I_Role_Assessor_Mapping_ID] ASC)
 );
 
 
+
+
 GO
-ALTER TABLE [EOS].[T_Role_Assessor] NOCHECK CONSTRAINT [FK__T_Role_As__I_Rol__5FE9D8AE];
+
 

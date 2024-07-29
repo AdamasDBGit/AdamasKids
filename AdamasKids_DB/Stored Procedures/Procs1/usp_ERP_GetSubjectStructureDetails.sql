@@ -20,8 +20,8 @@ BEGIN
   ST.S_Structure_Name as StructureHeaderName,
   SS.Methodology as Methodology,
   SS.Objective as Objective
-  from [SMS].[dbo].[T_ERP_Subject_Structure] as SS
-  join [SMS].[dbo].[T_ERP_Subject_Template] as ST 
+  from [dbo].[T_ERP_Subject_Structure] as SS
+  join [dbo].[T_ERP_Subject_Template] as ST 
   on SS.I_Subject_Template_ID=ST.I_Subject_Template_ID
   where SS.I_Subject_Structure_Header_ID=@SubjectStructureHeaderID
 END

@@ -43,7 +43,7 @@ BEGIN TRY
 		-- Insert statements for procedure here
 		DECLARE @EnquiryRegnID INT
 
-		INSERT INTO [SMS].[dbo].[T_ERP_Enquiry_Regn_Detail] 
+		INSERT INTO [dbo].[T_ERP_Enquiry_Regn_Detail] 
 		(
 			I_Enquiry_Status_Code,
 			I_Enquiry_Type_ID,
@@ -80,7 +80,7 @@ BEGIN TRY
 		set @sEnquiryNo = 'ERP'+CAST(@EnquiryRegnID AS NVARCHAR(50))
 		update [T_ERP_Enquiry_Regn_Detail] set S_Enquiry_No = @sEnquiryNo where I_Enquiry_Regn_ID = @EnquiryRegnID
 
-		INSERT INTO [SMS].[dbo].[T_ERP_Enquiry_Regn_Guardian_Master] 
+		INSERT INTO [dbo].[T_ERP_Enquiry_Regn_Guardian_Master] 
 		(
 			I_Enquiry_Regn_ID,
 			I_Relation_ID,
@@ -107,7 +107,7 @@ BEGIN TRY
 			1
 		);
 
-		INSERT INTO [SMS].[dbo].[T_ERP_Enquiry_Regn_Address] 
+		INSERT INTO [dbo].[T_ERP_Enquiry_Regn_Address] 
 		(
 			I_Enquiry_Regn_ID,
 			S_Address_Type,

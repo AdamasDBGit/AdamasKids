@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE uspVerifyStdReferal
+﻿CREATE PROCEDURE [dbo].[uspVerifyStdReferal]
 (
 @StudentID VARCHAR(MAX),
 @RefStudentID VARCHAR(MAX),

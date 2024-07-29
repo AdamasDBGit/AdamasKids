@@ -29,16 +29,14 @@
     [B_IsAdmissionCourse]      BIT           NULL,
     [I_Language_ID]            INT           NULL,
     [I_Language_Name]          VARCHAR (200) NULL,
-    CONSTRAINT [PK__T_Course_Master__4DD54A14] PRIMARY KEY CLUSTERED ([I_Course_ID] ASC),
-    CONSTRAINT [FK__T_Course___I_Bra__7C9038FD] FOREIGN KEY ([I_Brand_ID]) REFERENCES [dbo].[T_Brand_Master] ([I_Brand_ID]),
-    CONSTRAINT [FK__T_Course___I_Cer__7AA7F08B] FOREIGN KEY ([I_Certificate_ID]) REFERENCES [dbo].[T_Certificate_Master] ([I_Certificate_ID]),
-    CONSTRAINT [FK__T_Course___I_Cou__7B9C14C4] FOREIGN KEY ([I_CourseFamily_ID]) REFERENCES [dbo].[T_CourseFamily_Master] ([I_CourseFamily_ID]),
-    CONSTRAINT [FK__T_Course___I_Gra__79B3CC52] FOREIGN KEY ([I_Grading_Pattern_ID]) REFERENCES [dbo].[T_Grading_Pattern_Master] ([I_Grading_Pattern_ID])
+    CONSTRAINT [PK__T_Course_Master__4DD54A14] PRIMARY KEY CLUSTERED ([I_Course_ID] ASC)
 );
 
 
+
+
 GO
-ALTER TABLE [dbo].[T_Course_Master] NOCHECK CONSTRAINT [FK__T_Course___I_Bra__7C9038FD];
+
 
 
 GO

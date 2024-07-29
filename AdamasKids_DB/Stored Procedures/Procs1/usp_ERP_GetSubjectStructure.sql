@@ -3,7 +3,7 @@
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE dbo.usp_ERP_GetSubjectStructure
+CREATE PROCEDURE [dbo].[usp_ERP_GetSubjectStructure]
 -- Add the parameters for the stored procedure here
 	@TemplateHeaderID int,
 	@SubjectID int
@@ -15,6 +15,6 @@ BEGIN
 
     -- Insert statements for procedure here
 	  select SSH.I_Subject_Structure_Header_ID from 
-	  [SMS].[dbo].[T_ERP_Subject_Structure_Header] as SSH
+	  [dbo].[T_ERP_Subject_Structure_Header] as SSH
 	  where SSH.I_Subject_Template_Header_ID = @TemplateHeaderID and SSH.I_Subject_ID=@SubjectID
 END

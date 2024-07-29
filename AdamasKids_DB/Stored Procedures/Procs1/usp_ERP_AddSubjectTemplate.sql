@@ -21,14 +21,14 @@ BEGIN
 	DECLARE @iLsatID int
 	if(@iSubjectTemplateHeaderID>0)
 	BEGIN
-	if exists (select * from [SMS].[dbo].[T_ERP_Subject_Template_Header] where S_Title = @sSubjectTitle and I_Brand_ID = @iBrandID)
+	if exists (select * from [dbo].[T_ERP_Subject_Template_Header] where S_Title = @sSubjectTitle and I_Brand_ID = @iBrandID)
 	BEGIN
 	SELECT 0 StatusFlag,'Duplicate Subject Template Name' Message
 	END
 	
 	ELSE
 	BEGIN
-	update [SMS].[dbo].[T_ERP_Subject_Template_Header] 
+	update [dbo].[T_ERP_Subject_Template_Header] 
 	set 
 	[S_Title]						= @sSubjectTitle,
 	[I_IsDefault]					= @iIsDefault
@@ -41,7 +41,7 @@ BEGIN
 	END
 	ELSE
 	BEGIN
-	INSERT INTO [SMS].[dbo].[T_ERP_Subject_Template_Header]
+	INSERT INTO [dbo].[T_ERP_Subject_Template_Header]
 (
 [S_Title],
 [I_Brand_ID],

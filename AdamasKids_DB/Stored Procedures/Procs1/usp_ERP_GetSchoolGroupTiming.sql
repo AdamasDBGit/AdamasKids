@@ -22,7 +22,9 @@ TC.S_Class_Name as ClassName,
 SGCT.Start_Time as StartTime,  
 SGCT.End_Time as EndTime   
 from [T_School_Group_Class_Timing] as SGCT   
-left join [dbo].[T_School_Group] as SG on SG.I_School_Group_ID=SGCT.I_School_Group_ID  
-left join  [dbo].[T_Class] as TC on TC.I_Class_ID=SGCT.I_Class_ID   
-where SGCT.I_School_Group_ID = @iGroupID  
+Inner join [dbo].[T_School_Group] as SG on SG.I_School_Group_ID=SGCT.I_School_Group_ID
+and SG.I_Brand_Id=1
+Inner join  [dbo].[T_Class] as TC on TC.I_Class_ID=SGCT.I_Class_ID  
+and TC.I_Brand_ID=1
+where SGCT.I_School_Group_ID = @iGroupID
 END

@@ -4,7 +4,7 @@
 -- Description:	<Description,,>
 -- exec getFeePaymentInstallmentFrequency null null
 -- =============================================
-CREATE PROCEDURE getFeePaymentInstallmentFrequency
+CREATE PROCEDURE [dbo].[getFeePaymentInstallmentFrequency]
 	-- Add the parameters for the stored procedure here
 	(
 		@iBrandID INT NULL,

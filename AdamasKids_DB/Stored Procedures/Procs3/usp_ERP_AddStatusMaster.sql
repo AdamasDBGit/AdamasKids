@@ -20,13 +20,14 @@ BEGIN
 
 	if(@StatusID>0)
 	BEGIN
-	if exists (select * from T_Status_Master where S_Status_Desc = @StatusDesc and I_Status_Id != @StatusID and S_Status_Desc_SMS = @StatusDesc)
+	if exists (select * from T_Status_Master where S_Status_Desc = @StatusDesc and I_Status_Id != @StatusID 
+	and S_Status_Desc_SMS = @StatusDesc)
 	BEGIN
 	SELECT 0 StatusFlag,'Duplicate Status Master' Message
 	END
 	ELSE
 	BEGIN
-	update [SMS].[dbo].[T_Status_Master] 
+	update [T_Status_Master] 
 	set 
 	[S_Status_Desc]					= @StatusDesc,
 	[S_Status_Type]					= 'ReceiptType',
@@ -51,7 +52,7 @@ BEGIN
 	set @StatusValue = (Select Max(I_Status_Value)+1 from T_Status_Master);
 
 
-	INSERT INTO [SMS].[dbo].[T_Status_Master]
+	INSERT INTO [dbo].[T_Status_Master]
 (
 [S_Status_Desc],
 [S_Status_Type],

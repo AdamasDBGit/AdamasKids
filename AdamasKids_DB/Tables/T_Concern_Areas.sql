@@ -10,7 +10,8 @@
     [S_Upd_By]             VARCHAR (20)   NULL,
     [Dt_Crtd_On]           DATETIME       NULL,
     [Dt_Upd_On]            DATETIME       NULL,
-    CONSTRAINT [PK__T_Concern_Areas__22C00386] PRIMARY KEY CLUSTERED ([I_Concern_Areas_ID] ASC),
-    CONSTRAINT [FK__T_Concern__I_Aca__7F0CB2F5] FOREIGN KEY ([I_Academics_Visit_ID]) REFERENCES [ACADEMICS].[T_Academics_Visit] ([I_Academics_Visit_ID])
+    CONSTRAINT [PK__T_Concern_Areas__22C00386] PRIMARY KEY CLUSTERED ([I_Concern_Areas_ID] ASC)
 );
+
+
 

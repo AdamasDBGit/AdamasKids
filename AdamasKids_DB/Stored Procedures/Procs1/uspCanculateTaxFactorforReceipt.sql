@@ -1,7 +1,7 @@
 ﻿
 
 
-CREATE PROCEDURE uspCanculateTaxFactorforReceipt
+CREATE PROCEDURE [dbo].[uspCanculateTaxFactorforReceipt]
     (
       @InvoiceDetailId INT ,
       @I_Fee_Component_ID INT ,

@@ -3,7 +3,7 @@
 -- Create date: <2023 July 12>
 -- Description:	<Get Brand Wise School Group >
 -- =============================================
-CREATE PROCEDURE uspGetAllBrandWiseSchoolGroup 
+CREATE PROCEDURE [dbo].[uspGetAllBrandWiseSchoolGroup] 
 	-- Add the parameters for the stored procedure here
 	(
 	@iBrandID INT=NULL

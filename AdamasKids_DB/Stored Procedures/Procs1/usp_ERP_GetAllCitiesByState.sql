@@ -3,7 +3,7 @@
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE usp_ERP_GetAllCitiesByState
+CREATE PROCEDURE [dbo].[usp_ERP_GetAllCitiesByState]
 (
 	@iStateID int = NULL
 )	

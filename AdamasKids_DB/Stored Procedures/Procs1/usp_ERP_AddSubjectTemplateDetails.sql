@@ -26,7 +26,7 @@ BEGIN
 	if(@SubjectStructureID >0)
 	BEGIN
 	
-	update [SMS].[dbo].[T_ERP_Subject_Structure]
+	update [dbo].[T_ERP_Subject_Structure]
 	set
       [S_Name] = @StructureName,
 	  [Methodology]=@Methodology,
@@ -37,7 +37,7 @@ BEGIN
 	END
 	ELSE
 	BEGIN
-	INSERT INTO [SMS].[dbo].[T_ERP_Subject_Structure]
+	INSERT INTO [dbo].[T_ERP_Subject_Structure]
 (
       [I_Subject_Structure_Header_ID]
       ,[I_Subject_Template_ID]

@@ -7,7 +7,8 @@
     [S_Updt_By]           VARCHAR (20) NULL,
     [Dt_Crtd_On]          DATETIME     NULL,
     [Dt_Updt_On]          DATETIME     NULL,
-    CONSTRAINT [PK_T_Rule_CourseList_Map] PRIMARY KEY CLUSTERED ([I_CourseList_ID] ASC),
-    CONSTRAINT [FK_T_Rule_CourseList_Map_T_Rule_Master] FOREIGN KEY ([I_Rule_ID]) REFERENCES [ASSESSMENT].[T_Rule_Master] ([I_Rule_ID])
+    CONSTRAINT [PK_T_Rule_CourseList_Map] PRIMARY KEY CLUSTERED ([I_CourseList_ID] ASC)
 );
+
+
 

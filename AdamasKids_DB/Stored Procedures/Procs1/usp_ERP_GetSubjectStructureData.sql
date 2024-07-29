@@ -20,7 +20,7 @@ BEGIN
       ,ST.[S_Structure_Name] as StructureName
       ,ST.[I_Sequence_Number] as SequenceNumber
       ,ST.[I_IsLeaf_Node] as LeafNode
-  FROM [SMS].[dbo].[T_ERP_Subject_Template] as ST
+  FROM [dbo].[T_ERP_Subject_Template] as ST
   where I_Subject_Template_Header_ID=@SubjectTemplateHeaderID
 
   DECLARE @output_I_Subject_Structure_Header_ID INT;
@@ -38,7 +38,7 @@ AND I_Subject_ID = @SubjectID;
       ,SS.[I_Status] as StrucutureStatus
       ,SS.[Methodology] as Methodology
       ,SS.[Objective] as Objective
-  FROM [SMS].[dbo].[T_ERP_Subject_Structure] as SS
+  FROM [dbo].[T_ERP_Subject_Structure] as SS
   where SS.[I_Subject_Structure_Header_ID]=@output_I_Subject_Structure_Header_ID and SS.I_Status=1
   ORDER BY 
     SubjectStructureID ASC;

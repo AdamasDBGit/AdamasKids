@@ -10,6 +10,8 @@
 );
 
 
+
+
 GO
-EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'Text/Percentage/Multi Choice/Single Choice/ Time/Assignment', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'T_ERP_Methodology_Activity', @level2type = N'COLUMN', @level2name = N'S_Measure_Unit';
+
 

@@ -1,4 +1,5 @@
-﻿-- =============================================
+﻿
+-- =============================================
 -- Author:		<Author,,Name>
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
@@ -277,7 +278,8 @@ CROSS APPLY AdhocDetail.nodes('ReceiptTax/TaxDetails') AS TaxDetails(TaxDetails)
 	PGMessage,
 	PGResponseType,
 	PGExecutionDate,
-	PGResponseJson
+	PGResponseJson,
+	Dt_CreatedAt
 	)
 	values
 	(
@@ -292,7 +294,8 @@ CROSS APPLY AdhocDetail.nodes('ReceiptTax/TaxDetails') AS TaxDetails(TaxDetails)
 	@PgMessage,
 	@RequestType,
 	@ExecutionDate,
-	@PgResponse
+	@PgResponse,
+	GETDATE()
 	)
 
 
@@ -305,7 +308,35 @@ CROSS APPLY AdhocDetail.nodes('ReceiptTax/TaxDetails') AS TaxDetails(TaxDetails)
     DROP TABLE #FeeScheduleTable, #InvoiceTable, #AdhocDetailsTable, #InvoiceTaxTable, #OnAccountTaxTable;
 
 
-	select 1 StatusFlag,'Payment has been Initiated' Message
+
+	exec [dbo].[usp_ERP_SaveTransactionCronJob]
+	@sTransactionNo,--@S_Transaction_No varchar(max),
+	@iTransactionMasterID,--@I_Transaction_Master_ID INT,
+	@sTransactionStatus,--@currentStatus varchar(max)=NULL,
+	NULL,--@CompleteStatus bit=NULL,
+	NULL,--@CronCanBeProcess bit=NULL,
+	NULL,--@NoOfAttempt int=NULL,
+	'true',--@StatusID bit = NULL,
+	NULL,--@Is_PG_Success bit=NULL,
+	NULL,--@Is_PG_Failure bit=NULL,
+	NULL,--@Is_Failed_User bit =NULL,
+	NULL,--@Requery_PG_LogID int=NULL,
+	NULL,--@Requery_Request_LogID int=NULL,
+	NULL,--@PG_Response varchar(max)=NULL,
+	NULL,--@ERP_Response varchar(max)=NULL,
+	NULL,--@PG_Remarks varchar(max)=NULL,
+	NULL,--@ERP_Remarks varchar(max)=NULL,
+	NULL,--@PG_Error varchar(max)=NULL,
+	NULL,--@ERP_Error varchar(max)=NULL,
+	NULL,--@CanbeProcessForERPSattlement BIT=NULL,
+	'false'--@IsFromCron bit
+
+
+
+
+
+
+	select 1 StatusFlag,'Payment has been initiated' Message
 
 	--exec [dbo].[usp_ERP_InitiateTransaction] 1,1,'string545','2024-05-31','Initiated','Online App_Arivoo','UPI',10475,1,32,'24-0044'
 

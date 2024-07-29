@@ -4,7 +4,7 @@
 -- Description:	<Description,,>
 -- exec usp_ERP_GetAllAdmissionStageByBrandID null
 -- =============================================
-CREATE PROCEDURE usp_ERP_GetAllAdmissionStageByBrandID
+CREATE PROCEDURE [dbo].[usp_ERP_GetAllAdmissionStageByBrandID]
 (
 	@iBrandID int = null
 )

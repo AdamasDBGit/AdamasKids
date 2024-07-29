@@ -23,7 +23,8 @@
     [S_Upd_By]                   VARCHAR (20)  NULL,
     [Dt_Crtd_On]                 DATETIME      NULL,
     [Dt_Upd_On]                  DATETIME      NULL,
-    CONSTRAINT [PK__T_AddressChange___48317F57] PRIMARY KEY CLUSTERED ([I_AddressChange_Request_ID] ASC),
-    CONSTRAINT [FK__T_Address__I_Cen__4EEA3535] FOREIGN KEY ([I_Centre_Id]) REFERENCES [dbo].[T_Centre_Master] ([I_Centre_Id])
+    CONSTRAINT [PK__T_AddressChange___48317F57] PRIMARY KEY CLUSTERED ([I_AddressChange_Request_ID] ASC)
 );
+
+
 

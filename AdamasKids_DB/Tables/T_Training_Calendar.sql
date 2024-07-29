@@ -12,7 +12,8 @@
     [S_Upd_By]             VARCHAR (20)   NULL,
     [Dt_Crtd_On]           DATETIME       NULL,
     [Dt_Upd_On]            DATETIME       NULL,
-    CONSTRAINT [PK__T_Training_Calen__24A84BF8] PRIMARY KEY CLUSTERED ([I_Training_ID] ASC),
-    CONSTRAINT [FK_T_Training_Calendar_T_User_Master] FOREIGN KEY ([I_User_ID]) REFERENCES [dbo].[T_User_Master] ([I_User_ID])
+    CONSTRAINT [PK__T_Training_Calen__24A84BF8] PRIMARY KEY CLUSTERED ([I_Training_ID] ASC)
 );
+
+
 

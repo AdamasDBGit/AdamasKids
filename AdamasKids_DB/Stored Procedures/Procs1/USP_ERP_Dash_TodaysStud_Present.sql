@@ -1,4 +1,4 @@
-﻿CREATE Proc USP_ERP_Dash_TodaysStud_Present (@brandID int)  
+﻿CREATE Proc [dbo].[USP_ERP_Dash_TodaysStud_Present] (@brandID int)  
 As   
 begin  
 ---Declare @brandID int =107  

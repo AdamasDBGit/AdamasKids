@@ -20,7 +20,7 @@ BEGIN
 	,t1.Is_DropdownReq
 	,t1.S_CRM_Input
 	,t2.I_EnqType_Source_Mapping_ID
-	FROM T_ERP_EnqType_Source_Mapping t2 inner join [SMS].[dbo].[T_Information_Source_Master] t1
+	FROM T_ERP_EnqType_Source_Mapping t2 inner join [dbo].[T_Information_Source_Master] t1
 	  ON t1.I_Info_Source_ID = t2.I_Info_Source_ID
 	where t2.I_EnqType_Source_Mapping_ID = @EnquiryTypeID
 	and t1.I_ERP_Status = 1 

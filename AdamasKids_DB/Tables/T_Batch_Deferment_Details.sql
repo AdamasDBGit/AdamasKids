@@ -6,11 +6,12 @@
     [Dt_Crtd_On]               DATETIME      NULL,
     [S_Crtd_By]                VARCHAR (20)  NULL,
     [S_Comment]                VARCHAR (200) NULL,
-    CONSTRAINT [PK_T_Batch_Deferment_Details] PRIMARY KEY CLUSTERED ([I_Batch_Deferment_ID] ASC),
-    CONSTRAINT [FK_T_Batch_Deferment_Details_T_Student_Batch_Master] FOREIGN KEY ([I_Batch_ID]) REFERENCES [dbo].[T_Student_Batch_Master] ([I_Batch_ID])
+    CONSTRAINT [PK_T_Batch_Deferment_Details] PRIMARY KEY CLUSTERED ([I_Batch_Deferment_ID] ASC)
 );
 
 
+
+
 GO
-ALTER TABLE [dbo].[T_Batch_Deferment_Details] NOCHECK CONSTRAINT [FK_T_Batch_Deferment_Details_T_Student_Batch_Master];
+
 

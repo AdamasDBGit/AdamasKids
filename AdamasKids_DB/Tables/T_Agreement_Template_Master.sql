@@ -8,7 +8,8 @@
     [S_Upd_By]                  VARCHAR (20) NULL,
     [Dt_Crtd_On]                DATETIME     NULL,
     [Dt_Upd_On]                 DATETIME     NULL,
-    CONSTRAINT [PK__T_Agreement_Temp__52A4EC29] PRIMARY KEY CLUSTERED ([I_Agreement_Template_ID] ASC),
-    CONSTRAINT [FK__T_Agreeme__I_Cou__7AB2DD83] FOREIGN KEY ([I_Country_ID]) REFERENCES [dbo].[T_Country_Master] ([I_Country_ID])
+    CONSTRAINT [PK__T_Agreement_Temp__52A4EC29] PRIMARY KEY CLUSTERED ([I_Agreement_Template_ID] ASC)
 );
+
+
 

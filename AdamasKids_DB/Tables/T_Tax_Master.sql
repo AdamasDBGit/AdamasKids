@@ -11,7 +11,8 @@
     [S_Upd_By]       VARCHAR (20) NULL,
     [Dt_Crtd_On]     DATETIME     NULL,
     [Dt_Upd_On]      DATETIME     NULL,
-    CONSTRAINT [PK__T_Tax_Master__58C8A52A] PRIMARY KEY CLUSTERED ([I_Tax_ID] ASC),
-    CONSTRAINT [FK__T_Tax_Mas__I_Cou__0BA92AB2] FOREIGN KEY ([I_Country_ID]) REFERENCES [dbo].[T_Country_Master] ([I_Country_ID])
+    CONSTRAINT [PK__T_Tax_Master__58C8A52A] PRIMARY KEY CLUSTERED ([I_Tax_ID] ASC)
 );
+
+
 

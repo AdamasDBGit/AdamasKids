@@ -1,1 +1,8 @@
 ﻿CREATE SCHEMA [NETWORK]
+    AUTHORIZATION [dbo];
+
+
+
+
+
+

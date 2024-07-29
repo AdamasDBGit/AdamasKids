@@ -3,7 +3,7 @@
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE Routine_Test_TR
+CREATE PROCEDURE [dbo].[Routine_Test_TR]
 @BranchName varchar(50)=null,
 @BatchName varchar(50)=null,
 @FD date,

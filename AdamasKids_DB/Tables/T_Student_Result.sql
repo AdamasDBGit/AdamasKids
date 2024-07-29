@@ -36,6 +36,8 @@
 );
 
 
+
+
 GO
 CREATE NONCLUSTERED INDEX [NCI-I_Result_Exam_Schedule_Id_20230801-103001]
     ON [dbo].[T_Student_Result]([I_Result_Exam_Schedule_ID] ASC);
@@ -47,13 +49,13 @@ CREATE NONCLUSTERED INDEX [NCI_S_Student_ID-20230801-103211]
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'Class wise', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'T_Student_Result', @level2type = N'COLUMN', @level2name = N'I_Aggregrate_Class_Average_Percentage';
 
-
-GO
-EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'Class wise', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'T_Student_Result', @level2type = N'COLUMN', @level2name = N'I_Aggregate_Class_Highest_Percentage';
 
 
 GO
-EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'Class Teacher', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'T_Student_Result', @level2type = N'COLUMN', @level2name = N'I_User_ID';
+
+
+
+GO
+
 

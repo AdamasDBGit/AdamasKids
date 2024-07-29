@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE uspInsertMarksTemp
+﻿CREATE PROCEDURE [dbo].[uspInsertMarksTemp]
 (
 @StdID INT,
 @TermID INT,

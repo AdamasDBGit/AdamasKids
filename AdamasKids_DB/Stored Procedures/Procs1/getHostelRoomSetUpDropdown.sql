@@ -3,7 +3,7 @@
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE getHostelRoomSetUpDropdown
+CREATE PROCEDURE [dbo].[getHostelRoomSetUpDropdown]
 	-- Add the parameters for the stored procedure here
 	(
 		@BrandID INT NULL

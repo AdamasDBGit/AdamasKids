@@ -1,4 +1,4 @@
-﻿CREATE Proc Usp_ERP_Get_Brandwise_UserGroup(
+﻿CREATE Proc [dbo].[Usp_ERP_Get_Brandwise_UserGroup](
 @BrandID int
 )
 as begin

@@ -15,14 +15,14 @@
     [Dt_Faculty_Submission_Date] DATETIME        NULL,
     [S_Material_BarCode]         NVARCHAR (500)  NULL,
     [N_Marks]                    DECIMAL (14, 2) NULL,
-    CONSTRAINT [PK_T_Homework_Submission] PRIMARY KEY CLUSTERED ([I_Homework_Submission_ID] ASC),
-    CONSTRAINT [FK_T_Homework_Submission_T_Employee_Dtls] FOREIGN KEY ([I_Employee_ID]) REFERENCES [dbo].[T_Employee_Dtls] ([I_Employee_ID]),
-    CONSTRAINT [FK_T_Homework_Submission_T_Student_Detail] FOREIGN KEY ([I_Student_Detail_ID]) REFERENCES [dbo].[T_Student_Detail] ([I_Student_Detail_ID])
+    CONSTRAINT [PK_T_Homework_Submission] PRIMARY KEY CLUSTERED ([I_Homework_Submission_ID] ASC)
 );
 
 
+
+
 GO
-ALTER TABLE [EXAMINATION].[T_Homework_Submission] NOCHECK CONSTRAINT [FK_T_Homework_Submission_T_Employee_Dtls];
+
 
 
 GO

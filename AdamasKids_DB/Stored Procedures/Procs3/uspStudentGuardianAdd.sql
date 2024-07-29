@@ -3,7 +3,7 @@
 -- Create date: <21st August 2023>
 -- Description:	<for adding guardian>
 -- =============================================
-CREATE PROCEDURE [uspStudentGuardianAdd]
+CREATE PROCEDURE [dbo].[uspStudentGuardianAdd]
 	-- Add the parameters for the stored procedure here
 	@sStudentID nvarchar(200) = null,
 	@sFirstName nvarchar(200)=null,

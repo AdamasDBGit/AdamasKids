@@ -10,8 +10,8 @@
     [S_Upd_By]                    VARCHAR (20) NULL,
     [Dt_Crtd_On]                  DATETIME     NULL,
     [Dt_Upd_On]                   DATETIME     NULL,
-    CONSTRAINT [PK__T_Audit_Schedule__60597C63] PRIMARY KEY CLUSTERED ([I_Audit_Schedule_History_ID] ASC),
-    CONSTRAINT [FK_T_Audit_Schedule_History] FOREIGN KEY ([I_Center_ID]) REFERENCES [dbo].[T_Centre_Master] ([I_Centre_Id]),
-    CONSTRAINT [FK_T_Audit_Schedule_History1] FOREIGN KEY ([I_Audit_Schedule_ID]) REFERENCES [AUDIT].[T_Audit_Schedule] ([I_Audit_Schedule_ID])
+    CONSTRAINT [PK__T_Audit_Schedule__60597C63] PRIMARY KEY CLUSTERED ([I_Audit_Schedule_History_ID] ASC)
 );
+
+
 

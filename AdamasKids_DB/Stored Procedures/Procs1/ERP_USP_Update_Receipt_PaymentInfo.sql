@@ -1,5 +1,5 @@
 ﻿
-CREATE Proc ERP_USP_Update_Receipt_PaymentInfo(
+CREATE Proc [dbo].[ERP_USP_Update_Receipt_PaymentInfo](
 @ReceiptID bigint,
 @nCreditCardNo NUMERIC(18, 0)=Null ,        
 @dCreditCardExpiry VARCHAR(12)=null ,        

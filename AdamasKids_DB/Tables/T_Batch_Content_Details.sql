@@ -16,26 +16,24 @@
     [S_Session_Topic]            VARCHAR (500) NULL,
     [B_IsActive]                 BIT           NULL,
     [I_Folder_Id]                INT           NULL,
-    CONSTRAINT [PK_T_Batch_Content_Details] PRIMARY KEY CLUSTERED ([I_Batch_Content_Details_ID] ASC),
-    CONSTRAINT [FK_T_Batch_Content_Details_T_Module_Master] FOREIGN KEY ([I_Module_ID]) REFERENCES [dbo].[T_Module_Master] ([I_Module_ID]),
-    CONSTRAINT [FK_T_Batch_Content_Details_T_Session_Master] FOREIGN KEY ([I_Session_ID]) REFERENCES [dbo].[T_Session_Master] ([I_Session_ID]),
-    CONSTRAINT [FK_T_Batch_Content_Details_T_Student_Batch_Master] FOREIGN KEY ([I_Batch_ID]) REFERENCES [dbo].[T_Student_Batch_Master] ([I_Batch_ID]),
-    CONSTRAINT [FK_T_Batch_Content_Details_T_Term_Master] FOREIGN KEY ([I_Term_ID]) REFERENCES [dbo].[T_Term_Master] ([I_Term_ID])
+    CONSTRAINT [PK_T_Batch_Content_Details] PRIMARY KEY CLUSTERED ([I_Batch_Content_Details_ID] ASC)
 );
 
 
-GO
-ALTER TABLE [dbo].[T_Batch_Content_Details] NOCHECK CONSTRAINT [FK_T_Batch_Content_Details_T_Module_Master];
 
 
 GO
-ALTER TABLE [dbo].[T_Batch_Content_Details] NOCHECK CONSTRAINT [FK_T_Batch_Content_Details_T_Session_Master];
 
-
-GO
-ALTER TABLE [dbo].[T_Batch_Content_Details] NOCHECK CONSTRAINT [FK_T_Batch_Content_Details_T_Student_Batch_Master];
 
 
 GO
-ALTER TABLE [dbo].[T_Batch_Content_Details] NOCHECK CONSTRAINT [FK_T_Batch_Content_Details_T_Term_Master];
+
+
+
+GO
+
+
+
+GO
+
 

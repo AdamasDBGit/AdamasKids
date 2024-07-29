@@ -3,7 +3,7 @@
 -- Create date: <2024-April-18>
 -- Description:	<Get Role-Group-permission>
 -- =============================================
-CREATE PROCEDURE usp_ERP_getroleGroupPermission
+CREATE PROCEDURE [dbo].[usp_ERP_getroleGroupPermission]
 	-- Add the parameters for the stored procedure here
 AS
 BEGIN

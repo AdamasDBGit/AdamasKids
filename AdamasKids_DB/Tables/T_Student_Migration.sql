@@ -7,7 +7,8 @@
     [S_Upd_By]               VARCHAR (20) NULL,
     [Dt_Crtd_On]             DATETIME     NULL,
     [Dt_Upd_On]              DATETIME     NULL,
-    CONSTRAINT [PK_T_Student_Migration] PRIMARY KEY CLUSTERED ([I_Student_Migration_ID] ASC),
-    CONSTRAINT [FK_T_Student_Migration_T_Student_Detail] FOREIGN KEY ([I_Student_Detail_ID]) REFERENCES [dbo].[T_Student_Detail] ([I_Student_Detail_ID])
+    CONSTRAINT [PK_T_Student_Migration] PRIMARY KEY CLUSTERED ([I_Student_Migration_ID] ASC)
 );
+
+
 

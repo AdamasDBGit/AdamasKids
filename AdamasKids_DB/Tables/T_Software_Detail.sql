@@ -9,8 +9,8 @@
     [Dt_Crtd_On]           DATETIME      NULL,
     [Dt_Upd_On]            DATETIME      NULL,
     [I_Status]             INT           NULL,
-    CONSTRAINT [PK__T_Software_Detai__6B7099F3] PRIMARY KEY CLUSTERED ([I_Software_Detail_ID] ASC),
-    CONSTRAINT [FK__T_Softwar__I_Cen__0AE9454C] FOREIGN KEY ([I_Centre_Id]) REFERENCES [dbo].[T_Centre_Master] ([I_Centre_Id]),
-    CONSTRAINT [FK__T_Softwar__I_Sof__0BDD6985] FOREIGN KEY ([I_Software_ID]) REFERENCES [NETWORK].[T_Software_Master] ([I_Software_ID])
+    CONSTRAINT [PK__T_Software_Detai__6B7099F3] PRIMARY KEY CLUSTERED ([I_Software_Detail_ID] ASC)
 );
+
+
 

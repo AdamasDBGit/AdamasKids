@@ -11,13 +11,12 @@
     [S_Upd_By]                      VARCHAR (20)    NULL,
     [Dt_Crtd_On]                    DATETIME        NULL,
     [Dt_Upd_On]                     DATETIME        NULL,
-    CONSTRAINT [PK_T_Tax_Country_Fee_Component] PRIMARY KEY CLUSTERED ([I_Country_FeeComponent_Tax_ID] ASC),
-    CONSTRAINT [FK_T_Tax_Country_Fee_Component_T_Country_Master] FOREIGN KEY ([I_Country_ID]) REFERENCES [dbo].[T_Country_Master] ([I_Country_ID]),
-    CONSTRAINT [FK_T_Tax_Country_Fee_Component_T_Fee_Component_Master] FOREIGN KEY ([I_Fee_Component_ID]) REFERENCES [dbo].[T_Fee_Component_Master] ([I_Fee_Component_ID]),
-    CONSTRAINT [FK_T_Tax_Country_Fee_Component_T_Tax_Master] FOREIGN KEY ([I_Tax_ID]) REFERENCES [dbo].[T_Tax_Master] ([I_Tax_ID])
+    CONSTRAINT [PK_T_Tax_Country_Fee_Component] PRIMARY KEY CLUSTERED ([I_Country_FeeComponent_Tax_ID] ASC)
 );
 
 
+
+
 GO
-ALTER TABLE [dbo].[T_Tax_Country_Fee_Component] NOCHECK CONSTRAINT [FK_T_Tax_Country_Fee_Component_T_Fee_Component_Master];
+
 

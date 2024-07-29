@@ -15,7 +15,7 @@ DECLARE @BufferTime INT = 60
 IF EXISTS(select * from T_Gate_Pass_Guard where S_Token=@sToken)
 
 BEGIN
-	IF EXISTS(select * from [SMS].[dbo].[T_Gate_Pass_Request] where I_Gate_Pass_Request_ID=@GatePassRequestID)
+	IF EXISTS(select * from [dbo].[T_Gate_Pass_Request] where I_Gate_Pass_Request_ID=@GatePassRequestID)
 		BEGIN
 			SELECT DISTINCT TGPR.[I_Gate_Pass_Request_ID] GatePassRequestID
 				  ,SD.S_First_Name+' '+ISNULL(SD.S_Middle_Name,'')+' '+SD.S_Last_Name StudentName
@@ -39,7 +39,7 @@ BEGIN
 				  ,ERD.S_Student_Photo studentImage --2023July07 :  student Image
 				  ,TPM.S_Profile_Picture pickupPersonImage --2023July07 : Pickup Person Image
 	  
-			FROM [SMS].[dbo].[T_Gate_Pass_Request] TGPR 
+			FROM [dbo].[T_Gate_Pass_Request] TGPR 
 			inner join T_Student_Detail SD ON TGPR.S_Student_ID = SD.S_Student_ID
 			inner join T_Enquiry_Regn_Detail as ERD on ERD.I_Enquiry_Regn_ID=SD.I_Enquiry_Regn_ID --2023July07 : Enquiry student Image
 			inner join T_Parent_Master TPM ON TPM.I_Parent_Master_ID = TGPR.I_Parent_Master_ID

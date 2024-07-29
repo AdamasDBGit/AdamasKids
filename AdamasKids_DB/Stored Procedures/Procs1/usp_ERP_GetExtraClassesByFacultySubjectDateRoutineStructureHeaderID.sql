@@ -4,7 +4,7 @@
 -- Description:	<Description,,>
 -- exec usp_ERP_GetExtraClassesByFacultySubjectDateRoutineStructureHeaderID 19, 2, '2024-01-05', 1
 -- =============================================
-CREATE PROCEDURE usp_ERP_GetExtraClassesByFacultySubjectDateRoutineStructureHeaderID
+CREATE PROCEDURE [dbo].[usp_ERP_GetExtraClassesByFacultySubjectDateRoutineStructureHeaderID]
 (
 	@FacultyMasterID int = null,
 	@SubjectID int = null,

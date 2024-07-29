@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE ToGetStudentSTCode
+﻿CREATE PROCEDURE [dbo].[ToGetStudentSTCode]
 -- =============================================
      -- Author: Tridip Chatterjee
 -- Create date: 29-09-2023

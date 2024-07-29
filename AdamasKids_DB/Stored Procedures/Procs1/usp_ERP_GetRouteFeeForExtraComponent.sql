@@ -6,7 +6,7 @@
 --select * from T_ERP_GST_Item_Category
 --select * from T_ERP_GST_Configuration_Details
 -- =============================================    
-CREATE PROCEDURE usp_ERP_GetRouteFeeForExtraComponent    
+CREATE PROCEDURE [dbo].[usp_ERP_GetRouteFeeForExtraComponent]    
  -- Add the parameters for the stored procedure here    
  (        
   @iBrandID INT NULL,    

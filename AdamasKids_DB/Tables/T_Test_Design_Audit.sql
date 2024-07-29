@@ -12,7 +12,8 @@
     [S_Upd_by]               VARCHAR (20)   NULL,
     [Dt_Crtd_On]             DATETIME       NULL,
     [Dt_Upd_On]              DATETIME       NULL,
-    CONSTRAINT [PK__T_Test_Design_Au__660BFB01] PRIMARY KEY CLUSTERED ([I_Test_Design_Audit_ID] ASC),
-    CONSTRAINT [FK_T_Test_Design_Audit_T_Test_Design] FOREIGN KEY ([I_Test_Design_ID]) REFERENCES [EXAMINATION].[T_Test_Design] ([I_Test_Design_ID])
+    CONSTRAINT [PK__T_Test_Design_Au__660BFB01] PRIMARY KEY CLUSTERED ([I_Test_Design_Audit_ID] ASC)
 );
+
+
 

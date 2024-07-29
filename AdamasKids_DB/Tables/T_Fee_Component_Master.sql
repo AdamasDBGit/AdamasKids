@@ -16,12 +16,12 @@
     [Is_individual]             BIT           NULL,
     [I_Extracomponent_Ref_Type] INT           NULL,
     [Is_GST_Applicable]         BIT           NULL,
-    CONSTRAINT [PK__T_Fee_Component___0C86A9A4] PRIMARY KEY CLUSTERED ([I_Fee_Component_ID] ASC),
-    CONSTRAINT [FK_T_Fee_Component_Master_T_Brand_Master] FOREIGN KEY ([I_Brand_ID]) REFERENCES [dbo].[T_Brand_Master] ([I_Brand_ID]),
-    CONSTRAINT [FK_T_Fee_Component_Master_T_Fee_Component_Type] FOREIGN KEY ([I_Fee_Component_Type_ID]) REFERENCES [dbo].[T_Fee_Component_Type] ([I_Fee_Component_Type_ID])
+    CONSTRAINT [PK__T_Fee_Component___0C86A9A4] PRIMARY KEY CLUSTERED ([I_Fee_Component_ID] ASC)
 );
 
 
+
+
 GO
-ALTER TABLE [dbo].[T_Fee_Component_Master] NOCHECK CONSTRAINT [FK_T_Fee_Component_Master_T_Brand_Master];
+
 

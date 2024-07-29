@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE SearchRoleWisePermission 
+﻿CREATE PROCEDURE [dbo].[SearchRoleWisePermission] 
 -- =============================================
      -- Author: Tridip Chatterjee
 -- Create date: 23-09-2023

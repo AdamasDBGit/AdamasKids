@@ -1,4 +1,4 @@
-﻿CREATE Proc Usp_ERP_Course_batch_Map    
+﻿CREATE Proc [dbo].[Usp_ERP_Course_batch_Map]    
 (    
     @ClassID Int,    
     @BrandID int,    

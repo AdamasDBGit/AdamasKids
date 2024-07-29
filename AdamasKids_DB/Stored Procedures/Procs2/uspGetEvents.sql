@@ -34,7 +34,7 @@ BEGIN
             TEC.I_School_Group_ID AS SchoolGroupID,
             TEC.I_Class_ID AS ClassID
         FROM
-            [SMS].[dbo].[T_Event] AS TE
+            [dbo].[T_Event] AS TE
             INNER JOIN T_Event_Class AS TEC ON TE.I_Event_ID = TEC.I_Event_ID
             INNER JOIN T_Event_Category AS TECA ON TE.I_Event_Category_ID = TECA.I_Event_Category_ID
         WHERE
@@ -61,7 +61,7 @@ BEGIN
             --TEC.I_School_Group_ID AS SchoolGroupID,
             --TEC.I_Class_ID AS ClassID
         FROM
-            [SMS].[dbo].[T_Event] AS TE
+            [dbo].[T_Event] AS TE
             INNER JOIN T_Event_Class AS TEC ON TE.I_Event_ID = TEC.I_Event_ID
             INNER JOIN T_Event_Category AS TECA ON TE.I_Event_Category_ID = TECA.I_Event_Category_ID
         WHERE

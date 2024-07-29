@@ -1,5 +1,5 @@
 ﻿
-CREATE Proc ERP_FEE_GST_Generation(
+CREATE Proc [dbo].[ERP_FEE_GST_Generation](
 @EnquiryID bigint,@sessionID int,@BrandID int
 )
 As 

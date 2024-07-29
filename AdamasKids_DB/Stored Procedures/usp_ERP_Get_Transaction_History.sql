@@ -48,7 +48,8 @@ BEGIN
 	SattlementBankAccount varchar(max),
 	PaymnentGatewayID INT,
 	BrandID INT,
-	ExternalPurchasedMobileNo varchar(max)
+	ExternalPurchasedMobileNo varchar(max),
+	OrderID varchar(max)
 	)
 
 
@@ -59,13 +60,12 @@ BEGIN
     StatusColour VARCHAR(255)
 );
 
--- Step 2: Insert the function result into the table variable
+---- Step 2: Insert the function result into the table variable
 INSERT INTO @PaymentStatusTable
 SELECT * 
-FROM dbo.usp_ERP_GetTransactionStatus(NULL, NULL)
-;
+FROM dbo.usp_ERP_GetTransactionStatus(NULL, NULL);
 
-
+	--select * from @PaymentStatusTable
 
 ------------- OffLine + Online --------------
 
@@ -97,7 +97,8 @@ INSERT INTO #Transaction_History
     SattlementBankAccount,
 	PaymnentGatewayID,
 	BrandID,
-	ExternalPurchasedMobileNo
+	ExternalPurchasedMobileNo,
+	OrderID
 )
 SELECT 
     DISTINCT
@@ -131,9 +132,9 @@ SELECT
     RH.N_Receipt_Amount,
     RH.N_Tax_Amount,
     CASE 
-        WHEN TM.S_TransactionStatus = 'Initiated' THEN 1
         WHEN TM.S_TransactionStatus = 'Initiated' AND DATEDIFF(MINUTE, TM.Dt_TransactionDate, GETDATE()) > 60 THEN 2
-        WHEN TM.S_TransactionStatus = 'Success' THEN 3
+        WHEN TM.S_TransactionStatus = 'Initiated' THEN 1
+	    WHEN TM.S_TransactionStatus = 'Success' THEN 3
         WHEN TM.S_TransactionStatus = 'Failure' THEN 4 
 		WHEN TM.S_TransactionStatus IS NULL AND RH.I_Receipt_Header_ID IS NOT NULL THEN 3
         ELSE NULL
@@ -143,9 +144,10 @@ SELECT
     RH.Bank_Account_Name,
 	TM.I_ERP_Brand_PaymentGateway_Map_id,
 	BCD.I_Brand_ID,
-	TM.S_Mobile_No as ExternalPurchasedMobileNo
+	TM.S_Mobile_No as ExternalPurchasedMobileNo,
+	TM.Order_ID
 FROM 
-    T_Receipt_Header AS RH
+    T_Receipt_Header  AS RH with (NOLOCK)
 INNER JOIN 
     dbo.T_PaymentMode_Master PMM WITH (NOLOCK) ON RH.I_PaymentMode_ID = PMM.I_PaymentMode_ID
 INNER JOIN 
@@ -168,8 +170,9 @@ WHERE
     SD.S_Student_ID = ISNULL(@sStudentID, SD.S_Student_ID)
     AND (
         CONVERT(DATE, RH.Dt_Receipt_Date) BETWEEN CONVERT(DATE, @dtValidFrom) AND CONVERT(DATE, @dtValidTo)
-        OR CONVERT(DATE, TM.Dt_TransactionDate) BETWEEN CONVERT(DATE, @dtValidFrom) AND CONVERT(DATE, @dtValidTo)
+		
     )
+	AND (RH.S_Receipt_No = ISNULL(@receiptNo, RH.S_Receipt_No) OR @receiptNo IS NULL)
 UNION
 -- Failed Transactions ---
 SELECT 
@@ -201,9 +204,9 @@ SELECT
     0 AS AmountBreakupReceiptWise,
     0 AS TaxBreakupReceiptWise,
     CASE 
-        WHEN TM.S_TransactionStatus = 'Initiated' THEN 1
         WHEN TM.S_TransactionStatus = 'Initiated' AND DATEDIFF(MINUTE, TM.Dt_TransactionDate, GETDATE()) > 60 THEN 2
-        WHEN TM.S_TransactionStatus = 'Success' THEN 3
+        WHEN TM.S_TransactionStatus = 'Initiated' THEN 1
+		WHEN TM.S_TransactionStatus = 'Success' THEN 3
         WHEN TM.S_TransactionStatus = 'Failure' THEN 4 
         ELSE NULL
     END AS ExternalPaymentStatus,
@@ -213,6 +216,7 @@ SELECT
 	TM.I_ERP_Brand_PaymentGateway_Map_id,
 	TM.I_BrandID,
 	TM.S_Mobile_No ExternalPurchasedMobileNo
+	,TM.Order_ID
 FROM 
     T_ERP_Transaction_Invoice_Details AS TID 
 INNER JOIN
@@ -226,32 +230,10 @@ WHERE
     AND SD.S_Student_ID = ISNULL(@sStudentID, SD.S_Student_ID)
     AND (
         CONVERT(DATE, TM.Dt_TransactionDate) BETWEEN CONVERT(DATE, @dtValidFrom) AND CONVERT(DATE, @dtValidTo)
-    );
+    )
+	AND  @receiptNo IS NULL
 	
 
-	
---	DECLARE @PaymentStatusTable TABLE 
---(
---	PaymentStatusID INT,
---    StatusDescription VARCHAR(255),
---    StatusColour VARCHAR(255)
---);
-
----- Step 2: Insert the function result into the table variable
---INSERT INTO @PaymentStatusTable
---SELECT 1,* 
---FROM dbo.usp_ERP_GetTransactionStatus(1, NULL)
---union
---SELECT 2,* 
---FROM dbo.usp_ERP_GetTransactionStatus(2, NULL)
---union
---SELECT 3,* 
---FROM dbo.usp_ERP_GetTransactionStatus(3, NULL)
---union 
---SELECT 4,* 
---FROM dbo.usp_ERP_GetTransactionStatus(4, NULL);
-
-	
 	--select * from @PaymentStatusTable
 
 	--select * from #Transaction_History
@@ -264,8 +246,15 @@ WHERE
 	#Transaction_History as TH
 	LEFT join
 	@PaymentStatusTable as ExternalStatus on TH.PaymentStatus=ExternalStatus.PaymentStatusID
-	where TH.PaymentStatus=ISNULL(@iPaymentStatusID,TH.PaymentStatus) and  TH.ReceiptNo=ISNULL(@receiptNo,TH.ReceiptNo)
+	where TH.PaymentStatus=ISNULL(@iPaymentStatusID,TH.PaymentStatus) 
+	AND (TH.ReceiptNo = ISNULL(@receiptNo, TH.ReceiptNo) OR @receiptNo IS NULL)
+	ORDER BY 
+    CASE 
+        WHEN TH.ReceiptDate IS NULL THEN TH.TransactionDate 
+        ELSE TH.ReceiptDate 
+    END desc
 
 
+	drop table #Transaction_History
 
 END

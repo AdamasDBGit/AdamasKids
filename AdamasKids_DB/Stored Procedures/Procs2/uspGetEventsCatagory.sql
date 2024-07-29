@@ -3,7 +3,7 @@
 -- Create date: <29th August 2023>
 -- Description:	<to get the event catagory>
 -- =============================================
-CREATE PROCEDURE Academic.uspGetEventsCatagory
+CREATE PROCEDURE [Academic].[uspGetEventsCatagory]
 	-- Add the parameters for the stored procedure here
 	
 AS
@@ -17,7 +17,7 @@ BEGIN
     TEC.[I_Event_Category_ID] as CatagoryID,
     TEC.[S_Event_Category] as Catagory
 FROM
-    [SMS].[dbo].[T_Event_Category] as TEC
+    [dbo].[T_Event_Category] as TEC
 WHERE
     TEC.[I_Status] = 1;
 

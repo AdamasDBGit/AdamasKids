@@ -1,1 +1,8 @@
 ﻿CREATE SCHEMA [CUSTOMERCARE]
+    AUTHORIZATION [dbo];
+
+
+
+
+
+

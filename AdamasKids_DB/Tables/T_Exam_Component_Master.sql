@@ -16,13 +16,12 @@
     [I_Weightage]           INT             NULL,
     [I_Sequence_No]         INT             NULL,
     [B_Exclude_In_Report]   BIT             NULL,
-    CONSTRAINT [PK__T_Exam_Component__173876EA] PRIMARY KEY CLUSTERED ([I_Exam_Component_ID] ASC),
-    CONSTRAINT [FK_T_Exam_Component_Master_T_Course_Master] FOREIGN KEY ([I_Course_ID]) REFERENCES [dbo].[T_Course_Master] ([I_Course_ID]),
-    CONSTRAINT [FK_T_Exam_Component_Master_T_Exam_Type_Master] FOREIGN KEY ([I_Exam_Type_Master_ID]) REFERENCES [dbo].[T_Exam_Type_Master] ([I_Exam_Type_Master_ID]),
-    CONSTRAINT [FK_T_Exam_Component_Master_T_Exam_Type_Master1234] FOREIGN KEY ([I_Exam_Type_Master_ID]) REFERENCES [dbo].[T_Exam_Type_Master] ([I_Exam_Type_Master_ID])
+    CONSTRAINT [PK__T_Exam_Component__173876EA] PRIMARY KEY CLUSTERED ([I_Exam_Component_ID] ASC)
 );
 
 
+
+
 GO
-ALTER TABLE [dbo].[T_Exam_Component_Master] NOCHECK CONSTRAINT [FK_T_Exam_Component_Master_T_Course_Master];
+
 

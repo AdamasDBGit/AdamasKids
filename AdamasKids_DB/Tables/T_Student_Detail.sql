@@ -73,28 +73,18 @@
     [PreDefaulterCourses]       VARCHAR (MAX)   CONSTRAINT [DF__T_Student__PreDe__035276EF] DEFAULT ('') NULL,
     [PaymentDueCourses]         VARCHAR (MAX)   CONSTRAINT [DF__T_Student__Payme__04469B28] DEFAULT ('') NULL,
     [I_buzzedDB_Slot_ID]        INT             NULL,
-    CONSTRAINT [PK__T_Student_Detail__00AAE2A4] PRIMARY KEY CLUSTERED ([I_Student_Detail_ID] ASC),
-    CONSTRAINT [FK__T_Student__I_Cur__3DB3F0E4] FOREIGN KEY ([I_Curr_State_ID]) REFERENCES [dbo].[T_State_Master] ([I_State_ID]),
-    CONSTRAINT [FK__T_Student__I_Cur__3EA8151D] FOREIGN KEY ([I_Curr_City_ID]) REFERENCES [dbo].[T_City_Master] ([I_City_ID]),
-    CONSTRAINT [FK__T_Student__I_Cur__3F9C3956] FOREIGN KEY ([I_Curr_Country_ID]) REFERENCES [dbo].[T_Country_Master] ([I_Country_ID]),
-    CONSTRAINT [FK__T_Student__I_Enq__3CBFCCAB] FOREIGN KEY ([I_Enquiry_Regn_ID]) REFERENCES [dbo].[T_Enquiry_Regn_Detail] ([I_Enquiry_Regn_ID]),
-    CONSTRAINT [FK__T_Student__I_Inc__40905D8F] FOREIGN KEY ([I_Income_Group_ID]) REFERENCES [dbo].[T_Income_Group_Master] ([I_Income_Group_ID]),
-    CONSTRAINT [FK__T_Student__I_Occ__436CCA3A] FOREIGN KEY ([I_Occupation_ID]) REFERENCES [dbo].[T_Occupation_Master] ([I_Occupation_ID]),
-    CONSTRAINT [FK__T_Student__I_Pre__418481C8] FOREIGN KEY ([I_Pref_Career_ID]) REFERENCES [dbo].[T_Preferred_Career_Master] ([I_Pref_Career_ID]),
-    CONSTRAINT [FK__T_Student__I_Qua__3BCBA872] FOREIGN KEY ([I_Qualification_Name_ID]) REFERENCES [dbo].[T_Qualification_Name_Master] ([I_Qualification_Name_ID]),
-    CONSTRAINT [FK__T_Student__I_Str__4278A601] FOREIGN KEY ([I_Stream_ID]) REFERENCES [dbo].[T_Stream_Master] ([I_Stream_ID]),
-    CONSTRAINT [FK_T_Student_Detail_T_BusRoute_Master] FOREIGN KEY ([I_Route_ID]) REFERENCES [dbo].[T_BusRoute_Master] ([I_Route_ID]),
-    CONSTRAINT [FK_T_Student_Detail_T_Corporate_Details] FOREIGN KEY ([I_Corporate_ID]) REFERENCES [CORPORATE].[T_Corporate_Details] ([I_Corporate_ID]),
-    CONSTRAINT [FK_T_Student_Detail_T_House_Master] FOREIGN KEY ([I_House_ID]) REFERENCES [dbo].[T_House_Master] ([I_House_ID])
+    CONSTRAINT [PK__T_Student_Detail__00AAE2A4] PRIMARY KEY CLUSTERED ([I_Student_Detail_ID] ASC)
 );
 
 
-GO
-ALTER TABLE [dbo].[T_Student_Detail] NOCHECK CONSTRAINT [FK__T_Student__I_Cur__3DB3F0E4];
 
 
 GO
-ALTER TABLE [dbo].[T_Student_Detail] NOCHECK CONSTRAINT [FK__T_Student__I_Cur__3EA8151D];
+
+
+
+GO
+
 
 
 GO

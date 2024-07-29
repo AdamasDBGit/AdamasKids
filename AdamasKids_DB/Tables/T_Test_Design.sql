@@ -8,7 +8,8 @@
     [S_Upd_By]            VARCHAR (20)  NULL,
     [Dt_Crtd_On]          DATETIME      NULL,
     [Dt_Upd_On]           DATETIME      NULL,
-    CONSTRAINT [PK__T_Test_Design__0C519F7A] PRIMARY KEY CLUSTERED ([I_Test_Design_ID] ASC),
-    CONSTRAINT [FK__T_Test_De__I_Exa__7BFB3C20] FOREIGN KEY ([I_Exam_Component_ID]) REFERENCES [dbo].[T_Exam_Component_Master] ([I_Exam_Component_ID])
+    CONSTRAINT [PK__T_Test_Design__0C519F7A] PRIMARY KEY CLUSTERED ([I_Test_Design_ID] ASC)
 );
+
+
 

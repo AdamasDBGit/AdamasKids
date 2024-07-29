@@ -10,12 +10,12 @@
     [Dt_Upd_On]            DATETIME     NULL,
     [I_Status]             INT          NOT NULL,
     [I_Placement_Skill_ID] INT          IDENTITY (1, 1) NOT FOR REPLICATION NOT NULL,
-    CONSTRAINT [PK__T_Placement_Skil__3E3E00C9] PRIMARY KEY CLUSTERED ([I_Placement_Skill_ID] ASC),
-    CONSTRAINT [FK__T_Placeme__I_Ski__4026493B] FOREIGN KEY ([I_Skills_ID]) REFERENCES [dbo].[T_EOS_Skill_Master] ([I_Skill_ID]),
-    CONSTRAINT [FK__T_Placeme__I_Stu__3F322502] FOREIGN KEY ([I_Student_Detail_ID]) REFERENCES [PLACEMENT].[T_Placement_Registration] ([I_Student_Detail_ID])
+    CONSTRAINT [PK__T_Placement_Skil__3E3E00C9] PRIMARY KEY CLUSTERED ([I_Placement_Skill_ID] ASC)
 );
 
 
+
+
 GO
-ALTER TABLE [PLACEMENT].[T_Placement_Skills] NOCHECK CONSTRAINT [FK__T_Placeme__I_Ski__4026493B];
+
 

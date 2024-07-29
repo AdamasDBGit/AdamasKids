@@ -13,11 +13,12 @@
     [S_Upd_By]                         VARCHAR (20)   NULL,
     [Dt_Crtd_On]                       DATETIME       NULL,
     [Dt_Upd_On]                        DATETIME       NULL,
-    CONSTRAINT [PK_T_Fee_Sharing_OnAccount_Audit] PRIMARY KEY CLUSTERED ([I_Fee_Sharing_OnAccount_Audit_ID] ASC),
-    CONSTRAINT [FK_T_Fee_Sharing_OnAccount_Audit_T_Brand_Master] FOREIGN KEY ([I_Brand_ID]) REFERENCES [dbo].[T_Brand_Master] ([I_Brand_ID])
+    CONSTRAINT [PK_T_Fee_Sharing_OnAccount_Audit] PRIMARY KEY CLUSTERED ([I_Fee_Sharing_OnAccount_Audit_ID] ASC)
 );
 
 
+
+
 GO
-ALTER TABLE [dbo].[T_Fee_Sharing_OnAccount_Audit] NOCHECK CONSTRAINT [FK_T_Fee_Sharing_OnAccount_Audit_T_Brand_Master];
+
 

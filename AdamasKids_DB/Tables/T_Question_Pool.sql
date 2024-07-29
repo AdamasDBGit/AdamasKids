@@ -13,9 +13,8 @@
     [S_Upd_By]                VARCHAR (20)    NULL,
     [Dt_Crtd_On]              DATETIME        NULL,
     [Dt_Upd_On]               DATETIME        NULL,
-    CONSTRAINT [PK__T_Question_Pool__52F9268D] PRIMARY KEY CLUSTERED ([I_Question_ID] ASC),
-    CONSTRAINT [FK__T_Questio__I_Com__745A1A58] FOREIGN KEY ([I_Complexity_ID]) REFERENCES [EXAMINATION].[T_Complexity_Master] ([I_Complexity_ID]),
-    CONSTRAINT [FK__T_Questio__I_Poo__754E3E91] FOREIGN KEY ([I_Pool_ID]) REFERENCES [EXAMINATION].[T_Pool_Master] ([I_Pool_ID]),
-    CONSTRAINT [FK_T_Question_Pool_T_Answer_Type_Master] FOREIGN KEY ([I_Answer_Type_ID]) REFERENCES [EXAMINATION].[T_Answer_Type_Master] ([I_Answer_Type_ID])
+    CONSTRAINT [PK__T_Question_Pool__52F9268D] PRIMARY KEY CLUSTERED ([I_Question_ID] ASC)
 );
+
+
 

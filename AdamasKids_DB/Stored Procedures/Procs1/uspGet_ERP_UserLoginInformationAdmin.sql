@@ -39,8 +39,8 @@ BEGIN
           BM.S_Brand_Code as BrandCode,  
           Isnull(UM.Is_Teaching_Staff,0) as D_UserType,  
        EUP.S_Photo as UserPhoto,  
-       UM.isPasswordChanged --Ref #1 QutubHaider  
-       --UM.unUserId --Ref #2 QutubHaider  
+       UM.isPasswordChanged, --Ref #1 QutubHaider  
+       UM.unUserId --Ref #2 QutubHaider  
       FROM    
           dbo.T_ERP_User as UM        
           INNER JOIN dbo.T_ERP_User_Brand as UB on UB.I_User_ID=UM.I_User_ID        

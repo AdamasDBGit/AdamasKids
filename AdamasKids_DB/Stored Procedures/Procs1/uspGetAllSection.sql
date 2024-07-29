@@ -15,5 +15,5 @@ BEGIN
     -- Insert statements for procedure here
 	SELECT  [I_Section_ID] SectionId
       ,[S_Section_Name]  SectionName
-  FROM [SMS].[dbo].[T_Section]
+  FROM [dbo].[T_Section]
 END

@@ -8,11 +8,12 @@
     [S_Updt_By]        VARCHAR (20)  NULL,
     [Dt_Crtd_On]       DATETIME      NULL,
     [Dt_Upd_On]        DATETIME      NULL,
-    CONSTRAINT [PK_T_Student_Sub_Batch_Master] PRIMARY KEY CLUSTERED ([I_Sub_Batch_ID] ASC),
-    CONSTRAINT [FK_T_Student_Sub_Batch_Master_T_Student_Batch_Master] FOREIGN KEY ([I_Batch_ID]) REFERENCES [dbo].[T_Student_Batch_Master] ([I_Batch_ID])
+    CONSTRAINT [PK_T_Student_Sub_Batch_Master] PRIMARY KEY CLUSTERED ([I_Sub_Batch_ID] ASC)
 );
 
 
+
+
 GO
-ALTER TABLE [dbo].[T_Student_Sub_Batch_Master] NOCHECK CONSTRAINT [FK_T_Student_Sub_Batch_Master_T_Student_Batch_Master];
+
 

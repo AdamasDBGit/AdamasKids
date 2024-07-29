@@ -113,7 +113,25 @@ BEGIN
     WHERE a.Is_Active = 1 AND b.I_Status = 1 AND c.I_Status = 1 AND d.Is_Active = 1    
     AND a.I_User_Id = @UserID AND c.Permission_Type = @PermissionType AND c.S_PageUrl=ISNULL(@pageurl,c.S_PageUrl)   
  and b.I_Brand_ID=ISNULL(@ibrandID,b.I_Brand_ID) and d.I_Brand_ID=ISNULL(@ibrandID,d.I_Brand_ID) and a.Brand_ID=ISNULL(@ibrandID,a.Brand_ID)  
- and c.Is_Active=1
+ and c.Is_Active=1 
+union
+SELECT DISTINCT    
+				c.I_Permission_ID,    
+				c.S_Name,    
+				c.Description,    
+				c.I_Parent_Menu_ID,    
+				c.S_PageUrl,    
+				c.S_Icon,    
+				c.I_Is_Leaf_Node,    
+				c.i_pageseq,    
+				NULL AS S_User_GroupName,    
+				NULL as S_Role_Desc,    
+		  S_Display_Component_Permissions as S_Display_Component_Permissions,    
+		  S_Enable_Component_Permissions as S_Enable_Component_Permissions,    
+		  c.RequestType as RequestType    
+			FROM T_erp_Permission c     
+			WHERE  c.I_Status = 1 AND @PermissionType = 'menu' AND @pageurl IS NULL
+AND c.I_Permission_ID=334
  --select * from #USerPermission    
  --print @PermissionType    
 END    

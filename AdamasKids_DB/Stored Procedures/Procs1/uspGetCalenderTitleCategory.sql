@@ -3,7 +3,7 @@
 -- Create date: <2023 May 22>
 -- Description:	<Fetch Calender_Title_Category>
 -- =============================================
-CREATE PROCEDURE uspGetCalenderTitleCategory 
+CREATE PROCEDURE [dbo].[uspGetCalenderTitleCategory] 
 	
 AS
 BEGIN
