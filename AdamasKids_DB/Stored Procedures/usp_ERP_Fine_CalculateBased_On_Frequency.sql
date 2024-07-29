@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE usp_ERP_Fine_CalculateBased_On_Frequency
+﻿CREATE PROCEDURE [dbo].[usp_ERP_Fine_CalculateBased_On_Frequency]
     @BrandID INT,
     @s_StudentID VARCHAR(10),
     @Paymentdate date = Null

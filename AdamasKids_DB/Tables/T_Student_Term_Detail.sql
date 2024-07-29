@@ -16,28 +16,26 @@
     [I_Batch_ID]               INT          NULL,
     [D_Attendance]             DECIMAL (18) NULL,
     [I_Conduct_Id]             INT          NULL,
-    CONSTRAINT [PK_T_Student_Term_Detail] PRIMARY KEY CLUSTERED ([I_Student_Term_Detail_ID] ASC),
-    CONSTRAINT [FK__T_Student__I_Cou__426DB909] FOREIGN KEY ([I_Course_ID]) REFERENCES [dbo].[T_Course_Master] ([I_Course_ID]),
-    CONSTRAINT [FK__T_Student__I_Stu__4634284C] FOREIGN KEY ([I_Student_Detail_ID]) REFERENCES [dbo].[T_Student_Detail] ([I_Student_Detail_ID]),
-    CONSTRAINT [FK__T_Student__I_Ter__4456017B] FOREIGN KEY ([I_Term_ID]) REFERENCES [dbo].[T_Term_Master] ([I_Term_ID]),
-    CONSTRAINT [FK_T_Student_Term_Detail_T_Student_Batch_Master] FOREIGN KEY ([I_Batch_ID]) REFERENCES [dbo].[T_Student_Batch_Master] ([I_Batch_ID])
+    CONSTRAINT [PK_T_Student_Term_Detail] PRIMARY KEY CLUSTERED ([I_Student_Term_Detail_ID] ASC)
 );
 
 
-GO
-ALTER TABLE [dbo].[T_Student_Term_Detail] NOCHECK CONSTRAINT [FK__T_Student__I_Cou__426DB909];
 
 
 GO
-ALTER TABLE [dbo].[T_Student_Term_Detail] NOCHECK CONSTRAINT [FK__T_Student__I_Stu__4634284C];
 
-
-GO
-ALTER TABLE [dbo].[T_Student_Term_Detail] NOCHECK CONSTRAINT [FK__T_Student__I_Ter__4456017B];
 
 
 GO
-ALTER TABLE [dbo].[T_Student_Term_Detail] NOCHECK CONSTRAINT [FK_T_Student_Term_Detail_T_Student_Batch_Master];
+
+
+
+GO
+
+
+
+GO
+
 
 
 GO

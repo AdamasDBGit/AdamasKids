@@ -31,11 +31,10 @@
     [S_LeaveDay]            VARCHAR (MAX)  NULL,
     [S_TeacherAvailability] NVARCHAR (MAX) NULL,
     [S_CenterAvailability]  NVARCHAR (MAX) NULL,
-    CONSTRAINT [PK__T_Employee_Dtls__79F2F81D] PRIMARY KEY CLUSTERED ([I_Employee_ID] ASC),
-    CONSTRAINT [FK__T_Employe__I_Cen__06448BC0] FOREIGN KEY ([I_Centre_Id]) REFERENCES [dbo].[T_Centre_Master] ([I_Centre_Id]),
-    CONSTRAINT [FK__T_Employe__I_Cen__4441BE39] FOREIGN KEY ([I_Centre_Id]) REFERENCES [dbo].[T_Centre_Master] ([I_Centre_Id]),
-    CONSTRAINT [FK__T_Employe__I_Cen__6B909584] FOREIGN KEY ([I_Centre_Id]) REFERENCES [dbo].[T_Centre_Master] ([I_Centre_Id])
+    CONSTRAINT [PK__T_Employee_Dtls__79F2F81D] PRIMARY KEY CLUSTERED ([I_Employee_ID] ASC)
 );
+
+
 
 
 GO

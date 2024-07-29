@@ -1,4 +1,4 @@
-﻿create procedure uspGetBatchList(@CentreID INT)
+﻿CREATE procedure [dbo].[uspGetBatchList](@CentreID INT)
 As
 begin
 

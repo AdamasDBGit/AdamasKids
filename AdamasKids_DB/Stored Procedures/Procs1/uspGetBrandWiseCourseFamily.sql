@@ -3,7 +3,7 @@
 -- Create date: <2023 July 12>
 -- Description:	<Get Course Family Master>
 -- =============================================
-CREATE PROCEDURE uspGetBrandWiseCourseFamily 
+CREATE PROCEDURE [dbo].[uspGetBrandWiseCourseFamily] 
 	-- Add the parameters for the stored procedure here
 	@iBrandID INT
 AS

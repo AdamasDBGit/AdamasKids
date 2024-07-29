@@ -20,8 +20,8 @@
     [S_Upd_By]                    VARCHAR (20)    NULL,
     [Dt_Crtd_On]                  DATETIME        NULL,
     [Dt_Upd_On]                   DATETIME        NULL,
-    CONSTRAINT [PK__T_Center_Payment__5C2E5663] PRIMARY KEY CLUSTERED ([I_Center_Payment_Details_ID] ASC),
-    CONSTRAINT [FK__T_Center___I_Cen__0253FF4B] FOREIGN KEY ([I_Centre_Id]) REFERENCES [dbo].[T_Centre_Master] ([I_Centre_Id]),
-    CONSTRAINT [FK__T_Center___I_Pay__015FDB12] FOREIGN KEY ([I_PaymentMode_ID]) REFERENCES [dbo].[T_PaymentMode_Master] ([I_PaymentMode_ID])
+    CONSTRAINT [PK__T_Center_Payment__5C2E5663] PRIMARY KEY CLUSTERED ([I_Center_Payment_Details_ID] ASC)
 );
+
+
 

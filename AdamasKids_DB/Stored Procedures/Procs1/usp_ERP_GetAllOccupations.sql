@@ -3,7 +3,7 @@
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE usp_ERP_GetAllOccupations
+CREATE PROCEDURE [dbo].[usp_ERP_GetAllOccupations]
 	
 AS
 BEGIN

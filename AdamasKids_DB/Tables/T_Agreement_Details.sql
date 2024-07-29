@@ -44,24 +44,20 @@
     [S_Phone_Number]              VARCHAR (50)    NULL,
     [S_Signatories_Phone_Number]  VARCHAR (50)    NULL,
     [I_Currency_ID]               INT             NULL,
-    CONSTRAINT [PK__T_Agreement_Deta__50BCA3B7] PRIMARY KEY CLUSTERED ([I_Agreement_ID] ASC),
-    CONSTRAINT [FK__T_Agreeme__I_Agr__74FA042D] FOREIGN KEY ([I_Agreement_Template_ID]) REFERENCES [NETWORK].[T_Agreement_Template_Master] ([I_Agreement_Template_ID]),
-    CONSTRAINT [FK__T_Agreeme__I_BP___79BEB94A] FOREIGN KEY ([I_BP_ID]) REFERENCES [NETWORK].[T_BP_Master] ([I_BP_ID]),
-    CONSTRAINT [FK__T_Agreeme__I_Bra__75EE2866] FOREIGN KEY ([I_Brand_ID]) REFERENCES [dbo].[T_Brand_Master] ([I_Brand_ID]),
-    CONSTRAINT [FK__T_Agreeme__I_Cit__76E24C9F] FOREIGN KEY ([I_City_ID]) REFERENCES [dbo].[T_City_Master] ([I_City_ID]),
-    CONSTRAINT [FK__T_Agreeme__I_Cou__78CA9511] FOREIGN KEY ([I_Country_ID]) REFERENCES [dbo].[T_Country_Master] ([I_Country_ID]),
-    CONSTRAINT [FK__T_Agreeme__I_Sta__77D670D8] FOREIGN KEY ([I_State_ID]) REFERENCES [dbo].[T_State_Master] ([I_State_ID])
+    CONSTRAINT [PK__T_Agreement_Deta__50BCA3B7] PRIMARY KEY CLUSTERED ([I_Agreement_ID] ASC)
 );
 
 
-GO
-ALTER TABLE [NETWORK].[T_Agreement_Details] NOCHECK CONSTRAINT [FK__T_Agreeme__I_Bra__75EE2866];
 
 
 GO
-ALTER TABLE [NETWORK].[T_Agreement_Details] NOCHECK CONSTRAINT [FK__T_Agreeme__I_Cit__76E24C9F];
+
 
 
 GO
-ALTER TABLE [NETWORK].[T_Agreement_Details] NOCHECK CONSTRAINT [FK__T_Agreeme__I_Sta__77D670D8];
+
+
+
+GO
+
 

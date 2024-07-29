@@ -16,7 +16,8 @@
     [I_Course_Completed]      INT             NULL,
     [N_DCCourse_Amount]       NUMERIC (18, 2) NULL,
     [Dt_effective_Date]       DATETIME        NULL,
-    CONSTRAINT [PK__T_Student_Transf__1976906E] PRIMARY KEY CLUSTERED ([I_Transfer_Request_ID] ASC),
-    CONSTRAINT [FK__T_Student__I_Stu__3AD78439] FOREIGN KEY ([I_Student_Detail_ID]) REFERENCES [dbo].[T_Student_Detail] ([I_Student_Detail_ID])
+    CONSTRAINT [PK__T_Student_Transf__1976906E] PRIMARY KEY CLUSTERED ([I_Transfer_Request_ID] ASC)
 );
+
+
 

@@ -1,4 +1,4 @@
-﻿Create Proc zz_UpdateEmpdata(
+﻿CREATE Proc [dbo].[zz_UpdateEmpdata](
 @rollnumber int,
 @name varchar(100),
 @is_Active bit,

@@ -49,6 +49,7 @@ BEGIN
 
 	DECLARE @StudentDetailID INT
 	DECLARE @sErrorMSG NVARCHAR(4000)
+	DECLARE @TransactionID INT
 
 
 	select @StudentDetailID=I_Student_Detail_ID from T_Student_Detail where S_Student_ID=@sStudentID
@@ -225,8 +226,16 @@ and ISNULL(TID.CanBeProcessed,'false')='true' and ISNULL(TID.IsCompleted,'false'
 	END
 
 
-	IF @SuccessXML IS NOT NULL OR @PaymentJson IS NOT NULL
-	BEGIN
+
+	IF @SuccessXML IS NOT NULL OR @PaymentJson IS NOT NULL 
+		BEGIN
+		select @TransactionID=I_ERP_Transaction_Master_ID from T_ERP_Transaction_Master where I_ERP_TransactionNo=@sTransactionNo
+		
+		IF @TransactionID IS NOT NULL 
+		AND exists(select * from T_ERP_Transaction_Invoice_Details where I_ERP_Transaction_Master_ID=@TransactionID)
+		AND not exists(select * from T_ERP_Transaction_Invoice_Details where I_ERP_Transaction_Master_ID=@TransactionID and ReceiptHeaderID IS NULL)
+
+			BEGIN
 
 			update T_ERP_Transaction_Master set IsCompleted='true',Dt_CompletedOn=GETDATE(),
 			SuccessXML=@SuccessXML,PaymentJson=@PaymentJson,S_TransactionStatus=@sTransactionStatus,I_StudentDetailID=@StudentDetailID
@@ -252,7 +261,8 @@ and ISNULL(TID.CanBeProcessed,'false')='true' and ISNULL(TID.IsCompleted,'false'
 	PGMessage,
 	PGResponseType,
 	PGExecutionDate,
-	PGResponseJson
+	PGResponseJson,
+	Dt_CreatedAt
 	)
 	values
 	(
@@ -267,7 +277,8 @@ and ISNULL(TID.CanBeProcessed,'false')='true' and ISNULL(TID.IsCompleted,'false'
 	@PgMessage,
 	@RequestType,
 	@ExecutionDate,
-	@PgResponse
+	@PgResponse,
+	GETDATE()
 	)
 
 
@@ -277,10 +288,49 @@ and ISNULL(TID.CanBeProcessed,'false')='true' and ISNULL(TID.IsCompleted,'false'
 	update T_ERP_Transaction_Master set PG_History_ID=@PGHistoryID where I_ERP_Transaction_Master_ID=@iTransactionMasterID and I_ERP_TransactionNo=@sTransactionNo
 
 	
-	
+			IF @SourceOfRequestType != 'System_Processed'
+					
+						BEGIN
+
+
+						exec [dbo].[usp_ERP_SaveTransactionCronJob] 
+						@sTransactionNo,
+						@iTransactionMasterID,
+						@sTransactionStatus,
+						'true',--@CompleteStatus bit=NULL,
+						'false',--@CronCanBeProcess bit=NULL,
+						NULL,--@NoOfAttempt int=NULL,
+						NULL,--@StatusID bit = NULL,
+						NULL,--@Is_PG_Success bit=NULL,
+						NULL,--@Is_PG_Failure bit=NULL,
+						NULL,--@Is_Failed_User bit =NULL,
+						@PGHistoryID,--@Requery_PG_LogID int=NULL,
+						NULL,--@Requery_Request_LogID int=NULL,
+						NULL,--@PG_Response varchar(max)=NULL,
+						NULL,--@ERP_Response varchar(max)=NULL,
+						NULL,--@PG_Remarks varchar(max)=NULL,
+						NULL,--@ERP_Remarks varchar(max)=NULL,
+						NULL,--@PG_Error varchar(max)=NULL,
+						NULL,--@ERP_Error varchar(max)=NULL,
+						NULL,--@CanbeProcessForERPSattlement BIT=NULL,
+						'false'--@IsFromCron bit
+
+
+					END
 	
 	
 	END
+		ELSE
+			BEGIN
+			
+				set  @sErrorMSG='Something went wrong! Receipts not adjusted';
+
+				RAISERROR(@sErrorMSG, 11, 1);
+			END
+		
+		END
+		
+	
 
 
 
@@ -294,7 +344,7 @@ and ISNULL(TID.CanBeProcessed,'false')='true' and ISNULL(TID.IsCompleted,'false'
 
 
 
-	select 1 StatusFlag,'Payment has been Succeed' Message
+	select 1 StatusFlag,'Payment has succeeded' Message
 
 	--exec [dbo].[usp_ERP_InitiateTransaction] 1,1,'string545','2024-05-31','Initiated','Online App_Arivoo','UPI',10475,1,32,'24-0044'
 

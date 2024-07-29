@@ -8,7 +8,8 @@
     [S_Updt_By]          VARCHAR (20)   NULL,
     [Dt_Crtd_By]         DATETIME       NULL,
     [Dt_Upd_On]          DATETIME       NULL,
-    CONSTRAINT [PK__T_Breach_Notice__391AEFA7] PRIMARY KEY CLUSTERED ([I_Breach_Notice_ID] ASC),
-    CONSTRAINT [FK_T_Breach_Notice] FOREIGN KEY ([I_Center_ID]) REFERENCES [dbo].[T_Centre_Master] ([I_Centre_Id])
+    CONSTRAINT [PK__T_Breach_Notice__391AEFA7] PRIMARY KEY CLUSTERED ([I_Breach_Notice_ID] ASC)
 );
+
+
 

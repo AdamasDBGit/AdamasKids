@@ -3,7 +3,7 @@
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE usp_ERP_AddOrUpdateOtherDetailsInEnquiry
+CREATE PROCEDURE [dbo].[usp_ERP_AddOrUpdateOtherDetailsInEnquiry]
 (
 	@iEnquiryRegnID int = null,
 	@iEnquiryTypeID int = null,
@@ -42,7 +42,7 @@ BEGIN
 		SET NOCOUNT ON;
 
 		-- Insert statements for procedure here
-		UPDATE [SMS].[dbo].[T_ERP_Enquiry_Regn_Detail]
+		UPDATE [dbo].[T_ERP_Enquiry_Regn_Detail]
 		SET	
 			I_Enquiry_Type_ID = @iEnquiryTypeID,
 			I_School_Group_ID = @iSchoolGroupID,
@@ -56,7 +56,7 @@ BEGIN
 
 		IF EXISTS (SELECT R_I_Enquiry_Regn_ID FROM T_ERP_EnquiryReg_Prev_Details WHERE R_I_Enquiry_Regn_ID = @iEnquiryRegnID)
 		BEGIN
-			UPDATE [SMS].[dbo].[T_ERP_EnquiryReg_Prev_Details]
+			UPDATE [dbo].[T_ERP_EnquiryReg_Prev_Details]
 			SET	
 				R_I_Prev_Class_ID = @iPrevClassID,
 				Is_Marks_Input = @iIsMarksInput,
@@ -73,7 +73,7 @@ BEGIN
 		END
 		ELSE
 		BEGIN
-			INSERT INTO [SMS].[dbo].[T_ERP_EnquiryReg_Prev_Details]
+			INSERT INTO [dbo].[T_ERP_EnquiryReg_Prev_Details]
 			(
 				R_I_Prev_Class_ID,
 				R_I_Enquiry_Regn_ID,
@@ -107,7 +107,7 @@ BEGIN
 
 		IF EXISTS (SELECT R_I_Enquiry_Regn_ID FROM T_ERP_PreEnq_Siblings WHERE R_I_Enquiry_Regn_ID = @iEnquiryRegnID)
 		BEGIN
-			UPDATE [SMS].[dbo].[T_ERP_PreEnq_Siblings]
+			UPDATE [dbo].[T_ERP_PreEnq_Siblings]
 			SET	
 				S_StudentID = @sSiblingStudentID,
 				S_Stud_Name = @sSiblingStudentName,
@@ -119,7 +119,7 @@ BEGIN
 		END
 		ELSE
 		BEGIN
-			INSERT INTO [SMS].[dbo].[T_ERP_PreEnq_Siblings]
+			INSERT INTO [dbo].[T_ERP_PreEnq_Siblings]
 			(
 				R_I_Enquiry_Regn_ID,
 				S_StudentID,

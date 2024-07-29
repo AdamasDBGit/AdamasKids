@@ -25,7 +25,8 @@
     [S_Work_Experience]     VARCHAR (200)  NULL,
     [B_Shift]               BIT            NOT NULL,
     [I_Status]              INT            NOT NULL,
-    CONSTRAINT [PK__T_Vacancy_Detail__172433A8] PRIMARY KEY CLUSTERED ([I_Vacancy_ID] ASC),
-    CONSTRAINT [FK__T_Vacancy__I_Emp__181857E1] FOREIGN KEY ([I_Employer_ID]) REFERENCES [PLACEMENT].[T_Employer_Detail] ([I_Employer_ID])
+    CONSTRAINT [PK__T_Vacancy_Detail__172433A8] PRIMARY KEY CLUSTERED ([I_Vacancy_ID] ASC)
 );
+
+
 

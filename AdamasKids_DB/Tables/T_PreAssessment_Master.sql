@@ -8,11 +8,12 @@
     [S_Upd_By]             VARCHAR (20)  NULL,
     [Dt_Crtd_On]           DATETIME      NULL,
     [Dt_Upd_On]            DATETIME      NULL,
-    CONSTRAINT [PK_T_PreAssessment_Master] PRIMARY KEY CLUSTERED ([I_PreAssessment_ID] ASC),
-    CONSTRAINT [FK_T_PreAssessment_Master_T_Brand_Master] FOREIGN KEY ([I_Brand_ID]) REFERENCES [dbo].[T_Brand_Master] ([I_Brand_ID])
+    CONSTRAINT [PK_T_PreAssessment_Master] PRIMARY KEY CLUSTERED ([I_PreAssessment_ID] ASC)
 );
 
 
+
+
 GO
-ALTER TABLE [ASSESSMENT].[T_PreAssessment_Master] NOCHECK CONSTRAINT [FK_T_PreAssessment_Master_T_Brand_Master];
+
 

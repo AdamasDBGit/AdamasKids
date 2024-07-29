@@ -1,4 +1,4 @@
-﻿CREATE Proc USP_ERP_Parents_SYNC_Processes(    
+﻿CREATE Proc [dbo].[USP_ERP_Parents_SYNC_Processes](    
 @pBrandID int    
 )    
 as     

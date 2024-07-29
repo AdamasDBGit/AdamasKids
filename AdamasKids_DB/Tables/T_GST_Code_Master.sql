@@ -10,11 +10,12 @@
     [Dt_Upd_On]    DATETIME      NULL,
     [I_Brand_ID]   INT           NULL,
     [S_State_Code] VARCHAR (32)  NULL,
-    CONSTRAINT [PK_T_GST_Code_Master] PRIMARY KEY CLUSTERED ([I_GST_ID] ASC),
-    CONSTRAINT [FK_T_GST_Code_Master_T_State_Master] FOREIGN KEY ([I_State_ID]) REFERENCES [dbo].[T_State_Master] ([I_State_ID])
+    CONSTRAINT [PK_T_GST_Code_Master] PRIMARY KEY CLUSTERED ([I_GST_ID] ASC)
 );
 
 
+
+
 GO
-ALTER TABLE [dbo].[T_GST_Code_Master] NOCHECK CONSTRAINT [FK_T_GST_Code_Master_T_State_Master];
+
 

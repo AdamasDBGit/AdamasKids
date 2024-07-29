@@ -22,18 +22,18 @@ BEGIN
 
 	if(@iSchoolSessionID >0)
 	--BEGIN
-	--if exists (select 1 from [SMS].[dbo].[T_School_Academic_Session_Master] as SASM where SASM.I_School_Session_ID = @iSchoolSessionID and SASM.I_Status=1)
+	--if exists (select 1 from [dbo].[T_School_Academic_Session_Master] as SASM where SASM.I_School_Session_ID = @iSchoolSessionID and SASM.I_Status=1)
 	--BEGIN
 	--SELECT 0 StatusFlag,'Active Session Present' Message
 	--END
 	--ELSE
 	BEGIN 
-	 IF  EXISTS (SELECT 1 FROM [SMS].[dbo].[T_School_Academic_Session_Master]
+	 IF  EXISTS (SELECT 1 FROM [dbo].[T_School_Academic_Session_Master]
                    WHERE I_Brand_ID = @iBrandID
                      AND ((@dtStartDate >= Dt_Session_Start_Date AND @dtStartDate <= Dt_Session_End_Date)
                           OR (@dtEndDate >= Dt_Session_Start_Date AND @dtEndDate <= Dt_Session_End_Date)))
         BEGIN
-	update [SMS].[dbo].[T_School_Academic_Session_Master]
+	update [dbo].[T_School_Academic_Session_Master]
 	set 
 	 --- [I_Brand_ID] = @iBrandID,
      -- [Dt_Session_Start_Date] = @dtStartDate,
@@ -51,12 +51,12 @@ BEGIN
 	--END
 	END
 	ELSE
-	--IF NOT EXISTS (SELECT 1 FROM [SMS].[dbo].[T_School_Academic_Session_Master]
+	--IF NOT EXISTS (SELECT 1 FROM [dbo].[T_School_Academic_Session_Master]
  --                  WHERE I_Brand_ID = @iBrandID
  --                    AND ((@dtStartDate >= Dt_Session_Start_Date AND @dtStartDate <= Dt_Session_End_Date)
  --                         OR (@dtEndDate >= Dt_Session_Start_Date AND @dtEndDate <= Dt_Session_End_Date)))
 	BEGIN
-	INSERT INTO [SMS].[dbo].[T_School_Academic_Session_Master]
+	INSERT INTO [dbo].[T_School_Academic_Session_Master]
 (
 [I_Brand_ID]
       ,[Dt_Session_Start_Date]

@@ -17,8 +17,8 @@
     [C_Faculty_Certification]    CHAR (1)       NULL,
     [C_Infrastructure]           CHAR (1)       NULL,
     [I_Status]                   INT            NULL,
-    CONSTRAINT [PK__T_Academics_Visi__4460EE73] PRIMARY KEY CLUSTERED ([I_Academics_Visit_ID] ASC),
-    CONSTRAINT [FK__T_Academi__I_Cen__310E22DD] FOREIGN KEY ([I_Center_Id]) REFERENCES [dbo].[T_Centre_Master] ([I_Centre_Id]),
-    CONSTRAINT [FK__T_Academi__I_Use__32024716] FOREIGN KEY ([I_User_ID]) REFERENCES [dbo].[T_User_Master] ([I_User_ID])
+    CONSTRAINT [PK__T_Academics_Visi__4460EE73] PRIMARY KEY CLUSTERED ([I_Academics_Visit_ID] ASC)
 );
+
+
 

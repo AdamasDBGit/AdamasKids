@@ -16,6 +16,6 @@ BEGIN
 	SELECT [I_Stream_ID] StreamId
       ,[S_Stream] StreamName
       ,[I_Status]
-  FROM [SMS].[dbo].[T_Stream]
+  FROM [dbo].[T_Stream]
   WHERE [I_Status]=1
 END

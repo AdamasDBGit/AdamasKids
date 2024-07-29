@@ -10,7 +10,8 @@
     [S_Upd_By]       VARCHAR (20)  NULL,
     [Dt_Crtd_On]     DATETIME      NULL,
     [Dt_Upd_On]      DATETIME      NULL,
-    CONSTRAINT [PK__T_KRA_Master__2E878744] PRIMARY KEY CLUSTERED ([I_KRA_ID] ASC),
-    CONSTRAINT [FK_T_KRA_Master_T_KRA_Master1] FOREIGN KEY ([I_KRA_Index_ID]) REFERENCES [EOS].[T_KRA_Index_Master] ([I_KRA_Index_ID])
+    CONSTRAINT [PK__T_KRA_Master__2E878744] PRIMARY KEY CLUSTERED ([I_KRA_ID] ASC)
 );
+
+
 

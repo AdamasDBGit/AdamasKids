@@ -15,14 +15,8 @@
     [S_Updt_By]                       VARCHAR (20) NULL,
     [Dt_Crtd_On]                      DATETIME     NULL,
     [Dt_Updt_On]                      DATETIME     NULL,
-    CONSTRAINT [PK_T_Assessment_Rule_Workflow] PRIMARY KEY CLUSTERED ([I_Assessment_Rule_Map_ID] ASC),
-    CONSTRAINT [FK_T_Assessment_Rule_Workflow_T_PreAssessment_Master] FOREIGN KEY ([I_PreAssessment_ID]) REFERENCES [ASSESSMENT].[T_PreAssessment_Master] ([I_PreAssessment_ID]),
-    CONSTRAINT [FK_T_Assessment_Rule_Workflow_T_PreAssessment_Master1] FOREIGN KEY ([I_Evaluated_True_Assessment_ID]) REFERENCES [ASSESSMENT].[T_PreAssessment_Master] ([I_PreAssessment_ID]),
-    CONSTRAINT [FK_T_Assessment_Rule_Workflow_T_PreAssessment_Master2] FOREIGN KEY ([I_Evaluated_False_Assessment_ID]) REFERENCES [ASSESSMENT].[T_PreAssessment_Master] ([I_PreAssessment_ID]),
-    CONSTRAINT [FK_T_Assessment_Rule_Workflow_T_Rule_CourseList_Map] FOREIGN KEY ([I_Evaluated_True_CourseList_ID]) REFERENCES [ASSESSMENT].[T_Rule_CourseList_Map] ([I_CourseList_ID]),
-    CONSTRAINT [FK_T_Assessment_Rule_Workflow_T_Rule_CourseList_Map1] FOREIGN KEY ([I_Evaluated_False_CourseList_ID]) REFERENCES [ASSESSMENT].[T_Rule_CourseList_Map] ([I_CourseList_ID]),
-    CONSTRAINT [FK_T_Assessment_Rule_Workflow_T_Rule_Master] FOREIGN KEY ([I_Rule_ID]) REFERENCES [ASSESSMENT].[T_Rule_Master] ([I_Rule_ID]),
-    CONSTRAINT [FK_T_Assessment_Rule_Workflow_T_Rule_Master1] FOREIGN KEY ([I_Evaluated_True_Rule_ID]) REFERENCES [ASSESSMENT].[T_Rule_Master] ([I_Rule_ID]),
-    CONSTRAINT [FK_T_Assessment_Rule_Workflow_T_Rule_Master2] FOREIGN KEY ([I_Evaluated_False_Rule_ID]) REFERENCES [ASSESSMENT].[T_Rule_Master] ([I_Rule_ID])
+    CONSTRAINT [PK_T_Assessment_Rule_Workflow] PRIMARY KEY CLUSTERED ([I_Assessment_Rule_Map_ID] ASC)
 );
+
+
 

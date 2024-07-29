@@ -4,7 +4,7 @@
 -- Description:	<Description,,>
 -- exec usp_ERP_DeleteExtraClass null
 -- =============================================
-CREATE PROCEDURE usp_ERP_DeleteExtraClass
+CREATE PROCEDURE [dbo].[usp_ERP_DeleteExtraClass]
 (
 	@ClassRoutineExtraClassID int
 )

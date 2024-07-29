@@ -1,4 +1,4 @@
-﻿CREATE Proc usp_ERP_get_MigrationStudentDataSet
+﻿CREATE Proc [dbo].[usp_ERP_get_MigrationStudentDataSet]
 as
 begin
 Declare @currYear Varchar(10)

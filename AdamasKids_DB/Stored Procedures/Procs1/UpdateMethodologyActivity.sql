@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE UpdateMethodologyActivity 
+﻿CREATE PROCEDURE [dbo].[UpdateMethodologyActivity] 
 -- =============================================
      -- Author: Tridip Chatterjee
 -- Create date: 29-09-2023

@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE uspInsertMSTeamStudentDetails
+﻿CREATE PROCEDURE [dbo].[uspInsertMSTeamStudentDetails]
 (
 @StudentID VARCHAR(MAX),
 @EmailID VARCHAR(MAX)

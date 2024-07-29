@@ -9,8 +9,8 @@
     [Dt_Crtd_On]              DATETIME       NULL,
     [Dt_Upd_On]               DATETIME       NULL,
     [I_Brand_ID]              INT            NULL,
-    CONSTRAINT [PK__T_Root_Cause_Mas__6A86975B] PRIMARY KEY CLUSTERED ([I_Root_Cause_ID] ASC),
-    CONSTRAINT [FK__T_Root_Ca__I_Com__18A267C6] FOREIGN KEY ([I_Complaint_Category_ID]) REFERENCES [CUSTOMERCARE].[T_Complaint_Category_Master] ([I_Complaint_Category_ID]),
-    CONSTRAINT [FK__T_Root_Ca__I_Com__344786A9] FOREIGN KEY ([I_Complaint_Category_ID]) REFERENCES [CUSTOMERCARE].[T_Complaint_Category_Master] ([I_Complaint_Category_ID])
+    CONSTRAINT [PK__T_Root_Cause_Mas__6A86975B] PRIMARY KEY CLUSTERED ([I_Root_Cause_ID] ASC)
 );
+
+
 

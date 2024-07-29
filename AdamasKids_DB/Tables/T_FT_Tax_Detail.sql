@@ -4,7 +4,8 @@
     [I_Fund_Transfer_Header_ID] INT             NULL,
     [N_Tax_Amount_Company]      NUMERIC (12, 4) NULL,
     [N_Tax_Amount_BP]           NUMERIC (12, 4) NULL,
-    CONSTRAINT [PK_FT_Tax_Detail] PRIMARY KEY CLUSTERED ([I_FT_Tax_Detail_ID] ASC),
-    CONSTRAINT [FK_T_FT_Tax_Detail_T_Tax_Master] FOREIGN KEY ([I_Tax_ID]) REFERENCES [dbo].[T_Tax_Master] ([I_Tax_ID])
+    CONSTRAINT [PK_FT_Tax_Detail] PRIMARY KEY CLUSTERED ([I_FT_Tax_Detail_ID] ASC)
 );
+
+
 

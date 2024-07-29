@@ -1,4 +1,4 @@
-﻿CREATE procedure uspGetInvoiceDiscountDetails(@iInvoiceID int)
+﻿CREATE procedure [dbo].[uspGetInvoiceDiscountDetails](@iInvoiceID int)
 as
 begin
 

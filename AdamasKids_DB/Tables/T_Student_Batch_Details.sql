@@ -16,13 +16,14 @@
     [I_Stream_ID]              INT      NULL,
     [I_Section_ID]             INT      NULL,
     [StudentClassStartDate]    DATETIME NULL,
-    CONSTRAINT [PK_T_Student_Batch_Details] PRIMARY KEY CLUSTERED ([I_Student_Batch_ID] ASC),
-    CONSTRAINT [FK_T_Student_Batch_Details_T_Student_Batch_Details] FOREIGN KEY ([I_Student_Batch_ID]) REFERENCES [dbo].[T_Student_Batch_Details] ([I_Student_Batch_ID])
+    CONSTRAINT [PK_T_Student_Batch_Details] PRIMARY KEY CLUSTERED ([I_Student_Batch_ID] ASC)
 );
 
 
+
+
 GO
-ALTER TABLE [dbo].[T_Student_Batch_Details] NOCHECK CONSTRAINT [FK_T_Student_Batch_Details_T_Student_Batch_Details];
+
 
 
 GO

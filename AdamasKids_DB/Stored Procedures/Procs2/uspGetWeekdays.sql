@@ -3,7 +3,7 @@
 -- Create date: <2023-May-11>
 -- Description:	<Get All the Weekdays>
 -- =============================================
-CREATE PROCEDURE uspGetWeekdays 
+CREATE PROCEDURE [dbo].[uspGetWeekdays] 
 
 AS
 BEGIN

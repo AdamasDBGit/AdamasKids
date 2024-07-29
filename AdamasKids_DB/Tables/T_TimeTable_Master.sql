@@ -23,53 +23,46 @@
     [I_SessionTopic_Completed_Status_ID] INT           CONSTRAINT [Df_DefaultValue] DEFAULT ((2)) NULL,
     [I_ClassTest_Status_ID]              INT           CONSTRAINT [Df_ClassTest] DEFAULT ((2)) NULL,
     [I_ClassType]                        INT           NULL,
-    CONSTRAINT [PK_T_TimeTable_Master] PRIMARY KEY CLUSTERED ([I_TimeTable_ID] ASC),
-    CONSTRAINT [FK_T_TimeTable_Master_T_Center_Timeslot_Master] FOREIGN KEY ([I_TimeSlot_ID]) REFERENCES [dbo].[T_Center_Timeslot_Master] ([I_TimeSlot_ID]),
-    CONSTRAINT [FK_T_TimeTable_Master_T_Centre_Master] FOREIGN KEY ([I_Center_ID]) REFERENCES [dbo].[T_Centre_Master] ([I_Centre_Id]),
-    CONSTRAINT [FK_T_TimeTable_Master_T_EOS_Skill_Master] FOREIGN KEY ([I_Skill_ID]) REFERENCES [dbo].[T_EOS_Skill_Master] ([I_Skill_ID]),
-    CONSTRAINT [FK_T_TimeTable_Master_T_Module_Master] FOREIGN KEY ([I_Module_ID]) REFERENCES [dbo].[T_Module_Master] ([I_Module_ID]),
-    CONSTRAINT [FK_T_TimeTable_Master_T_Room_Master] FOREIGN KEY ([I_Room_ID]) REFERENCES [dbo].[T_Room_Master] ([I_Room_ID]),
-    CONSTRAINT [FK_T_TimeTable_Master_T_Session_Master] FOREIGN KEY ([I_Session_ID]) REFERENCES [dbo].[T_Session_Master] ([I_Session_ID]),
-    CONSTRAINT [FK_T_TimeTable_Master_T_Student_Batch_Master] FOREIGN KEY ([I_Batch_ID]) REFERENCES [dbo].[T_Student_Batch_Master] ([I_Batch_ID]),
-    CONSTRAINT [FK_T_TimeTable_Master_T_Student_Sub_Batch_Master] FOREIGN KEY ([I_Sub_Batch_ID]) REFERENCES [dbo].[T_Student_Sub_Batch_Master] ([I_Sub_Batch_ID]),
-    CONSTRAINT [FK_T_TimeTable_Master_T_Term_Master] FOREIGN KEY ([I_Term_ID]) REFERENCES [dbo].[T_Term_Master] ([I_Term_ID])
+    CONSTRAINT [PK_T_TimeTable_Master] PRIMARY KEY CLUSTERED ([I_TimeTable_ID] ASC)
 );
 
 
-GO
-ALTER TABLE [dbo].[T_TimeTable_Master] NOCHECK CONSTRAINT [FK_T_TimeTable_Master_T_Center_Timeslot_Master];
 
 
 GO
-ALTER TABLE [dbo].[T_TimeTable_Master] NOCHECK CONSTRAINT [FK_T_TimeTable_Master_T_Centre_Master];
 
-
-GO
-ALTER TABLE [dbo].[T_TimeTable_Master] NOCHECK CONSTRAINT [FK_T_TimeTable_Master_T_EOS_Skill_Master];
 
 
 GO
-ALTER TABLE [dbo].[T_TimeTable_Master] NOCHECK CONSTRAINT [FK_T_TimeTable_Master_T_Module_Master];
 
-
-GO
-ALTER TABLE [dbo].[T_TimeTable_Master] NOCHECK CONSTRAINT [FK_T_TimeTable_Master_T_Room_Master];
 
 
 GO
-ALTER TABLE [dbo].[T_TimeTable_Master] NOCHECK CONSTRAINT [FK_T_TimeTable_Master_T_Session_Master];
 
-
-GO
-ALTER TABLE [dbo].[T_TimeTable_Master] NOCHECK CONSTRAINT [FK_T_TimeTable_Master_T_Student_Batch_Master];
 
 
 GO
-ALTER TABLE [dbo].[T_TimeTable_Master] NOCHECK CONSTRAINT [FK_T_TimeTable_Master_T_Student_Sub_Batch_Master];
+
 
 
 GO
-ALTER TABLE [dbo].[T_TimeTable_Master] NOCHECK CONSTRAINT [FK_T_TimeTable_Master_T_Term_Master];
+
+
+
+GO
+
+
+
+GO
+
+
+
+GO
+
+
+
+GO
+
 
 
 GO

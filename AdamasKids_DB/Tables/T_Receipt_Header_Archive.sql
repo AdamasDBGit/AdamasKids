@@ -30,11 +30,8 @@
     [Bank_Account_Name]      VARCHAR (500)   NULL,
     [Dt_Deposit_Date]        DATETIME        NULL,
     [S_Narration]            VARCHAR (500)   NULL,
-    CONSTRAINT [PK_T_Receipt_Header_Archive] PRIMARY KEY CLUSTERED ([I_Receipt_Header_ID] ASC),
-    CONSTRAINT [FK_T_Receipt_Header_Archive_T_Centre_Master] FOREIGN KEY ([I_Centre_Id]) REFERENCES [dbo].[T_Centre_Master] ([I_Centre_Id]),
-    CONSTRAINT [FK_T_Receipt_Header_Archive_T_Enquiry_Regn_Detail] FOREIGN KEY ([I_Enquiry_Regn_ID]) REFERENCES [dbo].[T_Enquiry_Regn_Detail] ([I_Enquiry_Regn_ID]),
-    CONSTRAINT [FK_T_Receipt_Header_Archive_T_Invoice_Parent] FOREIGN KEY ([I_Invoice_Header_ID]) REFERENCES [dbo].[T_Invoice_Parent] ([I_Invoice_Header_ID]),
-    CONSTRAINT [FK_T_Receipt_Header_Archive_T_PaymentMode_Master] FOREIGN KEY ([I_PaymentMode_ID]) REFERENCES [dbo].[T_PaymentMode_Master] ([I_PaymentMode_ID]),
-    CONSTRAINT [FK_T_Receipt_Header_Archive_T_Student_Detail] FOREIGN KEY ([I_Student_Detail_ID]) REFERENCES [dbo].[T_Student_Detail] ([I_Student_Detail_ID])
+    CONSTRAINT [PK_T_Receipt_Header_Archive] PRIMARY KEY CLUSTERED ([I_Receipt_Header_ID] ASC)
 );
+
+
 

@@ -9,7 +9,8 @@
     [Dt_Crtd_On]          DATETIME        NULL,
     [Dt_Upd_On]           DATETIME        NULL,
     [I_Status]            INT             NULL,
-    CONSTRAINT [PK_T_APAI_Information] PRIMARY KEY CLUSTERED ([I_APAI_Info_ID] ASC),
-    CONSTRAINT [FK_T_APAI_Information_T_Student_Detail] FOREIGN KEY ([I_Student_Detail_ID]) REFERENCES [dbo].[T_Student_Detail] ([I_Student_Detail_ID])
+    CONSTRAINT [PK_T_APAI_Information] PRIMARY KEY CLUSTERED ([I_APAI_Info_ID] ASC)
 );
+
+
 

@@ -1,4 +1,4 @@
-﻿CREATE Proc USP_Stud_InvNo_Generate_and_Update(@InvDt Date,@brandID int,@SessionID Int,@type varchar(10),@Inv_No_Out Varchar(12) OUTPUT)    
+﻿CREATE Proc [dbo].[USP_Stud_InvNo_Generate_and_Update](@InvDt Date,@brandID int,@SessionID Int,@type varchar(10),@Inv_No_Out Varchar(12) OUTPUT)    
 as    
 begin    
 --DECLARE @InvDt Date,@brandID int=110,@SessionID Int=1  

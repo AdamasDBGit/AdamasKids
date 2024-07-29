@@ -10,11 +10,12 @@
     [Dt_Crtd_On]       DATETIME      NULL,
     [Dt_Upd_On]        DATETIME      NULL,
     [I_Status]         INT           NULL,
-    CONSTRAINT [PK__T_Software_Maste__6D58E265] PRIMARY KEY CLUSTERED ([I_Software_ID] ASC),
-    CONSTRAINT [FK__T_Softwar__I_Bra__0CD18DBE] FOREIGN KEY ([I_Brand_ID]) REFERENCES [dbo].[T_Brand_Master] ([I_Brand_ID])
+    CONSTRAINT [PK__T_Software_Maste__6D58E265] PRIMARY KEY CLUSTERED ([I_Software_ID] ASC)
 );
 
 
+
+
 GO
-ALTER TABLE [NETWORK].[T_Software_Master] NOCHECK CONSTRAINT [FK__T_Softwar__I_Bra__0CD18DBE];
+
 

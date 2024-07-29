@@ -14,7 +14,7 @@ SELECT TED.[I_Employee_ID] EmployeeID
       ,ISNULL(TED.[S_First_Name],'') +' '+ ISNULL(TED.[S_Middle_Name],'') +' '+ ISNULL(TED.[S_Last_Name],'')+' ('+TUM.S_Login_ID+')' AS EmployeeName
 	  
       
-  FROM [SMS].[dbo].[T_Employee_Dtls] TED inner join T_User_Master TUM 
+  FROM [dbo].[T_Employee_Dtls] TED inner join T_User_Master TUM 
   ON TED.I_Employee_ID = TUM.I_Reference_ID 
   inner join T_User_Role_Details TRD ON TRD.I_User_ID = TUM.I_User_ID 
   inner join T_Role_Master TRM ON TRM.I_Role_ID = TRD.I_Role_ID

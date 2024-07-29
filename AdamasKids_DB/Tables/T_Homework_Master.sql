@@ -12,7 +12,8 @@
     [Dt_Updt_On]         DATETIME       NULL,
     [I_Term_ID]          INT            NULL,
     [I_session_ID]       INT            NULL,
-    CONSTRAINT [PK_T_Homework_Master] PRIMARY KEY CLUSTERED ([I_Homework_ID] ASC),
-    CONSTRAINT [FK_T_Homework_Master_T_Term_Master] FOREIGN KEY ([I_Term_ID]) REFERENCES [dbo].[T_Term_Master] ([I_Term_ID])
+    CONSTRAINT [PK_T_Homework_Master] PRIMARY KEY CLUSTERED ([I_Homework_ID] ASC)
 );
+
+
 

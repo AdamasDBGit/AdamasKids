@@ -10,14 +10,14 @@
     [Dt_Valid_To]         DATETIME     NULL,
     [Dt_Upd_On]           DATETIME     NULL,
     [I_Status]            INT          NULL,
-    CONSTRAINT [PK__T_Session_Module__77568294] PRIMARY KEY CLUSTERED ([I_Session_Module_ID] ASC),
-    CONSTRAINT [FK__T_Session__I_Mod__6F363DDF] FOREIGN KEY ([I_Module_ID]) REFERENCES [dbo].[T_Module_Master] ([I_Module_ID]),
-    CONSTRAINT [FK__T_Session__I_Ses__702A6218] FOREIGN KEY ([I_Session_ID]) REFERENCES [dbo].[T_Session_Master] ([I_Session_ID])
+    CONSTRAINT [PK__T_Session_Module__77568294] PRIMARY KEY CLUSTERED ([I_Session_Module_ID] ASC)
 );
 
 
+
+
 GO
-ALTER TABLE [dbo].[T_Session_Module_Map] NOCHECK CONSTRAINT [FK__T_Session__I_Ses__702A6218];
+
 
 
 GO

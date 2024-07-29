@@ -9,11 +9,12 @@
     [S_Upd_By]     VARCHAR (20)  NULL,
     [Dt_Crtd_On]   DATETIME      NULL,
     [Dt_Upd_On]    DATETIME      NULL,
-    CONSTRAINT [PK__T_EOS_Skill_Mast__1ED998B2] PRIMARY KEY CLUSTERED ([I_Skill_ID] ASC),
-    CONSTRAINT [FK_T_EOS_Skill_Master_T_Brand_Master] FOREIGN KEY ([I_Brand_ID]) REFERENCES [dbo].[T_Brand_Master] ([I_Brand_ID])
+    CONSTRAINT [PK__T_EOS_Skill_Mast__1ED998B2] PRIMARY KEY CLUSTERED ([I_Skill_ID] ASC)
 );
 
 
+
+
 GO
-ALTER TABLE [dbo].[T_EOS_Skill_Master] NOCHECK CONSTRAINT [FK_T_EOS_Skill_Master_T_Brand_Master];
+
 

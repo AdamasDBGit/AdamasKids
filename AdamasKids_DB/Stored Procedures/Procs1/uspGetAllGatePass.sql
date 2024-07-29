@@ -26,7 +26,7 @@ SELECT TGPR.[I_Gate_Pass_Request_ID] GatePassRequestID
       ,TGPR.[Dt_CanceledOn] CanceledOn
       ,TGPR.[I_Status] Status
 	  ,SD.S_First_Name+' '+ISNULL(SD.S_Middle_Name,'')+' '+SD.S_Last_Name StudentName
-FROM [SMS].[dbo].[T_Gate_Pass_Request] TGPR inner join T_Student_Detail SD ON TGPR.S_Student_ID = SD.S_Student_ID
+FROM [dbo].[T_Gate_Pass_Request] TGPR inner join T_Student_Detail SD ON TGPR.S_Student_ID = SD.S_Student_ID
 inner join T_Parent_Master TPM ON TPM.I_Parent_Master_ID = TGPR.I_Parent_Master_ID
 right join T_Relation_Master TRM ON TPM.I_Relation_ID = TRM.I_Relation_Master_ID
 join T_Student_Parent_Maps TSPM on TPM.I_Parent_Master_ID = TSPM.I_Parent_Master_ID and SD.S_Student_ID = TSPM.S_Student_ID

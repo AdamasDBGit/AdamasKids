@@ -1,4 +1,4 @@
-﻿CREATE Proc USP_Stud_InstallmentWise_InvNo_Generate(@brandID int,@SessionID Int,@type varchar(10),  
+﻿CREATE Proc [dbo].[USP_Stud_InstallmentWise_InvNo_Generate](@brandID int,@SessionID Int,@type varchar(10),  
 @Inv_No_Out Varchar(100) OUTPUT)          
 as          
 begin          

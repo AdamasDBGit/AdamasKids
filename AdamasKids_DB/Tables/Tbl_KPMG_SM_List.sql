@@ -13,11 +13,12 @@
     [Fld_KPMG_IsEnable]             CHAR (1)        CONSTRAINT [DF__Tbl_KPMG___Fld_K__1918FFC0] DEFAULT ('Y') NULL,
     [Fld_KPMG_Prefix]               VARCHAR (500)   NULL,
     [Fld_KPMG_AllowedDigitCount]    INT             NULL,
-    CONSTRAINT [pk_Tbl_KPMG_SM_List_Fld_KPMG_SM_Id] PRIMARY KEY CLUSTERED ([Fld_KPMG_SM_Id] ASC),
-    CONSTRAINT [fk_Tbl_KPMG_SM_List_Fld_KPMG_CourseId] FOREIGN KEY ([Fld_KPMG_CourseId]) REFERENCES [dbo].[T_Course_Master] ([I_Course_ID])
+    CONSTRAINT [pk_Tbl_KPMG_SM_List_Fld_KPMG_SM_Id] PRIMARY KEY CLUSTERED ([Fld_KPMG_SM_Id] ASC)
 );
 
 
+
+
 GO
-ALTER TABLE [dbo].[Tbl_KPMG_SM_List] NOCHECK CONSTRAINT [fk_Tbl_KPMG_SM_List_Fld_KPMG_CourseId];
+
 

@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE MapMethodologyActivitySubject
+﻿CREATE PROCEDURE [dbo].[MapMethodologyActivitySubject]
 -- =============================================
      -- Author:	Tridip Chatterjee
 -- Create date: 30-09-2023

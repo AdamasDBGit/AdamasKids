@@ -8,8 +8,12 @@
     [I_Payment_Mode]                    INT           NULL,
     [I_Brand_ID]                        INT           NOT NULL,
     [Is_Active]                         BIT           NULL,
-    [I_IsLive]                          BIT           NULL
+    [I_IsLive]                          BIT           NULL,
+    [S_Live_keySecret]                  VARCHAR (MAX) NULL,
+    [S_Test_KeySecret]                  VARCHAR (MAX) NULL
 );
+
+
 
 
 

@@ -19,17 +19,16 @@
     [S_HandoutClassTime]             VARCHAR (MAX)   NULL,
     [S_ClassMode]                    VARCHAR (MAX)   NULL,
     [S_BatchTime]                    VARCHAR (MAX)   NULL,
-    CONSTRAINT [PK_T_Center_Batch_Details] PRIMARY KEY CLUSTERED ([I_Batch_ID] ASC, [I_Centre_Id] ASC),
-    CONSTRAINT [FK_T_Center_Batch_Details_T_Centre_Master] FOREIGN KEY ([I_Centre_Id]) REFERENCES [dbo].[T_Centre_Master] ([I_Centre_Id]),
-    CONSTRAINT [FK_T_Center_Batch_Details_T_Employee_Dtls] FOREIGN KEY ([I_Employee_ID]) REFERENCES [dbo].[T_Employee_Dtls] ([I_Employee_ID]),
-    CONSTRAINT [FK_T_Center_Batch_Details_T_Student_Batch_Master] FOREIGN KEY ([I_Batch_ID]) REFERENCES [dbo].[T_Student_Batch_Master] ([I_Batch_ID])
+    CONSTRAINT [PK_T_Center_Batch_Details] PRIMARY KEY CLUSTERED ([I_Batch_ID] ASC, [I_Centre_Id] ASC)
 );
 
 
-GO
-ALTER TABLE [dbo].[T_Center_Batch_Details] NOCHECK CONSTRAINT [FK_T_Center_Batch_Details_T_Employee_Dtls];
 
 
 GO
-ALTER TABLE [dbo].[T_Center_Batch_Details] NOCHECK CONSTRAINT [FK_T_Center_Batch_Details_T_Student_Batch_Master];
+
+
+
+GO
+
 

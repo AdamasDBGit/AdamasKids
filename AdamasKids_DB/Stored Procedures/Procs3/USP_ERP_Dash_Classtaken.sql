@@ -1,4 +1,4 @@
-﻿CREATE Proc USP_ERP_Dash_Classtaken(    
+﻿CREATE Proc [dbo].[USP_ERP_Dash_Classtaken](    
 @BrandID int    
 ,@sessionID int=null    
 )    

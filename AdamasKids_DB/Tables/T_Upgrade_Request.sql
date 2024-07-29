@@ -10,7 +10,8 @@
     [Dt_Upd_On]                   DATETIME       NULL,
     [I_Requested_Category]        INT            NULL,
     [I_Status]                    INT            NULL,
-    CONSTRAINT [PK__T_Upgrade_Reques__5D2C9C3D] PRIMARY KEY CLUSTERED ([I_Center_Upgrade_Request_ID] ASC),
-    CONSTRAINT [FK__T_Upgrade__I_Cen__577F7B36] FOREIGN KEY ([I_Centre_Id]) REFERENCES [dbo].[T_Centre_Master] ([I_Centre_Id])
+    CONSTRAINT [PK__T_Upgrade_Reques__5D2C9C3D] PRIMARY KEY CLUSTERED ([I_Center_Upgrade_Request_ID] ASC)
 );
+
+
 

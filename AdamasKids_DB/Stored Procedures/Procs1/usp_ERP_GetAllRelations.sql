@@ -3,7 +3,7 @@
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE usp_ERP_GetAllRelations
+CREATE PROCEDURE [dbo].[usp_ERP_GetAllRelations]
 	
 AS
 BEGIN

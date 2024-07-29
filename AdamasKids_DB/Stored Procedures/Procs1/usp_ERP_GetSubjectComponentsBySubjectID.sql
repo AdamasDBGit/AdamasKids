@@ -4,7 +4,7 @@
 -- Description:	<Description,,>
 -- exec usp_ERP_GetSubjectComponentsBySubjectID 2
 -- =============================================
-CREATE PROCEDURE usp_ERP_GetSubjectComponentsBySubjectID
+CREATE PROCEDURE [dbo].[usp_ERP_GetSubjectComponentsBySubjectID]
 (
 	@SubjectID int = null
 )

@@ -6,11 +6,12 @@
     [FLd_Kpmg_SM_Id]           INT            CONSTRAINT [DF__Tbl_KPMG___FLd_K__36A962A7] DEFAULT ((0)) NULL,
     [I_Student_Detail_ID]      INT            NULL,
     [Fld_KPMG_Admit_Path]      NVARCHAR (500) NULL,
-    CONSTRAINT [PK_KPMG_SpecialExamination] PRIMARY KEY CLUSTERED ([Fld_KPMG_ExaminationId] ASC),
-    CONSTRAINT [fk_Tbl_KPMG_SpecialExamination_FLd_Kpmg_SM_Id] FOREIGN KEY ([FLd_Kpmg_SM_Id]) REFERENCES [dbo].[Tbl_KPMG_SM_List] ([Fld_KPMG_SM_Id])
+    CONSTRAINT [PK_KPMG_SpecialExamination] PRIMARY KEY CLUSTERED ([Fld_KPMG_ExaminationId] ASC)
 );
 
 
+
+
 GO
-ALTER TABLE [dbo].[Tbl_KPMG_SpecialExamination] NOCHECK CONSTRAINT [fk_Tbl_KPMG_SpecialExamination_FLd_Kpmg_SM_Id];
+
 

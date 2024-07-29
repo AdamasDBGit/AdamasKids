@@ -39,7 +39,7 @@ BEGIN TRY
 	ELSE
 		BEGIN
 			-- Insert statements for procedure here
-			INSERT INTO [SMS].[dbo].[T_ERP_Routine_Structure_Header] 
+			INSERT INTO [dbo].[T_ERP_Routine_Structure_Header] 
 			(
 				I_School_Session_ID, 
 				I_School_Group_ID, 

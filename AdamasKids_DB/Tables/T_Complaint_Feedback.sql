@@ -9,7 +9,8 @@
     [Dt_Crtd_On]              DATETIME       NULL,
     [S_Upd_By]                VARCHAR (20)   NULL,
     [Dt_Upd_On]               DATETIME       NULL,
-    CONSTRAINT [PK__T_Complaint_Feed__74100195] PRIMARY KEY CLUSTERED ([I_Complaint_Feedback_ID] ASC),
-    CONSTRAINT [FK__T_Complai__I_Com__7797450D] FOREIGN KEY ([I_Complaint_Req_ID]) REFERENCES [CUSTOMERCARE].[T_Complaint_Request_Detail] ([I_Complaint_Req_ID])
+    CONSTRAINT [PK__T_Complaint_Feed__74100195] PRIMARY KEY CLUSTERED ([I_Complaint_Feedback_ID] ASC)
 );
+
+
 

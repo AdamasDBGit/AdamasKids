@@ -5,7 +5,8 @@
     [Fld_KPMG_Amount]    INT          CONSTRAINT [DF_Table_1_Fld_KPMG_MoItem_Id] DEFAULT ((0)) NOT NULL,
     [Fld_KPMG_Mo_Id]     INT          CONSTRAINT [DF_Tbl_KPMG_LoadAmount_Fld_KPMG_Mo_Id] DEFAULT ((0)) NOT NULL,
     [AllotedDate]        DATETIME     CONSTRAINT [DF_Tbl_KPMG_LoadAmount_AllotedDate] DEFAULT (getdate()) NOT NULL,
-    CONSTRAINT [PK_Tbl_KPMG_LoadAmount] PRIMARY KEY CLUSTERED ([Amount_Id] ASC),
-    CONSTRAINT [fk_Tbl_KPMG_LoadAmount_Fld_KPMG_Branch_Id] FOREIGN KEY ([Fld_KPMG_Branch_Id]) REFERENCES [dbo].[T_Centre_Master] ([I_Centre_Id])
+    CONSTRAINT [PK_Tbl_KPMG_LoadAmount] PRIMARY KEY CLUSTERED ([Amount_Id] ASC)
 );
+
+
 

@@ -1,4 +1,4 @@
-﻿CREATE PROC uspUpdateStudentRollNo --'G-68','Coochbehar',29
+﻿CREATE PROC [dbo].[uspUpdateStudentRollNo] --'G-68','Coochbehar',29
 (
 	@sBatchName varchar(100),
 	@sCenterName varchar(200),

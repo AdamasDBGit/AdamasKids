@@ -1,4 +1,5 @@
-﻿-- =============================================
+﻿
+-- =============================================
 -- Author:		<Susmita Paul>
 -- Create date: <2024-May-29>
 -- Description:	<Validate Transaction no and Source>
@@ -7,7 +8,8 @@ CREATE PROCEDURE [dbo].[usp_ERP_Check_Validate_TransactionNo_Source]
 	-- Add the parameters for the stored procedure here
 	@sTransactionNo varchar(max),
 	@sTransactionSource varchar(max),
-	@iBrandID INT =null
+	@iBrandID INT =null,
+	@OrderNo varchar(max)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -32,6 +34,15 @@ BEGIN
 	BEGIN
 
 			SELECT @ErrMessage='Invalid Transaction Source!'
+
+			select 0 StatusFlag,@ErrMessage Message
+
+	END
+
+	IF EXISTS(select * from T_ERP_Transaction_Master where Order_ID=@OrderNo)
+	BEGIN
+
+			SELECT @ErrMessage='Invalid Order No ! Order No already exists'
 
 			select 0 StatusFlag,@ErrMessage Message
 

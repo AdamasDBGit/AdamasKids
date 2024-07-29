@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE Usp_ERP_User_Group_Insert_Update    
+﻿CREATE PROCEDURE [dbo].[Usp_ERP_User_Group_Insert_Update]    
     @User_Group_Master_ID INT = NULL,    
     @User_GroupName VARCHAR(255),    
     @Code Varchar(20),    

@@ -8,8 +8,8 @@
     [S_Upd_By]                   VARCHAR (20) NULL,
     [Dt_Crtd_On]                 DATETIME     NULL,
     [Dt_Upd_On]                  DATETIME     NULL,
-    CONSTRAINT [PK_T_Student_Survey_Ratings] PRIMARY KEY CLUSTERED ([I_Student_Survey_Rating_ID] ASC),
-    CONSTRAINT [FK_T_Student_Survey_Details_T_Student_Survey_Rating] FOREIGN KEY ([I_Student_Survey_ID]) REFERENCES [STUDENTFEATURES].[T_Student_Survey_Details] ([I_Student_Survey_ID]),
-    CONSTRAINT [FK_T_Student_Survey_Details_T_Student_Survey_Ratings] FOREIGN KEY ([I_Student_Survey_ID]) REFERENCES [STUDENTFEATURES].[T_Student_Survey_Details] ([I_Student_Survey_ID])
+    CONSTRAINT [PK_T_Student_Survey_Ratings] PRIMARY KEY CLUSTERED ([I_Student_Survey_Rating_ID] ASC)
 );
+
+
 

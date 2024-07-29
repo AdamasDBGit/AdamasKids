@@ -1,4 +1,4 @@
-﻿CREATE Proc Usp_ERP_Dash_Get_Datetime  
+﻿CREATE Proc [dbo].[Usp_ERP_Dash_Get_Datetime]  
 as  
 Begin  
 DECLARE @currentDateTime DATETIME = GETDATE();  

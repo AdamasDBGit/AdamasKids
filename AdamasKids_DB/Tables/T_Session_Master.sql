@@ -13,17 +13,16 @@
     [I_Is_Editable]      INT            NULL,
     [I_Status]           INT            NULL,
     [I_Skill_ID]         INT            NULL,
-    CONSTRAINT [PK__T_Session_Master__407B4EF6] PRIMARY KEY CLUSTERED ([I_Session_ID] ASC),
-    CONSTRAINT [FK__T_Session__I_Bra__7212AA8A] FOREIGN KEY ([I_Brand_ID]) REFERENCES [dbo].[T_Brand_Master] ([I_Brand_ID]),
-    CONSTRAINT [FK__T_Session__I_Ses__711E8651] FOREIGN KEY ([I_Session_Type_ID]) REFERENCES [dbo].[T_Session_Type_Master] ([I_Session_Type_ID]),
-    CONSTRAINT [FK_T_Session_Master_T_EOS_Skill_Master] FOREIGN KEY ([I_Skill_ID]) REFERENCES [dbo].[T_EOS_Skill_Master] ([I_Skill_ID])
+    CONSTRAINT [PK__T_Session_Master__407B4EF6] PRIMARY KEY CLUSTERED ([I_Session_ID] ASC)
 );
 
 
-GO
-ALTER TABLE [dbo].[T_Session_Master] NOCHECK CONSTRAINT [FK__T_Session__I_Bra__7212AA8A];
 
 
 GO
-ALTER TABLE [dbo].[T_Session_Master] NOCHECK CONSTRAINT [FK_T_Session_Master_T_EOS_Skill_Master];
+
+
+
+GO
+
 

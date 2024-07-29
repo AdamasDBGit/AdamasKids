@@ -11,8 +11,8 @@
     [Dt_Target_Close]            DATETIME       NULL,
     [Dt_Actual_Close]            DATETIME       NULL,
     [I_Status_ID]                INT            NULL,
-    CONSTRAINT [PK__T_Audit_Result_N__70D538E5] PRIMARY KEY CLUSTERED ([I_Audit_Report_NCR_ID] ASC),
-    CONSTRAINT [FK_T_Audit_Result_NCR] FOREIGN KEY ([I_Audit_Result_ID]) REFERENCES [AUDIT].[T_Audit_Result] ([I_Audit_Result_ID]),
-    CONSTRAINT [FK_T_Audit_Result_NCR2] FOREIGN KEY ([I_Status_ID]) REFERENCES [dbo].[T_Status_Master] ([I_Status_Id])
+    CONSTRAINT [PK__T_Audit_Result_N__70D538E5] PRIMARY KEY CLUSTERED ([I_Audit_Report_NCR_ID] ASC)
 );
+
+
 

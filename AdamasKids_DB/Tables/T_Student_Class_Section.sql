@@ -13,7 +13,8 @@
 );
 
 
+
+
 GO
-EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'0 is just enrolled , 1 is current class, 2 is complete class, 3 is debarred, 4 is TC, 5 is discontinue without inform
-only 1 is active student', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'T_Student_Class_Section', @level2type = N'COLUMN', @level2name = N'I_Status';
+
 

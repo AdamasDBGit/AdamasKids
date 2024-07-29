@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE uspGetHouse     
+﻿CREATE PROCEDURE [dbo].[uspGetHouse]     
        
 AS      
 BEGIN      

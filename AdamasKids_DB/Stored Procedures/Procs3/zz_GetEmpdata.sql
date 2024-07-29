@@ -1,4 +1,4 @@
-﻿Create Proc zz_GetEmpdata(
+﻿CREATE Proc [dbo].[zz_GetEmpdata](
 @rollnumber int
 )
 AS

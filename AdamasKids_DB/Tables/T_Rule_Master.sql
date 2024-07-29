@@ -7,11 +7,12 @@
     [Dt_Crtd_On]  DATETIME      NULL,
     [S_Updt_By]   VARCHAR (20)  NULL,
     [Dt_Updt_On]  DATETIME      NULL,
-    CONSTRAINT [PK_T_Rule_Master] PRIMARY KEY CLUSTERED ([I_Rule_ID] ASC),
-    CONSTRAINT [FK_T_Rule_Master_T_Brand_Master] FOREIGN KEY ([I_Brand_ID]) REFERENCES [dbo].[T_Brand_Master] ([I_Brand_ID])
+    CONSTRAINT [PK_T_Rule_Master] PRIMARY KEY CLUSTERED ([I_Rule_ID] ASC)
 );
 
 
+
+
 GO
-ALTER TABLE [ASSESSMENT].[T_Rule_Master] NOCHECK CONSTRAINT [FK_T_Rule_Master_T_Brand_Master];
+
 

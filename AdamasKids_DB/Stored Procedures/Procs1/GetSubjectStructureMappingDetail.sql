@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE GetSubjectStructureMappingDetail
+﻿CREATE PROCEDURE [dbo].[GetSubjectStructureMappingDetail]
 -- =============================================
      -- Author:	Tridip Chatterjee
 -- Create date: 03-10-2023

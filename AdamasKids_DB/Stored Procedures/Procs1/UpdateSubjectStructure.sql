@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE UpdateSubjectStructure  
+﻿CREATE PROCEDURE [dbo].[UpdateSubjectStructure]  
 -- =============================================
      -- Author:	Tridip Chatterjee
 -- Create date: 05-10-2023

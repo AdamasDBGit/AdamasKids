@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE UpdateActivityValue
+﻿CREATE PROCEDURE [dbo].[UpdateActivityValue]
 -- =============================================
 -- Author:		Tridip Chatterjee
 -- Create date: 30-09-2023

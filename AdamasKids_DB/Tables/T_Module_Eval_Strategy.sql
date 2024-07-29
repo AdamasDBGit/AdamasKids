@@ -13,13 +13,14 @@
     [Dt_Crtd_On]           DATETIME       NULL,
     [Dt_Upd_On]            DATETIME       NULL,
     [I_Exam_Duration]      INT            NULL,
-    CONSTRAINT [PK__T_Module_Eval_St__3B75D760] PRIMARY KEY CLUSTERED ([I_Module_Strategy_ID] ASC),
-    CONSTRAINT [FK__T_Module___I_Cou__6E4219A6] FOREIGN KEY ([I_Course_ID]) REFERENCES [dbo].[T_Course_Master] ([I_Course_ID])
+    CONSTRAINT [PK__T_Module_Eval_St__3B75D760] PRIMARY KEY CLUSTERED ([I_Module_Strategy_ID] ASC)
 );
 
 
+
+
 GO
-ALTER TABLE [dbo].[T_Module_Eval_Strategy] NOCHECK CONSTRAINT [FK__T_Module___I_Cou__6E4219A6];
+
 
 
 GO

@@ -10,9 +10,10 @@
     [Fld_KPMG_Context]      NVARCHAR (255) NULL,
     [Fld_KPMG_MoLineId]     INT            NULL,
     [Fld_KPMG_MoLineNumber] INT            NULL,
-    CONSTRAINT [PK_T_MoMaster] PRIMARY KEY CLUSTERED ([Fld_KPMG_Mo_Id] ASC),
-    CONSTRAINT [fk_Tbl_KPMG_MoMaster_Fld_KPMG_Branch_Id] FOREIGN KEY ([Fld_KPMG_Branch_Id]) REFERENCES [dbo].[T_Centre_Master] ([I_Centre_Id])
+    CONSTRAINT [PK_T_MoMaster] PRIMARY KEY CLUSTERED ([Fld_KPMG_Mo_Id] ASC)
 );
+
+
 
 
 GO

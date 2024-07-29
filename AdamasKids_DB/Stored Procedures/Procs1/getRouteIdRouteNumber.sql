@@ -3,7 +3,7 @@
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE getRouteIdRouteNumber
+CREATE PROCEDURE [dbo].[getRouteIdRouteNumber]
 	-- Add the parameters for the stored procedure here
 	(
 		@BrandID INT NULL

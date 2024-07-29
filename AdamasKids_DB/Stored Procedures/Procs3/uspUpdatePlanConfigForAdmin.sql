@@ -3,7 +3,7 @@
 -- Create date: <21-04-23>
 -- Description:	<to update the details of the Plan>
 -- =============================================
-CREATE PROCEDURE ECOMMERCE.uspUpdatePlanConfigForAdmin
+CREATE PROCEDURE [ECOMMERCE].[uspUpdatePlanConfigForAdmin]
 	-- Add the parameters for the stored procedure here
 	@PlanId Int, @Img varchar(Max), @CourseDuration varchar(Max),@Price varchar(Max),@DiscountedPrice varchar(Max),@Summary varchar(Max)
 AS
@@ -13,7 +13,7 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	Update  [SMS].[ECOMMERCE].[T_Plan_Config]
+	Update  [ECOMMERCE].[T_Plan_Config]
 	SET ConfigValue = 
   CASE ConfigID
     WHEN 3 THEN @Img

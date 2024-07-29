@@ -10,11 +10,12 @@
     [Dt_Crtd_On]     DATETIME      NULL,
     [Dt_Upd_On]      DATETIME      NULL,
     [I_Status]       INT           NULL,
-    CONSTRAINT [PK__T_Premise_Master__69885181] PRIMARY KEY CLUSTERED ([I_Premise_ID] ASC),
-    CONSTRAINT [FK__T_Premise__I_Bra__09F52113] FOREIGN KEY ([I_Brand_ID]) REFERENCES [dbo].[T_Brand_Master] ([I_Brand_ID])
+    CONSTRAINT [PK__T_Premise_Master__69885181] PRIMARY KEY CLUSTERED ([I_Premise_ID] ASC)
 );
 
 
+
+
 GO
-ALTER TABLE [NETWORK].[T_Premise_Master] NOCHECK CONSTRAINT [FK__T_Premise__I_Bra__09F52113];
+
 

@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE GetTableNamesFromProcedure
+﻿CREATE PROCEDURE [dbo].[GetTableNamesFromProcedure]
     @ProcedureName NVARCHAR(255)
 AS
 BEGIN

@@ -3,7 +3,7 @@
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE usp_ERP_UpdateBulkUploadEvents
+CREATE PROCEDURE [dbo].[usp_ERP_UpdateBulkUploadEvents]
 	-- Add the parameters for the stored procedure here
 	(
 		@Is_Through_Bulk_upload INT,

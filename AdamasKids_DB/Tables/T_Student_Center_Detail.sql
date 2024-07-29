@@ -8,10 +8,10 @@
     [S_Upd_By]            VARCHAR (20) NULL,
     [Dt_Crtd_On]          DATETIME     NULL,
     [Dt_Upd_On]           DATETIME     NULL,
-    CONSTRAINT [PK__T_Student_Center__1B5ED8E0] PRIMARY KEY CLUSTERED ([I_Student_Detail_ID] ASC, [I_Centre_Id] ASC),
-    CONSTRAINT [FK__T_Student__I_Cen__71E958AF] FOREIGN KEY ([I_Centre_Id]) REFERENCES [dbo].[T_Centre_Master] ([I_Centre_Id]),
-    CONSTRAINT [FK__T_Student__I_Stu__28B8D3FE] FOREIGN KEY ([I_Student_Detail_ID]) REFERENCES [dbo].[T_Student_Detail] ([I_Student_Detail_ID])
+    CONSTRAINT [PK__T_Student_Center__1B5ED8E0] PRIMARY KEY CLUSTERED ([I_Student_Detail_ID] ASC, [I_Centre_Id] ASC)
 );
+
+
 
 
 GO

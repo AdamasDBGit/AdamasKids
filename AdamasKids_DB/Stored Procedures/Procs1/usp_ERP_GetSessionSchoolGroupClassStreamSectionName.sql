@@ -4,7 +4,7 @@
 -- Description:	<Description,,>
 -- exec usp_ERP_GetSessionSchoolGroupClassStreamSectionName 1, 5, 15, 1, 1
 -- =============================================
-CREATE PROCEDURE usp_ERP_GetSessionSchoolGroupClassStreamSectionName 
+CREATE PROCEDURE [dbo].[usp_ERP_GetSessionSchoolGroupClassStreamSectionName] 
 (
 	@SchoolSessionID INT = NULL,
     @SchoolGroupID INT = NULL,

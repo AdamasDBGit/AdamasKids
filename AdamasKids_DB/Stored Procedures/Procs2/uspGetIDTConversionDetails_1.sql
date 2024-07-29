@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE uspGetIDTConversionDetails
+﻿CREATE PROCEDURE [dbo].[uspGetIDTConversionDetails]
 (
 @iBrandID INT,
 @sHierarchyListID VARCHAR(MAX),

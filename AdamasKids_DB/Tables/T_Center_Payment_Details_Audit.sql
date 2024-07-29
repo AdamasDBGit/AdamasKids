@@ -24,7 +24,8 @@
     [S_Upd_By]                       VARCHAR (20)    NULL,
     [Dt_Crtd_On]                     DATETIME        NULL,
     [Dt_Upd_On]                      DATETIME        NULL,
-    CONSTRAINT [PK__T_Center_Payment__5E169ED5] PRIMARY KEY CLUSTERED ([I_Center_Pmnt_Details_Audit_ID] ASC),
-    CONSTRAINT [FK__T_Center___I_Pay__03482384] FOREIGN KEY ([I_Payment_ID]) REFERENCES [NETWORK].[T_Center_Payment_Details] ([I_Center_Payment_Details_ID])
+    CONSTRAINT [PK__T_Center_Payment__5E169ED5] PRIMARY KEY CLUSTERED ([I_Center_Pmnt_Details_Audit_ID] ASC)
 );
+
+
 

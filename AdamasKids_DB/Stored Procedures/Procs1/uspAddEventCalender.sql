@@ -54,7 +54,7 @@ select
 	END
 	ELSE
 	BEGIN
-	INSERT INTO [SMS].[dbo].[T_Event]
+	INSERT INTO [dbo].[T_Event]
 (
 [S_Event_Name],
 [I_Event_Category_ID],

@@ -5,7 +5,7 @@
     
 -- exec getEnquiryInfo 61    
 -- =============================================    
-CREATE PROCEDURE getEnquiryInfo    
+CREATE PROCEDURE [dbo].[getEnquiryInfo]    
  -- Add the parameters for the stored procedure here    
  (    
   @EnquiryNo int null    

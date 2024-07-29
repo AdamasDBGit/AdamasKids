@@ -31,11 +31,19 @@ and b.I_Brand_ID=@brandID
 Select @PresentStudent_Count as Today_Present,@TotalStudentCount as TotalStudentCount        
         
 -----Faculty Count Today------------------------------        
-Declare @TotalfacultyCount int,@FacultyPresent_Today int          
-Select @TotalfacultyCount= COUNT(I_Faculty_Master_ID)           
-from T_Faculty_Master where I_Brand_ID=@BrandID          
-and I_Status=1          
---Select @TotalfacultyCount          
+--Declare @TotalfacultyCount int,@FacultyPresent_Today int          
+--Select @TotalfacultyCount= COUNT(I_Faculty_Master_ID)           
+--from T_Faculty_Master where I_Brand_ID=@BrandID          
+--and I_Status=1          
+--Select @TotalfacultyCount 
+Declare @TotalfacultyCount int,@FacultyPresent_Today int
+Select @TotalfacultyCount= COUNT(I_Faculty_Master_ID) 
+from T_Faculty_Master f 
+Inner Join T_ERP_User_Brand UB on Ub.I_User_ID=f.I_User_ID and UB.I_Brand_ID=@BrandID
+and UB.Is_Teaching_Staff=1
+where f.I_Brand_ID=@BrandID 
+
+and f.I_Status=1
           
 select @FacultyPresent_Today= COUNT(Distinct a.I_Faculty_Master_ID)           
 from T_ERP_Attendance_Entry_Header a          

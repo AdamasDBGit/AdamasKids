@@ -9,13 +9,12 @@
     [S_Upd_By]                   VARCHAR (50) NULL,
     [Dt_Crtd_On]                 DATETIME     NULL,
     [Dt_Upd_On]                  DATETIME     NULL,
-    CONSTRAINT [PK_T_Content_Employee_Dtl] PRIMARY KEY CLUSTERED ([I_Content_Emp_Dtl_ID] ASC),
-    CONSTRAINT [FK_T_Content_Employee_Dtl_T_Batch_Content_Details] FOREIGN KEY ([I_Batch_Content_Details_ID]) REFERENCES [dbo].[T_Batch_Content_Details] ([I_Batch_Content_Details_ID]),
-    CONSTRAINT [FK_T_Content_Employee_Dtl_T_Brand_Master] FOREIGN KEY ([I_Brand_ID]) REFERENCES [dbo].[T_Brand_Master] ([I_Brand_ID]),
-    CONSTRAINT [FK_T_Content_Employee_Dtl_T_User_Master] FOREIGN KEY ([I_User_ID]) REFERENCES [dbo].[T_User_Master] ([I_User_ID])
+    CONSTRAINT [PK_T_Content_Employee_Dtl] PRIMARY KEY CLUSTERED ([I_Content_Emp_Dtl_ID] ASC)
 );
 
 
+
+
 GO
-ALTER TABLE [dbo].[T_Content_Employee_Dtl] NOCHECK CONSTRAINT [FK_T_Content_Employee_Dtl_T_Brand_Master];
+
 

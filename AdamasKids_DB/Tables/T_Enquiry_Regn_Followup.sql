@@ -11,13 +11,12 @@
     [ERP_R_I_FollowupType_ID] INT           NULL,
     [ERP_R_I_Enquiry_Type_ID] INT           NULL,
     [I_User_ID]               INT           NULL,
-    CONSTRAINT [PK__T_Enquiry_Regn_F__7909C0DC] PRIMARY KEY CLUSTERED ([I_Followup_ID] ASC),
-    CONSTRAINT [FK__T_Enquiry__I_Enq__37FB178E] FOREIGN KEY ([I_Enquiry_Regn_ID]) REFERENCES [dbo].[T_Enquiry_Regn_Detail] ([I_Enquiry_Regn_ID]),
-    CONSTRAINT [FK__T_Enquiry__I_Fol__3612CF1C] FOREIGN KEY ([I_Followup_Closure_ID]) REFERENCES [dbo].[T_Followup_Closure_Master] ([I_Followup_Closure_ID]),
-    CONSTRAINT [FK__T_Enquiry__I_Pro__3706F355] FOREIGN KEY ([I_Employee_ID]) REFERENCES [dbo].[T_Employee_Dtls] ([I_Employee_ID])
+    CONSTRAINT [PK__T_Enquiry_Regn_F__7909C0DC] PRIMARY KEY CLUSTERED ([I_Followup_ID] ASC)
 );
 
 
+
+
 GO
-ALTER TABLE [dbo].[T_Enquiry_Regn_Followup] NOCHECK CONSTRAINT [FK__T_Enquiry__I_Pro__3706F355];
+
 

@@ -7,7 +7,7 @@
 -- exec [dbo].[usp_ERP_GetAdmissionFeesDetails] 3,1,1      
 -- =============================================      
   
-Create PROCEDURE [dbo].[usp_ERP_GetAdmissionFeesDetails]  
+CREATE PROCEDURE [dbo].[usp_ERP_GetAdmissionFeesDetails]  
 -- Add the parameters for the stored procedure here      
 (  
     @EnquiryID INT,  
@@ -66,27 +66,29 @@ Select t1.I_Fee_Component_InstallmentID,
         and t1.Is_Moved is null --and t3.I_Fee_Structure_ID = @FeeStructureID      
     --and t1.TempInv is  null      
     Order by t1.Dt_Payment_Installment_Dt,  
-             CASE  
-                 WHEN t1.Seq = 0 THEN  
-                     1  
-                 ELSE  
-                     0  
-             END,  
+             --CASE  
+             --    WHEN t1.Seq = 0 THEN  
+             --        1  
+             --    ELSE  
+             --        0  
+             --END,  
              t1.Seq  
     Select *  
     from #Temp_Fee_Installment  
+	order by DateWiseInstallmentSequenceNo asc,Seq asc
 
     Select SUM(N_Installment_Amount)+SUM(N_IGST_Value) as Total_AMt,  
            DateWiseInstallmentSequenceNo,  
            CONVERT(varchar, Dt_Payment_Installment_Dt, 107) Dt_Payment_Installment_Dt,  
            Dt_Payment_Installment_Dt as D1  
+		   
     into #TotalAmount  
     from #Temp_Fee_Installment  
     Group by DateWiseInstallmentSequenceNo,  
-             Dt_Payment_Installment_Dt  
+             Dt_Payment_Installment_Dt 
     order by DateWiseInstallmentSequenceNo  
   
-    select * from #TotalAmount  order by DateWiseInstallmentSequenceNo
+    select * from #TotalAmount  order by DateWiseInstallmentSequenceNo asc
       
     select SUM(Total_AMt) as ComponentTotalAmount  
     from #TotalAmount  

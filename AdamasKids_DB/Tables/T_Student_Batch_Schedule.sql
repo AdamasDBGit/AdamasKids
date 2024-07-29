@@ -11,9 +11,10 @@
     [Dt_Actual_Date]      DATETIME      NULL,
     [I_Employee_ID]       INT           NULL,
     [I_Is_Complete]       INT           NULL,
-    CONSTRAINT [PK_T_Student_Batch_Schedule] PRIMARY KEY CLUSTERED ([I_Batch_Schedule_ID] ASC),
-    CONSTRAINT [FK_T_Student_Batch_Schedule_T_Centre_Master] FOREIGN KEY ([I_Centre_ID]) REFERENCES [dbo].[T_Centre_Master] ([I_Centre_Id])
+    CONSTRAINT [PK_T_Student_Batch_Schedule] PRIMARY KEY CLUSTERED ([I_Batch_Schedule_ID] ASC)
 );
+
+
 
 
 GO

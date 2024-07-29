@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE AddMethodologyActivityValue 
+﻿CREATE PROCEDURE [dbo].[AddMethodologyActivityValue] 
 -- =============================================
      -- Author:	Tridip Chatterjee
 -- Create date: 30-09-2023

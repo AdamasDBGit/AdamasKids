@@ -1,7 +1,7 @@
 ﻿
 
 
-CREATE PROCEDURE uspCanculateTaxDifference
+CREATE PROCEDURE [dbo].[uspCanculateTaxDifference]
     (
       @I_Invoice_Header_ID INT ,
       @I_Fee_Component_ID INT ,

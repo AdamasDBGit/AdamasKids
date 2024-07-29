@@ -11,6 +11,9 @@
     [PGExecutionDate]         DATETIME      NULL,
     [PGResponseJson]          VARCHAR (MAX) NULL,
     [S_Transaction_No]        VARCHAR (MAX) NULL,
-    [I_Transaction_Master_ID] INT           NULL
+    [I_Transaction_Master_ID] INT           NULL,
+    [Dt_CreatedAt]            DATETIME      NULL
 );
+
+
 

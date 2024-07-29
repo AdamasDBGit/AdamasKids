@@ -11,13 +11,12 @@
     [I_Enquiry_Regn_ID]          INT          NULL,
     [I_Course_ID]                INT          NULL,
     [I_Student_ID]               INT          NULL,
-    CONSTRAINT [PK_T_Student_Feedback] PRIMARY KEY CLUSTERED ([I_Student_Feedback_ID] ASC),
-    CONSTRAINT [FK_T_Student_Feedback_T_Employee_Dtls] FOREIGN KEY ([I_Employee_ID]) REFERENCES [dbo].[T_Employee_Dtls] ([I_Employee_ID]),
-    CONSTRAINT [FK_T_Student_Feedback_T_Enquiry_Regn_Detail] FOREIGN KEY ([I_Enquiry_Regn_ID]) REFERENCES [dbo].[T_Enquiry_Regn_Detail] ([I_Enquiry_Regn_ID]),
-    CONSTRAINT [FK_T_Student_Feedback_T_User_Master] FOREIGN KEY ([I_User_ID]) REFERENCES [dbo].[T_User_Master] ([I_User_ID])
+    CONSTRAINT [PK_T_Student_Feedback] PRIMARY KEY CLUSTERED ([I_Student_Feedback_ID] ASC)
 );
 
 
+
+
 GO
-ALTER TABLE [STUDENTFEATURES].[T_Student_Feedback] NOCHECK CONSTRAINT [FK_T_Student_Feedback_T_Employee_Dtls];
+
 

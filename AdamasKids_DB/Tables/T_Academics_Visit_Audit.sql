@@ -18,8 +18,8 @@
     [S_Upd_By]                   VARCHAR (20)   NULL,
     [Dt_Crtd_On]                 DATETIME       NULL,
     [Dt_Upd_On]                  DATETIME       NULL,
-    CONSTRAINT [PK__T_Academics_Visi__467E410F] PRIMARY KEY CLUSTERED ([I_Academics_Visit_Audit_ID] ASC),
-    CONSTRAINT [FK__T_Academi__I_Aca__3791033A] FOREIGN KEY ([I_Academics_Visit_ID]) REFERENCES [ACADEMICS].[T_Academics_Visit] ([I_Academics_Visit_ID]),
-    CONSTRAINT [FK__T_Academi__I_Aca__5118CF81] FOREIGN KEY ([I_Academics_Visit_ID]) REFERENCES [ACADEMICS].[T_Academics_Visit] ([I_Academics_Visit_ID])
+    CONSTRAINT [PK__T_Academics_Visi__467E410F] PRIMARY KEY CLUSTERED ([I_Academics_Visit_Audit_ID] ASC)
 );
+
+
 

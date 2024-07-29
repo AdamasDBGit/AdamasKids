@@ -14,11 +14,10 @@
     [I_ModuleGroup_ID] INT            NULL,
     [N_Weightage]      NUMERIC (8, 2) NULL,
     [S_Remarks]        VARCHAR (200)  NULL,
-    CONSTRAINT [PK__T_Module_Term_Ma__3DE8FB0E] PRIMARY KEY CLUSTERED ([I_Module_Term_ID] ASC),
-    CONSTRAINT [FK__T_Module___I_Mod__02491253] FOREIGN KEY ([I_Module_ID]) REFERENCES [dbo].[T_Module_Master] ([I_Module_ID]),
-    CONSTRAINT [FK__T_Module___I_Ter__0154EE1A] FOREIGN KEY ([I_Term_ID]) REFERENCES [dbo].[T_Term_Master] ([I_Term_ID]),
-    CONSTRAINT [FK_T_Module_Term_Map_T_ModuleGroup_Master] FOREIGN KEY ([I_ModuleGroup_ID]) REFERENCES [dbo].[T_ModuleGroup_Master] ([I_ModuleGroup_ID])
+    CONSTRAINT [PK__T_Module_Term_Ma__3DE8FB0E] PRIMARY KEY CLUSTERED ([I_Module_Term_ID] ASC)
 );
+
+
 
 
 GO

@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE GetMethodologyCategory 
+﻿CREATE PROCEDURE [dbo].[GetMethodologyCategory] 
 -- =============================================
      -- Author:	Tridip Chatterjee
 -- Create date: 28-09-2023 

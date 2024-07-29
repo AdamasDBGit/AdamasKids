@@ -34,7 +34,7 @@ BEGIN
 			SET @sCandidatePhotoPath = (SELECT S_Student_Photo FROM T_ERP_Enquiry_Regn_Detail WHERE I_Enquiry_Regn_ID = @iEnquiryRegnID)
 		END
     -- Insert statements for procedure here
-		UPDATE [SMS].[dbo].[T_ERP_Enquiry_Regn_Detail]
+		UPDATE [dbo].[T_ERP_Enquiry_Regn_Detail]
 		SET		
 			S_First_Name = @sFirstName,
 			S_Middle_Name = @sMiddleName,

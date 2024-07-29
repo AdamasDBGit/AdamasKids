@@ -10,11 +10,12 @@
     [Dt_Crtd_On]       DATETIME      NULL,
     [Dt_Upd_On]        DATETIME      NULL,
     [I_Status]         INT           NULL,
-    CONSTRAINT [PK__T_Startup_Kit_Ma__71297349] PRIMARY KEY CLUSTERED ([I_Startup_Kit_ID] ASC),
-    CONSTRAINT [FK__T_Startup__I_Bra__0FADFA69] FOREIGN KEY ([I_Brand_ID]) REFERENCES [dbo].[T_Brand_Master] ([I_Brand_ID])
+    CONSTRAINT [PK__T_Startup_Kit_Ma__71297349] PRIMARY KEY CLUSTERED ([I_Startup_Kit_ID] ASC)
 );
 
 
+
+
 GO
-ALTER TABLE [NETWORK].[T_Startup_Kit_Master] NOCHECK CONSTRAINT [FK__T_Startup__I_Bra__0FADFA69];
+
 

@@ -10,7 +10,8 @@
     [I_City_ID]             INT           NULL,
     [S_City_Name]           VARCHAR (100) NULL,
     [I_Hierarchy_Detail_ID] INT           NULL,
-    CONSTRAINT [PK_T_Center_Hierarchy_Name_Details] PRIMARY KEY CLUSTERED ([I_Center_ID] ASC),
-    CONSTRAINT [FK_T_Center_Hierarchy_Name_Details_T_Centre_Master] FOREIGN KEY ([I_Center_ID]) REFERENCES [dbo].[T_Centre_Master] ([I_Centre_Id])
+    CONSTRAINT [PK_T_Center_Hierarchy_Name_Details] PRIMARY KEY CLUSTERED ([I_Center_ID] ASC)
 );
+
+
 

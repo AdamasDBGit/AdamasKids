@@ -21,7 +21,7 @@ BEGIN TRY
 	SET NOCOUNT ON;
 		BEGIN
 		-- Insert statements for procedure here
-		INSERT INTO [SMS].[dbo].[T_ERP_Teacher_Unavailability_Header] 
+		INSERT INTO [dbo].[T_ERP_Teacher_Unavailability_Header] 
 		(
 			I_Faculty_Master_ID,
 			Dt_From,

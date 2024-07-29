@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE uspGetUserBrands(@LoginID varchar(max))
+﻿CREATE PROCEDURE [dbo].[uspGetUserBrands](@LoginID varchar(max))
 as
 begin
 

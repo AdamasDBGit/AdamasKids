@@ -62,7 +62,7 @@ BEGIN
 
 		IF EXISTS (SELECT 1 FROM T_ERP_Enquiry_Regn_Guardian_Master where I_Enquiry_Regn_ID = @iEnquiryRegnID and I_Relation_ID = 1)
 		BEGIN
-			UPDATE [SMS].[dbo].[T_ERP_Enquiry_Regn_Guardian_Master]
+			UPDATE [dbo].[T_ERP_Enquiry_Regn_Guardian_Master]
 			SET	
 				I_Relation_ID = 1,
 				S_Mobile_No = @sFatherMobileNo,
@@ -82,7 +82,7 @@ BEGIN
 		END
 		ELSE 
 		BEGIN			
-			INSERT INTO [SMS].[dbo].[T_ERP_Enquiry_Regn_Guardian_Master]	
+			INSERT INTO [dbo].[T_ERP_Enquiry_Regn_Guardian_Master]	
 			(
 				I_Enquiry_Regn_ID,
 				I_Relation_ID,
@@ -124,7 +124,7 @@ BEGIN
 
 		IF EXISTS (SELECT 1 FROM T_ERP_Enquiry_Regn_Guardian_Master where I_Enquiry_Regn_ID = @iEnquiryRegnID and I_Relation_ID = 2)
 		BEGIN
-			UPDATE [SMS].[dbo].[T_ERP_Enquiry_Regn_Guardian_Master]
+			UPDATE [dbo].[T_ERP_Enquiry_Regn_Guardian_Master]
 			SET	
 				I_Relation_ID = 2,
 				S_Mobile_No = @sMotherMobileNo,
@@ -144,7 +144,7 @@ BEGIN
 		END
 		ELSE 
 		BEGIN			
-			INSERT INTO [SMS].[dbo].[T_ERP_Enquiry_Regn_Guardian_Master]
+			INSERT INTO [dbo].[T_ERP_Enquiry_Regn_Guardian_Master]
 			(	
 				I_Enquiry_Regn_ID,
 				I_Relation_ID,
@@ -186,7 +186,7 @@ BEGIN
 
 		IF EXISTS (SELECT 1 FROM T_ERP_Enquiry_Regn_Address where I_Enquiry_Regn_ID = @iEnquiryRegnID)
 		BEGIN
-			UPDATE [SMS].[dbo].[T_ERP_Enquiry_Regn_Address]
+			UPDATE [dbo].[T_ERP_Enquiry_Regn_Address]
 			SET
 				S_Address_Type = @sAddressType,
 				S_Address1 = @sAddressLine1,

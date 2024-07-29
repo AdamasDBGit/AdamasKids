@@ -9,26 +9,24 @@
     [S_Upd_By]               VARCHAR (20) NULL,
     [Dt_Crtd_On]             DATETIME     NULL,
     [Dt_Upd_On]              DATETIME     NULL,
-    CONSTRAINT [PK__T_Employee_Role___5F49EED9] PRIMARY KEY CLUSTERED ([I_Employee_Role_Map_ID] ASC),
-    CONSTRAINT [FK__T_Employe__I_Emp__139E86DE] FOREIGN KEY ([I_Employee_ID]) REFERENCES [dbo].[T_Employee_Dtls] ([I_Employee_ID]),
-    CONSTRAINT [FK__T_Employe__I_Emp__4FB370E5] FOREIGN KEY ([I_Employee_ID]) REFERENCES [dbo].[T_Employee_Dtls] ([I_Employee_ID]),
-    CONSTRAINT [FK__T_Employe__I_Rol__1586CF50] FOREIGN KEY ([I_Role_ID]) REFERENCES [dbo].[T_Role_Master] ([I_Role_ID]),
-    CONSTRAINT [FK__T_Employe__I_Rol__519BB957] FOREIGN KEY ([I_Role_ID]) REFERENCES [dbo].[T_Role_Master] ([I_Role_ID])
+    CONSTRAINT [PK__T_Employee_Role___5F49EED9] PRIMARY KEY CLUSTERED ([I_Employee_Role_Map_ID] ASC)
 );
 
 
-GO
-ALTER TABLE [EOS].[T_Employee_Role_Map] NOCHECK CONSTRAINT [FK__T_Employe__I_Emp__139E86DE];
 
 
 GO
-ALTER TABLE [EOS].[T_Employee_Role_Map] NOCHECK CONSTRAINT [FK__T_Employe__I_Emp__4FB370E5];
 
-
-GO
-ALTER TABLE [EOS].[T_Employee_Role_Map] NOCHECK CONSTRAINT [FK__T_Employe__I_Rol__1586CF50];
 
 
 GO
-ALTER TABLE [EOS].[T_Employee_Role_Map] NOCHECK CONSTRAINT [FK__T_Employe__I_Rol__519BB957];
+
+
+
+GO
+
+
+
+GO
+
 

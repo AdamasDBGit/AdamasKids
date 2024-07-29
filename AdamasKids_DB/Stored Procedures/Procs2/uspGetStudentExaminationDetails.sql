@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE uspGetStudentExaminationDetails
+﻿CREATE PROCEDURE [dbo].[uspGetStudentExaminationDetails]
 (
 @iTermID AS INT,
 @iBatchID AS INT,

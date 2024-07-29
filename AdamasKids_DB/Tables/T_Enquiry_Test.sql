@@ -6,7 +6,8 @@
     [N_Marks]               DECIMAL (18, 2) NULL,
     [S_Answer]              XML             NULL,
     [bypass_Admission_Test] BIT             NULL,
-    CONSTRAINT [PK__T_Enquiry_Test__1022305E] PRIMARY KEY CLUSTERED ([I_Enquiry_Test_ID] ASC),
-    CONSTRAINT [FK__T_Enquiry__I_Exa__679F3DB8] FOREIGN KEY ([I_Exam_Component_ID]) REFERENCES [dbo].[T_Exam_Component_Master] ([I_Exam_Component_ID])
+    CONSTRAINT [PK__T_Enquiry_Test__1022305E] PRIMARY KEY CLUSTERED ([I_Enquiry_Test_ID] ASC)
 );
+
+
 

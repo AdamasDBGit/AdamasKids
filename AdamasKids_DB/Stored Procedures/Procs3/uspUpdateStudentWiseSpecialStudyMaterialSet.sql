@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE uspUpdateStudentWiseSpecialStudyMaterialSet      
+﻿CREATE PROCEDURE [dbo].[uspUpdateStudentWiseSpecialStudyMaterialSet]      
 @StudentDetailId NVARCHAR(500),      
 @ExamDetails XML      
 AS      

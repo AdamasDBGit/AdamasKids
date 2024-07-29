@@ -4,7 +4,7 @@ Author	:     Sudipta Das
 Date	:	  05/21/2007
 *********************************************************/
 
-CREATE PROCEDURE [uspGetPaymentGatewayInfo] 
+CREATE PROCEDURE [dbo].[uspGetPaymentGatewayInfo] 
 (
 	@BrandID int ,
 	@Mode int

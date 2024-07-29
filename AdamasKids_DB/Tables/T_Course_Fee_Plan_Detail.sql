@@ -13,14 +13,14 @@
     [Dt_Crtd_On]                  DATETIME     NULL,
     [I_Status]                    INT          NULL,
     [Dt_Upd_On]                   DATETIME     NULL,
-    CONSTRAINT [PK__T_Course_Fee_Pla__7721786A] PRIMARY KEY CLUSTERED ([I_Course_Fee_Plan_Detail_ID] ASC),
-    CONSTRAINT [FK__T_Course___I_Cou__64B8AF6C] FOREIGN KEY ([I_Course_Fee_Plan_ID]) REFERENCES [dbo].[T_Course_Fee_Plan] ([I_Course_Fee_Plan_ID]),
-    CONSTRAINT [FK__T_Course___I_Fee__1D9C270D] FOREIGN KEY ([I_Fee_Component_ID]) REFERENCES [dbo].[T_Fee_Component_Master] ([I_Fee_Component_ID])
+    CONSTRAINT [PK__T_Course_Fee_Pla__7721786A] PRIMARY KEY CLUSTERED ([I_Course_Fee_Plan_Detail_ID] ASC)
 );
 
 
+
+
 GO
-ALTER TABLE [dbo].[T_Course_Fee_Plan_Detail] NOCHECK CONSTRAINT [FK__T_Course___I_Fee__1D9C270D];
+
 
 
 GO

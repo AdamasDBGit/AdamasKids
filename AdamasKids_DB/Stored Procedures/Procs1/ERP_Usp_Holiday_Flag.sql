@@ -1,4 +1,4 @@
-﻿CREATE Proc ERP_Usp_Holiday_Flag(
+﻿CREATE Proc [dbo].[ERP_Usp_Holiday_Flag](
 @InputDate date,
 @BrandID int
 )

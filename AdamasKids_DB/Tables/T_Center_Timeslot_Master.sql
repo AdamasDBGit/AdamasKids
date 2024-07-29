@@ -9,12 +9,12 @@
     [Dt_Crtd_On]    DATETIME     NOT NULL,
     [S_Updt_By]     VARCHAR (20) NULL,
     [Dt_Updt_On]    DATETIME     NULL,
-    CONSTRAINT [PK_T_Center_Timeslot_Master] PRIMARY KEY CLUSTERED ([I_TimeSlot_ID] ASC),
-    CONSTRAINT [FK_T_Center_Timeslot_Master_T_Brand_Master] FOREIGN KEY ([I_Brand_ID]) REFERENCES [dbo].[T_Brand_Master] ([I_Brand_ID]),
-    CONSTRAINT [FK_T_Center_Timeslot_Master_T_Centre_Master] FOREIGN KEY ([I_Center_ID]) REFERENCES [dbo].[T_Centre_Master] ([I_Centre_Id])
+    CONSTRAINT [PK_T_Center_Timeslot_Master] PRIMARY KEY CLUSTERED ([I_TimeSlot_ID] ASC)
 );
 
 
+
+
 GO
-ALTER TABLE [dbo].[T_Center_Timeslot_Master] NOCHECK CONSTRAINT [FK_T_Center_Timeslot_Master_T_Brand_Master];
+
 

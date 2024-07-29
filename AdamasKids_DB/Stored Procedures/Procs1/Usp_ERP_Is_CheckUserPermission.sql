@@ -1,4 +1,4 @@
-﻿CREATE Proc Usp_ERP_Is_CheckUserPermission(    
+﻿CREATE Proc [dbo].[Usp_ERP_Is_CheckUserPermission](    
  @Userid int,@Permissionname Varchar(100)  =null  
  )    
  As Begin     

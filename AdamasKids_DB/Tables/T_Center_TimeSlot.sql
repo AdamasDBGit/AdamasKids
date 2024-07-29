@@ -8,7 +8,8 @@
     [S_Upd_By]        VARCHAR (500) NULL,
     [Dt_Crtd_On]      DATETIME      NULL,
     [Dt_Upd_On]       DATETIME      NULL,
-    CONSTRAINT [PK__T_Center_TimeSlo__75392FF8] PRIMARY KEY CLUSTERED ([I_TimeSlot_ID] ASC),
-    CONSTRAINT [FK__T_Center___I_Cen__32423E38] FOREIGN KEY ([I_Centre_Id]) REFERENCES [dbo].[T_Centre_Master] ([I_Centre_Id])
+    CONSTRAINT [PK__T_Center_TimeSlo__75392FF8] PRIMARY KEY CLUSTERED ([I_TimeSlot_ID] ASC)
 );
+
+
 

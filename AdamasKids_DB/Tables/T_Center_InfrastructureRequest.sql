@@ -7,7 +7,8 @@
     [S_Upd_By]                      VARCHAR (20)   NULL,
     [Dt_Crtd_On]                    DATETIME       NULL,
     [Dt_Upd_On]                     DATETIME       NULL,
-    CONSTRAINT [PK__T_Center_Infrast__585DC57F] PRIMARY KEY CLUSTERED ([I_Center_Infrastructure_Audit] ASC),
-    CONSTRAINT [FK__T_Center___I_Cen__7F7792A0] FOREIGN KEY ([I_Centre_Id]) REFERENCES [dbo].[T_Centre_Master] ([I_Centre_Id])
+    CONSTRAINT [PK__T_Center_Infrast__585DC57F] PRIMARY KEY CLUSTERED ([I_Center_Infrastructure_Audit] ASC)
 );
+
+
 

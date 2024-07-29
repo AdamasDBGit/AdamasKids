@@ -25,6 +25,8 @@
 );
 
 
+
+
 GO
-EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'0=Pending, 1=Approved, 2= Rejected,3 = Cancel', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'T_Gate_Pass_Request', @level2type = N'COLUMN', @level2name = N'I_Status';
+
 

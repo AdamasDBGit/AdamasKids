@@ -9,11 +9,12 @@
     [Dt_Crtd_On]         DATETIME     NULL,
     [S_Upd_By]           VARCHAR (20) NULL,
     [Dt_Upd_On]          DATETIME     NULL,
-    CONSTRAINT [PK_T_ModuleGroup_Master] PRIMARY KEY CLUSTERED ([I_ModuleGroup_ID] ASC),
-    CONSTRAINT [FK_T_ModuleGroup_Master_T_Brand_Master] FOREIGN KEY ([I_Brand_ID]) REFERENCES [dbo].[T_Brand_Master] ([I_Brand_ID])
+    CONSTRAINT [PK_T_ModuleGroup_Master] PRIMARY KEY CLUSTERED ([I_ModuleGroup_ID] ASC)
 );
 
 
+
+
 GO
-ALTER TABLE [dbo].[T_ModuleGroup_Master] NOCHECK CONSTRAINT [FK_T_ModuleGroup_Master_T_Brand_Master];
+
 

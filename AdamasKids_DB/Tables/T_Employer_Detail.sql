@@ -19,21 +19,20 @@
     [S_Mobile_No]            VARCHAR (20)  NULL,
     [S_GroupCompanyTurnOver] VARCHAR (MAX) NULL,
     [S_MCAList]              VARCHAR (6)   NULL,
-    CONSTRAINT [PK__T_Employer_Detai__116B5A52] PRIMARY KEY CLUSTERED ([I_Employer_ID] ASC),
-    CONSTRAINT [FK__T_Employe__I_Cit__153BEB36] FOREIGN KEY ([I_City_ID]) REFERENCES [dbo].[T_City_Master] ([I_City_ID]),
-    CONSTRAINT [FK__T_Employe__I_Cou__1447C6FD] FOREIGN KEY ([I_Country_ID]) REFERENCES [dbo].[T_Country_Master] ([I_Country_ID]),
-    CONSTRAINT [FK__T_Employe__I_Sta__1353A2C4] FOREIGN KEY ([I_State_ID]) REFERENCES [dbo].[T_State_Master] ([I_State_ID])
+    CONSTRAINT [PK__T_Employer_Detai__116B5A52] PRIMARY KEY CLUSTERED ([I_Employer_ID] ASC)
 );
 
 
-GO
-ALTER TABLE [PLACEMENT].[T_Employer_Detail] NOCHECK CONSTRAINT [FK__T_Employe__I_Cit__153BEB36];
 
 
 GO
-ALTER TABLE [PLACEMENT].[T_Employer_Detail] NOCHECK CONSTRAINT [FK__T_Employe__I_Cou__1447C6FD];
+
 
 
 GO
-ALTER TABLE [PLACEMENT].[T_Employer_Detail] NOCHECK CONSTRAINT [FK__T_Employe__I_Sta__1353A2C4];
+
+
+
+GO
+
 

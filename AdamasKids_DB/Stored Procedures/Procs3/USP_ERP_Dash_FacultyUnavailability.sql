@@ -1,4 +1,4 @@
-﻿Create Proc USP_ERP_Dash_FacultyUnavailability(  
+﻿CREATE Proc [dbo].[USP_ERP_Dash_FacultyUnavailability](  
 @BrandID int  
 )  
 As Begin  

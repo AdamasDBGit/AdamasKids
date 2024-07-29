@@ -5,7 +5,7 @@
 -- Description: Generate FEE Installment                              
 -- =============================================                         
                   
-CREATE Proc usp_ERP_Fee_InstallmentPayment                  
+CREATE Proc [dbo].[usp_ERP_Fee_InstallmentPayment]                  
 (                  
     @Enquiry_Regn_ID int,                  
     @School_Session_ID int,                  

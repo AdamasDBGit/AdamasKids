@@ -1,6 +1,6 @@
 ﻿--EXEC ERP_get_FEE_Structure_GST_Generation 44,0  
   
-CREATE Proc ERP_get_FEE_Structure_GST_Generation(  
+CREATE Proc [dbo].[ERP_get_FEE_Structure_GST_Generation](  
 @FeeStructureID int,  
 @paymentTypeID int  
 )  

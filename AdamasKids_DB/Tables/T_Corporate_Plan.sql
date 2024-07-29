@@ -15,7 +15,8 @@
     [Dt_Crtd_On]               DATETIME        NULL,
     [Dt_Updt_On]               DATETIME        NULL,
     [IsCertificate_Eligible]   BIT             NULL,
-    CONSTRAINT [PK_T_Corporate_Plan_1] PRIMARY KEY CLUSTERED ([I_Corporate_Plan_ID] ASC),
-    CONSTRAINT [FK_T_Corporate_Plan_T_Corporate_Details] FOREIGN KEY ([I_Corporate_ID]) REFERENCES [CORPORATE].[T_Corporate_Details] ([I_Corporate_ID])
+    CONSTRAINT [PK_T_Corporate_Plan_1] PRIMARY KEY CLUSTERED ([I_Corporate_Plan_ID] ASC)
 );
+
+
 

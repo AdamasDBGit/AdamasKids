@@ -17,17 +17,16 @@
     [Dt_Crtd_On]       DATETIME      NULL,
     [S_Updt_By]        VARCHAR (50)  NULL,
     [S_Updt_On]        DATETIME      NULL,
-    CONSTRAINT [PK_T_Corporate_Details] PRIMARY KEY CLUSTERED ([I_Corporate_ID] ASC),
-    CONSTRAINT [FK_T_Corporate_Details_T_City_Master] FOREIGN KEY ([I_City_ID]) REFERENCES [dbo].[T_City_Master] ([I_City_ID]),
-    CONSTRAINT [FK_T_Corporate_Details_T_Country_Master] FOREIGN KEY ([I_Country_ID]) REFERENCES [dbo].[T_Country_Master] ([I_Country_ID]),
-    CONSTRAINT [FK_T_Corporate_Details_T_State_Master] FOREIGN KEY ([I_State_ID]) REFERENCES [dbo].[T_State_Master] ([I_State_ID])
+    CONSTRAINT [PK_T_Corporate_Details] PRIMARY KEY CLUSTERED ([I_Corporate_ID] ASC)
 );
 
 
-GO
-ALTER TABLE [CORPORATE].[T_Corporate_Details] NOCHECK CONSTRAINT [FK_T_Corporate_Details_T_City_Master];
 
 
 GO
-ALTER TABLE [CORPORATE].[T_Corporate_Details] NOCHECK CONSTRAINT [FK_T_Corporate_Details_T_State_Master];
+
+
+
+GO
+
 

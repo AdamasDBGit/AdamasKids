@@ -22,19 +22,12 @@
     [S_Ext_Report_File_Name]         VARCHAR (200)  NULL,
     [I_Is_File_Submitted_Externally] BIT            NULL,
     [S_Remarks]                      VARCHAR (1000) NULL,
-    CONSTRAINT [PK_T_E_Project_Group_Audit] PRIMARY KEY CLUSTERED ([I_E_Project_Group_Audit_ID] ASC),
-    CONSTRAINT [FK_T_E_Project_Group_Audit_T_Centre_Master] FOREIGN KEY ([I_Center_ID]) REFERENCES [dbo].[T_Centre_Master] ([I_Centre_Id]),
-    CONSTRAINT [FK_T_E_Project_Group_Audit_T_Course_Master] FOREIGN KEY ([I_Course_ID]) REFERENCES [dbo].[T_Course_Master] ([I_Course_ID]),
-    CONSTRAINT [FK_T_E_Project_Group_Audit_T_E_Project_Group] FOREIGN KEY ([I_E_Project_Group_ID]) REFERENCES [ACADEMICS].[T_E_Project_Group] ([I_E_Project_Group_ID]),
-    CONSTRAINT [FK_T_E_Project_Group_Audit_T_E_Project_Group_Audit] FOREIGN KEY ([I_E_Project_Group_Audit_ID]) REFERENCES [ACADEMICS].[T_E_Project_Group_Audit] ([I_E_Project_Group_Audit_ID]),
-    CONSTRAINT [FK_T_E_Project_Group_Audit_T_E_Project_Spec] FOREIGN KEY ([I_E_Project_Spec_ID]) REFERENCES [ACADEMICS].[T_E_Project_Spec] ([I_E_Project_Spec_ID]),
-    CONSTRAINT [FK_T_E_Project_Group_Audit_T_Module_Master] FOREIGN KEY ([I_Module_ID]) REFERENCES [dbo].[T_Module_Master] ([I_Module_ID]),
-    CONSTRAINT [FK_T_E_Project_Group_Audit_T_Term_Master] FOREIGN KEY ([I_Term_ID]) REFERENCES [dbo].[T_Term_Master] ([I_Term_ID]),
-    CONSTRAINT [FK_T_E_Project_Group_Audit_T_Upload_Document] FOREIGN KEY ([I_E_Project_File_ID]) REFERENCES [dbo].[T_Upload_Document] ([I_Document_ID]),
-    CONSTRAINT [FK_T_E_Project_Group_Audit_T_Upload_Document1] FOREIGN KEY ([I_Report_File_ID]) REFERENCES [dbo].[T_Upload_Document] ([I_Document_ID])
+    CONSTRAINT [PK_T_E_Project_Group_Audit] PRIMARY KEY CLUSTERED ([I_E_Project_Group_Audit_ID] ASC)
 );
 
 
+
+
 GO
-ALTER TABLE [ACADEMICS].[T_E_Project_Group_Audit] NOCHECK CONSTRAINT [FK_T_E_Project_Group_Audit_T_Course_Master];
+
 

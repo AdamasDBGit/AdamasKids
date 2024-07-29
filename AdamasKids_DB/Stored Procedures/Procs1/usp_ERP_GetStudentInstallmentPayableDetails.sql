@@ -183,7 +183,7 @@ BEGIN
                                      FROM   dbo.T_Invoice_Parent AS TIP1                    
                                             INNER JOIN dbo.T_Invoice_Child_Header                    
                                             AS TICH ON TICH.I_Invoice_Header_ID = TIP1.I_Invoice_Header_ID                    
-                                            INNER JOIN dbo.T_Invoice_Batch_Map                    
+                                            Inner JOIN dbo.T_Invoice_Batch_Map                    
                      AS TIBM ON TIBM.I_Invoice_Child_Header_ID = TICH.I_Invoice_Child_Header_ID AND TIBM.I_Status in (1,0)                    
            INNER JOIN dbo.T_Student_Detail TSD1 ON TIP1.I_Student_Detail_ID = TSD1.I_Student_Detail_ID                    
             INNER JOIN T_Student_Parent_Maps TSPM ON TSPM.S_Student_ID = TSD1.S_Student_ID                    
@@ -406,7 +406,7 @@ INSERT  INTO #INVDET
       DueType,                    
       TotalDiff                    
                 )                    
-select max(I_Centre_ID),                    
+select distinct max(I_Centre_ID),                    
       max(S_Center_Name),                    
                   max(TypeOfCentre),                    
       max(S_Mobile_No),                    

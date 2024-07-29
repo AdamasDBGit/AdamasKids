@@ -8,7 +8,8 @@
     [I_Status]                 INT           NULL,
     [S_Corporate_Receipt_Type] VARCHAR (20)  NULL,
     [S_TDS_Comment]            VARCHAR (500) NULL,
-    CONSTRAINT [PK_T_Corporate_Receipt] PRIMARY KEY CLUSTERED ([I_Corporate_Receipt_Id] ASC),
-    CONSTRAINT [FK_T_Corporate_Receipt_T_Corporate_Plan] FOREIGN KEY ([I_Corporate_Plan_ID]) REFERENCES [CORPORATE].[T_Corporate_Plan] ([I_Corporate_Plan_ID])
+    CONSTRAINT [PK_T_Corporate_Receipt] PRIMARY KEY CLUSTERED ([I_Corporate_Receipt_Id] ASC)
 );
+
+
 

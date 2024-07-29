@@ -10,11 +10,12 @@
     [S_Updt_By]              VARCHAR (50)    NULL,
     [Dt_Updt_On]             DATETIME        NULL,
     [S_Academic_Session]     VARCHAR (20)    NULL,
-    CONSTRAINT [PK_T_Transport_History] PRIMARY KEY CLUSTERED ([I_Transport_History_ID] ASC),
-    CONSTRAINT [FK_T_Transport_History_T_Brand_Master] FOREIGN KEY ([I_Brand_ID]) REFERENCES [dbo].[T_Brand_Master] ([I_Brand_ID])
+    CONSTRAINT [PK_T_Transport_History] PRIMARY KEY CLUSTERED ([I_Transport_History_ID] ASC)
 );
 
 
+
+
 GO
-ALTER TABLE [dbo].[T_Transport_History] NOCHECK CONSTRAINT [FK_T_Transport_History_T_Brand_Master];
+
 

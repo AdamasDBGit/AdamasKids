@@ -24,6 +24,8 @@
 );
 
 
+
+
 GO
-EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'P-Permanent,C-Contractual', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'T_Faculty_Master', @level2type = N'COLUMN', @level2name = N'S_Faculty_Type';
+
 

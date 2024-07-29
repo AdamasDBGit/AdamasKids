@@ -23,9 +23,8 @@
     [S_Remarks]                  VARCHAR (2000) NULL,
     [S_Name]                     VARCHAR (50)   NULL,
     [S_Address]                  VARCHAR (100)  NULL,
-    CONSTRAINT [PK__T_Complaint_Requ__2117B236] PRIMARY KEY CLUSTERED ([I_Complaint_Req_ID] ASC),
-    CONSTRAINT [FK__T_Complai__I_Com__788B6946] FOREIGN KEY ([I_Complaint_Mode_ID]) REFERENCES [CUSTOMERCARE].[T_Complaint_Mode_Master] ([I_Complaint_Mode_ID]),
-    CONSTRAINT [FK__T_Complai__I_Com__797F8D7F] FOREIGN KEY ([I_Complaint_Category_ID]) REFERENCES [CUSTOMERCARE].[T_Complaint_Category_Master] ([I_Complaint_Category_ID]),
-    CONSTRAINT [FK__T_Complai__I_Stu__7A73B1B8] FOREIGN KEY ([I_Student_Detail_ID]) REFERENCES [dbo].[T_Student_Detail] ([I_Student_Detail_ID])
+    CONSTRAINT [PK__T_Complaint_Requ__2117B236] PRIMARY KEY CLUSTERED ([I_Complaint_Req_ID] ASC)
 );
+
+
 

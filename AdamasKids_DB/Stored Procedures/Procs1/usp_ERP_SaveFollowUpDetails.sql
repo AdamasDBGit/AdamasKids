@@ -3,7 +3,7 @@
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE usp_ERP_SaveFollowUpDetails
+CREATE PROCEDURE [dbo].[usp_ERP_SaveFollowUpDetails]
 (
 	@FollowUpTypeID int = NULL, 
 	@FollowUpDate datetime = NULL,

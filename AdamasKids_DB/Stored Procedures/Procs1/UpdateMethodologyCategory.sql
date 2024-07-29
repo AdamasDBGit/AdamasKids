@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE UpdateMethodologyCategory 
+﻿CREATE PROCEDURE [dbo].[UpdateMethodologyCategory] 
 -- =============================================
      -- Author:	Tridip Chatterjee
 -- Create date: 28-09-2023

@@ -5,7 +5,7 @@
 
 -- exec getRouteWithPickupID 1475, 107
 -- =============================================
-CREATE PROCEDURE getRouteWithPickupID
+CREATE PROCEDURE [dbo].[getRouteWithPickupID]
 	-- Add the parameters for the stored procedure here
 	(
 		@PickupPoint INT NULL,
