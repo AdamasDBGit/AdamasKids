@@ -3935,6 +3935,18 @@
     <Build Include="Stored Procedures\GetERPTransactionRequeryCronJob.sql" />
     <Build Include="Stored Procedures\usp_ERP_UpdatePassword.sql" />
     <Build Include="Stored Procedures\USP_ERP_Replica_Role_Permission_Brandwise.sql" />
+    <Build Include="Tables\T_ERP_Users_Role_Permission_Map_Dump_two.sql" />
+    <Build Include="Tables\T_ERP_Users_Role_Permission_Map_Dump.sql" />
+    <Build Include="Tables\T_ERP_Users_Role_Permission_Map_BKP_AUG.sql" />
+    <Build Include="Tables\T_ERP_Users_Role_Permission_Map_AUG_two.sql" />
+    <Build Include="Tables\T_ERP_Permission_Role_Map_Dump_two.sql" />
+    <Build Include="Tables\T_ERP_Permission_Role_Map_Dump.sql" />
+    <Build Include="Tables\T_ERP_Permission_Role_Map_BKP_AUG.sql" />
+    <Build Include="Tables\T_ERP_Permission_Role_Map_AUG_two.sql" />
+    <Build Include="Tables\T_ERP_Permission_Final_Merge.sql" />
+    <Build Include="Tables\T_ERP_Permission_Dump.sql" />
+    <Build Include="Tables\T_ERP_Permission_BKP_AUG_TWO.sql" />
+    <Build Include="Tables\T_ERP_Permission_BKP_AUG.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="AdamasKids_DB.refactorlog" />

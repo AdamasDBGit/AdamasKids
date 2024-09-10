@@ -1,10 +1,4 @@
-﻿-- =============================================
--- Author:		<Author,,Name>
--- Create date: <Create Date,,>
--- Description:	<Description,,>
--- exec usp_ERP_GetAllPeriodsOfByStudentID 112218, 
--- =============================================
-CREATE PROCEDURE [dbo].[usp_ERP_GetAllPeriodsOfByStudentID] 
+﻿CREATE PROCEDURE [dbo].[usp_ERP_GetAllPeriodsOfByStudentID] 
 (
 	-- Add the parameters for the stored procedure here
 	@StudentDetailID INT = NULL,
@@ -17,7 +11,12 @@ BEGIN
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
 
+	DECLARE @brandID int = (select top  1 TPM.I_Brand_ID from T_Student_Parent_Maps TSPM inner join T_Parent_Master TPM 
+	ON TPM.I_Parent_Master_ID = TSPM.I_Parent_Master_ID
+	where I_Student_Detail_ID=@StudentDetailID)
+	DECLARE @sessionID int = (select top 1 I_School_Session_ID from T_School_Academic_Session_Master where I_Brand_ID=@brandID order by I_School_Session_ID desc  )
 	SELECT 
+	--TERSD.I_Routine_Structure_Detail_ID,
 	CONCAT(TERSD.T_FromSlot, ' - ', TERSD.T_ToSlot) AS TimeRange,
 	TERSD.T_FromSlot AS StarTime,
 	TERSD.T_ToSlot AS EndTime,
@@ -50,12 +49,13 @@ BEGIN
 	INNER JOIN T_Class TC ON TC.I_Class_ID = TERSH.I_Class_ID
 	INNER JOIN T_Week_Day_Master TWDM ON TWDM.I_Day_ID = TERSD.I_Day_ID
 	INNER JOIN T_School_Group_Class TSGS ON TSGS.I_School_Group_ID = TSG.I_School_Group_ID and TSGS.I_Class_ID=TC.I_Class_ID
-	INNER JOIN T_Student_Class_Section TSCS ON TSCS.I_School_Group_Class_ID = TSGS.I_School_Group_Class_ID
-	LEFT JOIN T_Section TS ON TS.I_Section_ID = TERSH.I_Section_ID  
+	INNER JOIN T_Student_Class_Section TSCS ON TSCS.I_School_Group_Class_ID = TSGS.I_School_Group_Class_ID AND TSCS.I_Section_ID=TERSH.I_Section_ID
+	INNER JOIN T_Section TS ON TS.I_Section_ID = TSCS.I_Section_ID  
 
 	WHERE 
-	(TSCS.I_Student_Detail_ID = @StudentDetailID AND (TERSD.I_Day_ID =@DayID OR @DayID IS NULL ) )
+	(TSCS.I_Student_Detail_ID = @StudentDetailID AND (TERSD.I_Day_ID =@DayID OR @DayID IS NULL ) ) AND TERSH.I_School_Session_ID=@sessionID
 	GROUP BY 
+	--TERSD.I_Routine_Structure_Detail_ID,
 	TERSD.T_FromSlot, 
 	TERSD.T_ToSlot,
 	TFM.S_Faculty_Name, 
@@ -73,6 +73,7 @@ BEGIN
 	--order by TERSD.I_Day_ID asc
 	UNION ALL
 	SELECT 
+	--TERSD.I_Routine_Structure_Detail_ID,
 	CONCAT(TERSD.T_FromSlot, ' - ', TERSD.T_ToSlot) AS TimeRange,
 	TERSD.T_FromSlot AS StarTime,
 	TERSD.T_ToSlot AS EndTime,
@@ -101,12 +102,13 @@ BEGIN
 	INNER JOIN T_Class TC ON TC.I_Class_ID = TERSH.I_Class_ID
 	INNER JOIN T_Week_Day_Master TWDM ON TWDM.I_Day_ID = TERSD.I_Day_ID
 	INNER JOIN T_School_Group_Class TSGS ON TSGS.I_School_Group_ID = TSG.I_School_Group_ID and TSGS.I_Class_ID=TC.I_Class_ID
-	INNER JOIN T_Student_Class_Section TSCS ON TSCS.I_School_Group_Class_ID = TSGS.I_School_Group_Class_ID
-	LEFT JOIN T_Section TS ON TS.I_Section_ID = TERSH.I_Section_ID  
+	INNER JOIN T_Student_Class_Section TSCS ON TSCS.I_School_Group_Class_ID = TSGS.I_School_Group_Class_ID AND TSCS.I_Section_ID=TERSH.I_Section_ID
+	INNER JOIN T_Section TS ON TS.I_Section_ID = TSCS.I_Section_ID  
 
 	WHERE 
-	(TSCS.I_Student_Detail_ID = @StudentDetailID AND (TERSD.I_Day_ID =@DayID OR @DayID IS NULL) AND TERSD.I_Is_Break=1)
+	(TSCS.I_Student_Detail_ID = @StudentDetailID AND (TERSD.I_Day_ID =@DayID OR @DayID IS NULL) AND TERSD.I_Is_Break=1)  AND TERSH.I_School_Session_ID=@sessionID
 	GROUP BY 
+	--TERSD.I_Routine_Structure_Detail_ID,
 	TERSD.T_FromSlot, 
 	TERSD.T_ToSlot, 
 	TSG.S_School_Group_Name,

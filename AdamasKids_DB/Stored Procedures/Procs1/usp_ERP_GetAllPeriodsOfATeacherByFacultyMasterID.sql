@@ -1,10 +1,4 @@
-﻿-- =============================================    
--- Author:  <Author,,Name>    
--- Create date: <Create Date,,>    
--- Description: <Description,,>    
--- exec [usp_ERP_GetAllPeriodsOfATeacherByFacultyMasterID] 5   
--- =============================================    
-CREATE PROCEDURE [dbo].[usp_ERP_GetAllPeriodsOfATeacherByFacultyMasterID]     
+﻿CREATE PROCEDURE [dbo].[usp_ERP_GetAllPeriodsOfATeacherByFacultyMasterID]     
 (    
  -- Add the parameters for the stored procedure here    
  @FacultyMasterID INT = NULL,    
@@ -90,10 +84,16 @@ ORDER BY
  TSM.S_Subject_Name AS SubjectName,    
  TSM.I_Subject_ID AS SubjectID,    
  TSG.S_School_Group_Name AS SchoolGroup,    
- TC.S_Class_Name AS ClassName,    
+ --TC.S_Class_Name AS ClassName,    
+CASE 
+        WHEN TSS.S_Stream IS NOT NULL THEN CONCAT(TC.S_Class_Name, ' (', TSS.S_Stream, ')')
+        ELSE TC.S_Class_Name
+    END AS ClassName,    
  TERSD.I_Day_ID AS DayID,    
  TERSH.I_Section_ID,    
- TS.S_Section_Name AS Section,    
+ TS.S_Section_Name AS Section,  
+ TERSH.I_Stream_ID,
+ TSS.S_Stream Stream,
  TESCR.I_Student_Class_Routine_ID AS StudentClassRoutineID,    
  CASE WHEN     
     ( SELECT COUNT(*) FROM T_ERP_Attendance_Entry_Header AS TEAEH WHERE TEAEH.I_Student_Class_Routine_ID = TESCR.I_Student_Class_Routine_ID AND Dt_Date = @Date    
@@ -115,6 +115,7 @@ ORDER BY
  INNER JOIN T_Class TC ON TC.I_Class_ID = TERSH.I_Class_ID    
  INNER JOIN T_Week_Day_Master TWDM ON TWDM.I_Day_ID = TERSD.I_Day_ID    
  LEFT JOIN T_Section TS ON TS.I_Section_ID = TERSH.I_Section_ID  --OR TERSH.I_Section_ID is null    
+ LEFT JOIN T_Stream TSS ON TSS.I_Stream_ID=TERSH.I_Stream_ID
     
  WHERE     
  (TESCR.I_Faculty_Master_ID =@FacultyMasterID OR @FacultyMasterID IS NULL) AND (TERSD.I_Day_ID =@DayID OR @DayID IS NULL)    
@@ -130,7 +131,9 @@ ORDER BY
  TS.S_Section_Name,    
  TWDM.S_Day_Name,    
  TERSD.I_Period_No,    
- TSM.I_Subject_ID,    
+ TSM.I_Subject_ID,   
+ TERSH.I_Stream_ID,
+ TSS.S_Stream,
  TESCR.I_Student_Class_Routine_ID,    
  TERSD.I_Routine_Structure_Detail_ID,    
  TSM.S_Subject_Code,    

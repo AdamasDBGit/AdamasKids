@@ -1,10 +1,4 @@
-﻿-- =============================================
--- Author:		<Author,,Name>
--- Create date: <Create Date,,>
--- Description:	<Description,,>
--- exec [usp_ERP_GetAllClassWokByStudentID] 6101,3,'2024-04-16'
--- =============================================
-CREATE PROCEDURE [dbo].[usp_ERP_GetAllClassWorkByStudentID] 
+﻿CREATE PROCEDURE [dbo].[usp_ERP_GetAllClassWorkByStudentID] 
 (
 	-- Add the parameters for the stored procedure here
 	@StudentDetailID INT = NULL,
@@ -60,7 +54,7 @@ BEGIN
 	and CAST(TESCRW.Dt_Date as date) = CAST(@Date as date)
 
 	WHERE 
-	(TSCS.I_Student_Detail_ID = 6101 AND (TERSD.I_Day_ID =3 OR 3 IS NULL ) )
+	(TSCS.I_Student_Detail_ID = @StudentDetailID AND (TERSD.I_Day_ID =3 OR 3 IS NULL ) )
 	GROUP BY 
 	TERSD.T_FromSlot, 
 	TERSD.T_ToSlot,
@@ -113,7 +107,7 @@ BEGIN
 	LEFT JOIN T_Section TS ON TS.I_Section_ID = TERSH.I_Section_ID  
 
 	WHERE 
-	(TSCS.I_Student_Detail_ID = 6101 AND (TERSD.I_Day_ID =3 OR 3 IS NULL) AND TERSD.I_Is_Break=1)
+	(TSCS.I_Student_Detail_ID = @StudentDetailID AND (TERSD.I_Day_ID =3 OR 3 IS NULL) AND TERSD.I_Is_Break=1)
 	GROUP BY 
 	TERSD.T_FromSlot, 
 	TERSD.T_ToSlot, 
