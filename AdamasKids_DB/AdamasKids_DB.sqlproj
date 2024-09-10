@@ -3928,6 +3928,7 @@
     <Build Include="Stored Procedures\Usp_ERP_DefaultGSTMAP_Comp.sql" />
     <Build Include="Stored Procedures\GetERPTransactionRequeryCronJob.sql" />
     <Build Include="Stored Procedures\usp_ERP_UpdatePassword.sql" />
+<<<<<<< HEAD
     <Build Include="Tables\T_ERP_Transaction_Requery_Cron_Job.sql" />
     <Build Include="Tables\T_ERP_GST_Category_Component.sql" />
     <Build Include="Stored Procedures\uspGetAllTeacherEventList.sql" />
@@ -3938,6 +3939,21 @@
     <Build Include="Stored Procedures\usp_ERP_GET_RequestLogData_TransactionNumberWise.sql" />
     <Build Include="Stored Procedures\usp_ERP_GET_Payment_Gateway_Log.sql" />
     <Build Include="Stored Procedures\USP_ERP_AuthorizationBinding_UserWise_BKP_July_25.sql" />
+=======
+    <Build Include="Stored Procedures\USP_ERP_Replica_Role_Permission_Brandwise.sql" />
+    <Build Include="Tables\T_ERP_Users_Role_Permission_Map_Dump_two.sql" />
+    <Build Include="Tables\T_ERP_Users_Role_Permission_Map_Dump.sql" />
+    <Build Include="Tables\T_ERP_Users_Role_Permission_Map_BKP_AUG.sql" />
+    <Build Include="Tables\T_ERP_Users_Role_Permission_Map_AUG_two.sql" />
+    <Build Include="Tables\T_ERP_Permission_Role_Map_Dump_two.sql" />
+    <Build Include="Tables\T_ERP_Permission_Role_Map_Dump.sql" />
+    <Build Include="Tables\T_ERP_Permission_Role_Map_BKP_AUG.sql" />
+    <Build Include="Tables\T_ERP_Permission_Role_Map_AUG_two.sql" />
+    <Build Include="Tables\T_ERP_Permission_Final_Merge.sql" />
+    <Build Include="Tables\T_ERP_Permission_Dump.sql" />
+    <Build Include="Tables\T_ERP_Permission_BKP_AUG_TWO.sql" />
+    <Build Include="Tables\T_ERP_Permission_BKP_AUG.sql" />
+>>>>>>> SMS_Adamas_Kids
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="AdamasKids_DB.refactorlog" />

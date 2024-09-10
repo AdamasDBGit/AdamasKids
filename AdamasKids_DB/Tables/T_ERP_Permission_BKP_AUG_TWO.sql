@@ -1,5 +1,5 @@
-﻿CREATE TABLE [dbo].[T_ERP_Permission] (
-    [I_Permission_ID]                 INT            NOT NULL,
+﻿CREATE TABLE [dbo].[T_ERP_Permission_BKP_AUG_TWO] (
+    [I_Permission_ID]                 INT            IDENTITY (1, 1) NOT NULL,
     [Permission_Type]                 VARCHAR (100)  NULL,
     [RequestType]                     NCHAR (100)    NULL,
     [S_Name]                          NVARCHAR (150) NOT NULL,
@@ -14,11 +14,6 @@
     [S_Display_Component_Permissions] VARCHAR (MAX)  NULL,
     [S_Enable_Component_Permissions]  VARCHAR (MAX)  NULL,
     [Description]                     VARCHAR (100)  NULL,
-    [Is_Active]                       BIT            NULL,
-    [UniqueIdentifierColumn]          NVARCHAR (MAX) NULL
+    [Is_Active]                       BIT            NULL
 );
-
-
-
-
 

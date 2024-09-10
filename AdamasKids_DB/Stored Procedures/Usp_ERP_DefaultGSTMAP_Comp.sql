@@ -1,6 +1,10 @@
 ﻿
 --EXEC Usp_ERP_DefaultGSTMAP_Comp 1149,107
+<<<<<<< HEAD
 create Proc [dbo].[Usp_ERP_DefaultGSTMAP_Comp](
+=======
+CREATE Proc [dbo].[Usp_ERP_DefaultGSTMAP_Comp](
+>>>>>>> SMS_Adamas_Kids
 @feeCompId int,
 @brandID int
 )

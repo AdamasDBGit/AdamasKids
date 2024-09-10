@@ -124,7 +124,44 @@
     [I_ERP_Crtd_By]              INT             NULL,
     [I_ERP_Updt_By]              INT             NULL,
     [I_Tab_No]                   INT             CONSTRAINT [DF_T_Enquiry_Regn_Detail_I_Tab_No] DEFAULT ((0)) NULL,
+<<<<<<< HEAD
     CONSTRAINT [PK__T_Enquiry_Regn_D__02932B16] PRIMARY KEY CLUSTERED ([I_Enquiry_Regn_ID] ASC)
+=======
+    [Dt_PaymentDate]             DATETIME        NULL,
+    CONSTRAINT [PK__T_Enquiry_Regn_D__02932B16] PRIMARY KEY CLUSTERED ([I_Enquiry_Regn_ID] ASC),
+    CONSTRAINT [FK__T_Enquiry__I_Cur__4C02103B] FOREIGN KEY ([I_Corporate_Plan_ID]) REFERENCES [CORPORATE].[T_Corporate_Plan] ([I_Corporate_Plan_ID]),
+    CONSTRAINT [FK__T_Enquiry__I_Cur__4CF63474] FOREIGN KEY ([I_Curr_City_ID]) REFERENCES [dbo].[T_City_Master] ([I_City_ID]),
+    CONSTRAINT [FK__T_Enquiry__I_Enq__4460EE73] FOREIGN KEY ([I_Enquiry_Type_ID]) REFERENCES [dbo].[T_Enquiry_Type] ([I_Enquiry_Type_ID]),
+    CONSTRAINT [FK__T_Enquiry__I_Inc__48317F57] FOREIGN KEY ([I_Income_Group_ID]) REFERENCES [dbo].[T_Income_Group_Master] ([I_Income_Group_ID]),
+    CONSTRAINT [FK__T_Enquiry__I_Inf__4EDE7CE6] FOREIGN KEY ([I_Info_Source_ID]) REFERENCES [dbo].[T_Information_Source_Master] ([I_Info_Source_ID]),
+    CONSTRAINT [FK__T_Enquiry__I_Occ__4925A390] FOREIGN KEY ([I_Occupation_ID]) REFERENCES [dbo].[T_Occupation_Master] ([I_Occupation_ID]),
+    CONSTRAINT [FK__T_Enquiry__I_Pre__4A19C7C9] FOREIGN KEY ([I_Pref_Career_ID]) REFERENCES [dbo].[T_Preferred_Career_Master] ([I_Pref_Career_ID]),
+    CONSTRAINT [FK__T_Enquiry__I_Qua__464936E5] FOREIGN KEY ([I_Qualification_Name_ID]) REFERENCES [dbo].[T_Qualification_Name_Master] ([I_Qualification_Name_ID]),
+    CONSTRAINT [FK__T_Enquiry__I_Str__473D5B1E] FOREIGN KEY ([I_Stream_ID]) REFERENCES [dbo].[T_Stream_Master] ([I_Stream_ID]),
+    CONSTRAINT [FK_T_Enquiry_Regn_Detail_T_Blood_Group] FOREIGN KEY ([I_Blood_Group_ID]) REFERENCES [dbo].[T_Blood_Group] ([I_Blood_Group_ID]),
+    CONSTRAINT [FK_T_Enquiry_Regn_Detail_T_Business_Type] FOREIGN KEY ([I_Father_Business_Type_ID]) REFERENCES [dbo].[T_Business_Type] ([I_Business_Type_ID]),
+    CONSTRAINT [FK_T_Enquiry_Regn_Detail_T_Business_Type1] FOREIGN KEY ([I_Mother_Business_Type_ID]) REFERENCES [dbo].[T_Business_Type] ([I_Business_Type_ID]),
+    CONSTRAINT [FK_T_Enquiry_Regn_Detail_T_Corporate_Details] FOREIGN KEY ([I_Corporate_ID]) REFERENCES [CORPORATE].[T_Corporate_Details] ([I_Corporate_ID]),
+    CONSTRAINT [FK_T_Enquiry_Regn_Detail_T_Enquiry_Regn_Detail] FOREIGN KEY ([I_Enquiry_Regn_ID]) REFERENCES [dbo].[T_Enquiry_Regn_Detail] ([I_Enquiry_Regn_ID]),
+    CONSTRAINT [FK_T_Enquiry_Regn_Detail_T_Enquiry_Regn_Detail1] FOREIGN KEY ([I_Enquiry_Regn_ID]) REFERENCES [dbo].[T_Enquiry_Regn_Detail] ([I_Enquiry_Regn_ID]),
+    CONSTRAINT [FK_T_Enquiry_Regn_Detail_T_Enquiry_Regn_Detail2] FOREIGN KEY ([I_Enquiry_Regn_ID]) REFERENCES [dbo].[T_Enquiry_Regn_Detail] ([I_Enquiry_Regn_ID]),
+    CONSTRAINT [FK_T_Enquiry_Regn_Detail_T_Enrolment_Type_Master] FOREIGN KEY ([I_Enrolment_Type_ID]) REFERENCES [dbo].[T_Enrolment_Type_Master] ([I_Enrolment_Type_ID]),
+    CONSTRAINT [FK_T_Enquiry_Regn_Detail_T_Income_Group_Master] FOREIGN KEY ([I_Father_Income_Group_ID]) REFERENCES [dbo].[T_Income_Group_Master] ([I_Income_Group_ID]),
+    CONSTRAINT [FK_T_Enquiry_Regn_Detail_T_Income_Group_Master1] FOREIGN KEY ([I_Monthly_Family_Income_ID]) REFERENCES [dbo].[T_Income_Group_Master] ([I_Income_Group_ID]),
+    CONSTRAINT [FK_T_Enquiry_Regn_Detail_T_Income_Group_Master2] FOREIGN KEY ([I_Mother_Income_Group_ID]) REFERENCES [dbo].[T_Income_Group_Master] ([I_Income_Group_ID]),
+    CONSTRAINT [FK_T_Enquiry_Regn_Detail_T_Marital_Status] FOREIGN KEY ([I_Marital_Status_ID]) REFERENCES [dbo].[T_Marital_Status] ([I_Marital_Status_ID]),
+    CONSTRAINT [FK_T_Enquiry_Regn_Detail_T_Native_Language] FOREIGN KEY ([I_Native_Language_ID]) REFERENCES [dbo].[T_Native_Language] ([I_Native_Language_ID]),
+    CONSTRAINT [FK_T_Enquiry_Regn_Detail_T_Occupation_Master] FOREIGN KEY ([I_Father_Occupation_ID]) REFERENCES [dbo].[T_Occupation_Master] ([I_Occupation_ID]),
+    CONSTRAINT [FK_T_Enquiry_Regn_Detail_T_Occupation_Master1] FOREIGN KEY ([I_Mother_Occupation_ID]) REFERENCES [dbo].[T_Occupation_Master] ([I_Occupation_ID]),
+    CONSTRAINT [FK_T_Enquiry_Regn_Detail_T_Qualification_Name_Master] FOREIGN KEY ([I_Father_Qualification_ID]) REFERENCES [dbo].[T_Qualification_Name_Master] ([I_Qualification_Name_ID]),
+    CONSTRAINT [FK_T_Enquiry_Regn_Detail_T_Qualification_Name_Master1] FOREIGN KEY ([I_Mother_Qualification_ID]) REFERENCES [dbo].[T_Qualification_Name_Master] ([I_Qualification_Name_ID]),
+    CONSTRAINT [FK_T_Enquiry_Regn_Detail_T_Residence_Area_Master] FOREIGN KEY ([I_Residence_Area_ID]) REFERENCES [dbo].[T_Residence_Area_Master] ([I_Residence_Area_ID]),
+    CONSTRAINT [FK_T_Enquiry_Regn_Detail_T_Scholar_Type_Master] FOREIGN KEY ([I_Scholar_Type_ID]) REFERENCES [dbo].[T_Scholar_Type_Master] ([I_Scholar_Type_ID]),
+    CONSTRAINT [FK_T_Enquiry_Regn_Detail_T_Seat_Type_Master] FOREIGN KEY ([I_Seat_Type_ID]) REFERENCES [dbo].[T_Seat_Type_Master] ([I_Seat_Type_ID]),
+    CONSTRAINT [FK_T_Enquiry_Regn_Detail_T_User_Nationality] FOREIGN KEY ([I_Nationality_ID]) REFERENCES [dbo].[T_User_Nationality] ([I_Nationality_ID]),
+    CONSTRAINT [FK_T_Enquiry_Regn_Detail_T_User_Religion] FOREIGN KEY ([I_Religion_ID]) REFERENCES [dbo].[T_User_Religion] ([I_Religion_ID]),
+    CONSTRAINT [FK_T_Enquiry_Regn_Detail_T_User_Sex] FOREIGN KEY ([I_Sex_ID]) REFERENCES [dbo].[T_User_Sex] ([I_Sex_ID])
+>>>>>>> SMS_Adamas_Kids
 );
 
 
@@ -256,6 +293,136 @@ GO
 
 GO
 
+
+
+
+
+GO
+ALTER TABLE [dbo].[T_Enquiry_Regn_Detail] NOCHECK CONSTRAINT [FK__T_Enquiry__I_Cur__4C02103B];
+
+
+GO
+ALTER TABLE [dbo].[T_Enquiry_Regn_Detail] NOCHECK CONSTRAINT [FK__T_Enquiry__I_Cur__4CF63474];
+
+
+GO
+ALTER TABLE [dbo].[T_Enquiry_Regn_Detail] NOCHECK CONSTRAINT [FK__T_Enquiry__I_Enq__4460EE73];
+
+
+GO
+ALTER TABLE [dbo].[T_Enquiry_Regn_Detail] NOCHECK CONSTRAINT [FK__T_Enquiry__I_Inc__48317F57];
+
+
+GO
+ALTER TABLE [dbo].[T_Enquiry_Regn_Detail] NOCHECK CONSTRAINT [FK__T_Enquiry__I_Inf__4EDE7CE6];
+
+
+GO
+ALTER TABLE [dbo].[T_Enquiry_Regn_Detail] NOCHECK CONSTRAINT [FK__T_Enquiry__I_Occ__4925A390];
+
+
+GO
+ALTER TABLE [dbo].[T_Enquiry_Regn_Detail] NOCHECK CONSTRAINT [FK__T_Enquiry__I_Pre__4A19C7C9];
+
+
+GO
+ALTER TABLE [dbo].[T_Enquiry_Regn_Detail] NOCHECK CONSTRAINT [FK__T_Enquiry__I_Qua__464936E5];
+
+
+GO
+ALTER TABLE [dbo].[T_Enquiry_Regn_Detail] NOCHECK CONSTRAINT [FK__T_Enquiry__I_Str__473D5B1E];
+
+
+GO
+ALTER TABLE [dbo].[T_Enquiry_Regn_Detail] NOCHECK CONSTRAINT [FK_T_Enquiry_Regn_Detail_T_Blood_Group];
+
+
+GO
+ALTER TABLE [dbo].[T_Enquiry_Regn_Detail] NOCHECK CONSTRAINT [FK_T_Enquiry_Regn_Detail_T_Business_Type];
+
+
+GO
+ALTER TABLE [dbo].[T_Enquiry_Regn_Detail] NOCHECK CONSTRAINT [FK_T_Enquiry_Regn_Detail_T_Business_Type1];
+
+
+GO
+ALTER TABLE [dbo].[T_Enquiry_Regn_Detail] NOCHECK CONSTRAINT [FK_T_Enquiry_Regn_Detail_T_Corporate_Details];
+
+
+GO
+ALTER TABLE [dbo].[T_Enquiry_Regn_Detail] NOCHECK CONSTRAINT [FK_T_Enquiry_Regn_Detail_T_Enquiry_Regn_Detail];
+
+
+GO
+ALTER TABLE [dbo].[T_Enquiry_Regn_Detail] NOCHECK CONSTRAINT [FK_T_Enquiry_Regn_Detail_T_Enquiry_Regn_Detail1];
+
+
+GO
+ALTER TABLE [dbo].[T_Enquiry_Regn_Detail] NOCHECK CONSTRAINT [FK_T_Enquiry_Regn_Detail_T_Enquiry_Regn_Detail2];
+
+
+GO
+ALTER TABLE [dbo].[T_Enquiry_Regn_Detail] NOCHECK CONSTRAINT [FK_T_Enquiry_Regn_Detail_T_Enrolment_Type_Master];
+
+
+GO
+ALTER TABLE [dbo].[T_Enquiry_Regn_Detail] NOCHECK CONSTRAINT [FK_T_Enquiry_Regn_Detail_T_Income_Group_Master];
+
+
+GO
+ALTER TABLE [dbo].[T_Enquiry_Regn_Detail] NOCHECK CONSTRAINT [FK_T_Enquiry_Regn_Detail_T_Income_Group_Master1];
+
+
+GO
+ALTER TABLE [dbo].[T_Enquiry_Regn_Detail] NOCHECK CONSTRAINT [FK_T_Enquiry_Regn_Detail_T_Income_Group_Master2];
+
+
+GO
+ALTER TABLE [dbo].[T_Enquiry_Regn_Detail] NOCHECK CONSTRAINT [FK_T_Enquiry_Regn_Detail_T_Marital_Status];
+
+
+GO
+ALTER TABLE [dbo].[T_Enquiry_Regn_Detail] NOCHECK CONSTRAINT [FK_T_Enquiry_Regn_Detail_T_Native_Language];
+
+
+GO
+ALTER TABLE [dbo].[T_Enquiry_Regn_Detail] NOCHECK CONSTRAINT [FK_T_Enquiry_Regn_Detail_T_Occupation_Master];
+
+
+GO
+ALTER TABLE [dbo].[T_Enquiry_Regn_Detail] NOCHECK CONSTRAINT [FK_T_Enquiry_Regn_Detail_T_Occupation_Master1];
+
+
+GO
+ALTER TABLE [dbo].[T_Enquiry_Regn_Detail] NOCHECK CONSTRAINT [FK_T_Enquiry_Regn_Detail_T_Qualification_Name_Master];
+
+
+GO
+ALTER TABLE [dbo].[T_Enquiry_Regn_Detail] NOCHECK CONSTRAINT [FK_T_Enquiry_Regn_Detail_T_Qualification_Name_Master1];
+
+
+GO
+ALTER TABLE [dbo].[T_Enquiry_Regn_Detail] NOCHECK CONSTRAINT [FK_T_Enquiry_Regn_Detail_T_Residence_Area_Master];
+
+
+GO
+ALTER TABLE [dbo].[T_Enquiry_Regn_Detail] NOCHECK CONSTRAINT [FK_T_Enquiry_Regn_Detail_T_Scholar_Type_Master];
+
+
+GO
+ALTER TABLE [dbo].[T_Enquiry_Regn_Detail] NOCHECK CONSTRAINT [FK_T_Enquiry_Regn_Detail_T_Seat_Type_Master];
+
+
+GO
+ALTER TABLE [dbo].[T_Enquiry_Regn_Detail] NOCHECK CONSTRAINT [FK_T_Enquiry_Regn_Detail_T_User_Nationality];
+
+
+GO
+ALTER TABLE [dbo].[T_Enquiry_Regn_Detail] NOCHECK CONSTRAINT [FK_T_Enquiry_Regn_Detail_T_User_Religion];
+
+
+GO
+ALTER TABLE [dbo].[T_Enquiry_Regn_Detail] NOCHECK CONSTRAINT [FK_T_Enquiry_Regn_Detail_T_User_Sex];
 
 
 GO

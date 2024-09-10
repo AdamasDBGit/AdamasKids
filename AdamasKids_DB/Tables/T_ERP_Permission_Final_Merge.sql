@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[T_ERP_Permission] (
+﻿CREATE TABLE [dbo].[T_ERP_Permission_Final_Merge] (
     [I_Permission_ID]                 INT            NOT NULL,
     [Permission_Type]                 VARCHAR (100)  NULL,
     [RequestType]                     NCHAR (100)    NULL,
@@ -17,8 +17,4 @@
     [Is_Active]                       BIT            NULL,
     [UniqueIdentifierColumn]          NVARCHAR (MAX) NULL
 );
-
-
-
-
 

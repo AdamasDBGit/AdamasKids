@@ -38,9 +38,10 @@ BEGIN
 	  --inner join [dbo].[T_ERP_Enquiry_Regn_Guardian_Master] as ERGM on ERGM.I_Enquiry_Regn_ID = SD.I_Enquiry_Regn_ID
 	  --inner join [dbo].[T_Enquiry_Regn_Detail] as ERD on ERD.I_Enquiry_Regn_ID = SD.I_Enquiry_Regn_ID
 	  where SCS.I_Brand_ID = @brandid and
-	  SGC.I_School_Group_ID= @SchoolGroup --OR @SchoolGroup IS NULL
-	  and
-	  SGC.I_Class_ID= @class --OR @class IS NULL 
+	(SGC.I_School_Group_ID = @SchoolGroup OR @SchoolGroup IS NULL)
+AND
+(SGC.I_Class_ID = @class OR @class IS NULL)
+
 	  and(
 	  SCS.I_Section_ID = @section OR @section IS NULL) and
 	  (SCS.I_Stream_ID = @stream OR @stream IS NULL) and 
@@ -66,9 +67,10 @@ BEGIN
 	  --inner join [dbo].[T_ERP_Enquiry_Regn_Guardian_Master] as ERGM on ERGM.I_Enquiry_Regn_ID = SD.I_Enquiry_Regn_ID
 	  --inner join [dbo].[T_Enquiry_Regn_Detail] as ERD on ERD.I_Enquiry_Regn_ID = SD.I_Enquiry_Regn_ID
 	  where SCS.I_Brand_ID = @brandid and
-	  SGC.I_School_Group_ID= @SchoolGroup --OR @SchoolGroup IS NULL
-	  and
-	  SGC.I_Class_ID= @class --OR @class IS NULL 
+	 (SGC.I_School_Group_ID = @SchoolGroup OR @SchoolGroup IS NULL)
+AND
+(SGC.I_Class_ID = @class OR @class IS NULL)
+
 	  and(
 	  SCS.I_Section_ID = @section OR @section IS NULL) and
 	  (SCS.I_Stream_ID = @stream OR @stream IS NULL) and 
@@ -117,9 +119,10 @@ BEGIN
 	  --inner join [dbo].[T_ERP_Enquiry_Regn_Guardian_Master] as ERGM on ERGM.I_Enquiry_Regn_ID = SD.I_Enquiry_Regn_ID
 	  Left join [dbo].[T_Enquiry_Regn_Detail] as ERD on ERD.I_Enquiry_Regn_ID = SD.I_Enquiry_Regn_ID
 	  where SCS.I_Brand_ID = @brandid and
-	  SGC.I_School_Group_ID= @SchoolGroup --OR @SchoolGroup IS NULL
-	  and
-	  SGC.I_Class_ID= @class --OR @class IS NULL 
+	 (SGC.I_School_Group_ID = @SchoolGroup OR @SchoolGroup IS NULL)
+AND
+(SGC.I_Class_ID = @class OR @class IS NULL)
+
 	  and(
 	  SCS.I_Section_ID = @section OR @section IS NULL) and
 	  (SCS.I_Stream_ID = @stream OR @stream IS NULL) and 

@@ -1,10 +1,4 @@
-﻿-- =============================================
--- Author:		<Author,,Name>
--- Create date: <Create Date,,>
--- Description:	<Description,,>
--- exec usp_ERP_GetTeacherMonthAttendance 10,11
--- =============================================
-CREATE PROCEDURE [dbo].[usp_ERP_GetTeacherMonthAttendance] 
+﻿CREATE PROCEDURE [dbo].[usp_ERP_GetTeacherMonthAttendance] 
 (
 	-- Add the parameters for the stored procedure here
 	@FacultyMasterID INT = NULL,
@@ -22,7 +16,8 @@ BEGIN
 		select top 1 @MinDate=Dt_Session_Start_Date
 	,@MaxDate=Dt_Session_End_Date,@SessionName=S_Label
 from T_School_Academic_Session_Master 
-where I_Brand_ID=@BrandID;
+where I_Brand_ID=@BrandID
+order by I_School_Session_ID desc;
 
 SELECT 
 	MONTH(ay_dt.Teaching_Date) MonthID,
